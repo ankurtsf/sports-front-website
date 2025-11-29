@@ -74,10 +74,10 @@
         }
 
         .logo-img {
-            /* Increased size as requested */
             height: 80px; 
             width: auto;
             object-fit: contain;
+            mix-blend-mode: screen; 
         }
 
         nav {
@@ -118,6 +118,7 @@
             text-decoration: none;
             text-transform: uppercase;
             letter-spacing: 1px;
+            display: inline-block;
         }
 
         .cta-btn:hover {
@@ -211,7 +212,7 @@
             letter-spacing: 2px;
         }
 
-        /* UPDATED: Status Bar */
+        /* Status Bar */
         .status-box {
             background: rgba(0, 208, 132, 0.1); 
             border: 1px solid var(--brand-green);
@@ -420,7 +421,6 @@
         /* Success/Mumbai Section */
         .success-section {
             padding: 6rem 2rem;
-            /* Updated to use local file with Images/ and .jpeg extension */
             background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('Images/success-bg.jpeg');
             background-size: cover;
             background-attachment: fixed;
@@ -462,6 +462,66 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             font-weight: 600;
+        }
+
+        /* Video / Media Section */
+        .media-section {
+            padding: 6rem 2rem;
+            background: #000;
+            text-align: center;
+        }
+        
+        .video-container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid #333;
+            background: #111;
+            /* Allow video to determine size */
+        }
+        
+        .video-player {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Featured In (Press) */
+        .press-section {
+            padding: 4rem 2rem;
+            background: var(--surface-dark);
+            text-align: center;
+        }
+        
+        .press-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 2rem auto;
+        }
+        
+        .press-item {
+            background: #fff;
+            padding: 0;
+            border-radius: 8px;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+        
+        .press-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .press-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         /* Capabilities / About */
@@ -516,35 +576,45 @@
             font-size: 0.9rem;
         }
 
-        /* Featured In (Press) */
-        .press-section {
-            padding: 3rem 2rem;
-            background: var(--surface-dark);
-            border-top: 1px solid rgba(255,255,255,0.05);
-            border-bottom: 1px solid rgba(255,255,255,0.05);
+        /* Team Section */
+        .team-section {
+            padding: 6rem 2rem;
+            background: var(--surface-light);
             text-align: center;
         }
         
-        .press-logos {
-            display: flex;
-            justify-content: center;
-            gap: 3rem;
-            flex-wrap: wrap;
-            opacity: 0.5;
-            margin-top: 1.5rem;
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 3rem auto;
         }
         
-        .press-logo {
-            font-weight: 900;
-            font-size: 1.5rem;
-            color: #fff;
-            font-family: 'Times New Roman', serif;
+        .team-member {
+            padding: 1.5rem;
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 8px;
+            background: var(--deep-black);
+        }
+        
+        .member-name {
+            font-weight: 700;
+            color: white;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .member-role {
+            color: var(--brand-green);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         /* Partners */
         .partners-section {
             padding: 4rem 2rem;
-            /* Updated Background: Subtle gradient to light it up */
             background: radial-gradient(circle at center, #ffffff 0%, #f4f4f4 100%);
             color: var(--black);
         }
@@ -563,7 +633,6 @@
             max-width: 160px;
             max-height: 90px;
             filter: grayscale(100%);
-            /* Opacity set to 1 to be fully bright (not dim) */
             opacity: 1; 
             transition: 0.3s;
             object-fit: contain;
@@ -581,20 +650,10 @@
             text-align: center;
         }
 
-        .input-group {
-            max-width: 500px;
-            margin: 2rem auto;
-            display: flex;
-            gap: 10px;
-        }
-
-        .email-input {
-            flex: 1;
-            padding: 1rem;
-            border-radius: 4px;
-            border: 1px solid #333;
-            background: rgba(255,255,255,0.1);
-            color: white;
+        .footer-center {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
         /* Footer */
@@ -660,7 +719,6 @@
 
     <!-- Hero Section -->
     <section class="hero">
-        <!-- FIXED: Extension changed to .jpg as requested -->
         <img src="Images/hero-bg.jpg" class="hero-bg" alt="Stadium">
         <div class="hero-content">
             <h2 style="color: var(--brand-green); margin-bottom: 0;">OFFICIAL PRE-ANNOUNCEMENT</h2>
@@ -673,12 +731,10 @@
             <div class="status-box">
                 <span class="status-indicator"></span>
                 <span class="status-text">THE NEXT ERA IS LOADING...</span>
-                <!-- Updated Subtext: No internal details, just hype -->
                 <span class="status-sub">PREPARE FOR THE ULTIMATE SHOWDOWN.</span>
             </div>
 
             <div style="margin-top: 2rem;">
-                <!-- Updated CTA -->
                 <a href="#events" class="cta-btn" style="background: transparent; border: 2px solid white; color: white; margin-right: 1rem;">See The Hints</a>
                 <a href="#contact" class="cta-btn">Unlock Priority Access</a>
             </div>
@@ -737,13 +793,41 @@
         </div>
     </section>
 
+    <!-- Media Section (Aftermovie & Press) -->
+    <section class="media-section">
+        <div class="section-header">
+            <p class="section-subtitle">THE EXPERIENCE</p>
+            <h2 class="section-title">OFFICIAL TEASER</h2>
+        </div>
+        
+        <!-- Video Player -->
+        <div class="video-container">
+            <video controls class="video-player" poster="Images/hero-bg.jpg">
+                <source src="Images/teaser-video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+
+        <div style="margin-top: 4rem;">
+            <h3 class="section-title" style="font-size: 2rem;">PRESS COVERAGE</h3>
+            <p style="color: #888;">Dominating headlines across the nation</p>
+            
+            <div class="press-grid">
+                <div class="press-item"><img src="Images/press-1.jpg" alt="Press Coverage 1" onerror="this.style.display='none'"></div>
+                <div class="press-item"><img src="Images/press-2.jpg" alt="Press Coverage 2" onerror="this.style.display='none'"></div>
+                <div class="press-item"><img src="Images/press-3.jpg" alt="Press Coverage 3" onerror="this.style.display='none'"></div>
+                <div class="press-item"><img src="Images/press-4.jpg" alt="Press Coverage 4" onerror="this.style.display='none'"></div>
+            </div>
+        </div>
+    </section>
+
     <!-- Success Section (Mumbai) -->
     <section class="success-section" id="success">
         <div style="text-align: center; position: relative; z-index: 2;">
             <p class="section-subtitle">PROVEN TRACK RECORD</p>
             <h2 class="section-title">WE DID IT BEFORE. WE'LL DO IT AGAIN.</h2>
             <p style="max-width: 700px; margin: 0 auto; color: #ddd;">
-                In April 2024, we turned DY Patil Stadium into a fortress. Over 30,000 fans witnessed the Legends Face Off.
+                In April 2025, we turned DY Patil Stadium into a fortress. Over 30,000 fans witnessed the Legends Face Off.
             </p>
         </div>
 
@@ -765,17 +849,6 @@
                 <span class="stat-number" data-target="17">0</span>
                 <span class="stat-label">Top Sponsors</span>
             </div>
-        </div>
-    </section>
-
-    <!-- Featured In (Press) -->
-    <section class="press-section">
-        <p style="color: #666; font-size: 0.8rem; letter-spacing: 1px; text-transform: uppercase;">As Featured In 700+ Articles</p>
-        <div class="press-logos">
-            <div class="press-logo">The Times of India</div>
-            <div class="press-logo">Hindustan Times</div>
-            <div class="press-logo">Goal.com</div>
-            <div class="press-logo">Sportskeeda</div>
         </div>
     </section>
 
@@ -811,44 +884,81 @@
         </div>
     </section>
 
-    <!-- Partners (White background for contrast) -->
+    <!-- Our Team Section -->
+    <section class="team-section">
+        <div class="section-header">
+            <p class="section-subtitle" style="color: #333;">LEADERSHIP</p>
+            <h2 class="section-title" style="color: #000;">THE SQUAD</h2>
+        </div>
+        <div class="team-grid">
+            <div class="team-member">
+                <div class="member-name">John</div>
+                <div class="member-role">Core Team</div>
+            </div>
+            <div class="team-member">
+                <div class="member-name">Anirudh</div>
+                <div class="member-role">Core Team</div>
+            </div>
+            <div class="team-member">
+                <div class="member-name">Ankur</div>
+                <div class="member-role">Core Team</div>
+            </div>
+            <div class="team-member">
+                <div class="member-name">Ankit</div>
+                <div class="member-role">Core Team</div>
+            </div>
+            <div class="team-member">
+                <div class="member-name">Tushar</div>
+                <div class="member-role">Core Team</div>
+            </div>
+            <div class="team-member">
+                <div class="member-name">Keshav</div>
+                <div class="member-role">Core Team</div>
+            </div>
+            <div class="team-member">
+                <div class="member-name">Harshit</div>
+                <div class="member-role">Core Team</div>
+            </div>
+            <div class="team-member">
+                <div class="member-name">Yashabh</div>
+                <div class="member-role">Core Team</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners -->
     <section class="partners-section" id="partners">
         <div class="section-header">
             <p style="color: #999; font-size: 0.9rem; letter-spacing: 2px;">TRUSTED BY GLOBAL BRANDS</p>
         </div>
-        <!-- 
-           PARTNER LOGO INSTRUCTIONS: 
-           Please use logos that are COLORED or BLACK.
-           Do not use white logos as the background is white.
-        -->
         <div class="partners-grid">
             <!-- 1. HSBC -->
             <img src="Images/partner-hsbc.svg" alt="HSBC" class="partner-logo-img">
             <!-- 2. Jameson -->
             <img src="Images/partner-jameson.png" alt="Jameson" class="partner-logo-img">
-            <!-- 3. BMW (Added) -->
+            <!-- 3. BMW -->
             <img src="Images/partner-bmw.png" alt="BMW" class="partner-logo-img">
             <!-- 4. Budweiser -->
             <img src="Images/partner-budweiser.png" alt="Budweiser" class="partner-logo-img">
-            <!-- 5. Bisleri (Updated to jpg) -->
+            <!-- 5. Bisleri -->
             <img src="Images/partner-bisleri.jpg" alt="Bisleri" class="partner-logo-img">
-            <!-- 6. Pavilions (Added) -->
+            <!-- 6. Pavilions -->
             <img src="Images/partner-pavilions.png" alt="Pavilions and Interiors" class="partner-logo-img">
-            <!-- 7. District (Added) -->
+            <!-- 7. District -->
             <img src="Images/partner-district.png" alt="District" class="partner-logo-img">
-            <!-- 8. JioStar (Added) -->
+            <!-- 8. JioStar -->
             <img src="Images/partner-jiostar.png" alt="JioStar" class="partner-logo-img">
             <!-- 9. Fairmont -->
             <img src="Images/partner-fairmont.jpg" alt="Fairmont" class="partner-logo-img">
             <!-- 10. Nivia -->
             <img src="Images/partner-nivea.jpg" alt="Nivea" class="partner-logo-img">
-            <!-- 11. Medulance (Added) -->
+            <!-- 11. Medulance -->
             <img src="Images/partner-medulance.png" alt="Medulance" class="partner-logo-img">
-            <!-- 12. DY Patil (Added) -->
+            <!-- 12. DY Patil -->
             <img src="Images/partner-dypatil.png" alt="DY Patil" class="partner-logo-img">
-            <!-- 13. Capital Group (Added) -->
+            <!-- 13. Capital Group -->
             <img src="Images/partner-capital.png" alt="Capital Group" class="partner-logo-img">
-            <!-- 14. Event Network (Added) -->
+            <!-- 14. Event Network -->
             <img src="Images/partner-eventnetwork.png" alt="Event Network" class="partner-logo-img">
             <!-- 15. FlixBus -->
             <img src="Images/partner-flixbus.png" alt="FlixBus" class="partner-logo-img">
@@ -860,11 +970,16 @@
         <h2 style="font-size: 3rem; margin-bottom: 1rem;">DON'T MISS THE KICKOFF</h2>
         <p style="color: #ccc; margin-bottom: 2rem;">Be the first to know when tickets go live for India and Thailand.</p>
         
-        <div class="input-group">
-            <input type="email" class="email-input" placeholder="Enter your email address">
-            <button class="cta-btn">Unlock Priority Access</button>
+        <div class="footer-center">
+            <!-- 
+                IMPORTANT: Create a Microsoft Form (https://forms.office.com/)
+                Get the 'Share' link and paste it below where it says YOUR_MICROSOFT_FORM_LINK
+            -->
+            <a href="YOUR_MICROSOFT_FORM_LINK" target="_blank" class="cta-btn" style="text-decoration: none; display: inline-block;">
+                Join Priority List via Microsoft Forms
+            </a>
         </div>
-        <p style="font-size: 0.8rem; color: #555; margin-top: 1rem;">We respect your inbox. No spam, only game changers.</p>
+        <p style="font-size: 0.8rem; color: #555; margin-top: 2rem;">We respect your inbox. No spam, only game changers.</p>
     </section>
 
     <footer>
