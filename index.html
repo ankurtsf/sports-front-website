@@ -74,10 +74,11 @@
         }
 
         .logo-img {
-            /* Increased size as requested */
             height: 80px; 
             width: auto;
             object-fit: contain;
+            /* BLENDING FIX: This makes black backgrounds transparent to blend with the header */
+            mix-blend-mode: screen; 
         }
 
         nav {
@@ -213,7 +214,7 @@
 
         /* UPDATED: Status Bar */
         .status-box {
-            background: rgba(0, 208, 132, 0.1); /* Slight green tint */
+            background: rgba(0, 208, 132, 0.1); 
             border: 1px solid var(--brand-green);
             backdrop-filter: blur(10px);
             padding: 1.5rem 3rem;
@@ -228,7 +229,7 @@
             display: inline-block;
             width: 12px;
             height: 12px;
-            background-color: var(--brand-green); /* Green for positive hype */
+            background-color: var(--brand-green); 
             border-radius: 50%;
             margin-right: 12px;
             box-shadow: 0 0 10px var(--brand-green);
@@ -420,6 +421,7 @@
         /* Success/Mumbai Section */
         .success-section {
             padding: 6rem 2rem;
+            /* Updated to use local file with Images/ and .jpeg extension */
             background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('Images/success-bg.jpeg');
             background-size: cover;
             background-attachment: fixed;
@@ -543,7 +545,8 @@
         /* Partners */
         .partners-section {
             padding: 4rem 2rem;
-            background: #fff; 
+            /* Updated Background: Subtle gradient to light it up */
+            background: radial-gradient(circle at center, #ffffff 0%, #f4f4f4 100%);
             color: var(--black);
         }
         
@@ -560,15 +563,15 @@
         .partner-logo-img {
             max-width: 160px;
             max-height: 90px;
-            filter: grayscale(100%); /* Use 0% if you want full color by default */
-            opacity: 0.8;
+            filter: grayscale(100%);
+            /* Opacity set to 1 to be fully bright (not dim) */
+            opacity: 1; 
             transition: 0.3s;
             object-fit: contain;
         }
         
         .partner-logo-img:hover {
             filter: grayscale(0%);
-            opacity: 1;
             transform: scale(1.05);
         }
 
@@ -636,7 +639,8 @@
 
     <!-- Hero Section -->
     <section class="hero">
-        <img src="Images/hero-bg.jpeg" class="hero-bg" alt="Stadium">
+        <!-- FIXED: Extension changed to .jpg as requested -->
+        <img src="Images/hero-bg.jpg" class="hero-bg" alt="Stadium">
         <div class="hero-content">
             <h2 style="color: var(--brand-green); margin-bottom: 0;">OFFICIAL PRE-ANNOUNCEMENT</h2>
             <h1>LEGENDS ARE<br><span class="highlight-text" data-text="RETURNING">RETURNING</span></h1>
@@ -644,11 +648,12 @@
                 After the historic Legends Face Off in Mumbai, The Sports Front is bringing two new titans of world football to Asia.
             </p>
 
-            <!-- Replaced Countdown with Green Status Bar -->
+            <!-- Status Bar -->
             <div class="status-box">
                 <span class="status-indicator"></span>
                 <span class="status-text">THE NEXT ERA IS LOADING...</span>
-                <span class="status-sub">Contracts Signed. Stadiums Booked. Reveal Imminent.</span>
+                <!-- Updated Subtext: No internal details, just hype -->
+                <span class="status-sub">HISTORY IS ABOUT TO BE REWRITTEN.</span>
             </div>
 
             <div style="margin-top: 2rem;">
@@ -788,11 +793,6 @@
         <div class="section-header">
             <p style="color: #999; font-size: 0.9rem; letter-spacing: 2px;">TRUSTED BY GLOBAL BRANDS</p>
         </div>
-        <!-- 
-           PARTNER LOGO INSTRUCTIONS: 
-           Please use logos that are COLORED or BLACK.
-           Do not use white logos as the background is white.
-        -->
         <div class="partners-grid">
             <!-- 1. HSBC -->
             <img src="Images/partner-hsbc.svg" alt="HSBC" class="partner-logo-img">
