@@ -4,17 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Sports Front - Iconic Football Nights Coming Soon</title>
-    <!-- Added FontAwesome for icons -->
+    <!-- Google Fonts: Montserrat for Headings, Open Sans for body -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary-green: #00D084;
-            --primary-red: #FF3333;
-            --dark-green: #00A86B;
-            --black: #000000;
-            --white: #FFFFFF;
-            --india-blue: #007ACC;
-            --thailand-gold: #FFD700;
+            /* Updated Palette: Darker, sleeker, with neon accents */
+            --neon-green: #00FF9D;
+            --deep-black: #0a0a0a;
+            --surface-dark: #141414;
+            --surface-light: #1f1f1f;
+            --text-white: #FFFFFF;
+            --text-gray: #B0B0B0;
+            
+            /* Team Hint Colors */
+            --man-red: #DA291C;
+            --man-blue: #6CABDD;
+            --rm-gold: #FEBE10;
+            --fcb-blue: #004D98;
+            --fcb-red: #DB0030;
         }
 
         * {
@@ -28,10 +37,16 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Open Sans', sans-serif;
             line-height: 1.6;
-            color: var(--black);
+            background-color: var(--deep-black);
+            color: var(--text-white);
             overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
         }
 
         /* Header Styles */
@@ -40,8 +55,9 @@
             top: 0;
             left: 0;
             right: 0;
-            background: var(--white);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
             z-index: 1000;
             transition: all 0.3s ease;
         }
@@ -55,16 +71,9 @@
             align-items: center;
         }
 
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
         .logo-img {
-            height: 50px;
+            height: 45px;
             width: auto;
-            object-fit: contain;
         }
 
         nav {
@@ -81,960 +90,781 @@
 
         .nav-links a {
             text-decoration: none;
-            color: var(--black);
-            font-weight: 500;
+            color: var(--text-white);
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
             transition: color 0.3s ease;
-            position: relative;
         }
 
-        .nav-links a:hover,
-        .nav-links a.active {
-            color: var(--primary-green);
+        .nav-links a:hover {
+            color: var(--neon-green);
         }
 
         .cta-btn {
-            background: var(--primary-green);
-            color: var(--black);
-            padding: 0.7rem 1.5rem;
+            background: var(--neon-green);
+            color: var(--deep-black);
+            padding: 0.7rem 1.8rem;
             border: none;
-            border-radius: 6px;
-            font-weight: 600;
+            border-radius: 4px; /* Sharper corners for sports look */
+            font-weight: 800;
+            font-family: 'Montserrat', sans-serif;
             cursor: pointer;
             transition: all 0.3s ease;
             text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .cta-btn:hover {
-            background: var(--dark-green);
+            background: #fff;
             transform: translateY(-2px);
+            box-shadow: 0 0 15px rgba(0, 255, 157, 0.4);
         }
 
         /* Hero Section */
         .hero {
             position: relative;
-            margin-top: 70px;
-            min-height: 80vh; /* Increased height for impact */
-            background: var(--black);
+            height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             overflow: hidden;
-            color: var(--white);
             text-align: center;
         }
 
         .hero::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            /* Improved gradient for better text readability */
-            background: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(0,208,132,0.1) 50%, rgba(0,0,0,0.8) 100%);
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(0deg, var(--deep-black) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.7) 100%);
             z-index: 2;
         }
 
         .hero-bg {
             position: absolute;
-            top: 0;
-            left: 0;
+            top: 0; left: 0;
             width: 100%;
             height: 100%;
             object-fit: cover;
             z-index: 1;
+            animation: slowZoom 20s infinite alternate;
+        }
+
+        @keyframes slowZoom {
+            from { transform: scale(1); }
+            to { transform: scale(1.15); }
         }
 
         .hero-content {
             position: relative;
             z-index: 3;
-            max-width: 900px;
+            max-width: 1000px;
             padding: 2rem;
+            margin-top: 40px;
         }
 
         .hero h1 {
-            font-size: 3.5rem;
+            font-size: 4rem;
             font-weight: 900;
-            color: var(--primary-green);
+            line-height: 1.1;
             margin-bottom: 1rem;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+            text-shadow: 0 4px 20px rgba(0,0,0,0.8);
+            letter-spacing: -1px;
+        }
+        
+        .highlight-text {
+            color: transparent;
+            -webkit-text-stroke: 1px var(--neon-green);
+            position: relative;
+        }
+        
+        .highlight-text::before {
+            content: attr(data-text);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 0;
+            height: 100%;
+            color: var(--neon-green);
+            overflow: hidden;
+            border-right: 2px solid var(--neon-green);
+            animation: fillText 3s linear infinite alternate;
+            -webkit-text-stroke: 0;
+        }
+
+        @keyframes fillText {
+            0% { width: 0; }
+            50% { width: 100%; }
+            100% { width: 100%; }
         }
 
         .hero h2 {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--white);
-            margin-bottom: 1.5rem;
-            text-shadow: 0 1px 6px rgba(0,0,0,0.5);
-        }
-
-        .hero p {
-            font-size: 1.1rem;
-            color: var(--white);
-            margin-bottom: 1.5rem;
-            line-height: 1.8;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #ddd;
+            margin-bottom: 2rem;
+            letter-spacing: 2px;
         }
 
         .countdown-box {
-            background: rgba(0,0,0,0.6);
-            border: 1px solid rgba(0,208,132,0.5);
-            padding: 1.5rem 2rem;
-            border-radius: 50px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem 3rem;
+            border-radius: 12px;
             margin: 2rem auto;
             display: inline-block;
-            backdrop-filter: blur(5px);
-        }
-
-        .countdown-box p {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 0.8rem;
-            color: #fff;
         }
 
         .countdown {
             display: flex;
-            gap: 2rem;
+            gap: 2.5rem;
             justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .countdown-item {
-            text-align: center;
         }
 
         .countdown-number {
-            font-size: 2rem;
-            font-weight: 900;
-            background: rgba(0,208,132,0.2);
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            min-width: 70px;
-            color: var(--white);
-            border: 1px solid rgba(0,208,132,0.3);
+            font-size: 2.5rem;
+            font-weight: 800;
+            font-family: 'Montserrat', sans-serif;
+            color: var(--neon-green);
+            line-height: 1;
         }
 
         .countdown-label {
-            font-size: 0.9rem;
-            font-weight: 500;
-            margin-top: 0.5rem;
-            color: #ddd;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #888;
+            margin-top: 5px;
         }
 
-        .hero-cta {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 2rem;
-        }
-
-        .btn-primary {
-            background: var(--primary-green);
-            color: var(--black);
-            padding: 0.9rem 2rem;
-            border: none;
-            border-radius: 6px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 1rem;
-        }
-
-        .btn-primary:hover {
-            background: var(--dark-green);
-            transform: translateY(-2px);
-        }
-
-        .btn-secondary {
-            background: var(--primary-red);
-            color: var(--white);
-            padding: 0.9rem 2rem;
-            border: none;
-            border-radius: 6px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 1rem;
-        }
-
-        .btn-secondary:hover {
-            background: #cc2626;
-            transform: translateY(-2px);
-        }
-
-        /* Coming Soon Strip */
-        .coming-soon-strip {
-            background: linear-gradient(90deg, var(--primary-red) 0%, var(--primary-green) 100%);
-            color: var(--white);
-            text-align: center;
-            padding: 1.5rem 2rem;
-            font-weight: 700;
-            font-size: 1.1rem;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-        }
-
-        /* Teaser Section */
-        .teaser-section {
-            padding: 4rem 2rem;
-            background: #f5f5f5;
-        }
-
-        .teaser-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-            gap: 2rem;
-        }
-
-        .teaser-card {
-            background: var(--white);
-            border-radius: 16px;
-            padding: 2.5rem 2rem;
-            text-align: center;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
-            transition: all 0.3s ease;
-            border-top: 7px solid;
-            display: flex;
-            flex-direction: column;
+        /* Coming Soon Ticker */
+        .ticker-wrap {
             position: relative;
+            background: var(--neon-green);
+            color: var(--deep-black);
+            height: 40px;
             overflow: hidden;
+            display: flex;
+            align-items: center;
         }
         
-        /* Added subtle background image for cards */
-        .teaser-card::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            width: 100px;
-            height: 100px;
-            opacity: 0.05;
-            background-size: contain;
-            background-repeat: no-repeat;
-            pointer-events: none;
-        }
-
-        .teaser-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 32px rgba(0,0,0,0.15);
-        }
-
-        .teaser-card.india {
-            border-top-color: var(--india-blue);
-        }
-
-        .teaser-card.thailand {
-            border-top-color: var(--thailand-gold);
-        }
-
-        .teaser-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .teaser-title {
-            font-size: 2rem;
-            font-weight: 900;
-            color: var(--primary-green);
-            margin-bottom: 0.8rem;
-        }
-
-        .teaser-date {
-            font-size: 1.05rem;
-            font-weight: 600;
-            color: var(--dark-green);
-            margin-bottom: 1.5rem;
+        .ticker-item {
+            font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 1px;
+            padding: 0 2rem;
+            white-space: nowrap;
+            animation: ticker 20s linear infinite;
+        }
+        
+        @keyframes ticker {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
         }
 
-        .teaser-text {
-            font-size: 1rem;
-            color: #333;
-            margin-bottom: 1.5rem;
-            line-height: 1.7;
-            flex-grow: 1;
+        /* Teaser Section - The Mystery Hints */
+        .teaser-section {
+            padding: 6rem 2rem;
+            background: var(--surface-dark);
         }
 
-        .teaser-text b {
-            color: var(--black);
-            font-weight: 700;
-        }
-
-        .teaser-text i {
-            font-style: italic;
-            display: block;
-            margin-top: 0.5rem;
-        }
-
-        .teaser-cta {
-            background: var(--black);
-            color: #e0fff8;
-            padding: 0.7rem 2rem;
-            border: 1px solid rgba(0,208,132,0.2);
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.2s ease;
-            cursor: pointer;
-            align-self: center;
-        }
-
-        .teaser-cta:hover {
-            background: var(--primary-green);
-            color: var(--black);
-            border-color: var(--primary-green);
-        }
-
-        /* About Section */
-        .about-section {
-            padding: 4rem 2rem;
-            background: var(--white);
-        }
-
-        .section-container {
-            max-width: 1200px;
-            margin: 0 auto;
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
         }
 
         .section-title {
             font-size: 2.5rem;
             font-weight: 900;
+            color: var(--text-white);
             margin-bottom: 1rem;
-            color: var(--black);
-            position: relative;
-            display: inline-block;
         }
         
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 4px;
-            background: var(--primary-green);
-            margin-top: 10px;
-        }
-
         .section-subtitle {
-            font-size: 1.3rem;
+            color: var(--neon-green);
             font-weight: 600;
-            color: var(--primary-green);
-            margin-bottom: 2rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
         }
 
-        .section-text {
-            font-size: 1.1rem;
-            color: #333;
-            line-height: 1.8;
-            margin-bottom: 2rem;
-            max-width: 900px;
-        }
-
-        .capabilities-grid {
+        .teaser-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        .capability-card {
-            background: #f5f5f5;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-            transition: transform 0.3s ease;
-        }
-
-        .capability-card:hover {
-            transform: translateY(-3px);
-        }
-
-        .capability-img-container {
-            height: 200px;
-            width: 100%;
-            overflow: hidden;
+        .teaser-card {
+            background: var(--surface-light);
+            border-radius: 16px;
+            padding: 3rem 2rem;
             position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.05);
         }
 
-        .capability-card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-        
-        .capability-card:hover img {
-            transform: scale(1.1);
+        .teaser-card:hover {
+            transform: translateY(-10px);
         }
 
-        .capability-content {
+        /* Subtle gradient borders to hint at teams */
+        .teaser-card.manchester::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 6px;
+            background: linear-gradient(90deg, var(--man-red) 50%, var(--man-blue) 50%);
+        }
+
+        .teaser-card.thailand::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 6px;
+            background: linear-gradient(90deg, white 0%, var(--rm-gold) 30%, var(--fcb-blue) 70%, var(--fcb-red) 100%);
+        }
+
+        .teaser-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            background: rgba(255,255,255,0.1);
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .teaser-location {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+            display: block;
+            text-align: center;
+        }
+
+        .teaser-title {
+            font-size: 1.8rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+        }
+
+        .teaser-clues {
+            background: rgba(0,0,0,0.3);
             padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
         }
 
-        .capability-title {
-            font-size: 1.15rem;
-            font-weight: 700;
-            margin-bottom: 0.8rem;
-            color: var(--black);
+        .clue-item {
             display: flex;
             align-items: center;
             gap: 10px;
-        }
-
-        .capability-desc {
+            margin-bottom: 10px;
             font-size: 0.95rem;
-            color: #666;
-            line-height: 1.6;
+            color: #ddd;
+        }
+        
+        .clue-item i {
+            color: var(--neon-green);
         }
 
-        /* Services Section */
-        .services-section {
-            padding: 4rem 2rem;
-            background: #f5f5f5;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .service-card {
-            background: var(--white);
-            border-radius: 12px;
-            padding: 2rem;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-            transition: all 0.3s ease;
-            border-left: 4px solid var(--primary-green);
-        }
-
-        .service-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 16px rgba(0,0,0,0.12);
-        }
-
-        .service-title {
-            font-size: 1.15rem;
+        .teaser-btn {
+            display: block;
+            width: 100%;
+            padding: 1rem;
+            background: transparent;
+            border: 1px solid var(--neon-green);
+            color: var(--neon-green);
+            text-align: center;
+            text-transform: uppercase;
             font-weight: 700;
-            margin-bottom: 0.8rem;
-            color: var(--black);
+            text-decoration: none;
+            transition: all 0.3s;
         }
 
-        .service-desc {
-            font-size: 0.95rem;
-            color: #666;
-            line-height: 1.6;
+        .teaser-btn:hover {
+            background: var(--neon-green);
+            color: var(--deep-black);
         }
 
-        /* Mumbai Section */
-        .mumbai-section {
-            padding: 4rem 2rem;
-            background: linear-gradient(135deg, rgba(0,208,132,0.05) 0%, rgba(255,51,51,0.05) 100%);
+        /* Success/Mumbai Section */
+        .success-section {
+            padding: 6rem 2rem;
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=2000');
+            background-size: cover;
+            background-attachment: fixed;
+            position: relative;
         }
 
-        .metrics-grid {
+        .stats-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 2rem;
-            margin: 2rem 0 3rem 0;
+            max-width: 1200px;
+            margin: 3rem auto;
         }
 
-        .metric-card {
-            background: var(--white);
-            border-radius: 12px;
-            padding: 2rem;
+        .stat-item {
             text-align: center;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-            border: 1px solid rgba(0,0,0,0.05);
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(5px);
+            padding: 2rem;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
         }
 
-        .metric-number {
+        .stat-number {
             font-size: 2.5rem;
             font-weight: 900;
-            color: var(--primary-green);
+            color: var(--text-white);
+            font-family: 'Montserrat', sans-serif;
+            display: block;
             margin-bottom: 0.5rem;
         }
 
-        .metric-label {
-            font-size: 1rem;
-            font-weight: 600;
-            color: #666;
+        .stat-label {
+            color: var(--neon-green);
+            font-size: 0.8rem;
             text-transform: uppercase;
-            font-size: 0.85rem;
             letter-spacing: 1px;
+            font-weight: 600;
         }
 
-        .gallery-grid {
+        /* Capabilities / About */
+        .capabilities-section {
+            padding: 6rem 2rem;
+            background: var(--deep-black);
+        }
+
+        .cap-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem 0;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 3rem auto 0;
         }
 
-        .gallery-item {
-            border-radius: 12px;
+        .cap-card {
+            background: var(--surface-light);
+            border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-            height: 250px;
+            transition: 0.3s;
         }
 
-        .gallery-item:hover {
-            transform: scale(1.02);
+        .cap-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
-        .gallery-item img {
+        .cap-img {
+            height: 200px;
             width: 100%;
-            height: 100%;
             object-fit: cover;
+            filter: grayscale(100%);
+            transition: 0.5s;
         }
 
-        /* Partners Section */
+        .cap-card:hover .cap-img {
+            filter: grayscale(0%);
+        }
+
+        .cap-text {
+            padding: 1.5rem;
+        }
+
+        .cap-text h4 {
+            color: var(--text-white);
+            margin-bottom: 0.5rem;
+        }
+
+        .cap-text p {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+
+        /* Featured In (Press) */
+        .press-section {
+            padding: 3rem 2rem;
+            background: var(--surface-dark);
+            border-top: 1px solid rgba(255,255,255,0.05);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            text-align: center;
+        }
+        
+        .press-logos {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            opacity: 0.5;
+            margin-top: 1.5rem;
+        }
+        
+        .press-logo {
+            font-weight: 900;
+            font-size: 1.5rem;
+            color: #fff;
+            font-family: 'Times New Roman', serif; /* Simulating newspaper fonts */
+        }
+
+        /* Partners */
         .partners-section {
             padding: 4rem 2rem;
-            background: var(--white);
+            background: #fff; /* White break for logos */
+            color: var(--black);
         }
-
+        
         .partners-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             gap: 2rem;
-            margin: 2rem 0;
-        }
-
-        .partner-item {
-            background: #fff;
-            border: 2px solid #f0f0f0;
-            border-radius: 8px;
-            padding: 2rem;
-            text-align: center;
-            display: flex;
+            max-width: 1200px;
+            margin: 2rem auto;
             align-items: center;
-            justify-content: center;
-            height: 100px;
-            transition: border-color 0.3s;
         }
         
-        .partner-item:hover {
-            border-color: var(--primary-green);
-        }
-
-        .partner-item strong {
-            color: #555;
-            font-weight: 700;
-            font-size: 1.1rem;
-        }
-
-        /* Contact Section */
-        .contact-section {
-            padding: 4rem 2rem;
-            background: var(--black);
-            color: var(--white);
+        .partner-logo {
+            filter: grayscale(100%);
+            opacity: 0.6;
+            transition: 0.3s;
             text-align: center;
-            border-top: 4px solid var(--primary-green);
-        }
-
-        .contact-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .contact-title {
-            font-size: 2.5rem;
-            font-weight: 900;
-            color: var(--primary-green);
-            margin-bottom: 1rem;
-        }
-
-        .contact-text {
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-            line-height: 1.8;
-            color: #ccc;
-        }
-
-        .contact-info {
-            font-size: 1.4rem;
-            font-weight: 600;
-            color: var(--white);
-            margin: 1rem 0;
+            font-weight: 700;
+            color: #333;
+            font-size: 1.2rem;
         }
         
-        .contact-info a {
-            color: var(--white);
-            text-decoration: none;
-            transition: color 0.3s;
+        .partner-logo:hover {
+            filter: grayscale(0%);
+            opacity: 1;
         }
-        
-        .contact-info a:hover {
-            color: var(--primary-green);
+
+        /* Contact */
+        .contact-section {
+            padding: 6rem 2rem;
+            background: radial-gradient(circle at center, #1a1a1a 0%, #000 100%);
+            text-align: center;
+        }
+
+        .input-group {
+            max-width: 500px;
+            margin: 2rem auto;
+            display: flex;
+            gap: 10px;
+        }
+
+        .email-input {
+            flex: 1;
+            padding: 1rem;
+            border-radius: 4px;
+            border: 1px solid #333;
+            background: rgba(255,255,255,0.1);
+            color: white;
         }
 
         /* Footer */
         footer {
-            background: #0a0a0a;
-            color: var(--white);
-            padding: 3rem 2rem;
+            background: black;
+            padding: 2rem;
             text-align: center;
-            font-size: 0.9rem;
             border-top: 1px solid #222;
+            color: #666;
+            font-size: 0.8rem;
         }
 
-        .footer-logo {
-            height: 50px;
-            margin-bottom: 1.5rem;
-            opacity: 0.8;
-        }
-
-        /* Responsive */
+        /* Mobile */
         @media (max-width: 768px) {
-            .header-container {
-                flex-direction: column;
-                gap: 1rem;
-            }
-            
-            nav {
-                flex-direction: column;
-                width: 100%;
-                gap: 1rem;
-            }
-            
-            .nav-links {
-                gap: 1rem;
-                font-size: 0.9rem;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-
-            .hero h1 { font-size: 2rem; }
-            .hero h2 { font-size: 1.3rem; }
-            .section-title { font-size: 2rem; }
+            .hero h1 { font-size: 2.5rem; }
             .countdown { gap: 1rem; }
-            
-            .cta-btn {
-                width: 100%;
-                text-align: center;
-            }
+            .countdown-number { font-size: 1.5rem; }
+            .nav-links { display: none; } /* Simplified for code snippet brevity */
         }
     </style>
 </head>
 <body>
+
     <!-- Header -->
     <header>
         <div class="header-container">
             <div class="logo-container">
-                <!-- REPLACED: SharePoint Link with a placeholder logo service -->
-                <img src="https://placehold.co/200x50/white/00D084?text=THE+SPORTS+FRONT" alt="The Sports Front Logo" class="logo-img">
+                <!-- Using text for logo to ensure visibility on dark mode, replace with white png logo -->
+                <div style="font-family: 'Montserrat'; font-weight: 900; font-size: 1.2rem; color: white;">
+                    THE SPORTS <span style="color: var(--neon-green)">FRONT</span>
+                </div>
             </div>
             <nav>
                 <div class="nav-links">
-                    <a href="#home" class="active">Home</a>
+                    <a href="#events">Upcoming</a>
+                    <a href="#success">Success Stories</a>
                     <a href="#about">About</a>
-                    <a href="#services">Services</a>
-                    <a href="#mumbai">Success Stories</a>
                     <a href="#partners">Partners</a>
-                    <a href="#contact">Contact</a>
                 </div>
-                <button class="cta-btn">Join Insider List</button>
+                <a href="#contact" class="cta-btn">Join Waitlist</a>
             </nav>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="hero" id="home">
-        <!-- REPLACED: Missing background image with Unsplash Football Stadium -->
-        <img src="https://images.unsplash.com/photo-1518605348400-437731df4868?q=80&w=2000&auto=format&fit=crop" class="hero-bg" alt="Football Stadium Night">
+    <section class="hero">
+        <img src="https://images.unsplash.com/photo-1518605348400-437731df4868?q=80&w=2000&auto=format&fit=crop" class="hero-bg" alt="Stadium">
         <div class="hero-content">
-            <h1>Iconic Football Nights Are Coming</h1>
-            <h2>Unannounced. Unmissable. Unleashing soon across Asia.</h2>
-            <p>Something exciting is on the way – football's greatest rivalries are headed to new cities!</p>
-            <p style="font-style: italic; opacity: 0.9;">Big European clubs. Huge names. Electrifying locations.<br>Stay tuned for official match reveals…</p>
+            <h2 style="color: var(--neon-green); margin-bottom: 0;">OFFICIAL PRE-ANNOUNCEMENT</h2>
+            <h1>LEGENDS ARE<br><span class="highlight-text" data-text="RETURNING">RETURNING</span></h1>
+            <p style="font-size: 1.2rem; max-width: 600px; margin: 0 auto 2rem auto;">
+                After the historic El Clásico in Mumbai, The Sports Front is bringing two new titans of world football to Asia.
+            </p>
 
             <div class="countdown-box">
-                <p>Next Big Announcement In:</p>
+                <p style="text-align: center; margin-bottom: 1rem; color: #aaa; font-size: 0.9rem;">NEXT REVEAL DROPS IN</p>
                 <div class="countdown">
                     <div class="countdown-item">
-                        <div class="countdown-number" id="days">--</div>
-                        <div class="countdown-label">days</div>
+                        <div class="countdown-number" id="days">00</div>
+                        <div class="countdown-label">Days</div>
                     </div>
                     <div class="countdown-item">
-                        <div class="countdown-number" id="hours">--</div>
-                        <div class="countdown-label">hrs</div>
+                        <div class="countdown-number" id="hours">00</div>
+                        <div class="countdown-label">Hrs</div>
                     </div>
                     <div class="countdown-item">
-                        <div class="countdown-number" id="minutes">--</div>
-                        <div class="countdown-label">min</div>
-                    </div>
-                    <div class="countdown-item">
-                        <div class="countdown-number" id="seconds">--</div>
-                        <div class="countdown-label">sec</div>
+                        <div class="countdown-number" id="minutes">00</div>
+                        <div class="countdown-label">Mins</div>
                     </div>
                 </div>
             </div>
 
-            <div class="hero-cta">
-                <button class="btn-primary">Join Insider List</button>
-                <button class="btn-secondary">Get Updates</button>
+            <div style="margin-top: 2rem;">
+                <a href="#events" class="cta-btn" style="background: transparent; border: 2px solid white; color: white; margin-right: 1rem;">See The Hints</a>
+                <a href="#contact" class="cta-btn">Get Early Access</a>
             </div>
         </div>
     </section>
 
-    <!-- Coming Soon Strip -->
-    <div class="coming-soon-strip">
-        <i class="fas fa-bullhorn"></i> Next stops on The Sports Front journey: • A historic derby night in India • European rivalry in Thailand • Official match details to be announced soon!
+    <!-- Scrolling Ticker -->
+    <div class="ticker-wrap">
+        <div class="ticker-item">
+             Stay Tuned • Official Announcement Coming Soon • India • Thailand • Legends Tour 2025 • Stay Tuned • Official Announcement Coming Soon •
+        </div>
     </div>
 
-    <!-- Teaser Section -->
-    <section class="teaser-section">
-        <div class="teaser-container">
-            <div class="teaser-card india">
-                <div class="teaser-icon">🇮🇳</div>
-                <h3 class="teaser-title">Big Night Under The Lights – India</h3>
-                <p class="teaser-date">March 22, 2025 • Mumbai</p>
-                <p class="teaser-text">
-                    Two giants from the same city.<br>
-                    One unforgettable night in India.<br>
-                    <b>Think blue. Think red.</b><br>
-                    Derby drama, crowd roars and the ultimate rivalry in a new era.<br>
-                    <i>Can you guess what's coming?</i>
-                </p>
-                <a href="#contact" class="teaser-cta">Stay Updated</a>
+    <!-- The Hints / Teaser Section -->
+    <section class="teaser-section" id="events">
+        <div class="section-header">
+            <p class="section-subtitle">2025 ROADMAP</p>
+            <h2 class="section-title">GUESS THE RIVALRY</h2>
+            <p style="color: #888;">Contract details finalizing. Official teams revealed soon.</p>
+        </div>
+
+        <div class="teaser-grid">
+            <!-- Event 1: India (Manchester Hint) -->
+            <div class="teaser-card manchester">
+                <span class="teaser-location"><i class="fas fa-map-marker-alt" style="color: var(--neon-green)"></i> India • March 22, 2025</span>
+                <div class="teaser-icon">
+                    <i class="fas fa-bolt" style="color: white;"></i>
+                </div>
+                <h3 class="teaser-title">THE NORTHERN STORM</h3>
+                
+                <div class="teaser-clues">
+                    <div class="clue-item"><i class="fas fa-check-circle"></i> Two Premier League Giants</div>
+                    <div class="clue-item"><i class="fas fa-check-circle"></i> One City. Two Colors.</div>
+                    <div class="clue-item"><i class="fas fa-check-circle"></i> <b>Hint:</b> A noisy neighbor meets the red devils.</div>
+                </div>
+                
+                <a href="#contact" class="teaser-btn">Join India Waitlist</a>
             </div>
+
+            <!-- Event 2: Thailand (El Clasico Hint) -->
             <div class="teaser-card thailand">
-                <div class="teaser-icon">🇹🇭</div>
-                <h3 class="teaser-title">Legends To Southeast Asia</h3>
-                <p class="teaser-date">May 31, 2025 • Thailand</p>
-                <p class="teaser-text">
-                    The world's most famous rivalry heads east.<br>
-                    Legends of global football face off with tiki-taka and galáctico flair.<br>
-                    <b>Hint: Blue, red, and gold stripes meet all-white and gold.</b><br>
-                    In the heart of a tropical city, football history will be rewritten.<br>
-                    <i>Stay tuned for the reveal…</i>
-                </p>
-                <a href="#contact" class="teaser-cta">Be The First To Know</a>
+                <span class="teaser-location"><i class="fas fa-map-marker-alt" style="color: var(--neon-green)"></i> Thailand • May 31, 2025</span>
+                <div class="teaser-icon">
+                    <i class="fas fa-crown" style="color: white;"></i>
+                </div>
+                <h3 class="teaser-title">KINGS OF EUROPE</h3>
+                
+                <div class="teaser-clues">
+                    <div class="clue-item"><i class="fas fa-check-circle"></i> The biggest rivalry in sports history</div>
+                    <div class="clue-item"><i class="fas fa-check-circle"></i> Galácticos vs Tiki Taka</div>
+                    <div class="clue-item"><i class="fas fa-check-circle"></i> <b>Hint:</b> Royal White meets Blue & Red.</div>
+                </div>
+                
+                <a href="#contact" class="teaser-btn">Join Thailand Waitlist</a>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section class="about-section" id="about">
-        <div class="section-container">
-            <h2 class="section-title">About The Sports Front</h2>
-            <p class="section-subtitle">India's Premier Sports IP Developer & Fan Experience Company</p>
-            <p class="section-text">TSF is a forward-thinking company on a mission to redefine sports entertainment by transforming high-profile events into scalable ecosystems that connect fans, players, and clubs across the globe.</p>
+    <!-- Success Section (Mumbai) -->
+    <section class="success-section" id="success">
+        <div style="text-align: center; position: relative; z-index: 2;">
+            <p class="section-subtitle">PROVEN TRACK RECORD</p>
+            <h2 class="section-title">WE DID IT BEFORE. WE'LL DO IT AGAIN.</h2>
+            <p style="max-width: 700px; margin: 0 auto; color: #ddd;">
+                In April 2024, we turned DY Patil Stadium into a fortress. Over 35,000 fans witnessed legends collide.
+            </p>
+        </div>
 
-            <h3 style="font-size: 1.8rem; font-weight: 900; margin-top: 2rem; margin-bottom: 1.5rem;">Our Capabilities</h3>
-            <div class="capabilities-grid">
-                <div class="capability-card">
-                    <!-- REPLACED: Text box with real image -->
-                    <div class="capability-img-container">
-                        <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=800&auto=format&fit=crop" alt="Press Excellence">
-                    </div>
-                    <div class="capability-content">
-                        <h4 class="capability-title"><i class="fas fa-camera"></i> Press Excellence</h4>
-                        <p class="capability-desc">World-class media management that amplifies event reach globally</p>
-                    </div>
-                </div>
-                <div class="capability-card">
-                    <!-- REPLACED: Text box with real image -->
-                    <div class="capability-img-container">
-                        <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=800&auto=format&fit=crop" alt="Event Production">
-                    </div>
-                    <div class="capability-content">
-                        <h4 class="capability-title"><i class="fas fa-film"></i> Event Production</h4>
-                        <p class="capability-desc">End-to-end execution creating unforgettable experiences</p>
-                    </div>
-                </div>
-                <div class="capability-card">
-                    <!-- REPLACED: Text box with real image -->
-                    <div class="capability-img-container">
-                        <img src="https://images.unsplash.com/photo-1522778119026-d647f0565c71?q=80&w=800&auto=format&fit=crop" alt="Stadium Branding">
-                    </div>
-                    <div class="capability-content">
-                        <h4 class="capability-title"><i class="fas fa-flag"></i> Branding Excellence</h4>
-                        <p class="capability-desc">Strategic brand integration maximizing sponsor visibility</p>
-                    </div>
-                </div>
-                <div class="capability-card">
-                    <!-- REPLACED: Text box with real image -->
-                    <div class="capability-img-container">
-                        <img src="https://images.unsplash.com/photo-1459865264687-595d652de67e?q=80&w=800&auto=format&fit=crop" alt="Fan Engagement">
-                    </div>
-                    <div class="capability-content">
-                        <h4 class="capability-title"><i class="fas fa-users"></i> Fan Engagement</h4>
-                        <p class="capability-desc">Innovative experiences creating lasting emotional connections</p>
-                    </div>
-                </div>
+        <div class="stats-container">
+            <div class="stat-item">
+                <span class="stat-number" data-target="35000">0</span>
+                <span class="stat-label">Live Attendance</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" data-target="2100000">0</span>
+                <span class="stat-label">Broadcast Reach</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" data-target="48">0</span>
+                <span class="stat-label">Hours to Sell Out</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" data-target="12">0</span>
+                <span class="stat-label">Crore PR Value</span>
             </div>
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section class="services-section" id="services">
-        <div class="section-container">
-            <h2 class="section-title">Our Services</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <h4 class="service-title">Sports IP Development</h4>
-                    <p class="service-desc">Creating unique sporting intellectual properties that captivate global audiences</p>
+    <!-- Featured In (Press) -->
+    <section class="press-section">
+        <p style="color: #666; font-size: 0.8rem; letter-spacing: 1px; text-transform: uppercase;">As Featured In</p>
+        <div class="press-logos">
+            <div class="press-logo">The Times of India</div>
+            <div class="press-logo">Hindustan Times</div>
+            <div class="press-logo">Goal.com</div>
+            <div class="press-logo">Sportskeeda</div>
+        </div>
+    </section>
+
+    <!-- Capabilities -->
+    <section class="capabilities-section" id="about">
+        <div class="section-header">
+            <p class="section-subtitle">WHAT WE DO</p>
+            <h2 class="section-title">BUILDING LEGACIES</h2>
+        </div>
+        
+        <div class="cap-grid">
+            <div class="cap-card">
+                <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=800&auto=format&fit=crop" class="cap-img" alt="Production">
+                <div class="cap-text">
+                    <h4>Mega Event Production</h4>
+                    <p>From stadium logistics to player hospitality, we handle the A-Z of large scale sporting events.</p>
                 </div>
-                <div class="service-card">
-                    <h4 class="service-title">Event Management</h4>
-                    <p class="service-desc">End-to-end execution of premium sports events with flawless delivery</p>
+            </div>
+            <div class="cap-card">
+                <img src="https://images.unsplash.com/photo-1459865264687-595d652de67e?q=80&w=800&auto=format&fit=crop" class="cap-img" alt="Fans">
+                <div class="cap-text">
+                    <h4>Fan Experience</h4>
+                    <p>We don't just sell tickets. We create atmospheres that fans remember for a lifetime.</p>
                 </div>
-                <div class="service-card">
-                    <h4 class="service-title">Sports Screenings</h4>
-                    <p class="service-desc">Premium viewing experiences and strategic partnerships for major events</p>
-                </div>
-                <div class="service-card">
-                    <h4 class="service-title">Exclusive Merchandise</h4>
-                    <p class="service-desc">Limited edition sports collectibles and branded merchandise solutions</p>
-                </div>
-                <div class="service-card">
-                    <h4 class="service-title">Fan Engagement Platforms</h4>
-                    <p class="service-desc">Digital fan communities and interactive experiences that build loyalty</p>
-                </div>
-                <div class="service-card">
-                    <h4 class="service-title">Sponsor Activations</h4>
-                    <p class="service-desc">Strategic brand partnerships with measurable ROI and maximum visibility</p>
+            </div>
+            <div class="cap-card">
+                <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=800&auto=format&fit=crop" class="cap-img" alt="Media">
+                <div class="cap-text">
+                    <h4>IP Development</h4>
+                    <p>Creating sustainable, recurring sports properties that grow in value year over year.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Mumbai Section -->
-    <section class="mumbai-section" id="mumbai">
-        <div class="section-container">
-            <h2 class="section-title">Mumbai Success Story</h2>
-            <p class="section-text">Our proven track record demonstrates the impact of world-class sports IP development</p>
-
-            <div class="metrics-grid">
-                <div class="metric-card">
-                    <div class="metric-number">35,000+</div>
-                    <div class="metric-label">Live Attendance</div>
-                </div>
-                <div class="metric-card">
-                    <div class="metric-number">2.1M</div>
-                    <div class="metric-label">Broadcast Reach</div>
-                </div>
-                <div class="metric-card">
-                    <div class="metric-number">5M+</div>
-                    <div class="metric-label">Digital Impressions</div>
-                </div>
-                <div class="metric-card">
-                    <div class="metric-number">120+</div>
-                    <div class="metric-label">PR Articles</div>
-                </div>
-                <div class="metric-card">
-                    <div class="metric-number">₹12 Cr+</div>
-                    <div class="metric-label">PR Value</div>
-                </div>
-                <div class="metric-card">
-                    <div class="metric-number">48 hrs</div>
-                    <div class="metric-label">Sold Out</div>
-                </div>
-            </div>
-
-            <h3 style="font-size: 1.5rem; font-weight: 700; margin-top: 3rem; margin-bottom: 1.5rem;">Event Highlights</h3>
-            <div class="gallery-grid">
-                <!-- REPLACED: Text placeholders with Unsplash images -->
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=800&auto=format&fit=crop" alt="Football crowd">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1551958219-acbc608c6377?q=80&w=800&auto=format&fit=crop" alt="Match Action">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1560272564-c830a4498591?q=80&w=800&auto=format&fit=crop" alt="Stadium Atmosphere">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1624880357913-a8539238245b?q=80&w=800&auto=format&fit=crop" alt="Player Celebration">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?q=80&w=800&auto=format&fit=crop" alt="Goal post">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1517466787929-bc90951d0974?q=80&w=800&auto=format&fit=crop" alt="Fans Cheering">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Partners Section -->
+    <!-- Partners (White background for contrast) -->
     <section class="partners-section" id="partners">
-        <div class="section-container">
-            <h2 class="section-title">Our Partners</h2>
-            <p class="section-text" style="text-align: center;">We collaborate with the world's leading brands to create unforgettable experiences</p>
-            <div class="partners-grid">
-                <div class="partner-item"><strong>HSBC</strong></div>
-                <div class="partner-item"><strong>Jameson</strong></div>
-                <div class="partner-item"><strong>Nivea</strong></div>
-                <div class="partner-item"><strong>FlixBus</strong></div>
-                <div class="partner-item"><strong>Fairmont</strong></div>
-                <div class="partner-item"><strong>Budweiser</strong></div>
-                <div class="partner-item"><strong>Bisleri</strong></div>
-                <div class="partner-item"><strong>RED FM</strong></div>
-            </div>
+        <div class="section-header">
+            <p style="color: #999; font-size: 0.9rem; letter-spacing: 2px;">TRUSTED BY GLOBAL BRANDS</p>
+        </div>
+        <div class="partners-grid">
+            <div class="partner-logo">HSBC</div>
+            <div class="partner-logo">JAMESON</div>
+            <div class="partner-logo">NIVEA</div>
+            <div class="partner-logo">FLIXBUS</div>
+            <div class="partner-logo">FAIRMONT</div>
+            <div class="partner-logo">BUDWEISER</div>
         </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- Contact / Lead Gen -->
     <section class="contact-section" id="contact">
-        <div class="contact-content">
-            <h2 class="contact-title">Join Our Insider List</h2>
-            <p class="contact-text">Be the first to know when we announce our next iconic football events. Get exclusive access to hospitality packages, premium tickets, and sponsor opportunities.</p>
-            <p class="contact-info"><a href="mailto:info@thesportsfront.com">info@thesportsfront.com</a></p>
-            <p class="contact-info"><a href="tel:+918800882823">+91 88008 82823</a></p>
-            <p style="margin-top: 2rem; font-size: 1rem; color: #b5f5ec;">Follow us on social media for real-time updates and behind-the-scenes content</p>
+        <h2 style="font-size: 3rem; margin-bottom: 1rem;">DON'T MISS THE KICKOFF</h2>
+        <p style="color: #ccc; margin-bottom: 2rem;">Be the first to know when tickets go live for India and Thailand.</p>
+        
+        <div class="input-group">
+            <input type="email" class="email-input" placeholder="Enter your email address">
+            <button class="cta-btn">SUBSCRIBE</button>
         </div>
+        <p style="font-size: 0.8rem; color: #555; margin-top: 1rem;">We respect your inbox. No spam, only game changers.</p>
     </section>
 
-    <!-- Footer -->
     <footer>
-        <!-- REPLACED: Footer logo with placeholder -->
-        <img src="https://placehold.co/150x40/black/white?text=THE+SPORTS+FRONT" alt="The Sports Front" class="footer-logo">
         <p>&copy; 2025 The Sports Front. All rights reserved. | Fueling The Future Of Sports, Boldly!</p>
     </footer>
 
     <script>
-        // Countdown Timer
-        function initCountdown() {
-            // Set for March 22, 2025 (India event) as placeholder target
-            const revealDate = new Date('2025-03-22T19:00:00+05:30');
-            const daysSpan = document.getElementById('days');
-            const hoursSpan = document.getElementById('hours');
-            const minutesSpan = document.getElementById('minutes');
-            const secondsSpan = document.getElementById('seconds');
+        // Countdown to next announcement (Placeholder date)
+        const revealDate = new Date('2025-03-01T00:00:00');
 
-            function updateCountdown() {
-                const now = new Date();
-                const t = revealDate - now;
-                if (t < 0) {
-                    daysSpan.textContent = '00';
-                    hoursSpan.textContent = '00';
-                    minutesSpan.textContent = '00';
-                    secondsSpan.textContent = '00';
-                    return;
-                }
-                const days = Math.floor(t / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((t / (1000 * 60 * 60)) % 24);
-                const minutes = Math.floor((t / (1000 * 60)) % 60);
-                const seconds = Math.floor((t / 1000) % 60);
+        function updateCountdown() {
+            const now = new Date();
+            const diff = revealDate - now;
 
-                daysSpan.textContent = String(days).padStart(2, '0');
-                hoursSpan.textContent = String(hours).padStart(2, '0');
-                minutesSpan.textContent = String(minutes).padStart(2, '0');
-                secondsSpan.textContent = String(seconds).padStart(2, '0');
+            if (diff > 0) {
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+                const minutes = Math.floor((diff / (1000 * 60)) % 60);
+
+                document.getElementById('days').innerText = String(days).padStart(2, '0');
+                document.getElementById('hours').innerText = String(hours).padStart(2, '0');
+                document.getElementById('minutes').innerText = String(minutes).padStart(2, '0');
             }
-
-            updateCountdown();
-            setInterval(updateCountdown, 1000);
         }
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
 
-        // Smooth scroll navigation
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.
+        // Animated Statistics (Intersection Observer)
+        const stats = document.querySelectorAll('.stat-number');
+        
+        const observerOptions = {
+            threshold: 0.5
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const target = +entry.target.getAttribute('data-target');
+                    const duration = 2000; // 2 seconds
+                    const increment = target / (duration / 16); 
+                    
+                    let current = 0;
+                    const updateCount = () => {
+                        current += increment;
+                        if (current < target) {
+                            // Format large numbers with K or M for cleaner look
+                            if(target > 1000000) {
+                                entry.target.innerText = (current / 1000000).toFixed(1) + 'M';
+                            } else if (target > 1000) {
+                                entry.target.innerText = Math.ceil(current / 1000) + 'K+';
+                            } else {
+                                entry.target.innerText = Math.ceil(current);
+                            }
+                            requestAnimationFrame(updateCount);
+                        } else {
+                            if(target > 1000000) entry.target.innerText = "2.1M";
+                            else if (target > 1000) entry.target.innerText = "35,000+";
+                            else entry.target.innerText = target;
+                        }
+                    };
+                    updateCount();
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        stats.forEach(stat => observer.observe(stat));
+    </script>
+</body>
+</html>
