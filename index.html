@@ -555,11 +555,13 @@
             height: 200px;
             width: 100%;
             object-fit: cover;
-            /* REMOVED filter: grayscale(100%); - Now full color by default */
+            filter: grayscale(100%);
             transition: 0.5s;
         }
-        
-        /* Removed hover override since it's already color */
+
+        .cap-card:hover .cap-img {
+            filter: grayscale(0%);
+        }
 
         .cap-text {
             padding: 1.5rem;
@@ -654,12 +656,14 @@
             object-fit: cover; /* Covers area nicely, change to contain if you want full body shown without crop */
             object-position: center top;
             z-index: 1;
-            /* REMOVED filter: grayscale(100%); - Now full color by default */
+            /* FIXED: Grayscale by default as requested for Team Section */
+            filter: grayscale(100%);
             transition: all 0.4s ease;
         }
 
         .team-member:hover .team-member-img {
-             /* Removed grayscale toggle, kept scaling */
+            /* FIXED: Color on hover */
+            filter: grayscale(0%);
             transform: scale(1.05);
         }
         
@@ -698,15 +702,17 @@
         }
         
         .partners-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            /* FIXED: Changed to Flexbox to center the last row */
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 3rem;
             max-width: 1200px;
             margin: 2rem auto;
             align-items: center;
-            justify-items: center;
         }
         
+        /* Styles for each logo item to ensure consistent sizing in flex */
         .partner-logo-img {
             max-width: 160px;
             max-height: 90px;
@@ -714,6 +720,7 @@
             opacity: 1; 
             transition: 0.3s;
             object-fit: contain;
+            margin: 10px; /* Add some margin for flex wrapping */
         }
         
         .partner-logo-img:hover {
@@ -825,14 +832,15 @@
     <!-- Scrolling Ticker -->
     <div class="ticker-wrap">
         <div class="ticker-item">
-             Stay Tuned • Official Announcement Coming Soon • India • Thailand • Legends Face Off 2025 • Stay Tuned • Official Announcement Coming Soon •
+             Stay Tuned • Official Announcement Coming Soon • India • Thailand • Legends Face Off 2026 • Stay Tuned • Official Announcement Coming Soon •
         </div>
     </div>
 
     <!-- The Hints / Teaser Section -->
     <section class="teaser-section" id="events">
         <div class="section-header">
-            <p class="section-subtitle">2025 ROADMAP</p>
+            <!-- FIXED: Updated year to 2026 -->
+            <p class="section-subtitle">2026 ROADMAP</p>
             <h2 class="section-title">GUESS THE RIVALRY</h2>
             <!-- Updated Text -->
             <p style="color: #888;">The stage is set for the biggest rivalries in football.</p>
@@ -841,9 +849,11 @@
         <div class="teaser-grid">
             <!-- Event 1: India (Manchester Hint) -->
             <div class="teaser-card manchester">
-                <span class="teaser-location"><i class="fas fa-map-marker-alt" style="color: var(--brand-green)"></i> India • Q1 2025</span>
+                <!-- FIXED: Updated date to Q1 2026 -->
+                <span class="teaser-location"><i class="fas fa-map-marker-alt" style="color: var(--brand-green)"></i> India • Q1 2026</span>
                 <div class="teaser-icon">
-                    <i class="fas fa-bolt" style="color: white;"></i>
+                    <!-- FIXED: Changed icon to soccer ball -->
+                    <i class="fas fa-futbol" style="color: white;"></i>
                 </div>
                 <h3 class="teaser-title">THE NORTHERN STORM</h3>
                 
@@ -859,9 +869,11 @@
 
             <!-- Event 2: Thailand (Legends Face Off Hint) -->
             <div class="teaser-card thailand">
-                <span class="teaser-location"><i class="fas fa-map-marker-alt" style="color: var(--brand-green)"></i> Thailand • Q2 2025</span>
+                <!-- FIXED: Updated date to Q2 2026 -->
+                <span class="teaser-location"><i class="fas fa-map-marker-alt" style="color: var(--brand-green)"></i> Thailand • Q2 2026</span>
                 <div class="teaser-icon">
-                    <i class="fas fa-crown" style="color: white;"></i>
+                    <!-- FIXED: Changed icon to trophy -->
+                    <i class="fas fa-trophy" style="color: white;"></i>
                 </div>
                 <h3 class="teaser-title">KINGS OF EUROPE</h3>
                 
@@ -910,8 +922,9 @@
         <div style="text-align: center; position: relative; z-index: 2;">
             <p class="section-subtitle">PROVEN TRACK RECORD</p>
             <h2 class="section-title">WE DID IT BEFORE. WE'LL DO IT AGAIN.</h2>
+            <!-- FIXED: Updated Date Text -->
             <p style="max-width: 700px; margin: 0 auto; color: #ddd;">
-                In April 2025, we turned DY Patil Stadium into a fortress. Over 30,000 fans witnessed the Legends Face Off.
+                On 6th April 2025, we turned DY Patil Stadium into a fortress. Over 30,000 fans witnessed the Legends Face Off.
             </p>
         </div>
 
@@ -1014,7 +1027,8 @@
     <!-- Partners -->
     <section class="partners-section" id="partners">
         <div class="section-header">
-            <p style="color: #999; font-size: 0.9rem; letter-spacing: 2px;">TRUSTED BY GLOBAL BRANDS</p>
+            <!-- FIXED: Made darker and larger -->
+            <p style="color: #000; font-size: 1.2rem; letter-spacing: 2px; font-weight: 800;">TRUSTED BY GLOBAL BRANDS</p>
         </div>
         <div class="partners-grid">
             <!-- 1. HSBC -->
@@ -1068,7 +1082,8 @@
         <div class="footer-contact">
             <p><strong>The Sports Front</strong></p>
             <p>Delhi, India</p>
-            <p><a href="mailto:contact.events@thesportsfront.in" style="color: #aaa; text-decoration: none;">contact.events@thesportsfront.in</a></p>
+            <!-- FIXED: Updated email address -->
+            <p><a href="mailto:info@thesportsfront.com" style="color: #aaa; text-decoration: none;">info@thesportsfront.com</a></p>
         </div>
         
         <div class="footer-links">
