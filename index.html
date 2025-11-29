@@ -74,11 +74,11 @@
         }
 
         .logo-img {
+            /* Increased size as requested */
             height: 80px; 
             width: auto;
             object-fit: contain;
-            /* BLENDING FIX: This makes black backgrounds transparent to blend with the header */
-            mix-blend-mode: screen; 
+            /* REMOVED mix-blend-mode to fix the white border issue on SVGs */
         }
 
         nav {
@@ -653,7 +653,7 @@
                 <span class="status-indicator"></span>
                 <span class="status-text">THE NEXT ERA IS LOADING...</span>
                 <!-- Updated Subtext: No internal details, just hype -->
-                <span class="status-sub">HISTORY IS ABOUT TO BE REWRITTEN.</span>
+                <span class="status-sub">PREPARE FOR THE ULTIMATE SHOWDOWN.</span>
             </div>
 
             <div style="margin-top: 2rem;">
@@ -793,6 +793,11 @@
         <div class="section-header">
             <p style="color: #999; font-size: 0.9rem; letter-spacing: 2px;">TRUSTED BY GLOBAL BRANDS</p>
         </div>
+        <!-- 
+           PARTNER LOGO INSTRUCTIONS: 
+           Please use logos that are COLORED or BLACK.
+           Do not use white logos as the background is white.
+        -->
         <div class="partners-grid">
             <!-- 1. HSBC -->
             <img src="Images/partner-hsbc.svg" alt="HSBC" class="partner-logo-img">
