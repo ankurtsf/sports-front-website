@@ -555,13 +555,11 @@
             height: 200px;
             width: 100%;
             object-fit: cover;
-            filter: grayscale(100%);
+            /* REMOVED filter: grayscale(100%); - Now full color by default */
             transition: 0.5s;
         }
-
-        .cap-card:hover .cap-img {
-            filter: grayscale(0%);
-        }
+        
+        /* Removed hover override since it's already color */
 
         .cap-text {
             padding: 1.5rem;
@@ -656,12 +654,12 @@
             object-fit: cover; /* Covers area nicely, change to contain if you want full body shown without crop */
             object-position: center top;
             z-index: 1;
-            filter: grayscale(100%); /* Stylish B&W by default */
+            /* REMOVED filter: grayscale(100%); - Now full color by default */
             transition: all 0.4s ease;
         }
 
         .team-member:hover .team-member-img {
-            filter: grayscale(0%); /* Color on hover */
+             /* Removed grayscale toggle, kept scaling */
             transform: scale(1.05);
         }
         
@@ -712,14 +710,14 @@
         .partner-logo-img {
             max-width: 160px;
             max-height: 90px;
-            filter: grayscale(100%);
+            /* REMOVED filter: grayscale(100%); - Now full color by default */
             opacity: 1; 
             transition: 0.3s;
             object-fit: contain;
         }
         
         .partner-logo-img:hover {
-            filter: grayscale(0%);
+            /* Removed grayscale toggle, kept scaling */
             transform: scale(1.05);
         }
 
