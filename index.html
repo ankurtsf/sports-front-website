@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Sports Front - Iconic Football Nights Coming Soon</title>
+    <style>
+        :root {
+            --primary-green: #00D084;
+            --primary-red: #FF3333;
+            --dark-green: #00A86B;
+            --black: #000000;
+            --white: #FFFFFF;
+            --india-blue: #007ACC;
+            --thailand-gold: #FFD700;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--black);
+            overflow-x: hidden;
+        }
+
+        /* Header Styles */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-img {
+            height: 50px;
+            width: auto;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--black);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--primary-green);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-green);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .cta-button {
+            background: var(--primary-green);
+            color: var(--white);
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid var(--primary-green);
+        }
+
+        .cta-button:hover {
+            background: var(--dark-green);
+            border-color: var(--dark-green);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 208, 132, 0.3);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: var(--black);
+            transition: all 0.3s ease;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://onestopsportsin.sharepoint.com/:i:/s/ElClasico/EdxWvN3ZVHBKk-UwBhWWWqsBnK-o9HaSWgj3oYGesgbamw?e=3CcE8g&download=1');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            padding: 2rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
+        }
+
+        .hero h2 {
+            font-size: 1.8rem;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+            color: var(--primary-green);
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8);
+        }
+
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .countdown-item {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 2rem;
+            border-radius: 15px;
+            border: 2px solid var(--primary-green);
+            min-width: 100px;
+        }
+
+        .countdown-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--primary-green);
+        }
+
+        .countdown-label {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--primary-green);
+            color: var(--white);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: 2px solid var(--primary-green);
+        }
+
+        .btn-primary:hover {
+            background: var(--dark-green);
+            border-color: var(--dark-green);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 208, 132, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: 2px solid var(--white);
+        }
+
+        .btn-secondary:hover {
+            background: var(--white);
+            color: var(--black);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 255, 255, 0.3);
+        }
+
+        /* Coming Soon Strip */
+        .coming-soon-strip {
+            background: linear-gradient(90deg, var(--primary-red) 0%, var(--primary-green) 100%);
+            padding: 1.5rem 2rem;
+            text-align: center;
+            color: var(--white);
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        /* Teaser Cards Section */
+        .teaser-section {
+            padding: 5rem 2rem;
+            background: #f8f9fa;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 3rem;
+            color: var(--black);
+        }
+
+        .teaser-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .teaser-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border-top: 5px solid;
+        }
+
+        .teaser-card.india {
+            border-top-color: var(--india-blue);
+        }
+
+        .teaser-card.thailand {
+            border-top-color: var(--thailand-gold);
+        }
+
+        .teaser-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .teaser-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .teaser-card h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .teaser-date {
+            color: #666;
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .teaser-text {
+            color: #555;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .teaser-hint {
+            font-style: italic;
+            color: var(--primary-green);
+            font-weight: 600;
+            margin-top: 1rem;
+        }
+
+        /* About Section */
+        .about-section {
+            padding: 5rem 2rem;
+            background: var(--white);
+        }
+
+        .about-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-subtitle {
+            color: var(--primary-green);
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .about-description {
+            font-size: 1.1rem;
+            color: #555;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            line-height: 1.8;
+        }
+
+        .capabilities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .capability-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .capability-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .capability-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .capability-content {
+            padding: 1.5rem;
+        }
+
+        .capability-card h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--black);
+        }
+
+        .capability-card p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* Services Section */
+        .services-section {
+            padding: 5rem 2rem;
+            background: #f8f9fa;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--primary-green);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            border-left-width: 8px;
+        }
+
+        .service-card h4 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--black);
+        }
+
+        .service-card p {
+            color: #666;
+            line-height: 1.7;
+        }
+
+        /* Mumbai Success Section */
+        .mumbai-section {
+            padding: 5rem 2rem;
+            background: var(--white);
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto 4rem;
+        }
+
+        .metric-card {
+            text-align: center;
+            padding: 2rem 1rem;
+            background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
+            border-radius: 15px;
+            color: var(--white);
+            box-shadow: 0 5px 15px rgba(0, 208, 132, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .metric-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 208, 132, 0.4);
+        }
+
+        .metric-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-label {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 3rem auto;
+        }
+
+        .gallery-item {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .partners-info {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 2rem;
+            background: #f8f9fa;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .partners-info h4 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--black);
+        }
+
+        .partners-info p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        /* Partners Section */
+        .partners-section {
+            padding: 5rem 2rem;
+            background: #f8f9fa;
+        }
+
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .partner-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #333;
+        }
+
+        .partner-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, var(--black) 0%, #1a1a1a 100%);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .contact-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-green);
+        }
+
+        .contact-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .contact-details {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            font-size: 1.1rem;
+        }
+
+        .contact-item strong {
+            color: var(--primary-green);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .social-message {
+            margin-top: 2rem;
+            font-size: 1rem;
+            color: #ccc;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--black);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-tagline {
+            color: var(--primary-green);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links,
+            nav .cta-button {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            nav.active .nav-links {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                right: 0;
+                background: var(--white);
+                padding: 2rem;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+                gap: 1rem;
+            }
+
+            nav.active .cta-button {
+                display: block;
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero h2 {
+                font-size: 1.3rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .countdown {
+                gap: 1rem;
+            }
+
+            .countdown-item {
+                padding: 1rem 1.5rem;
+                min-width: 80px;
+            }
+
+            .countdown-number {
+                font-size: 2rem;
+            }
+
+            .teaser-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-container {
+                padding: 1rem;
+            }
+
+            .logo-img {
+                height: 40px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .teaser-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .metrics-grid,
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <a href="#home">
+                <img src="https://onestopsportsin.sharepoint.com/:i:/s/ElClasico/EVHLyYq2Z9tBsTJkoFxPZTwB56-xKothIwt1ioGapuCrUA?e=4i8oyY&download=1" alt="The Sports Front Logo" class="logo-img">
+            </a>
+            <nav id="nav">
+                <ul class="nav-links">
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#mumbai">Mumbai Success</a></li>
+                    <li><a href="#partners">Partners</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <a href="#contact" class="cta-button">Join Insider List</a>
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Iconic Football Nights Are Coming</h1>
+            <h2>Unannounced. Unmissable. Unleashing soon across Asia.</h2>
+            <p>Something exciting is on the way – football's greatest rivalries are headed to new cities!</p>
+            <p>Big European clubs. Huge names. Electrifying locations. Stay tuned for official match reveals…</p>
+            
+            <div class="countdown" id="countdown">
+                <div class="countdown-item">
+                    <div class="countdown-number" id="days">00</div>
+                    <div class="countdown-label">Days</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="hours">00</div>
+                    <div class="countdown-label">Hours</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="minutes">00</div>
+                    <div class="countdown-label">Minutes</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="seconds">00</div>
+                    <div class="countdown-label">Seconds</div>
+                </div>
+            </div>
+
+            <div class="hero-buttons">
+                <a href="#contact" class="btn-primary">Join Insider List</a>
+                <a href="#contact" class="btn-secondary">Get Updates</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coming Soon Strip -->
+    <div class="coming-soon-strip">
+        🔥 India's biggest derby coming March 22 | Thailand's legendary rivalry May 31 | Official announcements dropping soon! 🔥
+    </div>
+
+    <!-- Teaser Cards Section -->
+    <section class="teaser-section">
+        <h2 class="section-title">Upcoming Events - Can You Guess?</h2>
+        <div class="teaser-cards">
+            <div class="teaser-card india">
+                <div class="teaser-icon">🏟️</div>
+                <h3>Big Night Under The Lights – India</h3>
+                <div class="teaser-date">📅 March 22, 2025 | 📍 India</div>
+                <p class="teaser-text">Two giants from the same city. One unforgettable night in India. Think blue. Think red. Derby drama, crowd roars and the ultimate rivalry in a new era.</p>
+                <p class="teaser-hint">Can you guess what's coming?</p>
+            </div>
+            <div class="teaser-card thailand">
+                <div class="teaser-icon">👑</div>
+                <h3>Legends To Southeast Asia</h3>
+                <div class="teaser-date">📅 May 31, 2025 | 📍 Thailand</div>
+                <p class="teaser-text">The world's most famous rivalry heads east. Legends of global football face off with tiki-taka and galáctico flair. Hint: Blue, red, and gold stripes meet all-white and gold.</p>
+                <p class="teaser-hint">Stay tuned for the reveal…</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="about-content">
+            <h2 class="section-title">About The Sports Front</h2>
+            <p class="about-subtitle">India's Premier Sports IP Developer &amp; Fan Experience Company</p>
+            <p class="about-description">
+                The Sports Front is redefining how India experiences world-class sports. We create, produce, and deliver premium sporting events that captivate millions, building bridges between global sports icons and passionate Indian fans. From concept to execution, we deliver excellence at every touchpoint.
+            </p>
+            <div class="capabilities-grid">
+                <div class="capability-card">
+                    <img src="https://onestopsportsin.sharepoint.com/:i:/s/ElClasico/ER8KrpDoZqVAssKDk1yyRocBNEHt5Jf6YZ2Gbe-D-_fdMg?e=zlY8CX&download=1" alt="Press Excellence" class="capability-image">
+                    <div class="capability-content">
+                        <h4>Professional Press Excellence</h4>
+                        <p>World-class media management that amplifies event reach globally</p>
+                    </div>
+                </div>
+                <div class="capability-card">
+                    <img src="https://onestopsportsin.sharepoint.com/:i:/s/ElClasico/EQ_MRsfE9ktDo8icQ6Q8W6oBI4pSiC0lnIo5HHSP9YDqCw?e=rlb3YU&download=1" alt="Event Production" class="capability-image">
+                    <div class="capability-content">
+                        <h4>Premium Event Production</h4>
+                        <p>End-to-end execution creating unforgettable experiences</p>
+                    </div>
+                </div>
+                <div class="capability-card">
+                    <img src="https://onestopsportsin.sharepoint.com/:i:/s/ElClasico/Ed9j_VtJLGxOmBPWPJp0M7ABg1I6BJ9_Uk15saOGY7HuBg?e=B53Vg6&download=1" alt="Stadium Branding" class="capability-image">
+                    <div class="capability-content">
+                        <h4>Stadium Branding Excellence</h4>
+                        <p>Strategic brand integration maximizing sponsor visibility</p>
+                    </div>
+                </div>
+                <div class="capability-card">
+                    <img src="https://onestopsportsin.sharepoint.com/:i:/s/ElClasico/Ee8lQmFEua1PliNYuyhrZtsBtNsu8mVjAPt6yD6dwB2ZHw?e=e7Uw2B&download=1" alt="Fan Engagement" class="capability-image">
+                    <div class="capability-content">
+                        <h4>Unmatched Fan Engagement</h4>
+                        <p>Innovative experiences creating lasting emotional connections</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section" id="services">
+        <h2 class="section-title">Our Services</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <h4>Sports IP Development</h4>
+                <p>Creating unique sporting intellectual properties that captivate global audiences</p>
+            </div>
+            <div class="service-card">
+                <h4>Event Management</h4>
+                <p>End-to-end execution of premium sports events with flawless delivery</p>
+            </div>
+            <div class="service-card">
+                <h4>Sports Screenings</h4>
+                <p>Premium viewing experiences and strategic partnerships for major events</p>
+            </div>
+            <div class="service-card">
+                <h4>Exclusive Merchandise</h4>
+                <p>Limited edition sports collectibles and branded merchandise solutions</p>
+            </div>
+            <div class="service-card">
+                <h4>Fan Engagement Platforms</h4>
+                <p>Digital fan communities and interactive experiences that build loyalty</p>
+            </div>
+            <div class="service-card">
+                <h4>Sponsor Activations</h4>
+                <p>Strategic brand partnerships with measurable ROI and maximum visibility</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mumbai Success Section -->
+    <section class="mumbai-section" id="mumbai">
+        <h2 class="section-title">Mumbai Success Story</h2>
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <div class="metric-number">35,000+</div>
+                <div class="metric-label">Live Attendance</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-number">2.1M</div>
+                <div class="metric-label">Broadcast Reach</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-number">5M+</div>
+                <div class="metric-label">Digital Impressions</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-number">120+</div>
+                <div class="metric-label">PR Articles</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-number">₹12 Cr+</div>
+                <div class="metric-label">PR Value</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-number">48 hrs</div>
+                <div class="metric-label">Sold Out</div>
+            </div>
+        </div>
+
+        <h3 class="section-title" style="font-size: 2rem; margin-top: 3rem;">Event Highlights</h3>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://onestopsportsin.sharepoint.com/:i:/s/ElClasico/Ef4VZ71ml4JIkc3idzxScZUBWjiQrgpF2e2KDZyV5CYVyg?e=dKcq6m&download=1" alt="Mumbai Event 1">
+            </div>
+            <div class="gallery-item">
+                <img src="https://onestopsportsin.sharepoint.com/:i:/s/ElClasico/Eag3XvYkAIZPuj7_G8p4rGsB9lQT0BK-ieFdS2lrCn47Dw?e=QYWb4c&download=1" alt="Mumbai Event 2">
+            </div>
+            <div class="gallery-item">
+                <img src="https://onestopsportsin.sharepoint.com/:i:/s/ElClasico/ERyPjHKcvPlAr7KU0vlTSY8B3lgnE1tWCM2k3-Orc7E-NA?e=hH4dyQ&download=1" alt="Mumbai Event 3">
+            </div>
+            <div class="gallery-item">
+                <img src="https://onestopsportsin.sharepoint.com/:i:/s/ElClasico/EZPiIXWpq5dJgflyS4xdxb0BYwMmXkJ8s9elQO6syllc6w?e=GRekQ8&download=1" alt="Mumbai Event 4">
+            </div>
+            <div class="gallery-item">
+                <img src="https://onestopsportsin.sharepoint.com/:i:/s/ElClasico/Edg1wKDatIZEpkKW_DLKVsABt1BXwo6DNNSFGhQD2RKDGg?e=ESBwUm&download=1" alt="Mumbai Event 5">
+            </div>
+            <div class="gallery-item">
+                <img src="https://onestopsportsin.sharepoint.com/:i:/s/ElClasico/EWJOjHCLNT9LrvEFcfbGYPkBU1qYb5jDgHOByWLnxt-RTw?e=qcLxjV&download=1" alt="Mumbai Event 6">
+            </div>
+        </div>
+
+        <div class="partners-info">
+            <h4>Broadcasting &amp; Ticketing Partners</h4>
+            <p>Partnered with leading broadcast networks and ticketing platforms to ensure maximum reach and seamless fan experience.</p>
+        </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section class="partners-section" id="partners">
+        <h2 class="section-title">Our Partners</h2>
+        <div class="partners-grid">
+            <div class="partner-card">HSBC</div>
+            <div class="partner-card">Jameson</div>
+            <div class="partner-card">Nivea</div>
+            <div class="partner-card">FlixBus</div>
+            <div class="partner-card">Fairmont</div>
+            <div class="partner-card">Budweiser</div>
+            <div class="partner-card">Bisleri</div>
+            <div class="partner-card">RED FM</div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="contact-content">
+            <h2>Join Our Insider List</h2>
+            <p>Be the first to know when we announce our next iconic football events. Get exclusive access to hospitality packages, premium tickets, and sponsor opportunities.</p>
+            
+            <div class="contact-details">
+                <div class="contact-item">
+                    <strong>Email</strong>
+                    <a href="mailto:info@thesportsfront.com" style="color: var(--white);">info@thesportsfront.com</a>
+                </div>
+                <div class="contact-item">
+                    <strong>Phone</strong>
+                    <a href="tel:+918800882823" style="color: var(--white);">+91 88008 82823</a>
+                </div>
+            </div>
+
+            <a href="mailto:info@thesportsfront.com?subject=Join Insider List" class="btn-primary" style="display: inline-block; margin-top: 2rem;">Contact Us Now</a>
+
+            <p class="social-message">Follow us on social media for real-time updates and exclusive behind-the-scenes content!</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 The Sports Front. All Rights Reserved.</p>
+        <p class="footer-tagline">Fueling The Future Of Sports, Boldly!</p>
+    </footer>
+
+    <script>
+        // Countdown Timer
+        function updateCountdown() {
+            const targetDate = new Date('2025-12-20T12:00:00+05:30').getTime();
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            if (distance < 0) {
+                document.getElementById('days').textContent = '00';
+                document.getElementById('hours').textContent = '00';
+                document.getElementById('minutes').textContent = '00';
+                document.getElementById('seconds').textContent = '00';
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = String(days).padStart(2, '0');
+            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+
+        // Mobile Menu Toggle
+        const hamburger = document.getElementById('hamburger');
+        const nav = document.getElementById('nav');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            nav.classList.toggle('active');
+        });
+
+        // Smooth Scrolling & Active Nav
+        const navLinks = document.querySelectorAll('.nav-links a');
+        
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                
+                if (targetSection) {
+                    const headerOffset = 80;
+                    const elementPosition = targetSection.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+
+                // Close mobile menu after click
+                hamburger.classList.remove('active');
+                nav.classList.remove('active');
+
+                // Update active state
+                navLinks.forEach(l => l.classList.remove('active'));
+                link.classList.add('active');
+            });
+        });
+
+        // Update active nav on scroll
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = document.querySelectorAll('section');
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.pageYOffset >= (sectionTop - 150)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Header scroll effect
+        let lastScroll = 0;
+        const header = document.querySelector('header');
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
+                header.style.padding = '0.5rem 0';
+                header.style.boxShadow = '0 4px 20px rgba(0,0,0,0.15)';
+            } else {
+                header.style.padding = '1rem 0';
+                header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+            }
+            
+            lastScroll = currentScroll;
+        });
+    </script>
+</body>
+</html>
