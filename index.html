@@ -11,8 +11,8 @@
     <style>
         :root {
             /* BRAND COLORS EXTRACTED FROM LOGO */
-            --brand-green: #00D084; /* Approximate match to your green dot */
-            --brand-red: #FF3333;   /* Approximate match to your red cross */
+            --brand-green: #00D084; 
+            --brand-red: #FF3333;   
             
             --deep-black: #0a0a0a;
             --surface-dark: #141414;
@@ -210,36 +210,49 @@
             letter-spacing: 2px;
         }
 
-        .countdown-box {
+        /* REPLACED: Countdown with Status Bar */
+        .status-box {
             background: rgba(255,255,255,0.05);
             border: 1px solid rgba(255,255,255,0.1);
             backdrop-filter: blur(10px);
-            padding: 2rem 3rem;
+            padding: 1.5rem 3rem;
             border-radius: 12px;
             margin: 2rem auto;
             display: inline-block;
+            min-width: 300px;
         }
 
-        .countdown {
-            display: flex;
-            gap: 2.5rem;
-            justify-content: center;
+        .status-indicator {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            background-color: var(--brand-red); /* Red for pending/alert */
+            border-radius: 50%;
+            margin-right: 10px;
+            box-shadow: 0 0 10px var(--brand-red);
+            animation: pulse 2s infinite;
         }
 
-        .countdown-number {
-            font-size: 2.5rem;
-            font-weight: 800;
+        @keyframes pulse {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 51, 51, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(255, 51, 51, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 51, 51, 0); }
+        }
+
+        .status-text {
             font-family: 'Montserrat', sans-serif;
-            color: var(--brand-green);
-            line-height: 1;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-size: 1.1rem;
         }
 
-        .countdown-label {
+        .status-sub {
+            display: block;
             font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
             color: #888;
             margin-top: 5px;
+            letter-spacing: 1px;
         }
 
         /* Coming Soon Ticker */
@@ -619,31 +632,20 @@
 
     <!-- Hero Section -->
     <section class="hero">
-        <!-- Updated to use Images/ and .jpeg extension -->
+        <!-- Updated to use Images/ -->
         <img src="Images/hero-bg.jpeg" class="hero-bg" alt="Stadium">
         <div class="hero-content">
             <h2 style="color: var(--brand-green); margin-bottom: 0;">OFFICIAL PRE-ANNOUNCEMENT</h2>
             <h1>LEGENDS ARE<br><span class="highlight-text" data-text="RETURNING">RETURNING</span></h1>
             <p style="font-size: 1.2rem; max-width: 600px; margin: 0 auto 2rem auto;">
-                After the historic El Clásico in Mumbai, The Sports Front is bringing two new titans of world football to Asia.
+                After the historic Legends Face Off in Mumbai, The Sports Front is bringing two new titans of world football to Asia.
             </p>
 
-            <div class="countdown-box">
-                <p style="text-align: center; margin-bottom: 1rem; color: #aaa; font-size: 0.9rem;">NEXT REVEAL DROPS IN</p>
-                <div class="countdown">
-                    <div class="countdown-item">
-                        <div class="countdown-number" id="days">00</div>
-                        <div class="countdown-label">Days</div>
-                    </div>
-                    <div class="countdown-item">
-                        <div class="countdown-number" id="hours">00</div>
-                        <div class="countdown-label">Hrs</div>
-                    </div>
-                    <div class="countdown-item">
-                        <div class="countdown-number" id="minutes">00</div>
-                        <div class="countdown-label">Mins</div>
-                    </div>
-                </div>
+            <!-- Replaced Countdown with Status Bar -->
+            <div class="status-box">
+                <span class="status-indicator"></span>
+                <span class="status-text">OFFICIAL ANNOUNCEMENT PENDING</span>
+                <span class="status-sub">Contract finalization in progress. Stay tuned.</span>
             </div>
 
             <div style="margin-top: 2rem;">
@@ -656,7 +658,7 @@
     <!-- Scrolling Ticker -->
     <div class="ticker-wrap">
         <div class="ticker-item">
-             Stay Tuned • Official Announcement Coming Soon • India • Thailand • Legends Tour 2025 • Stay Tuned • Official Announcement Coming Soon •
+             Stay Tuned • Official Announcement Coming Soon • India • Thailand • Legends Face Off 2025 • Stay Tuned • Official Announcement Coming Soon •
         </div>
     </div>
 
@@ -671,24 +673,24 @@
         <div class="teaser-grid">
             <!-- Event 1: India (Manchester Hint) -->
             <div class="teaser-card manchester">
-                <span class="teaser-location"><i class="fas fa-map-marker-alt" style="color: var(--brand-green)"></i> India • March 22, 2025</span>
+                <span class="teaser-location"><i class="fas fa-map-marker-alt" style="color: var(--brand-green)"></i> India • Q1 2025</span>
                 <div class="teaser-icon">
                     <i class="fas fa-bolt" style="color: white;"></i>
                 </div>
                 <h3 class="teaser-title">THE NORTHERN STORM</h3>
                 
                 <div class="teaser-clues">
-                    <div class="clue-item"><i class="fas fa-check-circle"></i> Two Premier League Giants</div>
-                    <div class="clue-item"><i class="fas fa-check-circle"></i> One City. Two Colors.</div>
-                    <div class="clue-item"><i class="fas fa-check-circle"></i> <b>Hint:</b> A noisy neighbor meets the red devils.</div>
+                    <div class="clue-item"><i class="fas fa-check-circle"></i> Two English Heavyweights</div>
+                    <div class="clue-item"><i class="fas fa-check-circle"></i> A City Divided</div>
+                    <div class="clue-item"><i class="fas fa-check-circle"></i> <b>Hint:</b> A rivalry that defined a decade.</div>
                 </div>
                 
                 <a href="#contact" class="teaser-btn">Join India Waitlist</a>
             </div>
 
-            <!-- Event 2: Thailand (El Clasico Hint) -->
+            <!-- Event 2: Thailand (Legends Face Off Hint) -->
             <div class="teaser-card thailand">
-                <span class="teaser-location"><i class="fas fa-map-marker-alt" style="color: var(--brand-green)"></i> Thailand • May 31, 2025</span>
+                <span class="teaser-location"><i class="fas fa-map-marker-alt" style="color: var(--brand-green)"></i> Thailand • Q2 2025</span>
                 <div class="teaser-icon">
                     <i class="fas fa-crown" style="color: white;"></i>
                 </div>
@@ -711,7 +713,7 @@
             <p class="section-subtitle">PROVEN TRACK RECORD</p>
             <h2 class="section-title">WE DID IT BEFORE. WE'LL DO IT AGAIN.</h2>
             <p style="max-width: 700px; margin: 0 auto; color: #ddd;">
-                In April 2024, we turned DY Patil Stadium into a fortress. Over 35,000 fans witnessed legends collide.
+                In April 2024, we turned DY Patil Stadium into a fortress. Over 35,000 fans witnessed the Legends Face Off.
             </p>
         </div>
 
@@ -787,13 +789,22 @@
             <p style="color: #999; font-size: 0.9rem; letter-spacing: 2px;">TRUSTED BY GLOBAL BRANDS</p>
         </div>
         <div class="partners-grid">
-            <!-- Updated to use Images/ and correct extensions -->
+            <!-- Existing Partners -->
             <img src="Images/partner-hsbc.svg" alt="HSBC" class="partner-logo-img">
             <img src="Images/partner-jameson.png" alt="Jameson" class="partner-logo-img">
             <img src="Images/partner-nivea.jpg" alt="Nivea" class="partner-logo-img">
             <img src="Images/partner-flixbus.png" alt="FlixBus" class="partner-logo-img">
             <img src="Images/partner-fairmont.jpg" alt="Fairmont" class="partner-logo-img">
             <img src="Images/partner-budweiser.png" alt="Budweiser" class="partner-logo-img">
+            
+            <!-- NEW PARTNERS from Report -->
+            <img src="Images/partner-bmw.png" alt="BMW" class="partner-logo-img">
+            <img src="Images/partner-district.png" alt="District" class="partner-logo-img">
+            <img src="Images/partner-jiostar.png" alt="JioStar" class="partner-logo-img">
+            <img src="Images/partner-dypatil.png" alt="DY Patil" class="partner-logo-img">
+            <img src="Images/partner-bisleri.png" alt="Bisleri" class="partner-logo-img">
+            <img src="Images/partner-capital.png" alt="Capital Group" class="partner-logo-img">
+            <img src="Images/partner-medulance.png" alt="Medulance" class="partner-logo-img">
         </div>
     </section>
 
@@ -814,26 +825,6 @@
     </footer>
 
     <script>
-        // Countdown to next announcement (Placeholder date)
-        const revealDate = new Date('2025-03-01T00:00:00');
-
-        function updateCountdown() {
-            const now = new Date();
-            const diff = revealDate - now;
-
-            if (diff > 0) {
-                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-                const minutes = Math.floor((diff / (1000 * 60)) % 60);
-
-                document.getElementById('days').innerText = String(days).padStart(2, '0');
-                document.getElementById('hours').innerText = String(hours).padStart(2, '0');
-                document.getElementById('minutes').innerText = String(minutes).padStart(2, '0');
-            }
-        }
-        setInterval(updateCountdown, 1000);
-        updateCountdown();
-
         // Animated Statistics (Intersection Observer)
         const stats = document.querySelectorAll('.stat-number');
         
