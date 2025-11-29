@@ -67,14 +67,15 @@
         .header-container {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 1rem 2rem;
+            padding: 0.8rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
         .logo-img {
-            height: 55px; 
+            /* Increased size as requested */
+            height: 80px; 
             width: auto;
             object-fit: contain;
         }
@@ -210,49 +211,52 @@
             letter-spacing: 2px;
         }
 
-        /* REPLACED: Countdown with Status Bar */
+        /* UPDATED: Status Bar */
         .status-box {
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.1);
+            background: rgba(0, 208, 132, 0.1); /* Slight green tint */
+            border: 1px solid var(--brand-green);
             backdrop-filter: blur(10px);
             padding: 1.5rem 3rem;
             border-radius: 12px;
             margin: 2rem auto;
             display: inline-block;
             min-width: 300px;
+            box-shadow: 0 0 20px rgba(0, 208, 132, 0.15);
         }
 
         .status-indicator {
             display: inline-block;
-            width: 10px;
-            height: 10px;
-            background-color: var(--brand-red); /* Red for pending/alert */
+            width: 12px;
+            height: 12px;
+            background-color: var(--brand-green); /* Green for positive hype */
             border-radius: 50%;
-            margin-right: 10px;
-            box-shadow: 0 0 10px var(--brand-red);
+            margin-right: 12px;
+            box-shadow: 0 0 10px var(--brand-green);
             animation: pulse 2s infinite;
         }
 
         @keyframes pulse {
-            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 51, 51, 0.7); }
-            70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(255, 51, 51, 0); }
-            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 51, 51, 0); }
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 208, 132, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(0, 208, 132, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 208, 132, 0); }
         }
 
         .status-text {
             font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
+            font-weight: 800;
             letter-spacing: 2px;
             text-transform: uppercase;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
+            color: white;
         }
 
         .status-sub {
             display: block;
-            font-size: 0.8rem;
-            color: #888;
-            margin-top: 5px;
+            font-size: 0.9rem;
+            color: #ccc;
+            margin-top: 8px;
             letter-spacing: 1px;
+            font-weight: 600;
         }
 
         /* Coming Soon Ticker */
@@ -416,7 +420,6 @@
         /* Success/Mumbai Section */
         .success-section {
             padding: 6rem 2rem;
-            /* Updated to use local file with Images/ and .jpeg extension */
             background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('Images/success-bg.jpeg');
             background-size: cover;
             background-attachment: fixed;
@@ -546,7 +549,7 @@
         
         .partners-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
             gap: 3rem;
             max-width: 1200px;
             margin: 2rem auto;
@@ -555,10 +558,10 @@
         }
         
         .partner-logo-img {
-            max-width: 140px;
-            max-height: 80px;
-            filter: grayscale(100%);
-            opacity: 0.6;
+            max-width: 160px;
+            max-height: 90px;
+            filter: grayscale(100%); /* Use 0% if you want full color by default */
+            opacity: 0.8;
             transition: 0.3s;
             object-fit: contain;
         }
@@ -566,6 +569,7 @@
         .partner-logo-img:hover {
             filter: grayscale(0%);
             opacity: 1;
+            transform: scale(1.05);
         }
 
         /* Contact */
@@ -632,7 +636,6 @@
 
     <!-- Hero Section -->
     <section class="hero">
-        <!-- Updated to use Images/ -->
         <img src="Images/hero-bg.jpeg" class="hero-bg" alt="Stadium">
         <div class="hero-content">
             <h2 style="color: var(--brand-green); margin-bottom: 0;">OFFICIAL PRE-ANNOUNCEMENT</h2>
@@ -641,11 +644,11 @@
                 After the historic Legends Face Off in Mumbai, The Sports Front is bringing two new titans of world football to Asia.
             </p>
 
-            <!-- Replaced Countdown with Status Bar -->
+            <!-- Replaced Countdown with Green Status Bar -->
             <div class="status-box">
                 <span class="status-indicator"></span>
-                <span class="status-text">OFFICIAL ANNOUNCEMENT PENDING</span>
-                <span class="status-sub">Contract finalization in progress. Stay tuned.</span>
+                <span class="status-text">THE NEXT ERA IS LOADING...</span>
+                <span class="status-sub">Contracts Signed. Stadiums Booked. Reveal Imminent.</span>
             </div>
 
             <div style="margin-top: 2rem;">
@@ -757,7 +760,6 @@
         
         <div class="cap-grid">
             <div class="cap-card">
-                <!-- Updated to use Images/ -->
                 <img src="Images/cap-production.jpg" class="cap-img" alt="Production">
                 <div class="cap-text">
                     <h4>Mega Event Production</h4>
@@ -765,7 +767,6 @@
                 </div>
             </div>
             <div class="cap-card">
-                <!-- Updated to use Images/ -->
                 <img src="Images/cap-fans.jpg" class="cap-img" alt="Fans">
                 <div class="cap-text">
                     <h4>Fan Experience</h4>
@@ -773,7 +774,6 @@
                 </div>
             </div>
             <div class="cap-card">
-                <!-- Updated to use Images/ and .jpeg extension -->
                 <img src="Images/cap-ip.jpeg" class="cap-img" alt="Media">
                 <div class="cap-text">
                     <h4>IP Development</h4>
@@ -788,23 +788,42 @@
         <div class="section-header">
             <p style="color: #999; font-size: 0.9rem; letter-spacing: 2px;">TRUSTED BY GLOBAL BRANDS</p>
         </div>
+        <!-- 
+           PARTNER LOGO INSTRUCTIONS: 
+           Please use logos that are COLORED or BLACK.
+           Do not use white logos as the background is white.
+        -->
         <div class="partners-grid">
-            <!-- Existing Partners -->
+            <!-- 1. HSBC -->
             <img src="Images/partner-hsbc.svg" alt="HSBC" class="partner-logo-img">
+            <!-- 2. Jameson -->
             <img src="Images/partner-jameson.png" alt="Jameson" class="partner-logo-img">
-            <img src="Images/partner-nivea.jpg" alt="Nivea" class="partner-logo-img">
-            <img src="Images/partner-flixbus.png" alt="FlixBus" class="partner-logo-img">
-            <img src="Images/partner-fairmont.jpg" alt="Fairmont" class="partner-logo-img">
-            <img src="Images/partner-budweiser.png" alt="Budweiser" class="partner-logo-img">
-            
-            <!-- NEW PARTNERS from Report -->
+            <!-- 3. BMW (Added) -->
             <img src="Images/partner-bmw.png" alt="BMW" class="partner-logo-img">
+            <!-- 4. Budweiser -->
+            <img src="Images/partner-budweiser.png" alt="Budweiser" class="partner-logo-img">
+            <!-- 5. Bisleri (Updated to jpg) -->
+            <img src="Images/partner-bisleri.jpg" alt="Bisleri" class="partner-logo-img">
+            <!-- 6. Pavilions (Added) -->
+            <img src="Images/partner-pavilions.png" alt="Pavilions and Interiors" class="partner-logo-img">
+            <!-- 7. District (Added) -->
             <img src="Images/partner-district.png" alt="District" class="partner-logo-img">
+            <!-- 8. JioStar (Added) -->
             <img src="Images/partner-jiostar.png" alt="JioStar" class="partner-logo-img">
-            <img src="Images/partner-dypatil.png" alt="DY Patil" class="partner-logo-img">
-            <img src="Images/partner-bisleri.png" alt="Bisleri" class="partner-logo-img">
-            <img src="Images/partner-capital.png" alt="Capital Group" class="partner-logo-img">
+            <!-- 9. Fairmont -->
+            <img src="Images/partner-fairmont.jpg" alt="Fairmont" class="partner-logo-img">
+            <!-- 10. Nivia -->
+            <img src="Images/partner-nivea.jpg" alt="Nivea" class="partner-logo-img">
+            <!-- 11. Medulance (Added) -->
             <img src="Images/partner-medulance.png" alt="Medulance" class="partner-logo-img">
+            <!-- 12. DY Patil (Added) -->
+            <img src="Images/partner-dypatil.png" alt="DY Patil" class="partner-logo-img">
+            <!-- 13. Capital Group (Added) -->
+            <img src="Images/partner-capital.png" alt="Capital Group" class="partner-logo-img">
+            <!-- 14. Event Network (Added) -->
+            <img src="Images/partner-eventnetwork.png" alt="Event Network" class="partner-logo-img">
+            <!-- 15. FlixBus -->
+            <img src="Images/partner-flixbus.png" alt="FlixBus" class="partner-logo-img">
         </div>
     </section>
 
