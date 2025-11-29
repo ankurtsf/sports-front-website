@@ -78,7 +78,6 @@
             height: 80px; 
             width: auto;
             object-fit: contain;
-            /* REMOVED mix-blend-mode to fix the white border issue on SVGs */
         }
 
         nav {
@@ -601,11 +600,33 @@
         /* Footer */
         footer {
             background: black;
-            padding: 2rem;
+            padding: 4rem 2rem 2rem 2rem;
             text-align: center;
             border-top: 1px solid #222;
             color: #666;
             font-size: 0.8rem;
+        }
+        
+        .footer-links {
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+        
+        .footer-links a {
+            color: #888;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--brand-green);
+        }
+        
+        .footer-contact {
+            margin-bottom: 2rem;
+            color: #aaa;
         }
 
         @media (max-width: 768px) {
@@ -657,8 +678,9 @@
             </div>
 
             <div style="margin-top: 2rem;">
+                <!-- Updated CTA -->
                 <a href="#events" class="cta-btn" style="background: transparent; border: 2px solid white; color: white; margin-right: 1rem;">See The Hints</a>
-                <a href="#contact" class="cta-btn">Get Early Access</a>
+                <a href="#contact" class="cta-btn">Unlock Priority Access</a>
             </div>
         </div>
     </section>
@@ -693,7 +715,7 @@
                     <div class="clue-item"><i class="fas fa-check-circle"></i> <b>Hint:</b> A rivalry that defined a decade.</div>
                 </div>
                 
-                <a href="#contact" class="teaser-btn">Join India Waitlist</a>
+                <a href="#contact" class="teaser-btn">Unlock Priority Access</a>
             </div>
 
             <!-- Event 2: Thailand (Legends Face Off Hint) -->
@@ -710,7 +732,7 @@
                     <div class="clue-item"><i class="fas fa-check-circle"></i> <b>Hint:</b> Royal White meets Blue & Red.</div>
                 </div>
                 
-                <a href="#contact" class="teaser-btn">Join Thailand Waitlist</a>
+                <a href="#contact" class="teaser-btn">Unlock Priority Access</a>
             </div>
         </div>
     </section>
@@ -721,33 +743,34 @@
             <p class="section-subtitle">PROVEN TRACK RECORD</p>
             <h2 class="section-title">WE DID IT BEFORE. WE'LL DO IT AGAIN.</h2>
             <p style="max-width: 700px; margin: 0 auto; color: #ddd;">
-                In April 2024, we turned DY Patil Stadium into a fortress. Over 35,000 fans witnessed the Legends Face Off.
+                In April 2024, we turned DY Patil Stadium into a fortress. Over 30,000 fans witnessed the Legends Face Off.
             </p>
         </div>
 
         <div class="stats-container">
+            <!-- UPDATED STATS FROM REPORT -->
             <div class="stat-item">
-                <span class="stat-number" data-target="35000">0</span>
+                <span class="stat-number" data-target="30231">0</span>
                 <span class="stat-label">Live Attendance</span>
             </div>
             <div class="stat-item">
-                <span class="stat-number" data-target="2100000">0</span>
-                <span class="stat-label">Broadcast Reach</span>
+                <span class="stat-number" data-target="20000000">0</span>
+                <span class="stat-label">Digital Reach</span>
             </div>
             <div class="stat-item">
-                <span class="stat-number" data-target="48">0</span>
-                <span class="stat-label">Hours to Sell Out</span>
+                <span class="stat-number" data-target="620">0</span>
+                <span class="stat-label">Million PR Value (INR)</span>
             </div>
             <div class="stat-item">
-                <span class="stat-number" data-target="12">0</span>
-                <span class="stat-label">Crore PR Value</span>
+                <span class="stat-number" data-target="17">0</span>
+                <span class="stat-label">Top Sponsors</span>
             </div>
         </div>
     </section>
 
     <!-- Featured In (Press) -->
     <section class="press-section">
-        <p style="color: #666; font-size: 0.8rem; letter-spacing: 1px; text-transform: uppercase;">As Featured In</p>
+        <p style="color: #666; font-size: 0.8rem; letter-spacing: 1px; text-transform: uppercase;">As Featured In 700+ Articles</p>
         <div class="press-logos">
             <div class="press-logo">The Times of India</div>
             <div class="press-logo">Hindustan Times</div>
@@ -839,12 +862,23 @@
         
         <div class="input-group">
             <input type="email" class="email-input" placeholder="Enter your email address">
-            <button class="cta-btn">SUBSCRIBE</button>
+            <button class="cta-btn">Unlock Priority Access</button>
         </div>
         <p style="font-size: 0.8rem; color: #555; margin-top: 1rem;">We respect your inbox. No spam, only game changers.</p>
     </section>
 
     <footer>
+        <div class="footer-contact">
+            <p><strong>The Sports Front</strong></p>
+            <p>Delhi, India</p>
+            <p><a href="mailto:contact.events@thesportsfront.in" style="color: #aaa; text-decoration: none;">contact.events@thesportsfront.in</a></p>
+        </div>
+        
+        <div class="footer-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms & Conditions</a>
+        </div>
+
         <p>&copy; 2025 The Sports Front. All rights reserved. | Fueling The Future Of Sports, Boldly!</p>
     </footer>
 
@@ -868,7 +902,7 @@
                         current += increment;
                         if (current < target) {
                             if(target > 1000000) {
-                                entry.target.innerText = (current / 1000000).toFixed(1) + 'M';
+                                entry.target.innerText = (current / 1000000).toFixed(1) + 'M+';
                             } else if (target > 1000) {
                                 entry.target.innerText = Math.ceil(current / 1000) + 'K+';
                             } else {
@@ -876,8 +910,10 @@
                             }
                             requestAnimationFrame(updateCount);
                         } else {
-                            if(target > 1000000) entry.target.innerText = "2.1M";
-                            else if (target > 1000) entry.target.innerText = "35,000+";
+                            // Manual formatting for final values based on target
+                            if(target === 30231) entry.target.innerText = "30,231+";
+                            else if(target === 20000000) entry.target.innerText = "20M+";
+                            else if(target === 620) entry.target.innerText = "620";
                             else entry.target.innerText = target;
                         }
                     };
