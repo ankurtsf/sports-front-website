@@ -10,8 +10,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            /* Updated Palette: Darker, sleeker, with neon accents */
-            --neon-green: #00FF9D;
+            /* BRAND COLORS EXTRACTED FROM LOGO */
+            --brand-green: #00D084; /* Approximate match to your green dot */
+            --brand-red: #FF3333;   /* Approximate match to your red cross */
+            
             --deep-black: #0a0a0a;
             --surface-dark: #141414;
             --surface-light: #1f1f1f;
@@ -72,8 +74,9 @@
         }
 
         .logo-img {
-            height: 45px;
+            height: 55px; 
             width: auto;
+            object-fit: contain;
         }
 
         nav {
@@ -98,15 +101,15 @@
         }
 
         .nav-links a:hover {
-            color: var(--neon-green);
+            color: var(--brand-green);
         }
 
         .cta-btn {
-            background: var(--neon-green);
+            background: var(--brand-green);
             color: var(--deep-black);
             padding: 0.7rem 1.8rem;
             border: none;
-            border-radius: 4px; /* Sharper corners for sports look */
+            border-radius: 4px;
             font-weight: 800;
             font-family: 'Montserrat', sans-serif;
             cursor: pointer;
@@ -119,7 +122,7 @@
         .cta-btn:hover {
             background: #fff;
             transform: translateY(-2px);
-            box-shadow: 0 0 15px rgba(0, 255, 157, 0.4);
+            box-shadow: 0 0 15px rgba(0, 208, 132, 0.4);
         }
 
         /* Hero Section */
@@ -175,7 +178,7 @@
         
         .highlight-text {
             color: transparent;
-            -webkit-text-stroke: 1px var(--neon-green);
+            -webkit-text-stroke: 1px var(--brand-green);
             position: relative;
         }
         
@@ -186,9 +189,9 @@
             top: 0;
             width: 0;
             height: 100%;
-            color: var(--neon-green);
+            color: var(--brand-green);
             overflow: hidden;
-            border-right: 2px solid var(--neon-green);
+            border-right: 2px solid var(--brand-green);
             animation: fillText 3s linear infinite alternate;
             -webkit-text-stroke: 0;
         }
@@ -227,7 +230,7 @@
             font-size: 2.5rem;
             font-weight: 800;
             font-family: 'Montserrat', sans-serif;
-            color: var(--neon-green);
+            color: var(--brand-green);
             line-height: 1;
         }
 
@@ -242,7 +245,7 @@
         /* Coming Soon Ticker */
         .ticker-wrap {
             position: relative;
-            background: var(--neon-green);
+            background: var(--brand-green);
             color: var(--deep-black);
             height: 40px;
             overflow: hidden;
@@ -264,7 +267,7 @@
             100% { transform: translateX(-100%); }
         }
 
-        /* Teaser Section - The Mystery Hints */
+        /* Teaser Section */
         .teaser-section {
             padding: 6rem 2rem;
             background: var(--surface-dark);
@@ -283,7 +286,7 @@
         }
         
         .section-subtitle {
-            color: var(--neon-green);
+            color: var(--brand-green);
             font-weight: 600;
             letter-spacing: 2px;
             text-transform: uppercase;
@@ -375,7 +378,7 @@
         }
         
         .clue-item i {
-            color: var(--neon-green);
+            color: var(--brand-green);
         }
 
         .teaser-btn {
@@ -383,8 +386,8 @@
             width: 100%;
             padding: 1rem;
             background: transparent;
-            border: 1px solid var(--neon-green);
-            color: var(--neon-green);
+            border: 1px solid var(--brand-green);
+            color: var(--brand-green);
             text-align: center;
             text-transform: uppercase;
             font-weight: 700;
@@ -393,17 +396,21 @@
         }
 
         .teaser-btn:hover {
-            background: var(--neon-green);
+            background: var(--brand-green);
             color: var(--deep-black);
         }
 
         /* Success/Mumbai Section */
         .success-section {
             padding: 6rem 2rem;
-            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=2000');
+            /* Updated to use local file */
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('images/success-bg.jpg');
             background-size: cover;
             background-attachment: fixed;
             position: relative;
+        }
+        .success-section.no-img {
+            background: #111;
         }
 
         .stats-container {
@@ -433,7 +440,7 @@
         }
 
         .stat-label {
-            color: var(--neon-green);
+            color: var(--brand-green);
             font-size: 0.8rem;
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -514,36 +521,36 @@
             font-weight: 900;
             font-size: 1.5rem;
             color: #fff;
-            font-family: 'Times New Roman', serif; /* Simulating newspaper fonts */
+            font-family: 'Times New Roman', serif;
         }
 
         /* Partners */
         .partners-section {
             padding: 4rem 2rem;
-            background: #fff; /* White break for logos */
+            background: #fff; 
             color: var(--black);
         }
         
         .partners-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 2rem;
+            gap: 3rem;
             max-width: 1200px;
             margin: 2rem auto;
             align-items: center;
+            justify-items: center;
         }
         
-        .partner-logo {
+        .partner-logo-img {
+            max-width: 140px;
+            max-height: 80px;
             filter: grayscale(100%);
             opacity: 0.6;
             transition: 0.3s;
-            text-align: center;
-            font-weight: 700;
-            color: #333;
-            font-size: 1.2rem;
+            object-fit: contain;
         }
         
-        .partner-logo:hover {
+        .partner-logo-img:hover {
             filter: grayscale(0%);
             opacity: 1;
         }
@@ -581,12 +588,11 @@
             font-size: 0.8rem;
         }
 
-        /* Mobile */
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.5rem; }
             .countdown { gap: 1rem; }
             .countdown-number { font-size: 1.5rem; }
-            .nav-links { display: none; } /* Simplified for code snippet brevity */
+            .nav-links { display: none; }
         }
     </style>
 </head>
@@ -596,10 +602,8 @@
     <header>
         <div class="header-container">
             <div class="logo-container">
-                <!-- Using text for logo to ensure visibility on dark mode, replace with white png logo -->
-                <div style="font-family: 'Montserrat'; font-weight: 900; font-size: 1.2rem; color: white;">
-                    THE SPORTS <span style="color: var(--neon-green)">FRONT</span>
-                </div>
+                <!-- Updated to use local SVG file for best quality -->
+                <img src="images/logo-header.svg" alt="The Sports Front" class="logo-img">
             </div>
             <nav>
                 <div class="nav-links">
@@ -615,9 +619,10 @@
 
     <!-- Hero Section -->
     <section class="hero">
-        <img src="https://images.unsplash.com/photo-1518605348400-437731df4868?q=80&w=2000&auto=format&fit=crop" class="hero-bg" alt="Stadium">
+        <!-- Updated to use local file for deployment -->
+        <img src="images/hero-bg.jpg" class="hero-bg" alt="Stadium">
         <div class="hero-content">
-            <h2 style="color: var(--neon-green); margin-bottom: 0;">OFFICIAL PRE-ANNOUNCEMENT</h2>
+            <h2 style="color: var(--brand-green); margin-bottom: 0;">OFFICIAL PRE-ANNOUNCEMENT</h2>
             <h1>LEGENDS ARE<br><span class="highlight-text" data-text="RETURNING">RETURNING</span></h1>
             <p style="font-size: 1.2rem; max-width: 600px; margin: 0 auto 2rem auto;">
                 After the historic El Clásico in Mumbai, The Sports Front is bringing two new titans of world football to Asia.
@@ -666,7 +671,7 @@
         <div class="teaser-grid">
             <!-- Event 1: India (Manchester Hint) -->
             <div class="teaser-card manchester">
-                <span class="teaser-location"><i class="fas fa-map-marker-alt" style="color: var(--neon-green)"></i> India • March 22, 2025</span>
+                <span class="teaser-location"><i class="fas fa-map-marker-alt" style="color: var(--brand-green)"></i> India • March 22, 2025</span>
                 <div class="teaser-icon">
                     <i class="fas fa-bolt" style="color: white;"></i>
                 </div>
@@ -683,7 +688,7 @@
 
             <!-- Event 2: Thailand (El Clasico Hint) -->
             <div class="teaser-card thailand">
-                <span class="teaser-location"><i class="fas fa-map-marker-alt" style="color: var(--neon-green)"></i> Thailand • May 31, 2025</span>
+                <span class="teaser-location"><i class="fas fa-map-marker-alt" style="color: var(--brand-green)"></i> Thailand • May 31, 2025</span>
                 <div class="teaser-icon">
                     <i class="fas fa-crown" style="color: white;"></i>
                 </div>
@@ -750,21 +755,24 @@
         
         <div class="cap-grid">
             <div class="cap-card">
-                <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=800&auto=format&fit=crop" class="cap-img" alt="Production">
+                <!-- Updated to use local file -->
+                <img src="images/cap-production.jpg" class="cap-img" alt="Production">
                 <div class="cap-text">
                     <h4>Mega Event Production</h4>
                     <p>From stadium logistics to player hospitality, we handle the A-Z of large scale sporting events.</p>
                 </div>
             </div>
             <div class="cap-card">
-                <img src="https://images.unsplash.com/photo-1459865264687-595d652de67e?q=80&w=800&auto=format&fit=crop" class="cap-img" alt="Fans">
+                <!-- Updated to use local file -->
+                <img src="images/cap-fans.jpg" class="cap-img" alt="Fans">
                 <div class="cap-text">
                     <h4>Fan Experience</h4>
                     <p>We don't just sell tickets. We create atmospheres that fans remember for a lifetime.</p>
                 </div>
             </div>
             <div class="cap-card">
-                <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=800&auto=format&fit=crop" class="cap-img" alt="Media">
+                <!-- Updated to use local file -->
+                <img src="images/cap-ip.jpg" class="cap-img" alt="Media">
                 <div class="cap-text">
                     <h4>IP Development</h4>
                     <p>Creating sustainable, recurring sports properties that grow in value year over year.</p>
@@ -779,12 +787,15 @@
             <p style="color: #999; font-size: 0.9rem; letter-spacing: 2px;">TRUSTED BY GLOBAL BRANDS</p>
         </div>
         <div class="partners-grid">
-            <div class="partner-logo">HSBC</div>
-            <div class="partner-logo">JAMESON</div>
-            <div class="partner-logo">NIVEA</div>
-            <div class="partner-logo">FLIXBUS</div>
-            <div class="partner-logo">FAIRMONT</div>
-            <div class="partner-logo">BUDWEISER</div>
+            <!-- Updated to use .svg as requested -->
+            <img src="images/partner-hsbc.svg" alt="HSBC" class="partner-logo-img">
+            <img src="images/partner-jameson.png" alt="Jameson" class="partner-logo-img">
+            <!-- Updated to use .jpg as requested -->
+            <img src="images/partner-nivea.jpg" alt="Nivea" class="partner-logo-img">
+            <img src="images/partner-flixbus.png" alt="FlixBus" class="partner-logo-img">
+            <!-- Updated to use .jpg as requested -->
+            <img src="images/partner-fairmont.jpg" alt="Fairmont" class="partner-logo-img">
+            <img src="images/partner-budweiser.png" alt="Budweiser" class="partner-logo-img">
         </div>
     </section>
 
@@ -843,7 +854,6 @@
                     const updateCount = () => {
                         current += increment;
                         if (current < target) {
-                            // Format large numbers with K or M for cleaner look
                             if(target > 1000000) {
                                 entry.target.innerText = (current / 1000000).toFixed(1) + 'M';
                             } else if (target > 1000) {
