@@ -78,6 +78,7 @@
             height: 80px; 
             width: auto;
             object-fit: contain;
+            /* Removed mix-blend-mode to display logo exactly as is */
         }
 
         nav {
@@ -585,32 +586,78 @@
         
         .team-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Adjusted width */
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adjusted width */
+            gap: 4rem; /* More spacing for the 'pop-out' effect */
             max-width: 1000px;
-            margin: 3rem auto;
-            justify-content: center; /* Center the grid items */
+            margin: 6rem auto 3rem auto; /* Extra top margin for heads */
+            justify-content: center;
         }
         
         .team-member {
-            padding: 1.5rem;
+            position: relative; /* Key for absolute image */
+            margin-top: 50px; /* Space for the head to pop out */
+            padding: 70px 1.5rem 2rem 1.5rem; /* Top padding pushes text down */
             border: 1px solid rgba(255,255,255,0.05);
-            border-radius: 8px;
+            border-radius: 16px;
             background: var(--deep-black);
+            transition: transform 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+            border-color: var(--brand-green);
+        }
+        
+        .team-member-img {
+            position: absolute;
+            top: -60px; /* Pulls image up out of the card */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 140px; /* Adjust based on image quality */
+            height: 140px;
+            object-fit: cover; /* Use 'contain' if full body png */
+            object-position: top;
+            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.5));
+            transition: transform 0.3s ease;
+            z-index: 2;
+        }
+
+        /* Optional: Add a subtle glow behind the head */
+        .team-member::before {
+            content: '';
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, rgba(0, 208, 132, 0.4) 0%, rgba(0,0,0,0) 70%);
+            z-index: 1;
+            border-radius: 50%;
+        }
+
+        .team-member:hover .team-member-img {
+            transform: translateX(-50%) scale(1.1);
         }
         
         .member-name {
-            font-weight: 700;
+            font-weight: 800;
             color: white;
-            font-size: 1.1rem;
+            font-size: 1.4rem;
             margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 2;
         }
         
         .member-role {
             color: var(--brand-green);
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             text-transform: uppercase;
             letter-spacing: 1px;
+            font-weight: 600;
+            position: relative;
+            z-index: 2;
         }
 
         /* Partners */
@@ -733,7 +780,6 @@
             <div class="status-box">
                 <span class="status-indicator"></span>
                 <span class="status-text">THE NEXT ERA IS LOADING...</span>
-                <!-- Updated Subtext: No internal details, just hype -->
                 <span class="status-sub">PREPARE FOR THE ULTIMATE SHOWDOWN.</span>
             </div>
 
@@ -898,15 +944,19 @@
             <h2 class="section-title" style="color: #000;">THE SQUAD</h2>
         </div>
         <div class="team-grid">
+            <!-- Modern Pop-out Cards for Team -->
             <div class="team-member">
+                <img src="Images/team-john.png" alt="John" class="team-member-img">
                 <div class="member-name">John</div>
                 <div class="member-role">Core Team</div>
             </div>
             <div class="team-member">
+                <img src="Images/team-anirudh.png" alt="Anirudh" class="team-member-img">
                 <div class="member-name">Anirudh</div>
                 <div class="member-role">Core Team</div>
             </div>
             <div class="team-member">
+                <img src="Images/team-ankur.png" alt="Ankur" class="team-member-img">
                 <div class="member-name">Ankur</div>
                 <div class="member-role">Core Team</div>
             </div>
