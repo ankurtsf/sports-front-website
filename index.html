@@ -555,13 +555,11 @@
             height: 200px;
             width: 100%;
             object-fit: cover;
-            filter: grayscale(100%);
+            /* CHANGED: Removed grayscale filter */
             transition: 0.5s;
         }
 
-        .cap-card:hover .cap-img {
-            filter: grayscale(0%);
-        }
+        /* Removed hover transition for grayscale since it is now color by default */
 
         .cap-text {
             padding: 1.5rem;
@@ -656,13 +654,13 @@
             object-fit: cover; /* Covers area nicely, change to contain if you want full body shown without crop */
             object-position: center top;
             z-index: 1;
-            /* FIXED: Grayscale by default as requested for Team Section */
+            /* RESTORED: Grayscale by default for Team Section as requested */
             filter: grayscale(100%);
             transition: all 0.4s ease;
         }
 
         .team-member:hover .team-member-img {
-            /* FIXED: Color on hover */
+            /* RESTORED: Color on hover */
             filter: grayscale(0%);
             transform: scale(1.05);
         }
@@ -702,11 +700,12 @@
         }
         
         .partners-grid {
-            /* FIXED: Changed to Flexbox to center the last row */
+            /* FIXED: Flexbox layout to center items and reduce gap */
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 3rem;
+            /* REDUCED: Gap from 3rem to 2rem to tighten layout */
+            gap: 2rem;
             max-width: 1200px;
             margin: 2rem auto;
             align-items: center;
@@ -852,8 +851,8 @@
                 <!-- FIXED: Updated date to Q1 2026 -->
                 <span class="teaser-location"><i class="fas fa-map-marker-alt" style="color: var(--brand-green)"></i> India • Q1 2026</span>
                 <div class="teaser-icon">
-                    <!-- FIXED: Changed icon to soccer ball -->
-                    <i class="fas fa-futbol" style="color: white;"></i>
+                    <!-- FIXED: Changed icon to shield-alt -->
+                    <i class="fas fa-shield-alt" style="color: white;"></i>
                 </div>
                 <h3 class="teaser-title">THE NORTHERN STORM</h3>
                 
@@ -872,8 +871,8 @@
                 <!-- FIXED: Updated date to Q2 2026 -->
                 <span class="teaser-location"><i class="fas fa-map-marker-alt" style="color: var(--brand-green)"></i> Thailand • Q2 2026</span>
                 <div class="teaser-icon">
-                    <!-- FIXED: Changed icon to trophy -->
-                    <i class="fas fa-trophy" style="color: white;"></i>
+                    <!-- FIXED: Changed icon to star -->
+                    <i class="fas fa-star" style="color: white;"></i>
                 </div>
                 <h3 class="teaser-title">KINGS OF EUROPE</h3>
                 
