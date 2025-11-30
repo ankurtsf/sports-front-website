@@ -525,54 +525,120 @@
             object-fit: contain; /* Ensures full image visibility without cutting */
         }
 
-        /* Capabilities / About */
+        /* Capabilities / About - Redesigned for "Soul" */
         .capabilities-section {
-            padding: 6rem 2rem;
+            padding: 8rem 2rem;
             background: var(--deep-black);
+            position: relative;
+        }
+        
+        .capabilities-section::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(0, 208, 132, 0.05) 0%, transparent 50%);
+            pointer-events: none;
         }
 
         .cap-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 2rem;
-            max-width: 1200px;
-            margin: 3rem auto 0;
+            max-width: 1400px;
+            margin: 4rem auto 0;
         }
 
         .cap-card {
-            background: var(--surface-light);
-            border-radius: 8px;
+            position: relative;
+            height: 500px; /* Tall, cinematic ratio */
+            border-radius: 20px;
             overflow: hidden;
-            transition: 0.3s;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
         }
 
         .cap-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
         }
 
+        /* The Image */
         .cap-img {
-            height: 200px;
+            position: absolute;
+            top: 0; left: 0;
             width: 100%;
+            height: 100%;
             object-fit: cover;
-            /* CHANGED: Removed grayscale filter */
-            transition: 0.5s;
+            transition: transform 0.6s ease;
+            filter: brightness(0.9);
         }
 
-        /* Removed hover transition for grayscale since it is now color by default */
+        .cap-card:hover .cap-img {
+            transform: scale(1.1);
+            filter: brightness(1);
+        }
 
+        /* The Gradient Overlay */
+        .cap-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 70%;
+            background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.6) 50%, transparent 100%);
+            transition: opacity 0.3s;
+        }
+
+        /* The Text Container */
         .cap-text {
-            padding: 1.5rem;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 2.5rem;
+            z-index: 2;
+            transform: translateY(20px);
+            transition: transform 0.4s ease;
+        }
+
+        .cap-card:hover .cap-text {
+            transform: translateY(0);
         }
 
         .cap-text h4 {
             color: var(--text-white);
+            font-size: 1.8rem;
+            font-weight: 900;
+            text-transform: uppercase;
             margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+            line-height: 1.1;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+
+        .cap-text h4::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 4px;
+            background: var(--brand-green);
+            margin-top: 15px;
+            transition: width 0.3s ease;
+        }
+
+        .cap-card:hover .cap-text h4::after {
+            width: 100px;
         }
 
         .cap-text p {
-            color: var(--text-gray);
-            font-size: 0.9rem;
+            color: #ddd;
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-top: 1rem;
+            opacity: 0.9;
+            max-width: 90%;
         }
 
         /* Team Section - Modern Redesign */
