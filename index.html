@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            /* BRAND COLORS EXTRACTED FROM LOGO */
+            /* BRAND COLORS */
             --brand-green: #00D084; 
             --brand-red: #FF3333;   
             
@@ -71,16 +71,16 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: relative;
         }
 
         .logo-img {
-            /* Increased size as requested */
             height: 80px; 
             width: auto;
             object-fit: contain;
-            /* Removed mix-blend-mode to display logo exactly as is */
         }
 
+        /* Desktop Nav */
         nav {
             display: flex;
             align-items: center;
@@ -106,6 +106,16 @@
             color: var(--brand-green);
         }
 
+        /* Mobile Menu Toggle (Hidden on Desktop) */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
         .cta-btn {
             background: var(--brand-green);
             color: var(--deep-black);
@@ -120,6 +130,7 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             display: inline-block;
+            text-align: center;
         }
 
         .cta-btn:hover {
@@ -132,6 +143,7 @@
         .hero {
             position: relative;
             height: 100vh;
+            min-height: 600px; /* Prevents collapse on mobile landscape */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -167,7 +179,7 @@
             z-index: 3;
             max-width: 1000px;
             padding: 2rem;
-            margin-top: 40px;
+            margin-top: 60px; /* Space for fixed header */
         }
 
         .hero h1 {
@@ -314,7 +326,7 @@
 
         .teaser-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* Adjusted min-width for mobile */
             gap: 3rem;
             max-width: 1200px;
             margin: 0 auto;
@@ -479,7 +491,7 @@
             overflow: hidden;
             border: 1px solid #333;
             background: #111;
-            /* Allow video to determine size */
+            width: 100%;
         }
         
         .video-player {
@@ -522,10 +534,10 @@
         .press-item img {
             width: 100%;
             height: 100%;
-            object-fit: contain; /* Ensures full image visibility without cutting */
+            object-fit: contain;
         }
 
-        /* Capabilities / About - Redesigned for "Soul" */
+        /* Capabilities / About */
         .capabilities-section {
             padding: 8rem 2rem;
             background: var(--deep-black);
@@ -542,7 +554,7 @@
 
         .cap-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Adjusted for better mobile stacking */
             gap: 2rem;
             max-width: 1400px;
             margin: 4rem auto 0;
@@ -550,7 +562,7 @@
 
         .cap-card {
             position: relative;
-            height: 500px; /* Tall, cinematic ratio */
+            height: 500px;
             border-radius: 20px;
             overflow: hidden;
             cursor: pointer;
@@ -563,7 +575,6 @@
             box-shadow: 0 20px 50px rgba(0,0,0,0.5);
         }
 
-        /* The Image */
         .cap-img {
             position: absolute;
             top: 0; left: 0;
@@ -579,7 +590,6 @@
             filter: brightness(1);
         }
 
-        /* The Gradient Overlay */
         .cap-card::after {
             content: '';
             position: absolute;
@@ -591,7 +601,6 @@
             transition: opacity 0.3s;
         }
 
-        /* The Text Container */
         .cap-text {
             position: absolute;
             bottom: 0;
@@ -641,35 +650,31 @@
             max-width: 90%;
         }
 
-        /* Team Section - Modern Redesign */
+        /* Team Section */
         .team-section {
             padding: 6rem 2rem;
-            /* Changed from surface-light to a rich gradient for premium feel */
             background: linear-gradient(to bottom, #000000, #111111); 
             text-align: center;
         }
         
         .team-grid {
             display: grid;
-            /* Increased width to avoid cramping */
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
-            gap: 2rem;
+            gap: 4rem;
             max-width: 1100px;
             margin: 3rem auto;
             justify-content: center;
         }
         
-        /* New Player Card Style */
         .team-member {
             position: relative;
             border-radius: 16px;
-            /* Glassmorphism Effect */
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.1);
             padding: 0;
-            overflow: hidden; /* Keeps content inside the rounded corners */
+            overflow: hidden;
             transition: all 0.4s ease;
-            height: 400px; /* Fixed height for uniformity */
+            height: 400px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -682,20 +687,18 @@
             box-shadow: 0 10px 40px rgba(0, 208, 132, 0.2);
         }
 
-        /* The Image Container */
         .team-img-container {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            height: 80%; /* Image takes up top 80% */
+            height: 80%;
             display: flex;
             align-items: flex-end;
             justify-content: center;
             z-index: 1;
         }
 
-        /* The "Spotlight" Glow behind the person */
         .team-glow {
             position: absolute;
             width: 200px;
@@ -717,21 +720,18 @@
             position: relative;
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Covers area nicely, change to contain if you want full body shown without crop */
+            object-fit: cover; 
             object-position: center top;
             z-index: 1;
-            /* RESTORED: Grayscale by default for Team Section as requested */
             filter: grayscale(100%);
             transition: all 0.4s ease;
         }
 
         .team-member:hover .team-member-img {
-            /* RESTORED: Color on hover */
             filter: grayscale(0%);
             transform: scale(1.05);
         }
         
-        /* Info Box at Bottom */
         .team-info {
             position: relative;
             z-index: 2;
@@ -766,30 +766,25 @@
         }
         
         .partners-grid {
-            /* FIXED: Flexbox layout to center items and reduce gap */
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            /* REDUCED: Gap from 3rem to 2rem to tighten layout */
             gap: 2rem;
             max-width: 1200px;
             margin: 2rem auto;
             align-items: center;
         }
         
-        /* Styles for each logo item to ensure consistent sizing in flex */
         .partner-logo-img {
-            max-width: 160px;
-            max-height: 90px;
-            /* REMOVED filter: grayscale(100%); - Now full color by default */
+            max-width: 140px; /* Smaller size for mobile fit */
+            max-height: 80px;
             opacity: 1; 
             transition: 0.3s;
             object-fit: contain;
-            margin: 10px; /* Add some margin for flex wrapping */
+            margin: 10px;
         }
         
         .partner-logo-img:hover {
-            /* Removed grayscale toggle, kept scaling */
             transform: scale(1.05);
         }
 
@@ -838,11 +833,116 @@
             color: #aaa;
         }
 
+        /* MOBILE RESPONSIVE MEDIA QUERIES */
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            .countdown { gap: 1rem; }
-            .countdown-number { font-size: 1.5rem; }
-            .nav-links { display: none; }
+            /* Header */
+            .header-container {
+                padding: 1rem;
+            }
+            
+            .logo-img {
+                height: 60px; /* Smaller logo on mobile */
+            }
+
+            /* Mobile Navigation */
+            nav {
+                display: none; /* Hide standard nav */
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(10, 10, 10, 0.98);
+                flex-direction: column;
+                padding: 2rem;
+                text-align: center;
+                border-bottom: 1px solid #333;
+            }
+
+            nav.active {
+                display: flex;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 1.5rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+                position: absolute;
+                right: 1rem;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+
+            /* Hero */
+            .hero {
+                height: auto;
+                min-height: 90vh;
+                padding-bottom: 3rem;
+            }
+
+            .hero h1 { 
+                font-size: 2.5rem; /* Smaller headline */
+                line-height: 1.2;
+            }
+
+            .hero h2 { 
+                font-size: 1.1rem; 
+            }
+            
+            .hero-content {
+                padding: 1rem;
+                margin-top: 80px;
+            }
+
+            .status-box {
+                padding: 1.2rem;
+                min-width: 280px;
+                width: 100%;
+            }
+            
+            .status-text {
+                font-size: 1rem;
+            }
+            
+            /* Sections */
+            .teaser-section, .success-section, .media-section, .capabilities-section, .team-section, .contact-section, .partners-section {
+                padding: 3rem 1rem; /* Reduced padding */
+            }
+            
+            /* Grids */
+            .teaser-grid, .stats-container, .cap-grid, .team-grid, .press-grid {
+                grid-template-columns: 1fr; /* Stack single column */
+                gap: 2rem;
+            }
+            
+            .stats-container {
+                grid-template-columns: repeat(2, 1fr); /* 2x2 grid for stats on mobile */
+            }
+            
+            .partners-grid {
+                gap: 1.5rem;
+            }
+            
+            .partner-logo-img {
+                max-width: 120px; /* Smaller logos */
+                margin: 5px;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .cap-card {
+                height: 400px; /* Shorter cards on mobile */
+            }
+            
+            /* Video */
+            .video-container {
+                margin: 1rem auto;
+            }
         }
     </style>
 </head>
@@ -852,17 +952,21 @@
     <header>
         <div class="header-container">
             <div class="logo-container">
-                <!-- Updated to use Images/ -->
                 <img src="Images/logo-header.svg" alt="The Sports Front" class="logo-img">
             </div>
-            <nav>
+            
+            <!-- Hamburger Button -->
+            <button class="mobile-menu-btn" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <nav id="main-nav">
                 <div class="nav-links">
-                    <a href="#events">Upcoming</a>
-                    <a href="#success">Success Stories</a>
-                    <a href="#about">About</a>
-                    <a href="#partners">Partners</a>
+                    <a href="#events" onclick="toggleMenu()">Upcoming</a>
+                    <a href="#success" onclick="toggleMenu()">Success Stories</a>
+                    <a href="#about" onclick="toggleMenu()">About</a>
+                    <a href="#partners" onclick="toggleMenu()">Partners</a>
                 </div>
-                <!-- Updated Link -->
                 <a href="https://forms.office.com/r/NtDiPXFhKt" target="_blank" class="cta-btn">Join Waitlist</a>
             </nav>
         </div>
@@ -878,17 +982,14 @@
                 After the historic Legends Face Off in Mumbai, The Sports Front is bringing two new titans of world football to Asia.
             </p>
 
-            <!-- Status Bar -->
             <div class="status-box">
                 <span class="status-indicator"></span>
                 <span class="status-text">THE NEXT ERA IS LOADING...</span>
-                <!-- Updated Subtext: No internal details, just hype -->
                 <span class="status-sub">PREPARE FOR THE ULTIMATE SHOWDOWN.</span>
             </div>
 
             <div style="margin-top: 2rem;">
-                <a href="#events" class="cta-btn" style="background: transparent; border: 2px solid white; color: white; margin-right: 1rem;">See The Hints</a>
-                <!-- Updated Link -->
+                <a href="#events" class="cta-btn" style="background: transparent; border: 2px solid white; color: white; margin-right: 1rem; margin-bottom: 1rem;">See The Hints</a>
                 <a href="https://forms.office.com/r/NtDiPXFhKt" target="_blank" class="cta-btn">Unlock Priority Access</a>
             </div>
         </div>
@@ -904,75 +1005,57 @@
     <!-- The Hints / Teaser Section -->
     <section class="teaser-section" id="events">
         <div class="section-header">
-            <!-- FIXED: Updated year to 2026 -->
             <p class="section-subtitle">2026 ROADMAP</p>
             <h2 class="section-title">GUESS THE RIVALRY</h2>
-            <!-- Updated Text -->
             <p style="color: #888;">The stage is set for the biggest rivalries in football.</p>
         </div>
 
         <div class="teaser-grid">
-            <!-- Event 1: India (Manchester Hint) -->
             <div class="teaser-card manchester">
-                <!-- FIXED: Updated date to Q1 2026 -->
                 <span class="teaser-location"><i class="fas fa-map-marker-alt" style="color: var(--brand-green)"></i> India • Q1 2026</span>
                 <div class="teaser-icon">
-                    <!-- FIXED: Changed icon to shield-alt -->
                     <i class="fas fa-shield-alt" style="color: white;"></i>
                 </div>
                 <h3 class="teaser-title">THE NORTHERN STORM</h3>
-                
                 <div class="teaser-clues">
                     <div class="clue-item"><i class="fas fa-check-circle"></i> Two English Heavyweights</div>
                     <div class="clue-item"><i class="fas fa-check-circle"></i> A City Divided</div>
                     <div class="clue-item"><i class="fas fa-check-circle"></i> <b>Hint:</b> A rivalry that defined a decade.</div>
                 </div>
-                
-                <!-- Updated Link -->
                 <a href="https://forms.office.com/r/NtDiPXFhKt" target="_blank" class="teaser-btn">Unlock Priority Access</a>
             </div>
 
-            <!-- Event 2: Thailand (Legends Face Off Hint) -->
             <div class="teaser-card thailand">
-                <!-- FIXED: Updated date to Q2 2026 -->
                 <span class="teaser-location"><i class="fas fa-map-marker-alt" style="color: var(--brand-green)"></i> Thailand • Q2 2026</span>
                 <div class="teaser-icon">
-                    <!-- FIXED: Changed icon to star -->
                     <i class="fas fa-star" style="color: white;"></i>
                 </div>
                 <h3 class="teaser-title">KINGS OF EUROPE</h3>
-                
                 <div class="teaser-clues">
                     <div class="clue-item"><i class="fas fa-check-circle"></i> The biggest rivalry in sports history</div>
                     <div class="clue-item"><i class="fas fa-check-circle"></i> Galácticos vs Tiki Taka</div>
                     <div class="clue-item"><i class="fas fa-check-circle"></i> <b>Hint:</b> Royal White meets Blue & Red.</div>
                 </div>
-                
-                <!-- Updated Link -->
                 <a href="https://forms.office.com/r/NtDiPXFhKt" target="_blank" class="teaser-btn">Unlock Priority Access</a>
             </div>
         </div>
     </section>
 
-    <!-- Media Section (Aftermovie & Press) -->
+    <!-- Media Section -->
     <section class="media-section">
         <div class="section-header">
             <p class="section-subtitle">THE EXPERIENCE</p>
             <h2 class="section-title">OFFICIAL TEASER</h2>
         </div>
-        
-        <!-- Video Player -->
         <div class="video-container">
             <video controls class="video-player" poster="Images/hero-bg.jpg">
                 <source src="Images/teaser-video.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
         </div>
-
         <div style="margin-top: 4rem;">
             <h3 class="section-title" style="font-size: 2rem;">PRESS COVERAGE</h3>
             <p style="color: #888;">Dominating headlines across the nation</p>
-            
             <div class="press-grid">
                 <div class="press-item"><img src="Images/press-1.jpg" alt="Press Coverage 1" onerror="this.style.display='none'"></div>
                 <div class="press-item"><img src="Images/press-2.jpg" alt="Press Coverage 2" onerror="this.style.display='none'"></div>
@@ -982,19 +1065,17 @@
         </div>
     </section>
 
-    <!-- Success Section (Mumbai) -->
+    <!-- Success Section -->
     <section class="success-section" id="success">
         <div style="text-align: center; position: relative; z-index: 2;">
             <p class="section-subtitle">PROVEN TRACK RECORD</p>
             <h2 class="section-title">WE DID IT BEFORE. WE'LL DO IT AGAIN.</h2>
-            <!-- FIXED: Updated Date Text -->
             <p style="max-width: 700px; margin: 0 auto; color: #ddd;">
                 On 6th April 2025, we turned DY Patil Stadium into a fortress. Over 30,000 fans witnessed the Legends Face Off.
             </p>
         </div>
 
         <div class="stats-container">
-            <!-- UPDATED STATS FROM REPORT -->
             <div class="stat-item">
                 <span class="stat-number" data-target="30231">0</span>
                 <span class="stat-label">Live Attendance</span>
@@ -1020,7 +1101,6 @@
             <p class="section-subtitle">WHAT WE DO</p>
             <h2 class="section-title">BUILDING LEGACIES</h2>
         </div>
-        
         <div class="cap-grid">
             <div class="cap-card">
                 <img src="Images/cap-production.jpg" class="cap-img" alt="Production">
@@ -1046,19 +1126,16 @@
         </div>
     </section>
 
-    <!-- Our Team Section -->
+    <!-- Team Section -->
     <section class="team-section">
         <div class="section-header">
-            <!-- Fixed color to Brand Green for visibility -->
             <p class="section-subtitle" style="color: var(--brand-green);">LEADERSHIP</p>
             <h2 class="section-title" style="color: #fff;">THE SQUAD</h2>
         </div>
         <div class="team-grid">
-            <!-- Modern "Glass" Cards for Team -->
             <div class="team-member">
                 <div class="team-img-container">
                     <div class="team-glow"></div>
-                    <!-- UPDATED FILE EXTENSION FOR JOHN -->
                     <img src="Images/team-john.jpeg" alt="John" class="team-member-img">
                 </div>
                 <div class="team-info">
@@ -1092,39 +1169,23 @@
     <!-- Partners -->
     <section class="partners-section" id="partners">
         <div class="section-header">
-            <!-- FIXED: Made darker and larger -->
             <p style="color: #000; font-size: 1.2rem; letter-spacing: 2px; font-weight: 800;">TRUSTED BY GLOBAL BRANDS</p>
         </div>
         <div class="partners-grid">
-            <!-- 1. HSBC -->
             <img src="Images/partner-hsbc.svg" alt="HSBC" class="partner-logo-img">
-            <!-- 2. Jameson -->
             <img src="Images/partner-jameson.png" alt="Jameson" class="partner-logo-img">
-            <!-- 3. BMW -->
             <img src="Images/partner-bmw.png" alt="BMW" class="partner-logo-img">
-            <!-- 4. Budweiser -->
             <img src="Images/partner-budweiser.png" alt="Budweiser" class="partner-logo-img">
-            <!-- 5. Bisleri -->
             <img src="Images/partner-bisleri.jpg" alt="Bisleri" class="partner-logo-img">
-            <!-- 6. Pavilions -->
             <img src="Images/partner-pavilions.png" alt="Pavilions and Interiors" class="partner-logo-img">
-            <!-- 7. District -->
             <img src="Images/partner-district.png" alt="District" class="partner-logo-img">
-            <!-- 8. JioStar -->
             <img src="Images/partner-jiostar.png" alt="JioStar" class="partner-logo-img">
-            <!-- 9. Fairmont -->
             <img src="Images/partner-fairmont.jpg" alt="Fairmont" class="partner-logo-img">
-            <!-- 10. Nivia -->
             <img src="Images/partner-nivea.jpg" alt="Nivea" class="partner-logo-img">
-            <!-- 11. Medulance -->
             <img src="Images/partner-medulance.png" alt="Medulance" class="partner-logo-img">
-            <!-- 12. DY Patil -->
             <img src="Images/partner-dypatil.png" alt="DY Patil" class="partner-logo-img">
-            <!-- 13. Capital Group -->
             <img src="Images/partner-capital.png" alt="Capital Group" class="partner-logo-img">
-            <!-- 14. Event Network -->
             <img src="Images/partner-eventnetwork.png" alt="Event Network" class="partner-logo-img">
-            <!-- 15. FlixBus -->
             <img src="Images/partner-flixbus.png" alt="FlixBus" class="partner-logo-img">
         </div>
     </section>
@@ -1135,8 +1196,7 @@
         <p style="color: #ccc; margin-bottom: 2rem;">Be the first to know when tickets go live for India and Thailand.</p>
         
         <div class="footer-center">
-            <!-- Updated Link -->
-            <a href="https://forms.office.com/r/NtDiPXFhKt" target="_blank" class="cta-btn" style="text-decoration: none; display: inline-block;">
+            <a href="https://forms.office.com/r/NtDiPXFhKt" target="_blank" class="cta-btn">
                 Join Priority List
             </a>
         </div>
@@ -1147,7 +1207,6 @@
         <div class="footer-contact">
             <p><strong>The Sports Front</strong></p>
             <p>Delhi, India</p>
-            <!-- FIXED: Updated email address -->
             <p><a href="mailto:info@thesportsfront.com" style="color: #aaa; text-decoration: none;">info@thesportsfront.com</a></p>
         </div>
         
@@ -1160,6 +1219,11 @@
     </footer>
 
     <script>
+        // Mobile Menu Toggle
+        function toggleMenu() {
+            document.getElementById('main-nav').classList.toggle('active');
+        }
+
         // Animated Statistics (Intersection Observer)
         const stats = document.querySelectorAll('.stat-number');
         
