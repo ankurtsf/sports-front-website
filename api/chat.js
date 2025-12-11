@@ -53,15 +53,14 @@ export default async function handler(req) {
         - Sponsor questions: "Fill out the Request Impact Report form."
         `;
 
-        // SECURE KEY ACCESS
         const apiKey = process.env.GEMINI_API_KEY; 
 
         if (!apiKey) {
-            console.error("API Key is missing in Vercel Environment Variables");
-            return new Response(JSON.stringify({ reply: "Configuration Error: API Key missing." }), { status: 500 });
+             return new Response(JSON.stringify({ reply: "Configuration Error: API Key missing." }), { status: 500 });
         }
 
-        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`, {
+        // SWITCHED TO gemini-1.5-flash for better free-tier rate limits
+        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -75,6 +74,13 @@ export default async function handler(req) {
         
         if (data.error) {
             console.error("Gemini API Error:", JSON.stringify(data.error, null, 2));
+            // Return specific message if quota is hit
+            if (data.error.code === 429) {
+                return new Response(JSON.stringify({ reply: "I'm overwhelmed with fans right now! Please ask me again in a minute." }), { 
+                    status: 429,
+                    headers: { 'Content-Type': 'application/json' }
+                });
+            }
             return new Response(JSON.stringify({ reply: "I'm currently updating my tactics board. Please try again in a moment." }), { 
                 status: 500,
                 headers: { 'Content-Type': 'application/json' }
