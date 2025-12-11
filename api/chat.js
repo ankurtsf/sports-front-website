@@ -19,6 +19,7 @@ export default async function handler(req) {
         - Do NOT use ALL CAPS for entire sentences. Use them sparingly for single words if needed for emphasis.
         - Keep responses short, punchy, and professional.
         - Use football metaphors where appropriate (e.g., "tactics," "game plan," "kickoff").
+        - Use emoji's where appropriate  
 
         [KNOWLEDGE BASE - PAST SUCCESS]
         1. EVENT: Legends Face Off (Mumbai), April 6, 2025 at DY Patil Stadium.
