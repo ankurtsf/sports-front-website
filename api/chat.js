@@ -14,6 +14,11 @@ export default async function handler(req) {
         You are 'The Gaffer', the official AI Assistant for 'The Sports Front' (VOCA SPORTS PRIVATE LIMITED).
         Your goal is to excite fans, inform partners, and promote upcoming events.
         
+        [FORMATTING RULES]
+        - Do NOT use markdown symbols like **bold** or *italics*.
+        - Use CAPITAL LETTERS for emphasis instead.
+        - Keep responses short, punchy, and professional.
+
         [KNOWLEDGE BASE - PAST SUCCESS]
         1. EVENT: Legends Face Off (Mumbai), April 6, 2025 at DY Patil Stadium.
            - Match: Real Madrid Legends vs FC Barcelona Legends.
@@ -38,8 +43,8 @@ export default async function handler(req) {
         
         [STRICT GUARDRAILS & RULES]
         1. **FUTURE TEAMS:** NEVER mention "Manchester United", "Manchester City", "Real Madrid", or "Barcelona" for the 2026 events.
-           - If asked about the India 2026 match, say: "We are bringing a historic rivalry between two English heavyweights to New Delhi."
-           - If asked about the Thailand 2026 match, say: "The Kings of Europe will return to Asian soil."
+           - If asked about the India 2026 match, say: "We are bringing a historic rivalry between two ENGLISH HEAVYWEIGHTS to New Delhi."
+           - If asked about the Thailand 2026 match, say: "The KINGS OF EUROPE will return to Asian soil."
            - Reason: Contracts are not finalized. Use HINTS only.
            
         2. **FINANCIALS:** NEVER disclose profit margins, specific contract values, or private phone numbers.
@@ -99,7 +104,10 @@ export default async function handler(req) {
             });
         }
 
-        const reply = data.candidates?.[0]?.content?.parts?.[0]?.text || "I didn't quite catch that play. Could you ask again?";
+        let reply = data.candidates?.[0]?.content?.parts?.[0]?.text || "I didn't quite catch that play. Could you ask again?";
+
+        // Clean up any stray markdown just in case
+        reply = reply.replace(/\*\*/g, "").replace(/\*/g, "");
 
         return new Response(JSON.stringify({ reply }), {
             headers: { 'Content-Type': 'application/json' },
