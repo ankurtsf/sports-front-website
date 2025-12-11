@@ -9,7 +9,7 @@
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* ... (ALL CSS STYLES REMAIN EXACTLY THE SAME AS BEFORE) ... */
+        /* ... (Keep existing CSS for Hero, Nav, etc.) ... */
         :root { --brand-green: #00D084; --brand-red: #FF3333; --deep-black: #0a0a0a; --surface-dark: #141414; --surface-light: #1f1f1f; --text-white: #FFFFFF; --text-gray: #B0B0B0; --man-red: #DA291C; --man-blue: #6CABDD; --rm-gold: #FEBE10; --fcb-blue: #004D98; --fcb-red: #DB0030; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
@@ -114,20 +114,56 @@
         .footer-links a { color: #888; text-decoration: none; transition: color 0.3s; }
         .footer-links a:hover { color: var(--brand-green); }
         .footer-contact { margin-bottom: 2rem; color: #aaa; }
+
+        /* --- CHATBOT UI FIXES --- */
         .chatbot-btn { position: fixed; bottom: 20px; right: 20px; width: 60px; height: 60px; background: var(--brand-green); color: var(--deep-black); border-radius: 50%; border: none; box-shadow: 0 4px 15px rgba(0, 208, 132, 0.4); font-size: 1.5rem; cursor: pointer; z-index: 2000; transition: transform 0.3s ease; display: flex; align-items: center; justify-content: center; }
         .chatbot-btn:hover { transform: scale(1.1); }
-        .chatbot-container { display: none; position: fixed; bottom: 90px; right: 20px; width: 350px; height: 500px; background: #1a1a1a; border-radius: 12px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5); z-index: 2000; overflow: hidden; border: 1px solid #333; flexDirection: column; }
+        
+        /* Updated Container Styling to force proper layout */
+        .chatbot-container { 
+            display: none; position: fixed; bottom: 90px; right: 20px; 
+            width: 350px; height: 500px; 
+            background: #1a1a1a; border-radius: 12px; 
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5); 
+            z-index: 2000; overflow: hidden; border: 1px solid #333; 
+            flex-direction: column; /* CRITICAL: Forces vertical stacking */
+        }
         .chatbot-container.active { display: flex; }
-        .chat-header { background: var(--deep-black); padding: 15px; border-bottom: 1px solid #333; display: flex; justify-content: space-between; align-items: center; flex-shrink: 0; height: 60px; }
+        
+        /* Chat Header */
+        .chat-header { 
+            background: var(--deep-black); padding: 15px; 
+            border-bottom: 1px solid #333; 
+            display: flex; justify-content: space-between; align-items: center; 
+            flex-shrink: 0; /* Prevents header from shrinking */
+            height: 60px;
+        }
         .chat-header h4 { font-size: 1rem; margin: 0; color: white; font-family: 'Montserrat', sans-serif; font-weight: 700; }
         .close-chat { cursor: pointer; color: #888; font-size: 1.2rem; }
-        .chat-messages { flex: 1; padding: 15px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; }
+        
+        /* Messages Area */
+        .chat-messages { 
+            flex: 1; /* Takes up all available space between header and input */
+            padding: 15px; 
+            overflow-y: auto; 
+            display: flex; flex-direction: column; gap: 10px; 
+        }
         .message { max-width: 80%; padding: 10px 15px; border-radius: 12px; font-size: 0.9rem; line-height: 1.4; }
         .message.bot { background: #333; color: white; align-self: flex-start; border-bottom-left-radius: 2px; }
         .message.user { background: var(--brand-green); color: black; align-self: flex-end; border-bottom-right-radius: 2px; font-weight: 600; }
-        .chat-input-area { padding: 15px; background: var(--deep-black); border-top: 1px solid #333; display: flex; gap: 10px; flex-shrink: 0; min-height: 70px; }
+        
+        /* Input Area */
+        .chat-input-area { 
+            padding: 15px; 
+            background: var(--deep-black); 
+            border-top: 1px solid #333; 
+            display: flex; gap: 10px; 
+            flex-shrink: 0; /* Prevents input area from disappearing */
+            min-height: 70px;
+        }
         .chat-input { flex: 1; padding: 10px; border-radius: 6px; border: 1px solid #444; background: #222; color: white; outline: none; }
         .send-btn { background: var(--brand-green); color: black; border: none; padding: 0 15px; border-radius: 6px; cursor: pointer; font-weight: bold; }
+
         @media (max-width: 768px) {
             .header-container { padding: 1rem; }
             .logo-img { height: 60px; }
@@ -285,11 +321,11 @@
 
         <div class="stats-container">
             <div class="stat-item">
-                <span class="stat-number" data-target="30231">0</span>
+                <span class="stat-number" data-target="25109">0</span>
                 <span class="stat-label">Live Attendance</span>
             </div>
             <div class="stat-item">
-                <span class="stat-number" data-target="20000000">0</span>
+                <span class="stat-number" data-target="22000000">0</span>
                 <span class="stat-label">Digital Reach</span>
             </div>
             <div class="stat-item">
@@ -540,7 +576,8 @@
                             }
                             requestAnimationFrame(updateCount);
                         } else {
-                            if(target === 30231) entry.target.innerText = "30,231+";
+                            // Manual formatting for final values based on target
+                            if(target === 30231) entry.target.innerText = "25,109+";
                             else if(target === 20000000) entry.target.innerText = "22M+";
                             else if(target === 620) entry.target.innerText = "620";
                             else if(target === 950000) entry.target.innerText = "950K+";

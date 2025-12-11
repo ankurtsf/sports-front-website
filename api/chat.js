@@ -2,6 +2,9 @@ export const config = {
     runtime: 'edge',
 };
 
+// Helper for delay
+const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
 export default async function handler(req) {
     try {
         const { messages } = await req.json();
@@ -46,6 +49,7 @@ export default async function handler(req) {
         
         5. CONTACT
            - Email: info@thesportsfront.com
+           - Location: Delhi, India.
         
         [GUARDRAILS]
         - NEVER disclose financial margins or private phone numbers.
@@ -56,11 +60,14 @@ export default async function handler(req) {
         const apiKey = process.env.GEMINI_API_KEY; 
 
         if (!apiKey) {
-             return new Response(JSON.stringify({ reply: "Configuration Error: API Key missing." }), { status: 500 });
+            return new Response(JSON.stringify({ reply: "Configuration Error: API Key missing." }), { status: 500 });
         }
 
-        // SWITCHED TO gemini-1.5-flash for better free-tier rate limits
-        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`, {
+        // UPDATED: Using 'gemini-2.0-flash-lite-preview-02-05' for better quota handling
+        const modelName = "gemini-2.0-flash-lite-preview-02-05";
+        const url = `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${apiKey}`;
+
+        let response = await fetch(url, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -70,13 +77,26 @@ export default async function handler(req) {
             })
         });
 
+        // Simple Retry Logic for Quota (429)
+        if (response.status === 429) {
+            await delay(2000); // Wait 2 seconds
+            response = await fetch(url, { // Retry once
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    contents: [
+                        { role: "user", parts: [{ text: systemPrompt + "\n\nUser Question: " + userMessage }] }
+                    ]
+                })
+            });
+        }
+
         const data = await response.json();
         
         if (data.error) {
             console.error("Gemini API Error:", JSON.stringify(data.error, null, 2));
-            // Return specific message if quota is hit
             if (data.error.code === 429) {
-                return new Response(JSON.stringify({ reply: "I'm overwhelmed with fans right now! Please ask me again in a minute." }), { 
+                 return new Response(JSON.stringify({ reply: "I'm overwhelmed with fans right now! Please wait a moment and try again." }), { 
                     status: 429,
                     headers: { 'Content-Type': 'application/json' }
                 });
