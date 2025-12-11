@@ -65,10 +65,10 @@ export default async function handler(req) {
         - Keep answers short, punchy, and professional.
         `;
 
-        // UPDATED API KEY
         const apiKey = "AIzaSyB1DHHZ2FbOSFOH2ilJ1q4jXOk02cHxpNY"; 
 
-        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`, {
+        // UPDATED: Using 'gemini-pro' model for better stability
+        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${apiKey}`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -81,7 +81,7 @@ export default async function handler(req) {
         const data = await response.json();
         
         if (data.error) {
-            console.error("Gemini API Error:", data.error);
+            console.error("Gemini API Error Detail:", JSON.stringify(data.error, null, 2));
             return new Response(JSON.stringify({ reply: "I'm currently updating my tactics board. Please try again in a moment." }), { 
                 status: 500,
                 headers: { 'Content-Type': 'application/json' }
@@ -95,7 +95,7 @@ export default async function handler(req) {
         });
 
     } catch (error) {
-        console.error("Server Error:", error);
+        console.error("Server Error Detail:", error);
         return new Response(JSON.stringify({ reply: "Connection timeout. The stadium is full!" }), { 
             status: 500,
             headers: { 'Content-Type': 'application/json' }
