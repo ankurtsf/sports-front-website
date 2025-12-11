@@ -19,13 +19,6 @@
             --surface-light: #1f1f1f;
             --text-white: #FFFFFF;
             --text-gray: #B0B0B0;
-            
-            /* Team Hint Colors */
-            --man-red: #DA291C;
-            --man-blue: #6CABDD;
-            --rm-gold: #FEBE10;
-            --fcb-blue: #004D98;
-            --fcb-red: #DB0030;
         }
 
         * {
@@ -106,7 +99,7 @@
             color: var(--brand-green);
         }
 
-        /* Mobile Menu Toggle (Hidden on Desktop) */
+        /* Mobile Menu Toggle */
         .mobile-menu-btn {
             display: none;
             background: none;
@@ -203,7 +196,7 @@
             z-index: 3;
             max-width: 1000px;
             padding: 2rem;
-            margin-top: 60px; /* Space for fixed header */
+            margin-top: 60px;
         }
 
         .hero h1 {
@@ -578,7 +571,7 @@
 
         .cap-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Adjusted for better mobile stacking */
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 2rem;
             max-width: 1400px;
             margin: 4rem auto 0;
@@ -825,7 +818,7 @@
             margin: 0 auto;
         }
 
-        /* Chatbot Button */
+        /* Chatbot Button & Container (Custom Implementation) */
         .chatbot-btn {
             position: fixed;
             bottom: 20px;
@@ -850,7 +843,6 @@
             transform: scale(1.1);
         }
 
-        /* Chatbot Container */
         .chatbot-container {
             display: none;
             position: fixed;
@@ -858,22 +850,100 @@
             right: 20px;
             width: 350px;
             height: 500px;
-            background: white;
+            background: #1a1a1a;
             border-radius: 12px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
             z-index: 2000;
             overflow: hidden;
-            border: 1px solid #ddd;
+            border: 1px solid #333;
+            flex-direction: column;
         }
 
         .chatbot-container.active {
-            display: block;
+            display: flex;
         }
-
-        .chatbot-iframe {
-            width: 100%;
-            height: 100%;
+        
+        .chat-header {
+            background: var(--deep-black);
+            padding: 15px;
+            border-bottom: 1px solid #333;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .chat-header h4 {
+            font-size: 1rem;
+            margin: 0;
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+        
+        .close-chat {
+            cursor: pointer;
+            color: #888;
+            font-size: 1.2rem;
+        }
+        
+        .chat-messages {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .message {
+            max-width: 80%;
+            padding: 10px 15px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+        
+        .message.bot {
+            background: #333;
+            color: white;
+            align-self: flex-start;
+            border-bottom-left-radius: 2px;
+        }
+        
+        .message.user {
+            background: var(--brand-green);
+            color: black;
+            align-self: flex-end;
+            border-bottom-right-radius: 2px;
+            font-weight: 600;
+        }
+        
+        .chat-input-area {
+            padding: 15px;
+            background: var(--deep-black);
+            border-top: 1px solid #333;
+            display: flex;
+            gap: 10px;
+        }
+        
+        .chat-input {
+            flex: 1;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid #444;
+            background: #222;
+            color: white;
+            outline: none;
+        }
+        
+        .send-btn {
+            background: var(--brand-green);
+            color: black;
             border: none;
+            padding: 0 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
         }
 
         /* Footer */
@@ -955,7 +1025,6 @@
                     <a href="#about" onclick="toggleMenu()">About</a>
                     <a href="#partners" onclick="toggleMenu()">Partners</a>
                 </div>
-                <!-- Updated Link -->
                 <a href="https://forms.office.com/r/NtDiPXFhKt" target="_blank" class="cta-btn">Join Waitlist</a>
             </nav>
         </div>
@@ -1178,13 +1247,10 @@
             <img src="Images/partner-nivea.jpg" alt="Nivea" class="partner-logo-img">
             <img src="Images/partner-medulance.png" alt="Medulance" class="partner-logo-img">
             <img src="Images/partner-dypatil.png" alt="DY Patil" class="partner-logo-img">
-            <!-- RedFM Added (JPG) -->
-            <img src="Images/partner-redfm.jpg" alt="Red FM" class="partner-logo-img">
-            <!-- Topps Added -->
-            <img src="Images/partner-topps.png" alt="Topps" class="partner-logo-img">
-            <!-- Capital Group -->
             <img src="Images/partner-eventnetwork.png" alt="Event Network" class="partner-logo-img">
             <img src="Images/partner-flixbus.png" alt="FlixBus" class="partner-logo-img">
+            <img src="Images/partner-redfm.jpg" alt="Red FM" class="partner-logo-img">
+            <img src="Images/partner-topps.png" alt="Topps" class="partner-logo-img">
             <img src="Images/partner-capital.png" alt="Capital Group" class="partner-logo-img">
         </div>
     </section>
@@ -1224,12 +1290,19 @@
 
     <!-- Chatbot Container -->
     <div class="chatbot-container" id="chatbot">
-        <!-- 
-            IMPORTANT: Go to Microsoft Copilot Studio -> Channels -> Custom Website
-            Copy the src="..." URL from the iframe code they give you.
-            Paste it below where it says PASTE_MICROSOFT_COPILOT_IFRAME_SRC_HERE 
-        -->
-        <iframe src="PASTE_MICROSOFT_COPILOT_IFRAME_SRC_HERE" class="chatbot-iframe"></iframe>
+        <div class="chat-header">
+            <h4>Sports Front AI</h4>
+            <span class="close-chat" onclick="toggleChat()">&times;</span>
+        </div>
+        <div class="chat-messages" id="chat-messages">
+            <div class="message bot">
+                Hi! I'm the Sports Front AI. Ask me about our past events, 2026 roadmap, or how to become a partner!
+            </div>
+        </div>
+        <div class="chat-input-area">
+            <input type="text" id="user-input" class="chat-input" placeholder="Ask something..." onkeypress="handleKeyPress(event)">
+            <button class="send-btn" onclick="sendMessage()">Send</button>
+        </div>
     </div>
 
     <script>
@@ -1241,6 +1314,57 @@
         // Toggle Chatbot
         function toggleChat() {
             document.getElementById('chatbot').classList.toggle('active');
+        }
+
+        // --- CUSTOM CHATBOT LOGIC (Connecting to Vercel API) ---
+        async function sendMessage() {
+            const inputField = document.getElementById('user-input');
+            const message = inputField.value.trim();
+            if (!message) return;
+
+            // Add user message to UI
+            addMessage(message, 'user');
+            inputField.value = '';
+
+            // Show typing indicator
+            const loadingMsg = addMessage('Thinking...', 'bot');
+
+            try {
+                // Call our secure Vercel API
+                const response = await fetch('/api/chat', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ messages: [{ content: message }] })
+                });
+
+                const data = await response.json();
+                
+                // Remove loading message
+                loadingMsg.remove();
+
+                if (data.reply) {
+                    addMessage(data.reply, 'bot');
+                } else {
+                    addMessage("I'm having a little trouble connecting to the stadium. Please try again.", 'bot');
+                }
+            } catch (error) {
+                loadingMsg.remove();
+                addMessage("Connection error. Please try again later.", 'bot');
+            }
+        }
+
+        function addMessage(text, sender) {
+            const messagesContainer = document.getElementById('chat-messages');
+            const msgDiv = document.createElement('div');
+            msgDiv.classList.add('message', sender);
+            msgDiv.innerText = text;
+            messagesContainer.appendChild(msgDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            return msgDiv;
+        }
+
+        function handleKeyPress(e) {
+            if (e.key === 'Enter') sendMessage();
         }
 
         // Animated Statistics (Intersection Observer)
