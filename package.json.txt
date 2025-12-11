@@ -1,0 +1,9 @@
+{
+  "name": "the-sports-front",
+  "version": "1.0.0",
+  "description": "Sports Front Website with AI Chatbot",
+  "scripts": {
+    "start": "echo 'No start script needed'"
+  },
+  "dependencies": {}
+}

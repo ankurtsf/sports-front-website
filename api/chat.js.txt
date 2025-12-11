@@ -1,5 +1,5 @@
 export const config = {
-    runtime: 'edge',
+    runtime: 'edge', // This is critical for Vercel Edge Functions
 };
 
 export default async function handler(req) {
@@ -19,7 +19,7 @@ export default async function handler(req) {
            - Match: Real Madrid Legends vs FC Barcelona Legends.
            - Attendance: 25,109 Actual (Marketing: 30k+). 71% Capacity.
            - Digital Reach: 22 Million+ Impressions.
-           - PR Value: INR 620 Million (62 Crores).
+           - PR Media Value: INR 620 Million (62 Crores).
            - Broadcast Views: 950,000+ (JioCinema/Star Sports).
            - FCB Squad: Carles Puyol (C), Xavi Hernandez, Rivaldo, Phillip Cocu, Patrick Kluivert, Ricardo Quaresma, Javier Saviola, Jose Edmilson, Frank de Boer, Ludovic Giuly, Gaizka Mendieta, Sergi Barjuan.
            - Real Madrid Squad: Luis Figo (C), Michael Owen, Pepe, Fernando Morientes, Christian Karembeu, Pedro Contreras, Kiko Casilla, Francisco Pavon, Fernando Sanz, Pedro Munitis, Ruben de la Red.
@@ -69,7 +69,10 @@ export default async function handler(req) {
         
         if (data.error) {
             console.error("Gemini API Error:", data.error);
-            return new Response(JSON.stringify({ reply: "I'm currently updating my tactics board. Please try again in a moment." }), { status: 500 });
+            return new Response(JSON.stringify({ reply: "I'm currently updating my tactics board. Please try again in a moment." }), { 
+                status: 500,
+                headers: { 'Content-Type': 'application/json' }
+            });
         }
 
         const reply = data.candidates?.[0]?.content?.parts?.[0]?.text || "I didn't quite catch that play. Could you ask again?";
@@ -80,6 +83,9 @@ export default async function handler(req) {
 
     } catch (error) {
         console.error("Server Error:", error);
-        return new Response(JSON.stringify({ reply: "Connection timeout. The stadium is full!" }), { status: 500 });
+        return new Response(JSON.stringify({ reply: "Connection timeout. The stadium is full!" }), { 
+            status: 500,
+            headers: { 'Content-Type': 'application/json' }
+        });
     }
 }
