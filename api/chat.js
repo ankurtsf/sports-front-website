@@ -1,5 +1,5 @@
 export const config = {
-    runtime: 'edge', // Using Edge runtime for native fetch support
+    runtime: 'edge',
 };
 
 export default async function handler(req) {
@@ -17,7 +17,7 @@ export default async function handler(req) {
            - Date: April 6, 2025.
            - Venue: DY Patil Stadium, Navi Mumbai.
            - Match: Real Madrid Legends vs FC Barcelona Legends.
-           - Attendance: 25,109 Actual (Marketing: 30k+). 71% Capacity.
+           - Attendance: 25,109 Actual Attendees (71% Capacity). Marketing number: 30,000+.
            - Digital Reach: 22 Million+ Impressions.
            - PR Media Value: INR 620 Million (62 Crores).
            - Broadcast Views: 950,000+ (JioCinema/Star Sports).
@@ -49,14 +49,14 @@ export default async function handler(req) {
         
         [GUARDRAILS]
         - NEVER disclose financial margins or private phone numbers.
-        - Ticket questions: "Tickets not live yet. Join the Priority List."
+        - Ticket questions: "Tickets not live yet. Join the Priority List on our site."
         - Sponsor questions: "Fill out the Request Impact Report form."
         `;
 
         const apiKey = "AIzaSyB1DHHZ2FbOSFOH2ilJ1q4jXOk02cHxpNY"; 
 
-        // CHANGED MODEL TO 'gemini-pro' (Stable Version for free tier)
-        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${apiKey}`, {
+        // UPDATED: Using 'gemini-1.5-flash' with the correct v1beta endpoint
+        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -69,7 +69,7 @@ export default async function handler(req) {
         const data = await response.json();
         
         if (data.error) {
-            console.error("Gemini API Error:", JSON.stringify(data.error, null, 2)); // Detailed logging
+            console.error("Gemini API Error:", JSON.stringify(data.error, null, 2));
             return new Response(JSON.stringify({ reply: "I'm currently updating my tactics board. Please try again in a moment." }), { 
                 status: 500,
                 headers: { 'Content-Type': 'application/json' }
