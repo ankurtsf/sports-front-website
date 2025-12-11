@@ -15,18 +15,22 @@
         html { scroll-behavior: smooth; }
         body { font-family: 'Open Sans', sans-serif; line-height: 1.6; background-color: var(--deep-black); color: var(--text-white); overflow-x: hidden; }
         h1, h2, h3, h4, h5 { font-family: 'Montserrat', sans-serif; text-transform: uppercase; }
+
         header { position: fixed; top: 0; left: 0; right: 0; background: rgba(10, 10, 10, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255,255,255,0.1); z-index: 1000; transition: all 0.3s ease; }
         .header-container { max-width: 1400px; margin: 0 auto; padding: 0.8rem 2rem; display: flex; justify-content: space-between; align-items: center; position: relative; }
         .logo-img { height: 80px; width: auto; object-fit: contain; }
+
         nav { display: flex; align-items: center; gap: 2rem; }
         .nav-links { display: flex; list-style: none; gap: 2rem; }
         .nav-links a { text-decoration: none; color: var(--text-white); font-weight: 600; font-size: 0.9rem; letter-spacing: 0.5px; transition: color 0.3s ease; }
         .nav-links a:hover { color: var(--brand-green); }
         .mobile-menu-btn { display: none; background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; }
+        
         .cta-btn { background: var(--brand-green); color: var(--deep-black); padding: 0.7rem 1.8rem; border: none; border-radius: 4px; font-weight: 800; font-family: 'Montserrat', sans-serif; cursor: pointer; transition: all 0.3s ease; text-decoration: none; text-transform: uppercase; letter-spacing: 1px; display: inline-block; text-align: center; }
         .cta-btn:hover { background: #fff; transform: translateY(-2px); box-shadow: 0 0 15px rgba(0, 208, 132, 0.4); }
         .cta-btn-outline { background: transparent; color: var(--brand-green); border: 2px solid var(--brand-green); padding: 0.7rem 1.8rem; border-radius: 4px; font-weight: 800; font-family: 'Montserrat', sans-serif; cursor: pointer; transition: all 0.3s ease; text-decoration: none; text-transform: uppercase; letter-spacing: 1px; display: inline-block; text-align: center; }
         .cta-btn-outline:hover { background: var(--brand-green); color: var(--deep-black); box-shadow: 0 0 15px rgba(0, 208, 132, 0.4); }
+
         .hero { position: relative; height: 100vh; min-height: 600px; display: flex; align-items: center; justify-content: center; overflow: hidden; text-align: center; }
         .hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(0deg, var(--deep-black) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.7) 100%); z-index: 2; }
         .hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; animation: slowZoom 20s infinite alternate; }
@@ -37,14 +41,17 @@
         .highlight-text::before { content: attr(data-text); position: absolute; left: 0; top: 0; width: 0; height: 100%; color: var(--brand-green); overflow: hidden; border-right: 2px solid var(--brand-green); animation: fillText 3s linear infinite alternate; -webkit-text-stroke: 0; }
         @keyframes fillText { 0% { width: 0; } 50% { width: 100%; } 100% { width: 100%; } }
         .hero h2 { font-size: 1.5rem; font-weight: 600; color: #ddd; margin-bottom: 2rem; letter-spacing: 2px; }
+
         .status-box { background: rgba(0, 208, 132, 0.1); border: 1px solid var(--brand-green); backdrop-filter: blur(10px); padding: 1.5rem 3rem; border-radius: 12px; margin: 2rem auto; display: inline-block; min-width: 300px; box-shadow: 0 0 20px rgba(0, 208, 132, 0.15); }
         .status-indicator { display: inline-block; width: 12px; height: 12px; background-color: var(--brand-green); border-radius: 50%; margin-right: 12px; box-shadow: 0 0 10px var(--brand-green); animation: pulse 2s infinite; }
         @keyframes pulse { 0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 208, 132, 0.7); } 70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(0, 208, 132, 0); } 100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 208, 132, 0); } }
         .status-text { font-family: 'Montserrat', sans-serif; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; font-size: 1.2rem; color: white; }
         .status-sub { display: block; font-size: 0.9rem; color: #ccc; margin-top: 8px; letter-spacing: 1px; font-weight: 600; }
+
         .ticker-wrap { position: relative; background: var(--brand-green); color: var(--deep-black); height: 40px; overflow: hidden; display: flex; align-items: center; }
         .ticker-item { font-weight: 800; text-transform: uppercase; letter-spacing: 1px; padding: 0 2rem; white-space: nowrap; animation: ticker 20s linear infinite; }
         @keyframes ticker { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
+
         .teaser-section, .success-section, .media-section, .capabilities-section, .team-section, .contact-section, .partners-section { padding: 6rem 2rem; }
         .teaser-section { background: var(--surface-dark); }
         .section-header { text-align: center; margin-bottom: 4rem; }
@@ -116,9 +123,41 @@
         .footer-contact { margin-bottom: 2rem; color: #aaa; }
 
         /* --- CHATBOT UI FIXES --- */
-        .chatbot-btn { position: fixed; bottom: 20px; right: 20px; width: 60px; height: 60px; background: var(--brand-green); color: var(--deep-black); border-radius: 50%; border: none; box-shadow: 0 4px 15px rgba(0, 208, 132, 0.4); font-size: 1.5rem; cursor: pointer; z-index: 2000; transition: transform 0.3s ease; display: flex; align-items: center; justify-content: center; }
+        .chatbot-btn { 
+            position: fixed; bottom: 20px; right: 20px; width: 60px; height: 60px; 
+            background: var(--brand-green); color: var(--deep-black); 
+            border-radius: 50%; border: none; box-shadow: 0 4px 15px rgba(0, 208, 132, 0.4); 
+            font-size: 1.5rem; cursor: pointer; z-index: 2000; transition: transform 0.3s ease; 
+            display: flex; align-items: center; justify-content: center; 
+        }
         .chatbot-btn:hover { transform: scale(1.1); }
         
+        /* Stylized Text Label for "Ask The Gaffer" */
+        .chatbot-label {
+            position: fixed;
+            bottom: 35px;
+            right: 90px; /* To the left of the button */
+            background: rgba(0, 0, 0, 0.85);
+            color: var(--brand-green);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            z-index: 1999;
+            pointer-events: none;
+            opacity: 0;
+            border: 1px solid rgba(0, 208, 132, 0.3);
+            white-space: nowrap;
+            animation: fadeInOut 5s infinite;
+        }
+
+        @keyframes fadeInOut {
+            0%, 100% { opacity: 0; transform: translateX(10px); }
+            15%, 85% { opacity: 1; transform: translateX(0); }
+        }
+
         /* Updated Container Styling to force proper layout */
         .chatbot-container { 
             display: none; position: fixed; bottom: 90px; right: 20px; 
@@ -186,6 +225,7 @@
             .cap-card { height: 400px; }
             .video-container { margin: 1rem auto; }
             .chatbot-container { width: 90%; right: 5%; bottom: 80px; }
+            .chatbot-label { display: none; } /* Hide label on mobile */
         }
     </style>
 </head>
@@ -195,6 +235,7 @@
     <header>
         <div class="header-container">
             <div class="logo-container">
+                <!-- UPDATED: Pointing to Images/ folder -->
                 <img src="Images/logo-header.svg" alt="The Sports Front" class="logo-img">
             </div>
             
@@ -473,19 +514,20 @@
     </footer>
 
     <!-- Chatbot Button -->
+    <div class="chatbot-label">Ask The Gaffer</div>
     <button class="chatbot-btn" onclick="toggleChat()">
-        <i class="fas fa-comment-dots"></i>
+        <i class="fas fa-user-tie"></i>
     </button>
 
     <!-- Chatbot Container -->
     <div class="chatbot-container" id="chatbot">
         <div class="chat-header">
-            <h4>Sports Front AI</h4>
+            <h4>Ask The Gaffer</h4>
             <span class="close-chat" onclick="toggleChat()">&times;</span>
         </div>
         <div class="chat-messages" id="chat-messages">
             <div class="message bot">
-                Hi! I'm the Sports Front AI. Ask me about our past events, 2026 roadmap, or how to become a partner!
+                Hi! I'm The Gaffer. Ask me about our past events, 2026 roadmap, or how to become a partner!
             </div>
         </div>
         <div class="chat-input-area">
@@ -576,7 +618,6 @@
                             }
                             requestAnimationFrame(updateCount);
                         } else {
-                            // Manual formatting for final values based on target
                             if(target === 30231) entry.target.innerText = "25,109+";
                             else if(target === 20000000) entry.target.innerText = "22M+";
                             else if(target === 620) entry.target.innerText = "620";
