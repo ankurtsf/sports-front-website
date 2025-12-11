@@ -54,19 +54,14 @@ export default async function handler(req) {
         `;
 
         const apiKey = "AIzaSyB1DHHZ2FbOSFOH2ilJ1q4jXOk02cHxpNY"; 
-        
-        // UPDATED URL: Using the explicit v1beta path for gemini-1.5-flash
-        const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
 
-        const response = await fetch(url, {
+        // UPDATED: Using 'gemini-2.0-flash' which is CONFIRMED available in your list
+        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
                 contents: [
-                    {
-                        role: "user",
-                        parts: [{ text: systemPrompt + "\n\nUser Question: " + userMessage }]
-                    }
+                    { role: "user", parts: [{ text: systemPrompt + "\n\nUser Question: " + userMessage }] }
                 ]
             })
         });
@@ -81,7 +76,6 @@ export default async function handler(req) {
             });
         }
 
-        // Safety check for candidates array
         const reply = data.candidates?.[0]?.content?.parts?.[0]?.text || "I didn't quite catch that play. Could you ask again?";
 
         return new Response(JSON.stringify({ reply }), {
