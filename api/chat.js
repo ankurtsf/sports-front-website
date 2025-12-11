@@ -55,7 +55,7 @@ export default async function handler(req) {
 
         const apiKey = "AIzaSyB1DHHZ2FbOSFOH2ilJ1q4jXOk02cHxpNY"; 
 
-        // CHANGED MODEL TO 'gemini-pro' (Stable Version)
+        // CHANGED MODEL TO 'gemini-pro' (Stable Version for free tier)
         const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${apiKey}`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
