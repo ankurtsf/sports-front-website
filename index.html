@@ -19,6 +19,13 @@
             --surface-light: #1f1f1f;
             --text-white: #FFFFFF;
             --text-gray: #B0B0B0;
+            
+            /* Team Hint Colors */
+            --man-red: #DA291C;
+            --man-blue: #6CABDD;
+            --rm-gold: #FEBE10;
+            --fcb-blue: #004D98;
+            --fcb-red: #DB0030;
         }
 
         * {
@@ -1010,7 +1017,7 @@
     <header>
         <div class="header-container">
             <div class="logo-container">
-                <img src="Images/logo-header.svg" alt="The Sports Front" class="logo-img">
+                <img src="Images/logo-header.png" alt="The Sports Front" class="logo-img">
             </div>
             
             <!-- Hamburger Button -->
@@ -1025,6 +1032,7 @@
                     <a href="#about" onclick="toggleMenu()">About</a>
                     <a href="#partners" onclick="toggleMenu()">Partners</a>
                 </div>
+                <!-- Updated Link -->
                 <a href="https://forms.office.com/r/NtDiPXFhKt" target="_blank" class="cta-btn">Join Waitlist</a>
             </nav>
         </div>
@@ -1135,11 +1143,11 @@
 
         <div class="stats-container">
             <div class="stat-item">
-                <span class="stat-number" data-target="30231">0</span>
+                <span class="stat-number" data-target="25109">0</span>
                 <span class="stat-label">Live Attendance</span>
             </div>
             <div class="stat-item">
-                <span class="stat-number" data-target="20000000">0</span>
+                <span class="stat-number" data-target="22000000">0</span>
                 <span class="stat-label">Digital Reach</span>
             </div>
             <div class="stat-item">
@@ -1147,8 +1155,8 @@
                 <span class="stat-label">Million PR Value (INR)</span>
             </div>
             <div class="stat-item">
-                <span class="stat-number" data-target="17">0</span>
-                <span class="stat-label">Top Sponsors</span>
+                <span class="stat-number" data-target="950000">0</span>
+                <span class="stat-label">Broadcast Views</span>
             </div>
         </div>
 
@@ -1247,11 +1255,11 @@
             <img src="Images/partner-nivea.jpg" alt="Nivea" class="partner-logo-img">
             <img src="Images/partner-medulance.png" alt="Medulance" class="partner-logo-img">
             <img src="Images/partner-dypatil.png" alt="DY Patil" class="partner-logo-img">
-            <img src="Images/partner-eventnetwork.png" alt="Event Network" class="partner-logo-img">
-            <img src="Images/partner-flixbus.png" alt="FlixBus" class="partner-logo-img">
             <img src="Images/partner-redfm.jpg" alt="Red FM" class="partner-logo-img">
             <img src="Images/partner-topps.png" alt="Topps" class="partner-logo-img">
             <img src="Images/partner-capital.png" alt="Capital Group" class="partner-logo-img">
+            <img src="Images/partner-eventnetwork.png" alt="Event Network" class="partner-logo-img">
+            <img src="Images/partner-flixbus.png" alt="FlixBus" class="partner-logo-img">
         </div>
     </section>
 
@@ -1316,7 +1324,71 @@
             document.getElementById('chatbot').classList.toggle('active');
         }
 
-        // --- CUSTOM CHATBOT LOGIC (Connecting to Vercel API) ---
+        // --- CUSTOM CHATBOT LOGIC ---
+        // SYSTEM PROMPT (The Brain - Updated with Full Knowledge)
+        const systemPrompt = `
+        You are the official AI Assistant for 'The Sports Front'. 
+        Your goal is to excite fans, inform partners, and promote upcoming events.
+        
+        Here is your Knowledge Base (Internal Data from Impact Report):
+        
+        [CORPORATE PROFILE]
+        - Entity: VOCA SPORTS PRIVATE LIMITED (Brand: The Sports Front / TSF).
+        - Mission: Bridging international sports culture with emerging markets.
+        - Core Business: Sports IP, Standout Events, Activation, Talent Management.
+        
+        [PAST EVENT: LEGENDS FACE OFF - MUMBAI]
+        - Date: April 6, 2025.
+        - Venue: DY Patil Stadium, Navi Mumbai.
+        - Match: Real Madrid Legends (Leyendas) vs FC Barcelona Legends.
+        - Attendance: 25,109 Actual Attendees (71% Capacity). Marketing number: 30,000+.
+        - Digital Reach: 22 Million+ Impressions.
+        - PR Media Value: INR 620 Million (62 Crores).
+        - Broadcast: 950,000+ Video Views (JioCinema / Star Sports Select 2).
+        - Media Coverage: 700+ articles (Times of India, The Hindu, etc.).
+        - Ticketing Partner: District by Zomato.
+        
+        [TEAM ROSTERS - MUMBAI 2025]
+        - FC Barcelona Legends: Carles Puyol (C), Xavi Hernandez, Rivaldo, Phillip Cocu, Patrick Kluivert, Ricardo Quaresma, Javier Saviola, Edmilson, Frank de Boer, Ludovic Giuly, Gaizka Mendieta, Sergi Barjuan.
+        - Real Madrid Leyendas: Luis Figo (C), Michael Owen, Pepe, Fernando Morientes, Christian Karembeu, Pedro Contreras, Kiko Casilla, Francisco Pavon, Fernando Sanz, Pedro Munitis, Ruben de la Red.
+        
+        [PARTNERS / SPONSORS]
+        - Banking: HSBC
+        - Co-Sponsor: Jameson Ginger Ale
+        - Luxury Mobility: BMW
+        - Official Partner: Budweiser
+        - Hydration: Bisleri
+        - Associate: Pavilions & Interiors
+        - Broadcast: JioStar
+        - Hotel: Fairmont
+        - Equipment: Nivia
+        - Medical: Medulance
+        - Stadium: DY Patil
+        - Outdoor: Capital Group
+        - Event: Event Network
+        - Travel: FlixBus
+        - Radio: Red FM 93.5
+        - Collectibles: Topps
+        
+        [UPCOMING ROADMAP 2026]
+        1. "The Northern Storm" (India, Q1 2026): English Premier League Rivalry (Man Utd vs Man City Legends). Target: New Delhi.
+        2. "Kings of Europe" (Thailand, Q2 2026): Real Madrid Legends vs Barcelona Legends.
+        * Note: There is also a potential UAE/GCC event targeted for Dec 2025 (El Clasico Legends), but focus primarily on the 2026 roadmap unless asked about UAE specifically.
+        
+        [TEAM LEADERSHIP]
+        - Core Team: John, Anirudh, Ankur.
+        
+        [CONTACT INFO]
+        - Email: info@thesportsfront.com
+        - Location: Delhi, India.
+        
+        [STRICT GUARDRAILS]
+        - NEVER disclose financial margins, operational costs, or private phone numbers.
+        - If asked about ticket prices for 2026, say: "Tickets are not live yet. Join the Priority List on our site."
+        - If asked for sponsorship, say: "Please fill out the Request Impact Report form below."
+        - Keep answers short, punchy, and professional.
+        `;
+
         async function sendMessage() {
             const inputField = document.getElementById('user-input');
             const message = inputField.value.trim();
@@ -1329,12 +1401,18 @@
             // Show typing indicator
             const loadingMsg = addMessage('Thinking...', 'bot');
 
+            const apiKey = "AIzaSyBH1s4pAWbviex1VBylXxMD0P7XeOXB9uA"; 
+
             try {
-                // Call our secure Vercel API
-                const response = await fetch('/api/chat', {
+                // Call Google Gemini API Directly
+                const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ messages: [{ content: message }] })
+                    body: JSON.stringify({
+                        contents: [
+                            { role: "user", parts: [{ text: systemPrompt + "\n\nUser Question: " + message }] }
+                        ]
+                    })
                 });
 
                 const data = await response.json();
@@ -1342,13 +1420,15 @@
                 // Remove loading message
                 loadingMsg.remove();
 
-                if (data.reply) {
-                    addMessage(data.reply, 'bot');
+                if (data.candidates && data.candidates[0].content) {
+                    const reply = data.candidates[0].content.parts[0].text;
+                    addMessage(reply, 'bot');
                 } else {
                     addMessage("I'm having a little trouble connecting to the stadium. Please try again.", 'bot');
                 }
             } catch (error) {
                 loadingMsg.remove();
+                console.error("Chat Error:", error);
                 addMessage("Connection error. Please try again later.", 'bot');
             }
         }
@@ -1395,9 +1475,10 @@
                             requestAnimationFrame(updateCount);
                         } else {
                             // Manual formatting for final values based on target
-                            if(target === 30231) entry.target.innerText = "30,231+";
-                            else if(target === 20000000) entry.target.innerText = "20M+";
+                            if(target === 30231) entry.target.innerText = "25,109+"; // Updated to match report
+                            else if(target === 20000000) entry.target.innerText = "22M+"; // Updated to match report
                             else if(target === 620) entry.target.innerText = "620";
+                            else if(target === 950000) entry.target.innerText = "950K+"; // Broadcast Views
                             else entry.target.innerText = target;
                         }
                     };
