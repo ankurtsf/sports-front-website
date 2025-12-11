@@ -49,14 +49,14 @@ export default async function handler(req) {
         
         [GUARDRAILS]
         - NEVER disclose financial margins or private phone numbers.
-        - Ticket questions: "Tickets not live yet. Join the Priority List on our site."
+        - Ticket questions: "Tickets not live yet. Join the Priority List."
         - Sponsor questions: "Fill out the Request Impact Report form."
         `;
 
         const apiKey = "AIzaSyB1DHHZ2FbOSFOH2ilJ1q4jXOk02cHxpNY"; 
 
-        // UPDATED: Using 'gemini-1.5-flash' with the correct v1beta endpoint
-        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`, {
+        // UPDATED: Using 'gemini-pro' which is the stable production model
+        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${apiKey}`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
