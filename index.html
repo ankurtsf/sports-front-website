@@ -139,7 +139,7 @@
             box-shadow: 0 0 15px rgba(0, 208, 132, 0.4);
         }
 
-        /* Secondary Button Style */
+        /* Secondary Button Style (Outlined) */
         .cta-btn-outline {
             background: transparent;
             color: var(--brand-green);
@@ -825,38 +825,6 @@
             margin: 0 auto;
         }
 
-        /* Footer */
-        footer {
-            background: black;
-            padding: 4rem 2rem 2rem 2rem;
-            text-align: center;
-            border-top: 1px solid #222;
-            color: #666;
-            font-size: 0.8rem;
-        }
-        
-        .footer-links {
-            margin-bottom: 2rem;
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-        }
-        
-        .footer-links a {
-            color: #888;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        
-        .footer-links a:hover {
-            color: var(--brand-green);
-        }
-        
-        .footer-contact {
-            margin-bottom: 2rem;
-            color: #aaa;
-        }
-
         /* Chatbot Button & Container (FIXED LAYOUT) */
         .chatbot-btn {
             position: fixed;
@@ -896,11 +864,10 @@
             overflow: hidden;
             border: 1px solid #333;
             flex-direction: column;
-            /* Flex layout ensures elements stack vertically */
         }
 
         .chatbot-container.active {
-            display: flex; /* Changed from block to flex for proper layout */
+            display: flex;
         }
         
         .chat-header {
@@ -910,7 +877,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-shrink: 0; /* Prevents header from shrinking */
+            flex-shrink: 0;
         }
         
         .chat-header h4 {
@@ -928,7 +895,7 @@
         }
         
         .chat-messages {
-            flex: 1; /* Takes up remaining space */
+            flex: 1; 
             padding: 15px;
             overflow-y: auto;
             display: flex;
@@ -965,7 +932,7 @@
             border-top: 1px solid #333;
             display: flex;
             gap: 10px;
-            flex-shrink: 0; /* Prevents input area from shrinking */
+            flex-shrink: 0;
         }
         
         .chat-input {
@@ -988,6 +955,39 @@
             font-weight: bold;
         }
 
+        /* Footer */
+        footer {
+            background: black;
+            padding: 4rem 2rem 2rem 2rem;
+            text-align: center;
+            border-top: 1px solid #222;
+            color: #666;
+            font-size: 0.8rem;
+        }
+        
+        .footer-links {
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+        
+        .footer-links a {
+            color: #888;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--brand-green);
+        }
+        
+        .footer-contact {
+            margin-bottom: 2rem;
+            color: #aaa;
+        }
+
+        /* MOBILE RESPONSIVE MEDIA QUERIES */
         @media (max-width: 768px) {
             .header-container { padding: 1rem; }
             .logo-img { height: 60px; }
@@ -1034,6 +1034,7 @@
                     <a href="#about" onclick="toggleMenu()">About</a>
                     <a href="#partners" onclick="toggleMenu()">Partners</a>
                 </div>
+                <!-- Updated Link -->
                 <a href="https://forms.office.com/r/NtDiPXFhKt" target="_blank" class="cta-btn">Join Waitlist</a>
             </nav>
         </div>
@@ -1162,6 +1163,7 @@
         </div>
 
         <div style="text-align: center; margin-top: 3rem;">
+            <!-- Partner Form Link Placeholder -->
             <a href="PASTE_PARTNER_FORM_LINK_HERE" target="_blank" class="cta-btn-outline">Request Impact Report</a>
         </div>
     </section>
@@ -1255,8 +1257,11 @@
             <img src="Images/partner-nivea.jpg" alt="Nivea" class="partner-logo-img">
             <img src="Images/partner-medulance.png" alt="Medulance" class="partner-logo-img">
             <img src="Images/partner-dypatil.png" alt="DY Patil" class="partner-logo-img">
+            <!-- RedFM Added (JPG) -->
             <img src="Images/partner-redfm.jpg" alt="Red FM" class="partner-logo-img">
+            <!-- Topps Added -->
             <img src="Images/partner-topps.png" alt="Topps" class="partner-logo-img">
+            <!-- Capital Group -->
             <img src="Images/partner-capital.png" alt="Capital Group" class="partner-logo-img">
             <img src="Images/partner-eventnetwork.png" alt="Event Network" class="partner-logo-img">
             <img src="Images/partner-flixbus.png" alt="FlixBus" class="partner-logo-img">
