@@ -53,7 +53,7 @@ export default async function handler(req) {
         - Sponsor questions: "Fill out the Request Impact Report form."
         `;
 
-        const apiKey = "AIzaSyBH1s4pAWbviex1VBylXxMD0P7XeOXB9uA"; 
+        const apiKey = "AIzaSyB1DHHZ2FbOSFOH2ilJ1q4jXOk02cHxpNY"; 
 
         const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`, {
             method: 'POST',
