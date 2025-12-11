@@ -1,5 +1,5 @@
 export const config = {
-    runtime: 'edge', // This is critical for Vercel Edge Functions
+    runtime: 'edge', // Using Edge runtime for native fetch support
 };
 
 export default async function handler(req) {
