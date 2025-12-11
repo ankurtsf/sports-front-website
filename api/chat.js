@@ -63,9 +63,10 @@ export default async function handler(req) {
             return new Response(JSON.stringify({ reply: "Configuration Error: API Key missing." }), { status: 500 });
         }
 
-        // UPDATED: Using 'gemini-2.0-flash-lite-preview-02-05' for better quota handling
-        const modelName = "gemini-2.0-flash-lite-preview-02-05";
-        const url = `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${apiKey}`;
+        // UPDATED: Using 'gemini-2.5-flash' which is in your available models list
+        // Fallback to 'gemini-2.0-flash' if 2.5 fails
+        let modelName = "gemini-2.5-flash"; 
+        let url = `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${apiKey}`;
 
         let response = await fetch(url, {
             method: 'POST',
@@ -77,10 +78,16 @@ export default async function handler(req) {
             })
         });
 
-        // Simple Retry Logic for Quota (429)
-        if (response.status === 429) {
+        // Simple Retry Logic for Quota (429) or Not Found (404)
+        if (response.status === 429 || response.status === 404) {
+            console.warn(`Model ${modelName} failed with ${response.status}. Retrying with gemini-2.0-flash...`);
             await delay(2000); // Wait 2 seconds
-            response = await fetch(url, { // Retry once
+            
+            // Switch to fallback model
+            modelName = "gemini-2.0-flash";
+            url = `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${apiKey}`;
+            
+            response = await fetch(url, { 
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
