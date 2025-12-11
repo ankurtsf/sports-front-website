@@ -2,6 +2,7 @@
   "name": "the-sports-front",
   "version": "1.0.0",
   "description": "Sports Front Website with AI Chatbot",
+  "type": "module",
   "scripts": {
     "start": "echo 'No start script needed'"
   },
