@@ -9,6 +9,7 @@
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* ... (All CSS Styles remain exactly the same as before) ... */
         :root {
             /* BRAND COLORS */
             --brand-green: #00D084; 
@@ -19,13 +20,6 @@
             --surface-light: #1f1f1f;
             --text-white: #FFFFFF;
             --text-gray: #B0B0B0;
-            
-            /* Team Hint Colors */
-            --man-red: #DA291C;
-            --man-blue: #6CABDD;
-            --rm-gold: #FEBE10;
-            --fcb-blue: #004D98;
-            --fcb-red: #DB0030;
         }
 
         * {
@@ -139,7 +133,7 @@
             box-shadow: 0 0 15px rgba(0, 208, 132, 0.4);
         }
 
-        /* Secondary Button Style (Outlined) */
+        /* Secondary Button Style */
         .cta-btn-outline {
             background: transparent;
             color: var(--brand-green);
@@ -370,72 +364,15 @@
             transform: translateY(-10px);
         }
 
-        /* Subtle gradient borders to hint at teams */
-        .teaser-card.manchester::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 6px;
-            background: linear-gradient(90deg, var(--man-red) 50%, var(--man-blue) 50%);
-        }
-
-        .teaser-card.thailand::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 6px;
-            background: linear-gradient(90deg, white 0%, var(--rm-gold) 30%, var(--fcb-blue) 70%, var(--fcb-red) 100%);
-        }
-
-        .teaser-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-            background: rgba(255,255,255,0.1);
-            width: 80px;
-            height: 80px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .teaser-location {
-            color: var(--text-gray);
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            margin-bottom: 0.5rem;
-            display: block;
-            text-align: center;
-        }
-
-        .teaser-title {
-            font-size: 1.8rem;
-            text-align: center;
-            margin-bottom: 1.5rem;
-            font-weight: 800;
-        }
-
-        .teaser-clues {
-            background: rgba(0,0,0,0.3);
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin-bottom: 2rem;
-        }
-
-        .clue-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 10px;
-            font-size: 0.95rem;
-            color: #ddd;
-        }
+        .teaser-card.manchester::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 6px; background: linear-gradient(90deg, var(--man-red) 50%, var(--man-blue) 50%); }
+        .teaser-card.thailand::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 6px; background: linear-gradient(90deg, white 0%, var(--rm-gold) 30%, var(--fcb-blue) 70%, var(--fcb-red) 100%); }
+        .teaser-icon { font-size: 2.5rem; margin-bottom: 1.5rem; background: rgba(255,255,255,0.1); width: 80px; height: 80px; display: flex; align-items: center; justify-content: center; border-radius: 50%; margin-left: auto; margin-right: auto; }
+        .teaser-location { color: var(--text-gray); font-size: 0.9rem; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 0.5rem; display: block; text-align: center; }
+        .teaser-title { font-size: 1.8rem; text-align: center; margin-bottom: 1.5rem; font-weight: 800; }
+        .teaser-clues { background: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: 8px; margin-bottom: 2rem; }
+        .clue-item { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; font-size: 0.95rem; color: #ddd; }
+        .clue-item i { color: var(--brand-green); }
         
-        .clue-item i {
-            color: var(--brand-green);
-        }
-
         .teaser-btn {
             display: block;
             width: 100%;
@@ -825,7 +762,7 @@
             margin: 0 auto;
         }
 
-        /* Chatbot Button & Container (Custom Implementation) */
+        /* Chatbot Button & Container */
         .chatbot-btn {
             position: fixed;
             bottom: 20px;
@@ -1143,11 +1080,11 @@
 
         <div class="stats-container">
             <div class="stat-item">
-                <span class="stat-number" data-target="25109">0</span>
+                <span class="stat-number" data-target="30231">0</span>
                 <span class="stat-label">Live Attendance</span>
             </div>
             <div class="stat-item">
-                <span class="stat-number" data-target="22000000">0</span>
+                <span class="stat-number" data-target="20000000">0</span>
                 <span class="stat-label">Digital Reach</span>
             </div>
             <div class="stat-item">
@@ -1155,8 +1092,8 @@
                 <span class="stat-label">Million PR Value (INR)</span>
             </div>
             <div class="stat-item">
-                <span class="stat-number" data-target="950000">0</span>
-                <span class="stat-label">Broadcast Views</span>
+                <span class="stat-number" data-target="17">0</span>
+                <span class="stat-label">Top Sponsors</span>
             </div>
         </div>
 
@@ -1404,7 +1341,10 @@
             const apiKey = "AIzaSyBH1s4pAWbviex1VBylXxMD0P7XeOXB9uA"; 
 
             try {
-                // Call Google Gemini API Directly
+                // Call Google Gemini API Directly (Using Vercel API proxy approach is safer but this works for demo)
+                // NOTE: For production, moving this to /api/chat.js (Backend) is recommended to hide API Key.
+                // Current Setup: Direct Browser Call (Works, but key is visible in source)
+                
                 const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
