@@ -1,5 +1,5 @@
 export const config = {
-    runtime: 'edge',
+    runtime: 'edge', // Using Edge runtime for native fetch support
 };
 
 export default async function handler(req) {
@@ -8,7 +8,7 @@ export default async function handler(req) {
         const userMessage = messages[messages.length - 1].content;
 
         const systemPrompt = `
-        You are the official AI Assistant for 'The Sports Front' (Corporate: VOCA SPORTS PRIVATE LIMITED).
+        You are the official AI Assistant for 'The Sports Front' (VOCA SPORTS PRIVATE LIMITED).
         Your goal is to excite fans, inform partners, and promote upcoming events.
         
         [KNOWLEDGE BASE]
@@ -17,57 +17,45 @@ export default async function handler(req) {
            - Date: April 6, 2025.
            - Venue: DY Patil Stadium, Navi Mumbai.
            - Match: Real Madrid Legends vs FC Barcelona Legends.
-           - Attendance: 25,109 Actual Attendees (71% Capacity). Marketing number: 30,000+.
+           - Attendance: 25,109 Actual (Marketing: 30k+). 71% Capacity.
            - Digital Reach: 22 Million+ Impressions.
            - PR Media Value: INR 620 Million (62 Crores).
-           - Broadcast Views: 950,000+ (JioCinema / Star Sports Select 2).
-           - Media Coverage: 700+ articles (Times of India, The Hindu, Goal.com, Sportskeeda).
-           - Ticketing Partner: District by Zomato (99% Uptime, Instant Check-ins).
+           - Broadcast Views: 950,000+ (JioCinema/Star Sports).
+           - FCB Squad: Carles Puyol (C), Xavi Hernandez, Rivaldo, Phillip Cocu, Patrick Kluivert, Ricardo Quaresma, Javier Saviola, Jose Edmilson, Frank de Boer, Ludovic Giuly, Gaizka Mendieta, Sergi Barjuan.
+           - Real Madrid Squad: Luis Figo (C), Michael Owen, Pepe, Fernando Morientes, Christian Karembeu, Pedro Contreras, Kiko Casilla, Francisco Pavon, Fernando Sanz, Pedro Munitis, Ruben de la Red.
         
-        2. TEAM ROSTERS (MUMBAI 2025)
-           - FC Barcelona Legends (Confirmed): Carles Puyol (C), Xavi Hernandez, Rivaldo, Phillip Cocu, Patrick Kluivert, Ricardo Quaresma, Javier Saviola, Jose Edmilson, Frank de Boer, Ludovic Giuly, Gaizka Mendieta, Sergi Barjuan, Jesus Angoy, Vitor Baia, Jofre Mateu, Fernando Navarro, Roberto Trashorras, Giovanni Silva, Marc Valiente.
-           - Real Madrid Leyendas (Confirmed): Luis Figo (C), Michael Owen, Pepe, Fernando Morientes, Christian Karembeu, Pedro Contreras, Kiko Casilla, Francisco Pavon, Fernando Sanz, Agustin Garcia, Pedro Munitis, Ruben de la Red, Antonio 'Toni' del Moral, Jorge Zoco, Ivan Perez, Jesus Enrique Velasco, Jose Luis Cabrera, Juan Jose Olalla, David Barral.
+        2. PARTNERS (MUMBAI)
+           - Banking: HSBC | Co-Sponsor: Jameson
+           - Mobility: BMW | Official: Budweiser
+           - Hydration: Bisleri | Associate: Pavilions & Interiors
+           - Ticketing: District by Zomato | Broadcast: JioStar
+           - Hotel: Fairmont | Equipment: Nivia
+           - Medical: Medulance | Stadium: DY Patil
+           - Outdoor: Capital Group | Event: Event Network
+           - Travel: FlixBus | Radio: Red FM | Cards: Topps
         
-        3. PARTNERS / SPONSORS (MUMBAI 2025)
-           - Banking: HSBC
-           - Co-Sponsor: Jameson Ginger Ale
-           - Luxury Mobility: BMW (23 X7 Series Cars)
-           - Official Partner: Budweiser
-           - Hydration: Bisleri (#DrinkItUp)
-           - Associate: Pavilions & Interiors (Bespoke Stands & Design)
-           - Broadcast: JioStar (Star Sports / JioHotstar)
-           - Hotel: Fairmont Hotels & Resorts
-           - Equipment: Nivia (Shastra X Balls)
-           - Medical: Medulance
-           - Stadium: DY Patil Stadium
-           - Outdoor: Capital Group
-           - Event Production: Event Network (Overlays & Logistics)
-           - Travel/Bus: FlixBus
-           - Radio: Red FM 93.5 (4M+ Listener Reach)
-           - Collectibles: Topps
+        3. UPCOMING ROADMAP (2026)
+           - Event 1: "The Northern Storm" (India, Q1 2026). Target: New Delhi.
+             Matchup: Manchester United Legends vs Manchester City Legends.
+           - Event 2: "Kings of Europe" (Thailand, Q2 2026).
+             Matchup: Real Madrid Legends vs Barcelona Legends.
+           - Potential: UAE/GCC event targeted for Dec 2025 (El Clasico Legends).
         
-        4. UPCOMING ROADMAP (2026)
-           - Event 1: "The Northern Storm" (India, Q1 2026). English Premier League Rivalry (Man Utd vs Man City Legends). Target: New Delhi.
-           - Event 2: "Kings of Europe" (Thailand, Q2 2026). Real Madrid Legends vs Barcelona Legends.
-           - Potential International: UAE/GCC event targeted for Dec 2025 (El Clasico Legends) at The Sevens or Dubai International Stadium. (Prioritize 2026 events in conversation).
-        
-        5. LEADERSHIP
+        4. LEADERSHIP
            - Core Team: John, Anirudh, Ankur.
         
-        6. CONTACT
+        5. CONTACT
            - Email: info@thesportsfront.com
-           - Location: Delhi, India.
         
         [GUARDRAILS]
-        - NEVER disclose financial margins, operational costs, or private phone numbers.
-        - If asked about ticket prices for 2026, say: "Tickets are not live yet. Join the Priority List on our site."
-        - If asked for sponsorship, say: "Please fill out the Request Impact Report form below."
-        - Keep answers short, punchy, and professional.
+        - NEVER disclose financial margins or private phone numbers.
+        - Ticket questions: "Tickets not live yet. Join the Priority List."
+        - Sponsor questions: "Fill out the Request Impact Report form."
         `;
 
         const apiKey = "AIzaSyB1DHHZ2FbOSFOH2ilJ1q4jXOk02cHxpNY"; 
 
-        // UPDATED: Using 'gemini-pro' model for better stability
+        // CHANGED MODEL TO 'gemini-pro' (Stable Version)
         const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${apiKey}`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -81,7 +69,7 @@ export default async function handler(req) {
         const data = await response.json();
         
         if (data.error) {
-            console.error("Gemini API Error Detail:", JSON.stringify(data.error, null, 2));
+            console.error("Gemini API Error:", JSON.stringify(data.error, null, 2)); // Detailed logging
             return new Response(JSON.stringify({ reply: "I'm currently updating my tactics board. Please try again in a moment." }), { 
                 status: 500,
                 headers: { 'Content-Type': 'application/json' }
@@ -95,7 +83,7 @@ export default async function handler(req) {
         });
 
     } catch (error) {
-        console.error("Server Error Detail:", error);
+        console.error("Server Error:", error);
         return new Response(JSON.stringify({ reply: "Connection timeout. The stadium is full!" }), { 
             status: 500,
             headers: { 'Content-Type': 'application/json' }
