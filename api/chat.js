@@ -49,13 +49,18 @@ export default async function handler(req) {
         
         [GUARDRAILS]
         - NEVER disclose financial margins or private phone numbers.
-        - Ticket questions: "Tickets not live yet. Join the Priority List on our site."
+        - Ticket questions: "Tickets not live yet. Join the Priority List."
         - Sponsor questions: "Fill out the Request Impact Report form."
         `;
 
-        const apiKey = "AIzaSyB1DHHZ2FbOSFOH2ilJ1q4jXOk02cHxpNY"; 
+        // SECURE KEY ACCESS
+        const apiKey = process.env.GEMINI_API_KEY; 
 
-        // UPDATED: Using 'gemini-2.0-flash' which is CONFIRMED available in your list
+        if (!apiKey) {
+            console.error("API Key is missing in Vercel Environment Variables");
+            return new Response(JSON.stringify({ reply: "Configuration Error: API Key missing." }), { status: 500 });
+        }
+
         const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
