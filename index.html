@@ -154,7 +154,7 @@
         }
 
         @keyframes fadeInOut {
-            0% { opacity: 0; transform: translateX(10px); }
+            0%, 100% { opacity: 0; transform: translateX(10px); }
             10%, 90% { opacity: 1; transform: translateX(0); }
             100% { opacity: 0; transform: translateX(10px); }
         }
@@ -177,7 +177,12 @@
             flex-shrink: 0; 
             height: 60px;
         }
-        .chat-header h4 { font-size: 1rem; margin: 0; color: white; font-family: 'Montserrat', sans-serif; font-weight: 700; }
+        .chat-header h4 { 
+            font-size: 1.1rem; margin: 0; color: white; 
+            font-family: 'Rock Salt', cursive; /* STYLIZED FONT FOR GAFFER HEADER */
+            font-weight: 700; 
+            color: var(--brand-green);
+        }
         .close-chat { cursor: pointer; color: #888; font-size: 1.2rem; }
         
         /* Messages Area */
@@ -188,7 +193,10 @@
             display: flex; flex-direction: column; gap: 10px; 
         }
         .message { max-width: 80%; padding: 10px 15px; border-radius: 12px; font-size: 0.9rem; line-height: 1.4; }
-        .message.bot { background: #333; color: white; align-self: flex-start; border-bottom-left-radius: 2px; }
+        .message.bot { 
+            background: #333; color: white; align-self: flex-start; border-bottom-left-radius: 2px; 
+            font-family: 'Montserrat', sans-serif; /* Professional but distinct from body */
+        }
         .message.user { background: var(--brand-green); color: black; align-self: flex-end; border-bottom-right-radius: 2px; font-weight: 600; }
         
         /* Input Area */
@@ -235,7 +243,6 @@
     <header>
         <div class="header-container">
             <div class="logo-container">
-                <!-- UPDATED: Pointing to Images/ folder -->
                 <img src="Images/logo-header.svg" alt="The Sports Front" class="logo-img">
             </div>
             
@@ -572,7 +579,9 @@
                 loadingMsg.remove();
 
                 if (data.reply) {
-                    addMessage(data.reply, 'bot');
+                    // PARSE MARKDOWN BOLD TO HTML
+                    const formattedReply = data.reply.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>');
+                    addMessage(formattedReply, 'bot', true); // Pass true for HTML parsing
                 } else {
                     addMessage("I'm having a little trouble connecting to the stadium. Please try again.", 'bot');
                 }
@@ -583,11 +592,17 @@
             }
         }
 
-        function addMessage(text, sender) {
+        function addMessage(text, sender, isHtml = false) {
             const messagesContainer = document.getElementById('chat-messages');
             const msgDiv = document.createElement('div');
             msgDiv.classList.add('message', sender);
-            msgDiv.innerText = text;
+            
+            if (isHtml) {
+                msgDiv.innerHTML = text;
+            } else {
+                msgDiv.innerText = text;
+            }
+            
             messagesContainer.appendChild(msgDiv);
             messagesContainer.scrollTop = messagesContainer.scrollHeight;
             return msgDiv;
