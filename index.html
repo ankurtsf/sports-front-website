@@ -195,7 +195,8 @@
         .message { max-width: 80%; padding: 10px 15px; border-radius: 12px; font-size: 0.9rem; line-height: 1.4; }
         .message.bot { 
             background: #333; color: white; align-self: flex-start; border-bottom-left-radius: 2px; 
-            font-family: 'Montserrat', sans-serif; /* Professional but distinct from body */
+            font-family: 'Courier New', monospace; /* TACTICAL / TYPEWRITER FONT FOR BOT */
+            text-transform: none;
         }
         .message.user { background: var(--brand-green); color: black; align-self: flex-end; border-bottom-right-radius: 2px; font-weight: 600; }
         
@@ -243,6 +244,7 @@
     <header>
         <div class="header-container">
             <div class="logo-container">
+                <!-- UPDATED: Pointing to Images/ folder -->
                 <img src="Images/logo-header.svg" alt="The Sports Front" class="logo-img">
             </div>
             
@@ -634,7 +636,7 @@
                             }
                             requestAnimationFrame(updateCount);
                         } else {
-                            if(target === 30231) entry.target.innerText = "25,109+";
+                            if(target === 30231) entry.target.innerText = "30,231+";
                             else if(target === 20000000) entry.target.innerText = "22M+";
                             else if(target === 620) entry.target.innerText = "620";
                             else if(target === 950000) entry.target.innerText = "950K+";
