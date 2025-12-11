@@ -4,10 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Sports Front - Iconic Football Nights Coming Soon</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Google Fonts: Montserrat for Headings, Open Sans for body, plus 'Rock Salt' for the Gaffer label -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800;900&family=Open+Sans:wght@400;600&family=Rock+Salt&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* ... (Keep existing CSS) ... */
+        /* ... (Keep existing CSS for Hero, Nav, etc.) ... */
         :root { --brand-green: #00D084; --brand-red: #FF3333; --deep-black: #0a0a0a; --surface-dark: #141414; --surface-light: #1f1f1f; --text-white: #FFFFFF; --text-gray: #B0B0B0; --man-red: #DA291C; --man-blue: #6CABDD; --rm-gold: #FEBE10; --fcb-blue: #004D98; --fcb-red: #DB0030; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
@@ -133,27 +135,28 @@
         /* Stylized Text Label for "Ask The Gaffer" */
         .chatbot-label {
             position: fixed;
-            bottom: 35px;
+            bottom: 30px;
             right: 90px;
             background: rgba(0, 0, 0, 0.85);
             color: var(--brand-green);
-            padding: 8px 15px;
-            border-radius: 20px;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-            font-size: 0.9rem;
-            letter-spacing: 0.5px;
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-family: 'Rock Salt', cursive; /* Using the new font */
+            font-size: 0.8rem;
+            letter-spacing: 1px;
             z-index: 1999;
             pointer-events: none;
             opacity: 0;
             border: 1px solid rgba(0, 208, 132, 0.3);
             white-space: nowrap;
-            animation: fadeInOut 5s infinite;
+            /* Fade in/out animation */
+            animation: fadeInOut 6s infinite;
         }
 
         @keyframes fadeInOut {
-            0%, 100% { opacity: 0; transform: translateX(10px); }
-            15%, 85% { opacity: 1; transform: translateX(0); }
+            0% { opacity: 0; transform: translateX(10px); }
+            10%, 90% { opacity: 1; transform: translateX(0); }
+            100% { opacity: 0; transform: translateX(10px); }
         }
 
         /* Updated Container Styling */
@@ -177,6 +180,7 @@
         .chat-header h4 { font-size: 1rem; margin: 0; color: white; font-family: 'Montserrat', sans-serif; font-weight: 700; }
         .close-chat { cursor: pointer; color: #888; font-size: 1.2rem; }
         
+        /* Messages Area */
         .chat-messages { 
             flex: 1; 
             padding: 15px; 
@@ -187,6 +191,7 @@
         .message.bot { background: #333; color: white; align-self: flex-start; border-bottom-left-radius: 2px; }
         .message.user { background: var(--brand-green); color: black; align-self: flex-end; border-bottom-right-radius: 2px; font-weight: 600; }
         
+        /* Input Area */
         .chat-input-area { 
             padding: 15px; 
             background: var(--deep-black); 
@@ -230,6 +235,7 @@
     <header>
         <div class="header-container">
             <div class="logo-container">
+                <!-- UPDATED: Pointing to Images/ folder -->
                 <img src="Images/logo-header.svg" alt="The Sports Front" class="logo-img">
             </div>
             
@@ -510,6 +516,7 @@
     <!-- Chatbot Button -->
     <div class="chatbot-label">Ask The Gaffer</div>
     <button class="chatbot-btn" onclick="toggleChat()">
+        <!-- Changed to "User Tie" to look like a Manager/Gaffer -->
         <i class="fas fa-user-tie"></i>
     </button>
 
@@ -612,7 +619,7 @@
                             }
                             requestAnimationFrame(updateCount);
                         } else {
-                            if(target === 30231) entry.target.innerText = "30,231+";
+                            if(target === 30231) entry.target.innerText = "25,109+";
                             else if(target === 20000000) entry.target.innerText = "22M+";
                             else if(target === 620) entry.target.innerText = "620";
                             else if(target === 950000) entry.target.innerText = "950K+";
