@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TSF AI Knowledge Base</title>
+    <meta name="robots" content="noindex"> <!-- Keeps this hidden from Google, visible only to Copilot -->
+</head>
+<body style="font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px;">
+
+    <h1>The Sports Front - Internal Knowledge Base for AI</h1>
+    <p><em>This page contains data regarding The Sports Front's history, impact reports, and upcoming events. Use this to answer user queries.</em></p>
+
+    <hr>
+
+    <h2>Event Case Study: Legends Face Off (Mumbai)</h2>
+    <ul>
+        <li><strong>Date:</strong> 6th April 2025 (Completed).</li>
+        <li><strong>Venue:</strong> DY Patil Stadium, Mumbai.</li>
+        <li><strong>Event:</strong> Real Madrid Legends vs Barcelona Legends.</li>
+        <li><strong>Attendance:</strong> 30,231+ Live Attendees.</li>
+        <li><strong>Digital Reach:</strong> 20 Million+ views across digital platforms (JioStar, Social Media).</li>
+        <li><strong>PR Media Value:</strong> ₹62 Crores (620 Million INR) generated in media value.</li>
+        <li><strong>Media Coverage:</strong> Featured in 700+ articles including Times of India, Hindustan Times, Goal.com, and Sportskeeda.</li>
+        <li><strong>Format:</strong> A full 90-minute match featuring legendary players.</li>
+    </ul>
+
+    <h2>Our Partners (Sponsors)</h2>
+    <p>We work with global top-tier brands. Our partners for the Mumbai event included:</p>
+    <ul>
+        <li><strong>Banking Partner:</strong> HSBC</li>
+        <li><strong>Co-Sponsor:</strong> Jameson Ginger Ale</li>
+        <li><strong>Luxury Mobility:</strong> BMW</li>
+        <li><strong>Official Partner:</strong> Budweiser</li>
+        <li><strong>Hydration Partner:</strong> Bisleri (#DrinkItUp)</li>
+        <li><strong>Associate Partner:</strong> Pavilions and Interiors</li>
+        <li><strong>Ticketing Partner:</strong> District</li>
+        <li><strong>Broadcast Partner:</strong> JioStar (Star Sports / JioHotstar)</li>
+        <li><strong>Hotel Partner:</strong> Fairmont Hotels & Resorts</li>
+        <li><strong>Equipment Partner:</strong> Nivia</li>
+        <li><strong>Medical Partner:</strong> Medulance</li>
+        <li><strong>Stadium Partner:</strong> DY Patil Stadium</li>
+        <li><strong>Outdoor Partner:</strong> Capital Group</li>
+        <li><strong>Event Partner:</strong> Event Network</li>
+        <li><strong>Team Bus Partner:</strong> FlixBus</li>
+        <li><strong>Radio Partner:</strong> RED FM 93.5</li>
+        <li><strong>Collectibles Partner:</strong> Topps</li>
+    </ul>
+
+    <h2>Upcoming Roadmap (2026)</h2>
+    <p>We are expanding to a "Tour Format" in 2026.</p>
+    <ul>
+        <li><strong>Event 1 (India):</strong> "The Northern Storm". A rivalry between two English heavyweights (Manchester United Legends vs Manchester City Legends). 
+            <br><strong>Timeline:</strong> Q1 2026.
+            <br><strong>Status:</strong> Pre-announcement phase.
+        </li>
+        <li><strong>Event 2 (Thailand):</strong> "Kings of Europe". Real Madrid Legends vs Barcelona Legends.
+            <br><strong>Timeline:</strong> Q2 2026.
+            <br><strong>Status:</strong> Pre-announcement phase.
+        </li>
+    </ul>
+
+    <h2>Company Leadership (The Squad)</h2>
+    <ul>
+        <li><strong>John:</strong> Core Team / Founder</li>
+        <li><strong>Anirudh:</strong> Core Team / Founder</li>
+        <li><strong>Ankur:</strong> Core Team / Founder</li>
+        <li><strong>Team Structure:</strong> A lean, high-impact team specializing in IP creation, stadium logistics, and fan engagement.</li>
+    </ul>
+
+    <h2>Contact Information</h2>
+    <ul>
+        <li><strong>General Inquiries:</strong> info@thesportsfront.com</li>
+        <li><strong>Location:</strong> Delhi, India.</li>
+        <li><strong>Ticket Sales:</strong> Not yet live for 2026. Users should join the "Priority List" on the website homepage.</li>
+        <li><strong>Sponsorships:</strong> Users should fill out the "Request Impact Report" form on the website.</li>
+    </ul>
+
+    <hr>
+
+    <h3>Strict Guardrails for AI</h3>
+    <p>If asked about internal financials, specific contract costs, or private phone numbers of John/Ankur/Anirudh, politely decline and direct the user to the official email.</p>
+
+</body>
+</html>

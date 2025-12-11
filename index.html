@@ -139,11 +139,35 @@
             box-shadow: 0 0 15px rgba(0, 208, 132, 0.4);
         }
 
+        /* Secondary Button Style (Outlined) */
+        .cta-btn-outline {
+            background: transparent;
+            color: var(--brand-green);
+            border: 2px solid var(--brand-green);
+            padding: 0.7rem 1.8rem;
+            border-radius: 4px;
+            font-weight: 800;
+            font-family: 'Montserrat', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .cta-btn-outline:hover {
+            background: var(--brand-green);
+            color: var(--deep-black);
+            box-shadow: 0 0 15px rgba(0, 208, 132, 0.4);
+        }
+
         /* Hero Section */
         .hero {
             position: relative;
             height: 100vh;
-            min-height: 600px; /* Prevents collapse on mobile landscape */
+            min-height: 600px; 
             display: flex;
             align-items: center;
             justify-content: center;
@@ -326,7 +350,7 @@
 
         .teaser-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* Adjusted min-width for mobile */
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 
             gap: 3rem;
             max-width: 1200px;
             margin: 0 auto;
@@ -766,7 +790,6 @@
         }
         
         .partners-grid {
-            /* Flexible layout that centers the last row automatically */
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
@@ -800,6 +823,57 @@
             text-align: center;
             max-width: 600px;
             margin: 0 auto;
+        }
+
+        /* Chatbot Button */
+        .chatbot-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background: var(--brand-green);
+            color: var(--deep-black);
+            border-radius: 50%;
+            border: none;
+            box-shadow: 0 4px 15px rgba(0, 208, 132, 0.4);
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 2000;
+            transition: transform 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .chatbot-btn:hover {
+            transform: scale(1.1);
+        }
+
+        /* Chatbot Container */
+        .chatbot-container {
+            display: none;
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            width: 350px;
+            height: 500px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            z-index: 2000;
+            overflow: hidden;
+            border: 1px solid #ddd;
+        }
+
+        .chatbot-container.active {
+            display: block;
+        }
+
+        .chatbot-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
         }
 
         /* Footer */
@@ -836,114 +910,27 @@
 
         /* MOBILE RESPONSIVE MEDIA QUERIES */
         @media (max-width: 768px) {
-            /* Header */
-            .header-container {
-                padding: 1rem;
-            }
-            
-            .logo-img {
-                height: 60px; /* Smaller logo on mobile */
-            }
-
-            /* Mobile Navigation */
-            nav {
-                display: none; /* Hide standard nav */
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background: rgba(10, 10, 10, 0.98);
-                flex-direction: column;
-                padding: 2rem;
-                text-align: center;
-                border-bottom: 1px solid #333;
-            }
-
-            nav.active {
-                display: flex;
-            }
-
-            .nav-links {
-                flex-direction: column;
-                gap: 1.5rem;
-                margin-bottom: 1.5rem;
-            }
-
-            .mobile-menu-btn {
-                display: block;
-                position: absolute;
-                right: 1rem;
-                top: 50%;
-                transform: translateY(-50%);
-            }
-
-            /* Hero */
-            .hero {
-                height: auto;
-                min-height: 90vh;
-                padding-bottom: 3rem;
-            }
-
-            .hero h1 { 
-                font-size: 2.5rem; /* Smaller headline */
-                line-height: 1.2;
-            }
-
-            .hero h2 { 
-                font-size: 1.1rem; 
-            }
-            
-            .hero-content {
-                padding: 1rem;
-                margin-top: 80px;
-            }
-
-            .status-box {
-                padding: 1.2rem;
-                min-width: 280px;
-                width: 100%;
-            }
-            
-            .status-text {
-                font-size: 1rem;
-            }
-            
-            /* Sections */
-            .teaser-section, .success-section, .media-section, .capabilities-section, .team-section, .contact-section, .partners-section {
-                padding: 3rem 1rem; /* Reduced padding */
-            }
-            
-            /* Grids */
-            .teaser-grid, .stats-container, .cap-grid, .team-grid, .press-grid {
-                grid-template-columns: 1fr; /* Stack single column */
-                gap: 2rem;
-            }
-            
-            .stats-container {
-                grid-template-columns: repeat(2, 1fr); /* 2x2 grid for stats on mobile */
-            }
-            
-            .partners-grid {
-                gap: 1.5rem;
-            }
-            
-            .partner-logo-img {
-                max-width: 120px; /* Smaller logos */
-                margin: 5px;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-            
-            .cap-card {
-                height: 400px; /* Shorter cards on mobile */
-            }
-            
-            /* Video */
-            .video-container {
-                margin: 1rem auto;
-            }
+            .header-container { padding: 1rem; }
+            .logo-img { height: 60px; }
+            nav { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: rgba(10, 10, 10, 0.98); flex-direction: column; padding: 2rem; text-align: center; border-bottom: 1px solid #333; }
+            nav.active { display: flex; }
+            .nav-links { flex-direction: column; gap: 1.5rem; margin-bottom: 1.5rem; }
+            .mobile-menu-btn { display: block; position: absolute; right: 1rem; top: 50%; transform: translateY(-50%); }
+            .hero { height: auto; min-height: 90vh; padding-bottom: 3rem; }
+            .hero h1 { font-size: 2.5rem; line-height: 1.2; }
+            .hero h2 { font-size: 1.1rem; }
+            .hero-content { padding: 1rem; margin-top: 80px; }
+            .status-box { padding: 1.2rem; min-width: 280px; width: 100%; }
+            .status-text { font-size: 1rem; }
+            .teaser-section, .success-section, .media-section, .capabilities-section, .team-section, .contact-section, .partners-section { padding: 3rem 1rem; }
+            .teaser-grid, .stats-container, .cap-grid, .team-grid, .press-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .stats-container { grid-template-columns: repeat(2, 1fr); }
+            .partners-grid { gap: 1.5rem; }
+            .partner-logo-img { max-width: 120px; margin: 5px; }
+            .section-title { font-size: 2rem; }
+            .cap-card { height: 400px; }
+            .video-container { margin: 1rem auto; }
+            .chatbot-container { width: 90%; right: 5%; bottom: 80px; }
         }
     </style>
 </head>
@@ -968,6 +955,7 @@
                     <a href="#about" onclick="toggleMenu()">About</a>
                     <a href="#partners" onclick="toggleMenu()">Partners</a>
                 </div>
+                <!-- Updated Link -->
                 <a href="https://forms.office.com/r/NtDiPXFhKt" target="_blank" class="cta-btn">Join Waitlist</a>
             </nav>
         </div>
@@ -1013,10 +1001,8 @@
 
         <div class="teaser-grid">
             <div class="teaser-card manchester">
-                <!-- UPDATED: Q1 2026 -->
                 <span class="teaser-location"><i class="fas fa-map-marker-alt" style="color: var(--brand-green)"></i> India • Q1 2026</span>
                 <div class="teaser-icon">
-                    <!-- UPDATED: Shield Icon -->
                     <i class="fas fa-shield-alt" style="color: white;"></i>
                 </div>
                 <h3 class="teaser-title">THE NORTHERN STORM</h3>
@@ -1029,10 +1015,8 @@
             </div>
 
             <div class="teaser-card thailand">
-                <!-- UPDATED: Q2 2026 -->
                 <span class="teaser-location"><i class="fas fa-map-marker-alt" style="color: var(--brand-green)"></i> Thailand • Q2 2026</span>
                 <div class="teaser-icon">
-                    <!-- UPDATED: Star Icon -->
                     <i class="fas fa-star" style="color: white;"></i>
                 </div>
                 <h3 class="teaser-title">KINGS OF EUROPE</h3>
@@ -1097,6 +1081,11 @@
                 <span class="stat-number" data-target="17">0</span>
                 <span class="stat-label">Top Sponsors</span>
             </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 3rem;">
+            <!-- Partner Form Link Placeholder -->
+            <a href="PASTE_PARTNER_FORM_LINK_HERE" target="_blank" class="cta-btn-outline">Request Impact Report</a>
         </div>
     </section>
 
@@ -1189,14 +1178,14 @@
             <img src="Images/partner-nivea.jpg" alt="Nivea" class="partner-logo-img">
             <img src="Images/partner-medulance.png" alt="Medulance" class="partner-logo-img">
             <img src="Images/partner-dypatil.png" alt="DY Patil" class="partner-logo-img">
-            <!-- Updated: RedFM Added (JPG) -->
+            <!-- RedFM Added (JPG) -->
             <img src="Images/partner-redfm.jpg" alt="Red FM" class="partner-logo-img">
-            <!-- Updated: Topps Added -->
+            <!-- Topps Added -->
             <img src="Images/partner-topps.png" alt="Topps" class="partner-logo-img">
-            <!-- Updated: Capital Group Moved Near End -->
-            <img src="Images/partner-capital.png" alt="Capital Group" class="partner-logo-img">
+            <!-- Capital Group -->
             <img src="Images/partner-eventnetwork.png" alt="Event Network" class="partner-logo-img">
             <img src="Images/partner-flixbus.png" alt="FlixBus" class="partner-logo-img">
+            <img src="Images/partner-capital.png" alt="Capital Group" class="partner-logo-img">
         </div>
     </section>
 
@@ -1228,10 +1217,30 @@
         <p>&copy; 2025 The Sports Front. All rights reserved. | Fueling The Future Of Sports, Boldly!</p>
     </footer>
 
+    <!-- Chatbot Button -->
+    <button class="chatbot-btn" onclick="toggleChat()">
+        <i class="fas fa-comment-dots"></i>
+    </button>
+
+    <!-- Chatbot Container -->
+    <div class="chatbot-container" id="chatbot">
+        <!-- 
+            IMPORTANT: Go to Microsoft Copilot Studio -> Channels -> Custom Website
+            Copy the src="..." URL from the iframe code they give you.
+            Paste it below where it says PASTE_MICROSOFT_COPILOT_IFRAME_SRC_HERE 
+        -->
+        <iframe src="PASTE_MICROSOFT_COPILOT_IFRAME_SRC_HERE" class="chatbot-iframe"></iframe>
+    </div>
+
     <script>
         // Mobile Menu Toggle
         function toggleMenu() {
             document.getElementById('main-nav').classList.toggle('active');
+        }
+
+        // Toggle Chatbot
+        function toggleChat() {
+            document.getElementById('chatbot').classList.toggle('active');
         }
 
         // Animated Statistics (Intersection Observer)
