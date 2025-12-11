@@ -4,12 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Sports Front - Iconic Football Nights Coming Soon</title>
-    <!-- Google Fonts: Montserrat for Headings, Open Sans for body -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-    <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* ... (Keep existing CSS for Hero, Nav, etc.) ... */
+        /* ... (Keep existing CSS) ... */
         :root { --brand-green: #00D084; --brand-red: #FF3333; --deep-black: #0a0a0a; --surface-dark: #141414; --surface-light: #1f1f1f; --text-white: #FFFFFF; --text-gray: #B0B0B0; --man-red: #DA291C; --man-blue: #6CABDD; --rm-gold: #FEBE10; --fcb-blue: #004D98; --fcb-red: #DB0030; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
@@ -136,7 +134,7 @@
         .chatbot-label {
             position: fixed;
             bottom: 35px;
-            right: 90px; /* To the left of the button */
+            right: 90px;
             background: rgba(0, 0, 0, 0.85);
             color: var(--brand-green);
             padding: 8px 15px;
@@ -158,31 +156,29 @@
             15%, 85% { opacity: 1; transform: translateX(0); }
         }
 
-        /* Updated Container Styling to force proper layout */
+        /* Updated Container Styling */
         .chatbot-container { 
             display: none; position: fixed; bottom: 90px; right: 20px; 
             width: 350px; height: 500px; 
             background: #1a1a1a; border-radius: 12px; 
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5); 
             z-index: 2000; overflow: hidden; border: 1px solid #333; 
-            flex-direction: column; /* CRITICAL: Forces vertical stacking */
+            flex-direction: column; 
         }
         .chatbot-container.active { display: flex; }
         
-        /* Chat Header */
         .chat-header { 
             background: var(--deep-black); padding: 15px; 
             border-bottom: 1px solid #333; 
             display: flex; justify-content: space-between; align-items: center; 
-            flex-shrink: 0; /* Prevents header from shrinking */
+            flex-shrink: 0; 
             height: 60px;
         }
         .chat-header h4 { font-size: 1rem; margin: 0; color: white; font-family: 'Montserrat', sans-serif; font-weight: 700; }
         .close-chat { cursor: pointer; color: #888; font-size: 1.2rem; }
         
-        /* Messages Area */
         .chat-messages { 
-            flex: 1; /* Takes up all available space between header and input */
+            flex: 1; 
             padding: 15px; 
             overflow-y: auto; 
             display: flex; flex-direction: column; gap: 10px; 
@@ -191,13 +187,12 @@
         .message.bot { background: #333; color: white; align-self: flex-start; border-bottom-left-radius: 2px; }
         .message.user { background: var(--brand-green); color: black; align-self: flex-end; border-bottom-right-radius: 2px; font-weight: 600; }
         
-        /* Input Area */
         .chat-input-area { 
             padding: 15px; 
             background: var(--deep-black); 
             border-top: 1px solid #333; 
             display: flex; gap: 10px; 
-            flex-shrink: 0; /* Prevents input area from disappearing */
+            flex-shrink: 0; 
             min-height: 70px;
         }
         .chat-input { flex: 1; padding: 10px; border-radius: 6px; border: 1px solid #444; background: #222; color: white; outline: none; }
@@ -235,7 +230,6 @@
     <header>
         <div class="header-container">
             <div class="logo-container">
-                <!-- UPDATED: Pointing to Images/ folder -->
                 <img src="Images/logo-header.svg" alt="The Sports Front" class="logo-img">
             </div>
             
@@ -618,7 +612,7 @@
                             }
                             requestAnimationFrame(updateCount);
                         } else {
-                            if(target === 30231) entry.target.innerText = "25,109+";
+                            if(target === 30231) entry.target.innerText = "30,231+";
                             else if(target === 20000000) entry.target.innerText = "22M+";
                             else if(target === 620) entry.target.innerText = "620";
                             else if(target === 950000) entry.target.innerText = "950K+";

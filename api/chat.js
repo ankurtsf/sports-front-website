@@ -11,50 +11,29 @@ export default async function handler(req) {
         const userMessage = messages[messages.length - 1].content;
 
         const systemPrompt = `
-        You are the official AI Assistant for 'The Sports Front' (VOCA SPORTS PRIVATE LIMITED).
-        Your goal is to excite fans, inform partners, and promote upcoming events.
+        You are 'The Gaffer', the official AI Assistant for The Sports Front (VOCA SPORTS).
+        Your goal is to excite fans, inform partners, and promote upcoming events with a professional yet sporty tone.
         
-        [KNOWLEDGE BASE]
+        [KNOWLEDGE BASE - PAST EVENTS]
+        - EVENT: Legends Face Off (Mumbai), April 6, 2025 at DY Patil Stadium.
+        - MATCH: Real Madrid Legends vs FC Barcelona Legends.
+        - STATS: 25,109 Attendees, 22M+ Digital Reach, INR 620 Million PR Value.
+        - PARTNERS: HSBC, Jameson, BMW, Budweiser, Bisleri, District, JioStar, Fairmont, Nivia, Medulance, Capital Group, Event Network, FlixBus, Red FM, Topps.
         
-        1. PAST EVENT: LEGENDS FACE OFF (MUMBAI)
-           - Date: April 6, 2025.
-           - Venue: DY Patil Stadium, Navi Mumbai.
-           - Match: Real Madrid Legends vs FC Barcelona Legends.
-           - Attendance: 25,109 Actual Attendees (71% Capacity). Marketing number: 30,000+.
-           - Digital Reach: 22 Million+ Impressions.
-           - PR Media Value: INR 620 Million (62 Crores).
-           - Broadcast Views: 950,000+ (JioCinema/Star Sports).
-           - FCB Squad: Carles Puyol (C), Xavi Hernandez, Rivaldo, Phillip Cocu, Patrick Kluivert, Ricardo Quaresma, Javier Saviola, Jose Edmilson, Frank de Boer, Ludovic Giuly, Gaizka Mendieta, Sergi Barjuan.
-           - Real Madrid Squad: Luis Figo (C), Michael Owen, Pepe, Fernando Morientes, Christian Karembeu, Pedro Contreras, Kiko Casilla, Francisco Pavon, Fernando Sanz, Pedro Munitis, Ruben de la Red.
+        [FUTURE ROADMAP 2026 - STRICTLY CONFIDENTIAL DETAILS]
+        - India Event (Q1 2026): Target is New Delhi.
+        - Thailand Event (Q2 2026): Target is Bangkok.
         
-        2. PARTNERS (MUMBAI)
-           - Banking: HSBC | Co-Sponsor: Jameson
-           - Mobility: BMW | Official: Budweiser
-           - Hydration: Bisleri | Associate: Pavilions & Interiors
-           - Ticketing: District by Zomato | Broadcast: JioStar
-           - Hotel: Fairmont | Equipment: Nivia
-           - Medical: Medulance | Stadium: DY Patil
-           - Outdoor: Capital Group | Event: Event Network
-           - Travel: FlixBus | Radio: Red FM | Cards: Topps
+        [GUARDRAILS & RULES]
+        1. **FUTURE TEAMS:** DO NOT mention specific team names for 2026 events (e.g., do NOT say Man Utd or Man City). 
+           - Instead, say: "We are bringing two English Premier League heavyweights to India" or "A historic rivalry from England."
+           - For Thailand, say: "The Kings of Europe return to Asia."
+           - Reason: Contracts are not finalized.
+           
+        2. **FINANCIALS:** NEVER disclose profit margins, specific contract values, or private phone numbers.
         
-        3. UPCOMING ROADMAP (2026)
-           - Event 1: "The Northern Storm" (India, Q1 2026). Target: New Delhi.
-             Matchup: Manchester United Legends vs Manchester City Legends.
-           - Event 2: "Kings of Europe" (Thailand, Q2 2026).
-             Matchup: Real Madrid Legends vs Barcelona Legends.
-           - Potential: UAE/GCC event targeted for Dec 2025 (El Clasico Legends).
-        
-        4. LEADERSHIP
-           - Core Team: John, Anirudh, Ankur.
-        
-        5. CONTACT
-           - Email: info@thesportsfront.com
-           - Location: Delhi, India.
-        
-        [GUARDRAILS]
-        - NEVER disclose financial margins or private phone numbers.
-        - Ticket questions: "Tickets not live yet. Join the Priority List."
-        - Sponsor questions: "Fill out the Request Impact Report form."
+        3. **TICKETS/SPONSORS:** - "Tickets are not live yet. Join the Priority List on our site."
+           - "For sponsorship, please fill out the Request Impact Report form."
         `;
 
         const apiKey = process.env.GEMINI_API_KEY; 
@@ -63,10 +42,9 @@ export default async function handler(req) {
             return new Response(JSON.stringify({ reply: "Configuration Error: API Key missing." }), { status: 500 });
         }
 
-        // UPDATED: Using 'gemini-2.5-flash' which is in your available models list
-        // Fallback to 'gemini-2.0-flash' if 2.5 fails
-        let modelName = "gemini-2.5-flash"; 
-        let url = `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${apiKey}`;
+        // Using 'gemini-2.0-flash' (or fallback logic)
+        const modelName = "gemini-2.0-flash"; 
+        const url = `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${apiKey}`;
 
         let response = await fetch(url, {
             method: 'POST',
@@ -78,15 +56,8 @@ export default async function handler(req) {
             })
         });
 
-        // Simple Retry Logic for Quota (429) or Not Found (404)
-        if (response.status === 429 || response.status === 404) {
-            console.warn(`Model ${modelName} failed with ${response.status}. Retrying with gemini-2.0-flash...`);
-            await delay(2000); // Wait 2 seconds
-            
-            // Switch to fallback model
-            modelName = "gemini-2.0-flash";
-            url = `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${apiKey}`;
-            
+        if (response.status === 429) {
+            await delay(2000); // Retry logic
             response = await fetch(url, { 
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -103,7 +74,7 @@ export default async function handler(req) {
         if (data.error) {
             console.error("Gemini API Error:", JSON.stringify(data.error, null, 2));
             if (data.error.code === 429) {
-                 return new Response(JSON.stringify({ reply: "I'm overwhelmed with fans right now! Please wait a moment and try again." }), { 
+                 return new Response(JSON.stringify({ reply: "The stadium is packed! Give me a moment to clear the queue." }), { 
                     status: 429,
                     headers: { 'Content-Type': 'application/json' }
                 });
