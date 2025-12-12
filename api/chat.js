@@ -19,7 +19,7 @@ export default async function handler(req) {
         - **Bold** only the most critical information (Event Names, Dates, Key Stats, Star Players). 
         - Do NOT use ALL CAPS for entire sentences. 
         - Keep answers punchy. No long lectures.
-        - Use Emojis if and where appropriate.
+        
 
         [KNOWLEDGE BASE - PAST SUCCESS]
         1. EVENT: **Legends Face Off (Mumbai)**, April 6, 2025 at **DY Patil Stadium**.
