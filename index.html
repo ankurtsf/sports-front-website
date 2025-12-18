@@ -204,6 +204,33 @@
             100% { opacity: 0; transform: translateX(10px); }
         }
 
+        /* Floating Share Button */
+        .share-btn {
+            position: fixed;
+            bottom: 95px; /* Above chatbot button */
+            right: 25px; /* Aligned with chatbot button center */
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            z-index: 1998;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .share-btn:hover {
+            background: var(--brand-green);
+            color: var(--deep-black);
+            transform: scale(1.1);
+        }
+
         /* Updated Container Styling */
         .chatbot-container { 
             display: none; position: fixed; bottom: 90px; right: 20px; 
@@ -240,15 +267,11 @@
         .message { max-width: 80%; padding: 10px 15px; border-radius: 12px; font-size: 0.9rem; line-height: 1.4; }
         .message.bot { 
             background: #333; color: white; align-self: flex-start; border-bottom-left-radius: 2px; 
-            font-family: 'Montserrat', sans-serif; /* Clean font for message body */
+            font-family: 'Montserrat', sans-serif; /* Clean professional font */
             text-transform: none; /* Crucial to prevent unwanted ALL CAPS */
             font-weight: 500;
         }
-        .message.user { 
-            background: var(--brand-green); color: black; align-self: flex-end; border-bottom-right-radius: 2px; 
-            font-weight: 600; 
-            font-family: 'Montserrat', sans-serif;
-        }
+        .message.user { background: var(--brand-green); color: black; align-self: flex-end; border-bottom-right-radius: 2px; font-weight: 600; }
         
         /* Input Area */
         .chat-input-area { 
@@ -285,6 +308,8 @@
             .video-container { margin: 1rem auto; }
             .chatbot-container { width: 90%; right: 5%; bottom: 80px; }
             .chatbot-label { display: none; } /* Hide label on mobile */
+            /* Move share button on mobile */
+            .share-btn { bottom: 100px; right: 20px; } 
         }
     </style>
 </head>
@@ -312,10 +337,6 @@
                 </div>
                 <!-- Updated Link -->
                 <a href="https://forms.office.com/r/NtDiPXFhKt" target="_blank" class="cta-btn">Join Waitlist</a>
-                <!-- Share Button (Desktop) -->
-                <button onclick="shareWebsite()" class="cta-btn-outline" style="margin-left: 10px; border-radius: 50%; width: 45px; height: 45px; padding: 0; display: inline-flex; align-items: center; justify-content: center;">
-                    <i class="fas fa-share-alt"></i>
-                </button>
             </nav>
         </div>
     </header>
@@ -586,6 +607,12 @@
 
     <!-- Chatbot Button -->
     <div class="chatbot-label">Ask The Gaffer</div>
+    
+    <!-- Floating Share Button (Now above chatbot) -->
+    <button onclick="shareWebsite()" class="share-btn">
+        <i class="fas fa-share-alt"></i>
+    </button>
+    
     <button class="chatbot-btn" onclick="toggleChat()">
         <!-- Changed to "User Tie" to look like a Manager/Gaffer -->
         <i class="fas fa-user-tie"></i>
