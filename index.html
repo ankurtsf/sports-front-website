@@ -20,6 +20,11 @@
     <meta name="description" content="Official pre-announcement. The Sports Front is bringing two English Heavyweights to India (2026). Join the priority list now for The Northern Storm.">
     <meta name="keywords" content="Football, Legends Match, English Premier League Legends, India Sports, Event Management, VOCA Sports">
     <meta name="author" content="The Sports Front">
+    
+    <!-- Canonical URL (SEO Best Practice) -->
+    <link rel="canonical" href="https://thesportsfront.com/">
+    <!-- Robots (Ensure Indexing) -->
+    <meta name="robots" content="index, follow">
 
     <!-- Open Graph / Facebook / WhatsApp -->
     <meta property="og:type" content="website">
@@ -96,6 +101,22 @@
         html { scroll-behavior: smooth; }
         body { font-family: 'Open Sans', sans-serif; line-height: 1.6; background-color: var(--deep-black); color: var(--text-white); overflow-x: hidden; }
         h1, h2, h3, h4, h5 { font-family: 'Montserrat', sans-serif; text-transform: uppercase; }
+
+        /* --- PRELOADER --- */
+        #preloader {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: var(--deep-black); z-index: 99999;
+            display: flex; justify-content: center; align-items: center;
+            transition: opacity 0.5s ease, visibility 0.5s;
+        }
+        .loader {
+            width: 50px; height: 50px;
+            border: 3px solid rgba(255,255,255,0.1);
+            border-radius: 50%; border-top-color: var(--brand-green);
+            animation: spin 1s ease-in-out infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        body.loaded #preloader { opacity: 0; visibility: hidden; }
 
         /* --- HEADER & NAV --- */
         header { position: fixed; top: 0; left: 0; right: 0; background: rgba(10, 10, 10, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255,255,255,0.1); z-index: 1000; transition: all 0.3s ease; }
@@ -352,6 +373,11 @@
     </style>
 </head>
 <body>
+
+    <!-- PRELOADER -->
+    <div id="preloader">
+        <div class="loader"></div>
+    </div>
 
     <!-- Header -->
     <header>
@@ -1068,8 +1094,14 @@
             document.getElementById('cookie-banner').classList.remove('show');
         }
         
-        // Run check on load
-        window.onload = checkCookie;
+        // --- PRELOADER LOGIC ---
+        window.addEventListener('load', function() {
+            document.body.classList.add('loaded');
+            // If checkCookie needs to run on load, can call it here too, 
+            // but window.onload overrides if assigned twice. 
+            // Better to consolidate:
+            checkCookie();
+        });
 
         // --- CUSTOM CHATBOT LOGIC ---
         async function sendMessage() {
