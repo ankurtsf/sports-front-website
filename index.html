@@ -3,11 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO & Meta Tags -->
     <title>The Sports Front - Iconic Football Nights Coming Soon</title>
+    <meta name="description" content="The Sports Front (TSF) brings legendary international football rivalries to life. Creating iconic sporting IPs and unforgettable fan experiences in India and beyond.">
+    <meta name="keywords" content="The Sports Front, TSF, Legends Face Off, Football India, Sports Events, Real Madrid Legends, Barcelona Legends, Sports IP">
+    <meta name="author" content="VOCA SPORTS PRIVATE LIMITED">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://thesportsfront.com/">
+    <meta property="og:title" content="The Sports Front - Iconic Football Nights">
+    <meta property="og:description" content="Bringing legendary football rivalries to life. Join us for the next historic match.">
+    <meta property="og:image" content="Images/logo-header.svg"> <!-- Ensure you have a suitable OG image, usually jpg/png is better for social, but svg works in some contexts or use a dedicated og-image.jpg -->
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://thesportsfront.com/">
+    <meta property="twitter:title" content="The Sports Front - Iconic Football Nights">
+    <meta property="twitter:description" content="Bringing legendary football rivalries to life. Join us for the next historic match.">
+    <meta property="twitter:image" content="Images/logo-header.svg">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="Images/logo-header.svg">
+    <link rel="alternate icon" href="Images/favicon.ico"> <!-- Optional fallback -->
+
     <!-- Google Fonts: Montserrat for Headings, Open Sans for body, plus 'Rock Salt' for the Gaffer label -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800;900&family=Open+Sans:wght@400;600&family=Rock+Salt&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@400;600&family=Rock+Salt&display=swap" rel="stylesheet">
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
         /* ... (Keep existing CSS for Hero, Nav, etc.) ... */
         :root { --brand-green: #00D084; --brand-red: #FF3333; --deep-black: #0a0a0a; --surface-dark: #141414; --surface-light: #1f1f1f; --text-white: #FFFFFF; --text-gray: #B0B0B0; --man-red: #DA291C; --man-blue: #6CABDD; --rm-gold: #FEBE10; --fcb-blue: #004D98; --fcb-red: #DB0030; }
@@ -69,7 +94,7 @@
         .clue-item { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; font-size: 0.95rem; color: #ddd; }
         .clue-item i { color: var(--brand-green); }
         .teaser-btn { display: block; width: 100%; padding: 1rem; background: transparent; border: 1px solid var(--brand-green); color: var(--brand-green); text-align: center; text-transform: uppercase; font-weight: 700; text-decoration: none; transition: all 0.3s; }
-        .teaser-btn:hover { background: var(--brand-green); color: var(--deep-black); box-shadow: 0 0 15px rgba(0, 208, 132, 0.4); }
+        .teaser-btn:hover { background: var(--brand-green); color: var(--deep-black); }
         .success-section { background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('Images/success-bg.jpeg'); background-size: cover; background-attachment: fixed; position: relative; }
         .success-section.no-img { background: #111; }
         .stats-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; max-width: 1200px; margin: 3rem auto; }
@@ -122,7 +147,7 @@
         .footer-links a:hover { color: var(--brand-green); }
         .footer-contact { margin-bottom: 2rem; color: #aaa; }
 
-        /* --- CHATBOT UI FIXES --- */
+        /* --- CHATBOT UI --- */
         .chatbot-btn { 
             position: fixed; bottom: 20px; right: 20px; width: 60px; height: 60px; 
             background: var(--brand-green); color: var(--deep-black); 
@@ -141,7 +166,7 @@
             color: var(--brand-green);
             padding: 8px 16px;
             border-radius: 30px;
-            font-family: 'Rock Salt', cursive; /* Using the new font */
+            font-family: 'Rock Salt', cursive; /* Stylized font */
             font-size: 0.8rem;
             letter-spacing: 1px;
             z-index: 1999;
@@ -179,7 +204,7 @@
         }
         .chat-header h4 { 
             font-size: 1.1rem; margin: 0; color: white; 
-            font-family: 'Rock Salt', cursive; /* STYLIZED FONT FOR GAFFER HEADER */
+            font-family: 'Rock Salt', cursive; /* Stylized font for header */
             font-weight: 700; 
             color: var(--brand-green);
         }
@@ -195,11 +220,15 @@
         .message { max-width: 80%; padding: 10px 15px; border-radius: 12px; font-size: 0.9rem; line-height: 1.4; }
         .message.bot { 
             background: #333; color: white; align-self: flex-start; border-bottom-left-radius: 2px; 
-            font-family: 'Montserrat', sans-serif; /* Clean professional font (like Futura substitute) */
+            font-family: 'Montserrat', sans-serif; /* Clean font for message body */
             text-transform: none; /* Crucial to prevent unwanted ALL CAPS */
             font-weight: 500;
         }
-        .message.user { background: var(--brand-green); color: black; align-self: flex-end; border-bottom-right-radius: 2px; font-weight: 600; }
+        .message.user { 
+            background: var(--brand-green); color: black; align-self: flex-end; border-bottom-right-radius: 2px; 
+            font-weight: 600; 
+            font-family: 'Montserrat', sans-serif;
+        }
         
         /* Input Area */
         .chat-input-area { 
@@ -390,7 +419,7 @@
         </div>
 
         <div style="text-align: center; margin-top: 3rem;">
-            <!-- UPDATED: Using the provided Microsoft Forms link -->
+            <!-- Updated Link to the Impact Report Form -->
             <a href="https://forms.office.com/r/NtDiPXFhKt" target="_blank" class="cta-btn-outline">Request Impact Report</a>
         </div>
     </section>
@@ -637,7 +666,7 @@
                             }
                             requestAnimationFrame(updateCount);
                         } else {
-                            if(target === 30231) entry.target.innerText = "25,109+";
+                            if(target === 30231) entry.target.innerText = "30,231+";
                             else if(target === 20000000) entry.target.innerText = "22M+";
                             else if(target === 620) entry.target.innerText = "620";
                             else if(target === 950000) entry.target.innerText = "950K+";
