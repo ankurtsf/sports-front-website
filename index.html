@@ -15,7 +15,7 @@
     <meta property="og:url" content="https://thesportsfront.com/">
     <meta property="og:title" content="The Sports Front - Iconic Football Nights">
     <meta property="og:description" content="Bringing legendary football rivalries to life. Join us for the next historic match.">
-    <meta property="og:image" content="Images/logo-header.svg"> <!-- Ensure you have a suitable OG image, usually jpg/png is better for social, but svg works in some contexts or use a dedicated og-image.jpg -->
+    <meta property="og:image" content="Images/logo-header.svg"> 
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
@@ -26,7 +26,7 @@
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="Images/logo-header.svg">
-    <link rel="alternate icon" href="Images/favicon.ico"> <!-- Optional fallback -->
+    <link rel="alternate icon" href="Images/favicon.ico">
 
     <!-- Google Fonts: Montserrat for Headings, Open Sans for body, plus 'Rock Salt' for the Gaffer label -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@400;600&family=Rock+Salt&display=swap" rel="stylesheet">
@@ -146,8 +146,28 @@
         .footer-links a { color: #888; text-decoration: none; transition: color 0.3s; }
         .footer-links a:hover { color: var(--brand-green); }
         .footer-contact { margin-bottom: 2rem; color: #aaa; }
+        
+        /* --- SOCIAL ICONS --- */
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
 
-        /* --- CHATBOT UI --- */
+        .social-link {
+            color: #888;
+            font-size: 1.5rem;
+            transition: color 0.3s, transform 0.3s;
+            text-decoration: none;
+        }
+
+        .social-link:hover {
+            color: var(--brand-green);
+            transform: translateY(-3px);
+        }
+
+        /* --- CHATBOT UI FIXES --- */
         .chatbot-btn { 
             position: fixed; bottom: 20px; right: 20px; width: 60px; height: 60px; 
             background: var(--brand-green); color: var(--deep-black); 
@@ -204,7 +224,7 @@
         }
         .chat-header h4 { 
             font-size: 1.1rem; margin: 0; color: white; 
-            font-family: 'Rock Salt', cursive; /* Stylized font for header */
+            font-family: 'Rock Salt', cursive; /* STYLIZED FONT FOR GAFFER HEADER */
             font-weight: 700; 
             color: var(--brand-green);
         }
@@ -292,6 +312,10 @@
                 </div>
                 <!-- Updated Link -->
                 <a href="https://forms.office.com/r/NtDiPXFhKt" target="_blank" class="cta-btn">Join Waitlist</a>
+                <!-- Share Button (Desktop) -->
+                <button onclick="shareWebsite()" class="cta-btn-outline" style="margin-left: 10px; border-radius: 50%; width: 45px; height: 45px; padding: 0; display: inline-flex; align-items: center; justify-content: center;">
+                    <i class="fas fa-share-alt"></i>
+                </button>
             </nav>
         </div>
     </header>
@@ -544,6 +568,14 @@
             <p><a href="mailto:info@thesportsfront.com" style="color: #aaa; text-decoration: none;">info@thesportsfront.com</a></p>
         </div>
         
+        <!-- Social Icons -->
+        <div class="social-icons">
+            <a href="https://instagram.com/thesportsfront?igsh=MWJ3YjJlem43OGVmcA==" target="_blank" class="social-link"><i class="fab fa-instagram"></i></a>
+            <a href="https://x.com/thesportsfront" target="_blank" class="social-link"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.linkedin.com/company/the-sports-front/" target="_blank" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+            <a href="mailto:info@thesportsfront.com" class="social-link"><i class="fas fa-envelope"></i></a>
+        </div>
+        
         <div class="footer-links">
             <a href="#">Privacy Policy</a>
             <a href="#">Terms & Conditions</a>
@@ -577,6 +609,22 @@
     </div>
 
     <script>
+        // Share Function
+        function shareWebsite() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'The Sports Front',
+                    text: 'Iconic Football Nights Coming Soon!',
+                    url: window.location.href,
+                })
+                .catch((error) => console.log('Error sharing', error));
+            } else {
+                // Fallback for desktop browsers that don't support native share
+                navigator.clipboard.writeText(window.location.href);
+                alert("Link copied to clipboard!");
+            }
+        }
+
         // Mobile Menu Toggle
         function toggleMenu() {
             document.getElementById('main-nav').classList.toggle('active');
