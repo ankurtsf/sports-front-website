@@ -267,11 +267,15 @@
         .message { max-width: 80%; padding: 10px 15px; border-radius: 12px; font-size: 0.9rem; line-height: 1.4; }
         .message.bot { 
             background: #333; color: white; align-self: flex-start; border-bottom-left-radius: 2px; 
-            font-family: 'Montserrat', sans-serif; /* Clean professional font */
+            font-family: 'Montserrat', sans-serif; /* Clean font for message body */
             text-transform: none; /* Crucial to prevent unwanted ALL CAPS */
             font-weight: 500;
         }
-        .message.user { background: var(--brand-green); color: black; align-self: flex-end; border-bottom-right-radius: 2px; font-weight: 600; }
+        .message.user { 
+            background: var(--brand-green); color: black; align-self: flex-end; border-bottom-right-radius: 2px; 
+            font-weight: 600; 
+            font-family: 'Montserrat', sans-serif;
+        }
         
         /* Input Area */
         .chat-input-area { 
