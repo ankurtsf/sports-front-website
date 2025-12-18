@@ -3,19 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Sports Front - Iconic Football Nights Coming Soon</title>
-    <!-- Google Fonts: Montserrat for Headings, Open Sans for body, plus 'Rock Salt' for the Gaffer label -->
+    
+    <!-- --- SEO & SOCIAL PACK --- -->
+    <title>The Sports Front | Iconic Football Nights</title>
+    <meta name="description" content="Official pre-announcement. The Sports Front is bringing Manchester United & Manchester City Legends to India (2026). Join the priority list now.">
+    <meta name="keywords" content="Football, Legends Match, Manchester United, Manchester City, India Sports, Event Management, VOCA Sports">
+    <meta name="author" content="The Sports Front">
+
+    <!-- Open Graph / Facebook / WhatsApp -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://thesportsfront.com/">
+    <meta property="og:title" content="Legends Are Returning | The Sports Front">
+    <meta property="og:description" content="The Northern Storm is coming. Manchester United vs Manchester City Legends. India 2026. Get Priority Access.">
+    <meta property="og:image" content="Images/social-share.jpg"> <!-- Ensure this image exists! -->
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://thesportsfront.com/">
+    <meta property="twitter:title" content="Legends Are Returning | The Sports Front">
+    <meta property="twitter:description" content="The Northern Storm is coming. India 2026.">
+    <meta property="twitter:image" content="Images/social-share.jpg">
+
+    <!-- Favicon (Placeholder) -->
+    <link rel="icon" type="image/png" href="Images/favicon.png">
+
+    <!-- JSON-LD Schema for Google Events -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Event",
+      "name": "The Northern Storm: Legends Face Off",
+      "startDate": "2026-02-01",
+      "location": {
+        "@type": "Place",
+        "name": "New Delhi",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "New Delhi",
+          "addressCountry": "IN"
+        }
+      },
+      "organizer": {
+        "@type": "Organization",
+        "name": "The Sports Front",
+        "url": "https://thesportsfront.com"
+      }
+    }
+    </script>
+
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@400;600&family=Rock+Salt&display=swap" rel="stylesheet">
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
-        /* ... (Keep existing CSS for Hero, Nav, etc.) ... */
-        :root { --brand-green: #00D084; --brand-red: #FF3333; --deep-black: #0a0a0a; --surface-dark: #141414; --surface-light: #1f1f1f; --text-white: #FFFFFF; --text-gray: #B0B0B0; --man-red: #DA291C; --man-blue: #6CABDD; --rm-gold: #FEBE10; --fcb-blue: #004D98; --fcb-red: #DB0030; }
+        /* --- CORE VARIABLES --- */
+        :root { 
+            --brand-green: #00D084; 
+            --brand-red: #FF3333; 
+            --deep-black: #0a0a0a; 
+            --surface-dark: #141414; 
+            --surface-light: #1f1f1f; 
+            --text-white: #FFFFFF; 
+            --text-gray: #B0B0B0; 
+            --man-red: #DA291C; 
+            --man-blue: #6CABDD; 
+            --rm-gold: #FEBE10; 
+            --fcb-blue: #004D98; 
+            --fcb-red: #DB0030; 
+        }
+        
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
         body { font-family: 'Open Sans', sans-serif; line-height: 1.6; background-color: var(--deep-black); color: var(--text-white); overflow-x: hidden; }
         h1, h2, h3, h4, h5 { font-family: 'Montserrat', sans-serif; text-transform: uppercase; }
 
+        /* --- HEADER & NAV --- */
         header { position: fixed; top: 0; left: 0; right: 0; background: rgba(10, 10, 10, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255,255,255,0.1); z-index: 1000; transition: all 0.3s ease; }
         .header-container { max-width: 1400px; margin: 0 auto; padding: 0.8rem 2rem; display: flex; justify-content: space-between; align-items: center; position: relative; }
         .logo-img { height: 80px; width: auto; object-fit: contain; }
@@ -26,11 +89,13 @@
         .nav-links a:hover { color: var(--brand-green); }
         .mobile-menu-btn { display: none; background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; }
         
+        /* --- BUTTONS --- */
         .cta-btn { background: var(--brand-green); color: var(--deep-black); padding: 0.7rem 1.8rem; border: none; border-radius: 4px; font-weight: 800; font-family: 'Montserrat', sans-serif; cursor: pointer; transition: all 0.3s ease; text-decoration: none; text-transform: uppercase; letter-spacing: 1px; display: inline-block; text-align: center; }
         .cta-btn:hover { background: #fff; transform: translateY(-2px); box-shadow: 0 0 15px rgba(0, 208, 132, 0.4); }
         .cta-btn-outline { background: transparent; color: var(--brand-green); border: 2px solid var(--brand-green); padding: 0.7rem 1.8rem; border-radius: 4px; font-weight: 800; font-family: 'Montserrat', sans-serif; cursor: pointer; transition: all 0.3s ease; text-decoration: none; text-transform: uppercase; letter-spacing: 1px; display: inline-block; text-align: center; }
         .cta-btn-outline:hover { background: var(--brand-green); color: var(--deep-black); box-shadow: 0 0 15px rgba(0, 208, 132, 0.4); }
 
+        /* --- HERO --- */
         .hero { position: relative; height: 100vh; min-height: 600px; display: flex; align-items: center; justify-content: center; overflow: hidden; text-align: center; }
         .hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(0deg, var(--deep-black) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.7) 100%); z-index: 2; }
         .hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; animation: slowZoom 20s infinite alternate; }
@@ -52,11 +117,13 @@
         .ticker-item { font-weight: 800; text-transform: uppercase; letter-spacing: 1px; padding: 0 2rem; white-space: nowrap; animation: ticker 20s linear infinite; }
         @keyframes ticker { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
 
+        /* --- SECTIONS --- */
         .teaser-section, .success-section, .media-section, .capabilities-section, .team-section, .contact-section, .partners-section { padding: 6rem 2rem; }
         .teaser-section { background: var(--surface-dark); }
         .section-header { text-align: center; margin-bottom: 4rem; }
         .section-title { font-size: 2.5rem; font-weight: 900; color: var(--text-white); margin-bottom: 1rem; }
         .section-subtitle { color: var(--brand-green); font-weight: 600; letter-spacing: 2px; text-transform: uppercase; font-size: 0.9rem; }
+        
         .teaser-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 3rem; max-width: 1200px; margin: 0 auto; }
         .teaser-card { background: var(--surface-light); border-radius: 16px; padding: 3rem 2rem; position: relative; overflow: hidden; transition: transform 0.3s ease; border: 1px solid rgba(255,255,255,0.05); }
         .teaser-card:hover { transform: translateY(-10px); }
@@ -68,14 +135,16 @@
         .teaser-clues { background: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: 8px; margin-bottom: 2rem; }
         .clue-item { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; font-size: 0.95rem; color: #ddd; }
         .clue-item i { color: var(--brand-green); }
-        .teaser-btn { display: block; width: 100%; padding: 1rem; background: transparent; border: 1px solid var(--brand-green); color: var(--brand-green); text-align: center; text-transform: uppercase; font-weight: 700; text-decoration: none; transition: all 0.3s; }
+        .teaser-btn { display: block; width: 100%; padding: 1rem; background: transparent; border: 1px solid var(--brand-green); color: var(--brand-green); text-align: center; text-transform: uppercase; font-weight: 700; text-decoration: none; transition: all 0.3s; cursor: pointer;}
         .teaser-btn:hover { background: var(--brand-green); color: var(--deep-black); }
+
         .success-section { background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('Images/success-bg.jpeg'); background-size: cover; background-attachment: fixed; position: relative; }
         .success-section.no-img { background: #111; }
         .stats-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; max-width: 1200px; margin: 3rem auto; }
         .stat-item { text-align: center; background: rgba(0,0,0,0.6); backdrop-filter: blur(5px); padding: 2rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; }
         .stat-number { font-size: 2.5rem; font-weight: 900; color: var(--text-white); font-family: 'Montserrat', sans-serif; display: block; margin-bottom: 0.5rem; }
         .stat-label { color: var(--brand-green); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
+        
         .media-section { padding: 6rem 2rem; background: #000; text-align: center; }
         .video-container { max-width: 1000px; margin: 2rem auto; border-radius: 16px; overflow: hidden; border: 1px solid #333; background: #111; width: 100%; }
         .video-player { width: 100%; height: auto; display: block; }
@@ -84,6 +153,7 @@
         .press-item { background: #fff; padding: 1rem; border-radius: 8px; height: 200px; display: flex; align-items: center; justify-content: center; overflow: hidden; transition: transform 0.3s; }
         .press-item:hover { transform: translateY(-5px); }
         .press-item img { width: 100%; height: 100%; object-fit: contain; }
+        
         .capabilities-section { padding: 8rem 2rem; background: var(--deep-black); position: relative; }
         .capabilities-section::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at 50% 50%, rgba(0, 208, 132, 0.05) 0%, transparent 50%); pointer-events: none; }
         .cap-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; max-width: 1400px; margin: 4rem auto 0; }
@@ -98,6 +168,7 @@
         .cap-text h4::after { content: ''; display: block; width: 50px; height: 4px; background: var(--brand-green); margin-top: 15px; transition: width 0.3s ease; }
         .cap-card:hover .cap-text h4::after { width: 100px; }
         .cap-text p { color: #ddd; font-size: 1rem; line-height: 1.6; margin-top: 1rem; opacity: 0.9; max-width: 90%; }
+        
         .team-section { padding: 6rem 2rem; background: linear-gradient(to bottom, #000000, #111111); text-align: center; }
         .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 4rem; max-width: 1100px; margin: 3rem auto; justify-content: center; }
         .team-member { position: relative; border-radius: 16px; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1); padding: 0; overflow: hidden; transition: all 0.4s ease; height: 400px; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; }
@@ -110,37 +181,24 @@
         .team-info { position: relative; z-index: 2; width: 100%; padding: 1.5rem; background: linear-gradient(to top, #000000 10%, transparent); text-align: center; }
         .member-name { font-weight: 800; color: white; font-size: 1.5rem; margin-bottom: 0.3rem; text-transform: uppercase; letter-spacing: 1px; }
         .member-role { color: var(--brand-green); font-size: 0.9rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; }
+        
         .partners-section { padding: 4rem 2rem; background: radial-gradient(circle at center, #ffffff 0%, #f4f4f4 100%); color: var(--black); }
         .partners-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem; max-width: 1200px; margin: 2rem auto; align-items: center; }
         .partner-logo-img { max-width: 140px; max-height: 80px; opacity: 1; transition: 0.3s; object-fit: contain; margin: 10px; }
         .partner-logo-img:hover { transform: scale(1.05); }
+        
         .contact-section { padding: 6rem 2rem; background: radial-gradient(circle at center, #1a1a1a 0%, #000 100%); text-align: center; }
         .footer-center { text-align: center; max-width: 600px; margin: 0 auto; }
         footer { background: black; padding: 4rem 2rem 2rem 2rem; text-align: center; border-top: 1px solid #222; color: #666; font-size: 0.8rem; }
         .footer-links { margin-bottom: 2rem; display: flex; justify-content: center; gap: 2rem; }
-        .footer-links a { color: #888; text-decoration: none; transition: color 0.3s; }
+        .footer-links a { color: #888; text-decoration: none; transition: color 0.3s; cursor: pointer; }
         .footer-links a:hover { color: var(--brand-green); }
         .footer-contact { margin-bottom: 2rem; color: #aaa; }
         
         /* --- SOCIAL ICONS --- */
-        .social-icons {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .social-link {
-            color: #888;
-            font-size: 1.5rem;
-            transition: color 0.3s, transform 0.3s;
-            text-decoration: none;
-        }
-
-        .social-link:hover {
-            color: var(--brand-green);
-            transform: translateY(-3px);
-        }
+        .social-icons { display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 1.5rem; }
+        .social-link { color: #888; font-size: 1.5rem; transition: color 0.3s, transform 0.3s; text-decoration: none; }
+        .social-link:hover { color: var(--brand-green); transform: translateY(-3px); }
 
         /* --- CHATBOT UI FIXES --- */
         .chatbot-btn { 
@@ -152,61 +210,30 @@
         }
         .chatbot-btn:hover { transform: scale(1.1); }
         
-        /* Stylized Text Label for "Ask The Gaffer" */
         .chatbot-label {
-            position: fixed;
-            bottom: 30px;
-            right: 90px;
-            background: rgba(0, 0, 0, 0.85);
-            color: var(--brand-green);
-            padding: 8px 16px;
-            border-radius: 30px;
-            font-family: 'Rock Salt', cursive; /* Stylized font */
-            font-size: 0.8rem;
-            letter-spacing: 1px;
-            z-index: 1999;
-            pointer-events: none;
-            opacity: 0;
-            border: 1px solid rgba(0, 208, 132, 0.3);
-            white-space: nowrap;
-            /* Fade in/out animation */
+            position: fixed; bottom: 30px; right: 90px;
+            background: rgba(0, 0, 0, 0.85); color: var(--brand-green);
+            padding: 8px 16px; border-radius: 30px;
+            font-family: 'Rock Salt', cursive; font-size: 0.8rem; letter-spacing: 1px;
+            z-index: 1999; pointer-events: none; opacity: 0;
+            border: 1px solid rgba(0, 208, 132, 0.3); white-space: nowrap;
             animation: fadeInOut 6s infinite;
         }
-
         @keyframes fadeInOut {
             0%, 100% { opacity: 0; transform: translateX(10px); }
             10%, 90% { opacity: 1; transform: translateX(0); }
             100% { opacity: 0; transform: translateX(10px); }
         }
 
-        /* Floating Share Button */
         .share-btn {
-            position: fixed;
-            bottom: 95px; /* Above chatbot button */
-            right: 25px; /* Aligned with chatbot button center */
-            width: 50px;
-            height: 50px;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(5px);
-            color: white;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
-            font-size: 1.2rem;
-            cursor: pointer;
-            z-index: 1998;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            position: fixed; bottom: 95px; right: 25px; width: 50px; height: 50px;
+            background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(5px);
+            color: white; border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 50%;
+            font-size: 1.2rem; cursor: pointer; z-index: 1998; transition: all 0.3s ease;
+            display: flex; align-items: center; justify-content: center;
         }
-        
-        .share-btn:hover {
-            background: var(--brand-green);
-            color: var(--deep-black);
-            transform: scale(1.1);
-        }
+        .share-btn:hover { background: var(--brand-green); color: var(--deep-black); transform: scale(1.1); }
 
-        /* Updated Container Styling */
         .chatbot-container { 
             display: none; position: fixed; bottom: 90px; right: 20px; 
             width: 350px; height: 500px; 
@@ -217,52 +244,64 @@
         }
         .chatbot-container.active { display: flex; }
         
-        .chat-header { 
-            background: var(--deep-black); padding: 15px; 
-            border-bottom: 1px solid #333; 
-            display: flex; justify-content: space-between; align-items: center; 
-            flex-shrink: 0; 
-            height: 60px;
-        }
-        .chat-header h4 { 
-            font-size: 1.1rem; margin: 0; color: white; 
-            font-family: 'Rock Salt', cursive; /* STYLIZED FONT FOR GAFFER HEADER */
-            font-weight: 700; 
-            color: var(--brand-green);
-        }
+        .chat-header { background: var(--deep-black); padding: 15px; border-bottom: 1px solid #333; display: flex; justify-content: space-between; align-items: center; flex-shrink: 0; height: 60px; }
+        .chat-header h4 { font-size: 1.1rem; margin: 0; font-family: 'Rock Salt', cursive; font-weight: 700; color: var(--brand-green); }
         .close-chat { cursor: pointer; color: #888; font-size: 1.2rem; }
         
-        /* Messages Area */
-        .chat-messages { 
-            flex: 1; 
-            padding: 15px; 
-            overflow-y: auto; 
-            display: flex; flex-direction: column; gap: 10px; 
-        }
+        .chat-messages { flex: 1; padding: 15px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; }
         .message { max-width: 80%; padding: 10px 15px; border-radius: 12px; font-size: 0.9rem; line-height: 1.4; }
-        .message.bot { 
-            background: #333; color: white; align-self: flex-start; border-bottom-left-radius: 2px; 
-            font-family: 'Montserrat', sans-serif; /* Clean font for message body */
-            text-transform: none; /* Crucial to prevent unwanted ALL CAPS */
-            font-weight: 500;
-        }
-        .message.user { 
-            background: var(--brand-green); color: black; align-self: flex-end; border-bottom-right-radius: 2px; 
-            font-weight: 600; 
-            font-family: 'Montserrat', sans-serif;
-        }
+        .message.bot { background: #333; color: white; align-self: flex-start; border-bottom-left-radius: 2px; font-family: 'Montserrat', sans-serif; text-transform: none; font-weight: 500; }
+        .message.user { background: var(--brand-green); color: black; align-self: flex-end; border-bottom-right-radius: 2px; font-weight: 600; font-family: 'Montserrat', sans-serif; }
         
-        /* Input Area */
-        .chat-input-area { 
-            padding: 15px; 
-            background: var(--deep-black); 
-            border-top: 1px solid #333; 
-            display: flex; gap: 10px; 
-            flex-shrink: 0; 
-            min-height: 70px;
-        }
+        .chat-input-area { padding: 15px; background: var(--deep-black); border-top: 1px solid #333; display: flex; gap: 10px; flex-shrink: 0; min-height: 70px; }
         .chat-input { flex: 1; padding: 10px; border-radius: 6px; border: 1px solid #444; background: #222; color: white; outline: none; }
         .send-btn { background: var(--brand-green); color: black; border: none; padding: 0 15px; border-radius: 6px; cursor: pointer; font-weight: bold; }
+
+        /* --- NEW: COOKIE BANNER --- */
+        #cookie-banner {
+            position: fixed; bottom: 0; left: 0; width: 100%;
+            background: #111; border-top: 1px solid var(--brand-green);
+            padding: 1rem 2rem; z-index: 9999;
+            display: flex; justify-content: space-between; align-items: center;
+            transform: translateY(100%); transition: transform 0.5s ease-in-out;
+            box-shadow: 0 -5px 20px rgba(0,0,0,0.5);
+        }
+        #cookie-banner.show { transform: translateY(0); }
+        .cookie-text { font-size: 0.85rem; color: #ccc; max-width: 80%; }
+        .cookie-btn { background: var(--brand-green); color: black; border: none; padding: 0.5rem 1.5rem; border-radius: 4px; font-weight: 700; cursor: pointer; }
+
+        /* --- NEW: MODAL STYLES --- */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.9); z-index: 10000;
+            display: none; justify-content: center; align-items: center;
+            opacity: 0; transition: opacity 0.3s ease;
+        }
+        .modal-overlay.active { display: flex; opacity: 1; }
+        
+        .modal-content {
+            background: var(--surface-light); width: 90%; max-width: 700px;
+            max-height: 90vh; overflow-y: auto; border-radius: 12px;
+            border: 1px solid #333; position: relative;
+            box-shadow: 0 10px 40px rgba(0, 208, 132, 0.15);
+            animation: modalSlideIn 0.3s ease;
+        }
+        @keyframes modalSlideIn { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+        .modal-header { padding: 1.5rem; border-bottom: 1px solid #333; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; background: var(--surface-light); z-index: 10; }
+        .modal-title { font-size: 1.2rem; font-weight: 800; color: white; margin: 0; }
+        .modal-close { background: none; border: none; color: #888; font-size: 1.5rem; cursor: pointer; transition: color 0.3s; }
+        .modal-close:hover { color: var(--brand-green); }
+        
+        .modal-body { padding: 2rem; color: #ddd; font-size: 0.95rem; line-height: 1.7; }
+        .modal-body h4 { color: var(--brand-green); margin-top: 1.5rem; margin-bottom: 0.5rem; }
+        .modal-body h5 { color: white; margin-top: 1rem; margin-bottom: 0.3rem; font-size: 1rem; font-weight: 700; }
+        .modal-body ul { margin-left: 1.5rem; margin-bottom: 1rem; }
+        .modal-body li { margin-bottom: 0.3rem; }
+        .modal-body p { margin-bottom: 1rem; }
+        
+        /* Iframe styling for the form */
+        .form-frame { width: 100%; height: 500px; border: none; border-radius: 8px; }
 
         @media (max-width: 768px) {
             .header-container { padding: 1rem; }
@@ -286,9 +325,10 @@
             .cap-card { height: 400px; }
             .video-container { margin: 1rem auto; }
             .chatbot-container { width: 90%; right: 5%; bottom: 80px; }
-            .chatbot-label { display: none; } /* Hide label on mobile */
-            /* Move share button on mobile */
+            .chatbot-label { display: none; }
             .share-btn { bottom: 100px; right: 20px; } 
+            #cookie-banner { flex-direction: column; gap: 1rem; text-align: center; padding: 1.5rem; }
+            .cookie-text { max-width: 100%; }
         }
     </style>
 </head>
@@ -298,11 +338,9 @@
     <header>
         <div class="header-container">
             <div class="logo-container">
-                <!-- UPDATED: Pointing to Images/ folder -->
                 <img src="Images/logo-header.svg" alt="The Sports Front" class="logo-img">
             </div>
             
-            <!-- Hamburger Button -->
             <button class="mobile-menu-btn" onclick="toggleMenu()">
                 <i class="fas fa-bars"></i>
             </button>
@@ -314,8 +352,8 @@
                     <a href="#about" onclick="toggleMenu()">About</a>
                     <a href="#partners" onclick="toggleMenu()">Partners</a>
                 </div>
-                <!-- Updated Link -->
-                <a href="https://forms.office.com/r/NtDiPXFhKt" target="_blank" class="cta-btn">Join Waitlist</a>
+                <!-- CHANGED: Opens Modal instead of new tab -->
+                <button onclick="openModal('waitlist-modal')" class="cta-btn">Join Waitlist</button>
             </nav>
         </div>
     </header>
@@ -338,7 +376,7 @@
 
             <div style="margin-top: 2rem;">
                 <a href="#events" class="cta-btn" style="background: transparent; border: 2px solid white; color: white; margin-right: 1rem; margin-bottom: 1rem;">See The Hints</a>
-                <a href="https://forms.office.com/r/NtDiPXFhKt" target="_blank" class="cta-btn">Unlock Priority Access</a>
+                <button onclick="openModal('waitlist-modal')" class="cta-btn">Unlock Priority Access</button>
             </div>
         </div>
     </section>
@@ -370,7 +408,7 @@
                     <div class="clue-item"><i class="fas fa-check-circle"></i> A City Divided</div>
                     <div class="clue-item"><i class="fas fa-check-circle"></i> <b>Hint:</b> A rivalry that defined a decade.</div>
                 </div>
-                <a href="https://forms.office.com/r/NtDiPXFhKt" target="_blank" class="teaser-btn">Unlock Priority Access</a>
+                <button onclick="openModal('waitlist-modal')" class="teaser-btn">Unlock Priority Access</button>
             </div>
 
             <div class="teaser-card thailand">
@@ -384,7 +422,7 @@
                     <div class="clue-item"><i class="fas fa-check-circle"></i> Galácticos vs Tiki Taka</div>
                     <div class="clue-item"><i class="fas fa-check-circle"></i> <b>Hint:</b> Royal White meets Blue & Red.</div>
                 </div>
-                <a href="https://forms.office.com/r/NtDiPXFhKt" target="_blank" class="teaser-btn">Unlock Priority Access</a>
+                <button onclick="openModal('waitlist-modal')" class="teaser-btn">Unlock Priority Access</button>
             </div>
         </div>
     </section>
@@ -537,11 +575,8 @@
             <img src="Images/partner-nivea.jpg" alt="Nivea" class="partner-logo-img">
             <img src="Images/partner-medulance.png" alt="Medulance" class="partner-logo-img">
             <img src="Images/partner-dypatil.png" alt="DY Patil" class="partner-logo-img">
-            <!-- RedFM Added (JPG) -->
             <img src="Images/partner-redfm.jpg" alt="Red FM" class="partner-logo-img">
-            <!-- Topps Added -->
             <img src="Images/partner-topps.png" alt="Topps" class="partner-logo-img">
-            <!-- Capital Group -->
             <img src="Images/partner-capital.png" alt="Capital Group" class="partner-logo-img">
             <img src="Images/partner-eventnetwork.png" alt="Event Network" class="partner-logo-img">
             <img src="Images/partner-flixbus.png" alt="FlixBus" class="partner-logo-img">
@@ -554,9 +589,7 @@
         <p style="color: #ccc; margin-bottom: 2rem;">Be the first to know when tickets go live for India and Thailand.</p>
         
         <div class="footer-center">
-            <a href="https://forms.office.com/r/NtDiPXFhKt" target="_blank" class="cta-btn">
-                Join Priority List
-            </a>
+            <button onclick="openModal('waitlist-modal')" class="cta-btn">Join Priority List</button>
         </div>
         <p style="font-size: 0.8rem; color: #555; margin-top: 2rem;">We respect your inbox. No spam, only game changers.</p>
     </section>
@@ -576,9 +609,10 @@
             <a href="mailto:info@thesportsfront.com" class="social-link"><i class="fas fa-envelope"></i></a>
         </div>
         
+        <!-- UPDATED: Triggers Modals -->
         <div class="footer-links">
-            <a href="#">Privacy Policy</a>
-            <a href="#">Terms & Conditions</a>
+            <a onclick="openModal('privacy-modal')">Privacy Policy</a>
+            <a onclick="openModal('terms-modal')">Terms & Conditions</a>
         </div>
 
         <p>&copy; 2025 The Sports Front. All rights reserved. | Fueling The Future Of Sports, Boldly!</p>
@@ -587,13 +621,12 @@
     <!-- Chatbot Button -->
     <div class="chatbot-label">Ask The Gaffer</div>
     
-    <!-- Floating Share Button (Now above chatbot) -->
+    <!-- Floating Share Button -->
     <button onclick="shareWebsite()" class="share-btn">
         <i class="fas fa-share-alt"></i>
     </button>
     
     <button class="chatbot-btn" onclick="toggleChat()">
-        <!-- Changed to "User Tie" to look like a Manager/Gaffer -->
         <i class="fas fa-user-tie"></i>
     </button>
 
@@ -614,6 +647,318 @@
         </div>
     </div>
 
+    <!-- NEW: COOKIE BANNER -->
+    <div id="cookie-banner">
+        <div class="cookie-text">
+            We use cookies to improve your experience and analyze site traffic. By continuing, you agree to our use of cookies.
+        </div>
+        <button class="cookie-btn" onclick="acceptCookies()">I Accept</button>
+    </div>
+
+    <!-- NEW: WAITLIST MODAL -->
+    <div id="waitlist-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">SECURE YOUR SEAT</h3>
+                <button class="modal-close" onclick="closeModal('waitlist-modal')">&times;</button>
+            </div>
+            <!-- Embedded Microsoft Form -->
+            <iframe class="form-frame" src="https://forms.office.com/r/NtDiPXFhKt"></iframe>
+        </div>
+    </div>
+
+    <!-- NEW: PRIVACY MODAL -->
+    <div id="privacy-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">PRIVACY POLICY</h3>
+                <button class="modal-close" onclick="closeModal('privacy-modal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <h4>1. Introduction</h4>
+                <p>Voca Sports Private Limited ("Company," "we," "us," "our") is committed to protecting your privacy and ensuring a positive experience on our website (www.vocasports.com) and services. Please read this Privacy Policy carefully. If you do not agree with our policies and practices, please do not use our website or submit any information.</p>
+                
+                <h4>2. Information We Collect</h4>
+                <h5>2.1 Information You Provide Through Forms</h5>
+                <p><strong>Interest Registration Form:</strong></p>
+                <ul>
+                    <li>Full name</li>
+                    <li>Email address</li>
+                    <li>Phone number</li>
+                    <li>City/Location</li>
+                    <li>Event interests and preferences</li>
+                </ul>
+                <p><strong>Partnership Enquiry Form:</strong></p>
+                <ul>
+                    <li>Company/Organization name</li>
+                    <li>Contact person's name and designation</li>
+                    <li>Email address</li>
+                    <li>Phone number</li>
+                    <li>Partnership interests</li>
+                    <li>Company website (if applicable)</li>
+                </ul>
+
+                <h5>2.2 Information Collected Automatically</h5>
+                <p><strong>Website Analytics:</strong></p>
+                <ul>
+                    <li>IP address and device identifier</li>
+                    <li>Browser type and operating system</li>
+                    <li>Pages visited, time spent on site</li>
+                    <li>Referral source</li>
+                    <li>Geographic location (country/city level)</li>
+                </ul>
+                <p><strong>Cookies & Tracking:</strong></p>
+                <ul>
+                    <li>Session cookies for website functionality</li>
+                    <li>Analytics cookies (Google Analytics or similar)</li>
+                    <li>Preference cookies to remember user choices</li>
+                </ul>
+
+                <h4>3. Purpose of Data Collection</h4>
+                <p>We collect your information for the following purposes:</p>
+                <h5>3.1 Interest Registration Form</h5>
+                <ul>
+                    <li>Process your enquiry about Voca Sports events</li>
+                    <li>Send you event updates, announcements, and relevant information</li>
+                    <li>Understand market demand and user interests</li>
+                    <li>Improve our website and services based on feedback</li>
+                </ul>
+                <h5>3.2 Partnership Enquiry Form</h5>
+                <ul>
+                    <li>Evaluate partnership opportunities</li>
+                    <li>Contact you regarding potential collaboration</li>
+                    <li>Share relevant partnership information</li>
+                    <li>Follow up on your proposal</li>
+                </ul>
+                <h5>3.3 General Communications</h5>
+                <ul>
+                    <li>Send transactional emails (form confirmation, receipt)</li>
+                    <li>Provide customer support and respond to inquiries</li>
+                    <li>Send newsletters and promotional communications (with your consent)</li>
+                    <li>Notify you of changes to our Privacy Policy or Terms & Conditions</li>
+                </ul>
+                <h5>3.4 Analytics & Improvement</h5>
+                <ul>
+                    <li>Analyze website traffic and user behavior</li>
+                    <li>Identify technical issues and improve performance</li>
+                    <li>Develop new features and services</li>
+                </ul>
+
+                <h4>4. Data Sharing & Disclosure</h4>
+                <h5>4.1 We Share Your Information With:</h5>
+                <p><strong>Service Providers:</strong> Email service providers, Cloud hosting, Website analytics (Google Analytics), CRM platforms.</p>
+                <p><strong>Business Operations:</strong> Team members within Voca Sports, Legal, finance, and compliance teams.</p>
+                <h5>4.2 Legal Requirements</h5>
+                <p>We may disclose your information when required by law to government agencies, tax authorities, or court orders.</p>
+                <h5>4.3 We DO NOT:</h5>
+                <ul>
+                    <li>Sell or rent your personal information to third parties for marketing</li>
+                    <li>Share form data with unrelated marketing companies</li>
+                    <li>Disclose your information without legal or contractual basis</li>
+                </ul>
+
+                <h4>5. Data Retention</h4>
+                <ul>
+                    <li><strong>Interest Registration Form Data:</strong> 2 years</li>
+                    <li><strong>Partnership Enquiry Data:</strong> 1 year</li>
+                    <li><strong>Email Communications:</strong> Until unsubscribe</li>
+                    <li><strong>Website Analytics:</strong> Aggregated data indefinitely; individual data deleted after 12 months</li>
+                </ul>
+                <p>You may request deletion of your data at any time by contacting us at privacy@vocasports.com</p>
+
+                <h4>6. Your Privacy Rights (India)</h4>
+                <ul>
+                    <li><strong>Right to Access:</strong> Request a copy of information (Response: 30 days)</li>
+                    <li><strong>Right to Correction:</strong> Request correction of inaccurate info (Update: 10 business days)</li>
+                    <li><strong>Right to Deletion:</strong> Request deletion of data (Action: 30 days)</li>
+                    <li><strong>Right to Withdraw Consent:</strong> Opt-out of marketing (Effect: 48 hours)</li>
+                    <li><strong>Right to Lodge Complaints:</strong> Ministry of Electronics and Information Technology (MEITY)</li>
+                </ul>
+
+                <h4>7. Data Security</h4>
+                <p>We use SSL/TLS encryption, secure storage, access controls, regular audits, and firewalls. However, no system is 100% secure.</p>
+
+                <h4>8. Third-Party Links & Services</h4>
+                <p>We are not responsible for the privacy practices of external sites linked from our website.</p>
+
+                <h4>9. Cookies & Tracking Technologies</h4>
+                <p>We use Session cookies, Analytics cookies, and Preference cookies. You can disable cookies in your browser settings, though it may affect functionality.</p>
+
+                <h4>10. Children's Privacy</h4>
+                <p>Our website is not intended for children under 13. We do not knowingly collect info from children under 13.</p>
+
+                <h4>11. Grievance Redressal</h4>
+                <h5>11.1 Grievance Officer</h5>
+                <p><strong>Name:</strong> Anirudh Poddar<br>
+                <strong>Email:</strong> grievances@vocasports.com<br>
+                <strong>Phone:</strong> +91 9899152327<br>
+                <strong>Address:</strong> 84, Dariyaganj, Central Delhi, New Delhi, 110002, India<br>
+                <strong>Response Timeframe:</strong> Acknowledge within 7 days, resolve within 30 days.</p>
+                
+                <h5>11.2 Escalation</h5>
+                <p>Ministry of Electronics and Information Technology (MEITY): cyber-report@nic.in<br>
+                National Consumer Commission: www.consumercomplaints.in<br>
+                Toll-Free Complaint Line: 1800-11-4000</p>
+
+                <h4>12. Policy Changes</h4>
+                <p>We will notify you of significant changes via email or website announcement. Continued use constitutes acceptance.</p>
+
+                <h4>13. Contact Us</h4>
+                <p><strong>Email:</strong> privacy@vocasports.com<br>
+                <strong>Phone:</strong> +91 9899152327<br>
+                <strong>Mailing Address:</strong> Voca Sports Private Limited, 84, Dariyaganj, Central Delhi, New Delhi, 110002, India<br>
+                <strong>Response Time:</strong> 7-10 business days.</p>
+
+                <h4>14. Governing Law</h4>
+                <p>This Privacy Policy is governed by the laws of India (IT Act 2000, Consumer Protection Act 2019). All disputes subject to exclusive jurisdiction of courts in Delhi, India.</p>
+
+                <h4>15. FAQ</h4>
+                <p><strong>Q: Do you sell my data?</strong> A: No.<br>
+                <strong>Q: How do I opt out?</strong> A: Click "Unsubscribe" or email privacy@vocasports.com.<br>
+                <strong>Q: Is my data secure?</strong> A: Yes, we use SSL encryption.<br>
+                <strong>Q: Can I request my data?</strong> A: Yes, email privacy@vocasports.com.</p>
+
+                <p><strong>Last Updated:</strong> December 2025<br>
+                <strong>Next Review Date:</strong> December 2026</p>
+                <p>By using Voca Sports website and submitting forms, you agree to this Privacy Policy.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- NEW: TERMS MODAL -->
+    <div id="terms-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">TERMS & CONDITIONS</h3>
+                <button class="modal-close" onclick="closeModal('terms-modal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p><strong>Voca Sports Private Limited</strong><br>
+                <strong>Effective Date:</strong> December 2025</p>
+
+                <h4>1. Acceptance of Terms</h4>
+                <p>By accessing and using the Voca Sports website (www.vocasports.com) and submitting information through our forms, you ("User," "you") agree to be bound by these Terms & Conditions. If you do not agree, please do not use our website or submit any information.</p>
+                <p>These Terms & Conditions, along with our Privacy Policy, constitute the entire agreement between you and Voca Sports regarding your use of our website.</p>
+
+                <h4>2. Website Use & Conduct</h4>
+                <h5>2.1 Permitted Use</h5>
+                <p>You may use our website to:</p>
+                <ul>
+                    <li>Browse event information</li>
+                    <li>Submit interest registration forms</li>
+                    <li>Submit partnership enquiry forms</li>
+                    <li>Contact Voca Sports</li>
+                </ul>
+
+                <h5>2.2 Prohibited Activities</h5>
+                <p>You agree NOT to:</p>
+                <ul>
+                    <li>Scrape, crawl, or automatically download website content</li>
+                    <li>Attempt to gain unauthorized access to our systems</li>
+                    <li>Post unlawful, defamatory, offensive, or harmful content</li>
+                    <li>Transmit viruses, malware, or disruptive code</li>
+                    <li>Impersonate other users or misrepresent your identity</li>
+                    <li>Harass, abuse, or threaten anyone</li>
+                    <li>Violate any applicable Indian laws</li>
+                    <li>Interfere with website functionality</li>
+                </ul>
+                <p><strong>Consequences:</strong> Violation may result in account suspension and legal action.</p>
+
+                <h4>3. Form Submission & Information</h4>
+                <h5>3.1 Accuracy of Information</h5>
+                <p>When submitting forms, you agree to:</p>
+                <ul>
+                    <li>Provide accurate, truthful, and complete information</li>
+                    <li>Update information if it changes</li>
+                    <li>Be responsible for information you provide</li>
+                    <li>Not submit false, misleading, or fraudulent information</li>
+                </ul>
+
+                <h5>3.2 Contact & Communication</h5>
+                <p>By submitting forms, you consent to receive communications from Voca Sports at the email/phone provided, receive event updates, announcements, and promotional communications, and be contacted regarding your interest or partnership enquiry. You can opt-out of non-essential communications at any time.</p>
+
+                <h5>3.3 No Guarantee of Response</h5>
+                <p>Voca Sports receives numerous enquiries. While we endeavor to respond to all submissions, we do not guarantee a response to every enquiry. Response time varies based on volume and complexity.</p>
+
+                <h4>4. Partnership Enquiries</h4>
+                <h5>4.1 Confidentiality</h5>
+                <p>If you submit a partnership enquiry, your information is treated as confidential. We will not disclose your enquiry to third parties without consent.</p>
+
+                <h5>4.2 Non-Binding Discussion</h5>
+                <p>Initial discussions are exploratory and non-binding. No partnership exists unless formally agreed in writing.</p>
+
+                <h5>4.3 Intellectual Property in Proposals</h5>
+                <p>Ideas, concepts, or proposals submitted are your property. Voca Sports will not use your proposals without explicit consent.</p>
+
+                <h4>5. Intellectual Property Rights</h4>
+                <h5>5.1 Website Content Ownership</h5>
+                <p>All website content—text, graphics, logos, images, videos—is owned by Voca Sports or its partners and protected by copyright and trademark laws. You may view and download content for personal, non-commercial use, but you may NOT reproduce, distribute, or republish content without permission.</p>
+
+                <h4>6. Disclaimer & Limitation of Liability</h4>
+                <h5>6.1 "As-Is" Disclaimer</h5>
+                <p>Voca Sports provides the website and information "AS-IS" without warranties. We do not guarantee accuracy or completeness of website information.</p>
+
+                <h5>6.2 Liability Limitation</h5>
+                <p>TO THE FULLEST EXTENT PERMITTED BY LAW: Voca Sports is not liable for indirect, incidental, or consequential damages. Maximum liability: ₹500 or amount of any payment made (whichever higher). Exception: This does not limit liability for death, personal injury, or gross negligence.</p>
+
+                <h4>7. Links to Third-Party Websites</h4>
+                <p>Our website may contain links to third-party sites. We are not responsible for content, accuracy, or practices of external sites.</p>
+
+                <h4>8. Modification of Terms</h4>
+                <p>Voca Sports may update these Terms & Conditions at any time. Changes become effective immediately upon posting. Continued use of our website constitutes acceptance of updated terms.</p>
+
+                <h4>9. Dispute Resolution</h4>
+                <h5>9.1 Informal Resolution</h5>
+                <p>If a dispute arises, contact us at disputes@vocasports.com. We will attempt good-faith resolution within 30 days.</p>
+
+                <h5>9.2 Formal Resolution</h5>
+                <p>Unresolved disputes may proceed to Arbitration (Under Indian Arbitration & Conciliation Act, 1996), Consumer Protection (National/State Consumer Commission), or Legal Proceedings (Courts of Delhi, India).</p>
+
+                <h5>9.3 Governing Law</h5>
+                <p>These Terms & Conditions are governed by the laws of India, specifically Indian Contract Act, 1872, Information Technology Act, 2000, Consumer Protection Act, 2019, and Arbitration & Conciliation Act, 1996. All disputes subject to exclusive jurisdiction of Delhi courts.</p>
+
+                <h4>10. Compliance with Indian Law</h4>
+                <p>Voca Sports operates in full compliance with Information Technology Act, 2000, Consumer Protection Act, 2019, Indian Contract Act, 1872, and all applicable tax, labour, and regulatory laws.</p>
+
+                <h4>11. Data Protection & Privacy</h4>
+                <p>Your personal data is governed by our Privacy Policy (available on the website). By accepting these Terms & Conditions, you also accept our Privacy Policy.</p>
+
+                <h4>12. Termination of Access</h4>
+                <p>Voca Sports may terminate your website access if you violate these Terms & Conditions, engage in illegal or fraudulent activity, or violate intellectual property rights.</p>
+
+                <h4>13. Severability</h4>
+                <p>If any provision of these Terms & Conditions is found invalid or unenforceable, that provision is severed and remaining provisions continue in full effect.</p>
+
+                <h4>14. Entire Agreement</h4>
+                <p>These Terms & Conditions, along with the Privacy Policy, constitute the entire agreement between you and Voca Sports regarding your use of our website and services.</p>
+
+                <h4>15. Contact Us</h4>
+                <p><strong>Email:</strong> support@vocasports.com<br>
+                <strong>Phone:</strong> +91 9899152327<br>
+                <strong>Mailing Address:</strong> Voca Sports Private Limited, 84, Dariyaganj, Central Delhi, New Delhi, 110002, India<br>
+                <strong>Response Time:</strong> 7-10 business days.</p>
+
+                <h4>16. Grievance Officer (IT Act 2000 Compliance)</h4>
+                <p><strong>Name:</strong> Anirudh Poddar<br>
+                <strong>Email:</strong> grievances@vocasports.com<br>
+                <strong>Phone:</strong> +91 9899152327<br>
+                <strong>Address:</strong> 84, Dariyaganj, Central Delhi, New Delhi, 110002, India<br>
+                <strong>Escalation:</strong> Ministry of Electronics and Information Technology (cyber-report@nic.in), National Consumer Commission (www.consumercomplaints.in)</p>
+
+                <h4>17. FAQ</h4>
+                <p><strong>Q: Can I use content from your website?</strong> A: You may view content for personal use, but cannot republish without permission.<br>
+                <strong>Q: What if I want to withdraw my form submission?</strong> A: Email privacy@vocasports.com and we'll delete your data within 30 days.<br>
+                <strong>Q: What happens after I submit a partnership enquiry?</strong> A: We evaluate all enquiries and contact qualified partners. Response time varies.<br>
+                <strong>Q: Am I entering a partnership by submitting a form?</strong> A: No. Form submission is non-binding. Partnership requires formal written agreement.<br>
+                <strong>Q: How do I report violations of these terms?</strong> A: Report to: support@vocasports.com or grievances@vocasports.com</p>
+
+                <p><strong>Last Updated:</strong> December 2025<br>
+                <strong>Next Review Date:</strong> December 2026</p>
+                <p>By using Voca Sports website and submitting forms, you agree to these Terms & Conditions.</p>
+            </div>
+        </div>
+    </div>
+
     <script>
         // Share Function
         function shareWebsite() {
@@ -625,7 +970,6 @@
                 })
                 .catch((error) => console.log('Error sharing', error));
             } else {
-                // Fallback for desktop browsers that don't support native share
                 navigator.clipboard.writeText(window.location.href);
                 alert("Link copied to clipboard!");
             }
@@ -640,6 +984,41 @@
         function toggleChat() {
             document.getElementById('chatbot').classList.toggle('active');
         }
+
+        // --- NEW: MODAL LOGIC ---
+        function openModal(modalId) {
+            document.getElementById(modalId).classList.add('active');
+            // Close sidebar if open on mobile
+            document.getElementById('main-nav').classList.remove('active');
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal-overlay')) {
+                event.target.classList.remove('active');
+            }
+        }
+
+        // --- NEW: COOKIE LOGIC ---
+        function checkCookie() {
+            if (!localStorage.getItem('cookiesAccepted')) {
+                setTimeout(() => {
+                    document.getElementById('cookie-banner').classList.add('show');
+                }, 2000); // Show after 2 seconds
+            }
+        }
+        
+        function acceptCookies() {
+            localStorage.setItem('cookiesAccepted', 'true');
+            document.getElementById('cookie-banner').classList.remove('show');
+        }
+        
+        // Run check on load
+        window.onload = checkCookie;
 
         // --- CUSTOM CHATBOT LOGIC ---
         async function sendMessage() {
@@ -665,9 +1044,8 @@
                 loadingMsg.remove();
 
                 if (data.reply) {
-                    // PARSE MARKDOWN BOLD TO HTML
                     const formattedReply = data.reply.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>');
-                    addMessage(formattedReply, 'bot', true); // Pass true for HTML parsing
+                    addMessage(formattedReply, 'bot', true); 
                 } else {
                     addMessage("I'm having a little trouble connecting to the stadium. Please try again.", 'bot');
                 }
@@ -698,7 +1076,7 @@
             if (e.key === 'Enter') sendMessage();
         }
 
-        // Animated Statistics (Intersection Observer)
+        // Animated Statistics
         const stats = document.querySelectorAll('.stat-number');
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -720,8 +1098,8 @@
                             }
                             requestAnimationFrame(updateCount);
                         } else {
-                            if(target === 30231) entry.target.innerText = "30,231+";
-                            else if(target === 20000000) entry.target.innerText = "22M+";
+                            if(target === 30231 || target === 25109) entry.target.innerText = "30,000+";
+                            else if(target === 22000000) entry.target.innerText = "22M+";
                             else if(target === 620) entry.target.innerText = "620";
                             else if(target === 950000) entry.target.innerText = "950K+";
                             else entry.target.innerText = target;
