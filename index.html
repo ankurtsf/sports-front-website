@@ -982,6 +982,15 @@
         // Share Function
         function shareWebsite() {
             if (navigator.share) {
+                // Tracking sharing event
+                if (typeof gtag === 'function') {
+                    gtag('event', 'share_content', {
+                        'method': 'Native Share',
+                        'content_type': 'Website',
+                        'item_id': 'Home Page'
+                    });
+                }
+                
                 navigator.share({
                     title: 'The Sports Front',
                     text: 'Iconic Football Nights Coming Soon!',
@@ -990,6 +999,14 @@
                 .catch((error) => console.log('Error sharing', error));
             } else {
                 navigator.clipboard.writeText(window.location.href);
+                // Tracking clipboard copy
+                if (typeof gtag === 'function') {
+                    gtag('event', 'share_content', {
+                        'method': 'Clipboard Copy',
+                        'content_type': 'Website',
+                        'item_id': 'Home Page'
+                    });
+                }
                 alert("Link copied to clipboard!");
             }
         }
@@ -1009,6 +1026,21 @@
             document.getElementById(modalId).classList.add('active');
             // Close sidebar if open on mobile
             document.getElementById('main-nav').classList.remove('active');
+            
+            // --- GA4 EVENT TRACKING ---
+            if (typeof gtag === 'function') {
+                if (modalId === 'waitlist-modal') {
+                    gtag('event', 'begin_waitlist_signup', {
+                        'event_category': 'conversion',
+                        'event_label': 'Waitlist Modal Opened'
+                    });
+                } else if (modalId === 'privacy-modal' || modalId === 'terms-modal') {
+                    gtag('event', 'view_legal', {
+                        'event_category': 'engagement',
+                        'event_label': modalId
+                    });
+                }
+            }
         }
 
         function closeModal(modalId) {
@@ -1046,6 +1078,15 @@
             if (!message) return;
 
             addMessage(message, 'user');
+            
+            // --- GA4 EVENT TRACKING ---
+            if (typeof gtag === 'function') {
+                gtag('event', 'use_chatbot', {
+                    'event_category': 'engagement',
+                    'event_label': 'Message Sent'
+                });
+            }
+
             inputField.value = '';
 
             const loadingMsg = addMessage('Thinking...', 'bot');
