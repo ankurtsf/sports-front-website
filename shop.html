@@ -21,6 +21,8 @@
     <!-- Favicons -->
     <link rel="shortcut icon" href="Images/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" sizes="180x180" href="Images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="Images/favicon-black.png" media="(prefers-color-scheme: light)">
+    <link rel="icon" type="image/png" sizes="32x32" href="Images/favicon-32x32.png" media="(prefers-color-scheme: dark)">
     
     <!-- Fonts & Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@400;600&family=Rock+Salt&display=swap" rel="stylesheet">
@@ -64,12 +66,13 @@
         .shop-hero {
             padding-top: 140px; padding-bottom: 4rem; text-align: center;
             background: linear-gradient(180deg, rgba(20,20,20,1) 0%, rgba(10,10,10,1) 100%);
+            border-bottom: 1px solid #333;
         }
         .shop-hero h1 { font-size: 3.5rem; font-weight: 900; margin-bottom: 0.5rem; }
         .shop-hero p { color: #888; font-size: 1.1rem; letter-spacing: 1px; }
 
         /* --- FILTERS --- */
-        .filter-bar { display: flex; justify-content: center; gap: 1rem; margin-bottom: 3rem; flex-wrap: wrap; }
+        .filter-bar { display: flex; justify-content: center; gap: 1rem; margin-bottom: 3rem; flex-wrap: wrap; margin-top: 3rem; }
         .filter-btn {
             background: transparent; border: 1px solid #333; color: #888;
             padding: 0.5rem 1.5rem; border-radius: 30px; cursor: pointer;
@@ -79,7 +82,7 @@
 
         /* --- PRODUCT GRID --- */
         .shop-container { max-width: 1200px; margin: 0 auto; padding: 0 2rem 6rem; }
-        .shop-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 3rem; }
+        .shop-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 3rem; }
         
         .product-card {
             background: var(--surface-light); border-radius: 8px; overflow: hidden;
@@ -87,7 +90,15 @@
             position: relative;
         }
         .product-card:hover { transform: translateY(-10px); border-color: var(--brand-green); }
-        .product-img { width: 100%; height: 320px; object-fit: cover; background: #222; }
+        
+        /* Updated image style to match Index (No padding, Contain) */
+        .product-img { 
+            width: 100%; 
+            height: 380px; 
+            object-fit: contain; 
+            background: #222; 
+            padding: 0;
+        }
         
         .product-tag { 
             position: absolute; top: 10px; left: 10px; 
@@ -136,7 +147,7 @@
             .header-container { padding: 1rem; }
             .logo-img { height: 60px; }
             .shop-hero h1 { font-size: 2.5rem; }
-            nav { display: none; } /* Simplified for this example, would need mobile menu JS */
+            nav { display: none; } 
         }
     </style>
 </head>
@@ -186,33 +197,46 @@
         <!-- Product Grid -->
         <div class="shop-grid">
             
-            <!-- Item 1 -->
+            <!-- Item 1: RM Jersey -->
             <div class="product-card">
-                <span class="product-tag">Last Few Left</span>
-                <img src="https://placehold.co/400x400/222/FFF?text=Mumbai+2025+Jersey" class="product-img" alt="Jersey">
+                <span class="product-tag">Legend Edition</span>
+                <img src="Images/shop-jersey-rm.jpg" class="product-img" alt="RM Jersey" onerror="this.src='https://placehold.co/400x500/222/FFF?text=RM+Jersey'">
                 <div class="product-info">
                     <span class="product-category">Jerseys</span>
-                    <h4 class="product-title">Commemorative Jersey</h4>
-                    <span class="product-price">₹1,999</span>
+                    <h4 class="product-title">Legends Face Off Jersey (RM Edition)</h4>
+                    <span class="product-price">₹2,499</span>
                     <button onclick="openModal('shop-modal')" class="buy-btn">Add to Bag</button>
                 </div>
             </div>
 
-            <!-- Item 2 -->
+            <!-- Item 2: FCB Jersey -->
             <div class="product-card">
-                <img src="https://placehold.co/400x400/222/FFF?text=TSF+Hoodie" class="product-img" alt="Hoodie">
+                <span class="product-tag">Legend Edition</span>
+                <img src="Images/shop-jersey-fcb.jpg" class="product-img" alt="FCB Jersey" onerror="this.src='https://placehold.co/400x500/222/FFF?text=FCB+Jersey'">
                 <div class="product-info">
-                    <span class="product-category">Apparel</span>
-                    <h4 class="product-title">The Gaffer Hoodie (Black)</h4>
+                    <span class="product-category">Jerseys</span>
+                    <h4 class="product-title">LFO Jersey (Barca Edition)</h4>
                     <span class="product-price">₹2,499</span>
-                    <button onclick="openModal('shop-modal')" class="buy-btn">Pre-Order</button>
+                    <button onclick="openModal('shop-modal')" class="buy-btn">Add to Bag</button>
                 </div>
             </div>
 
-            <!-- Item 3 -->
+            <!-- Item 3: Match Ball -->
+            <div class="product-card">
+                <span class="product-tag">Official Match Ball</span>
+                <img src="Images/shop-matchball.jpg" class="product-img" alt="Match Ball" onerror="this.src='https://placehold.co/400x500/222/FFF?text=Match+Ball'">
+                <div class="product-info">
+                    <span class="product-category">Equipment</span>
+                    <h4 class="product-title">Official Match Ball</h4>
+                    <span class="product-price">₹3,999</span>
+                    <button onclick="openModal('shop-modal')" class="buy-btn">Add to Bag</button>
+                </div>
+            </div>
+
+            <!-- Item 4: Scarf -->
             <div class="product-card">
                 <span class="product-tag">Best Seller</span>
-                <img src="https://placehold.co/400x400/222/FFF?text=Official+Scarf" class="product-img" alt="Scarf">
+                <img src="Images/shop-scarf.jpg" class="product-img" alt="Scarf" onerror="this.src='https://placehold.co/400x500/222/FFF?text=Scarf'">
                 <div class="product-info">
                     <span class="product-category">Accessories</span>
                     <h4 class="product-title">Legends Face Off Scarf</h4>
@@ -221,35 +245,24 @@
                 </div>
             </div>
 
-            <!-- Item 4 -->
+            <!-- Item 5: Hoodie -->
             <div class="product-card">
-                <img src="https://placehold.co/400x400/222/FFF?text=Match+Day+Cap" class="product-img" alt="Cap">
+                <img src="Images/shop-hoodie.jpg" class="product-img" alt="Hoodie" onerror="this.src='https://placehold.co/400x500/222/FFF?text=Hoodie'">
+                <div class="product-info">
+                    <span class="product-category">Apparel</span>
+                    <h4 class="product-title">The Gaffer Hoodie (Black)</h4>
+                    <span class="product-price">₹2,499</span>
+                    <button onclick="openModal('shop-modal')" class="buy-btn">Pre-Order</button>
+                </div>
+            </div>
+
+            <!-- Item 6: Cap -->
+            <div class="product-card">
+                <img src="Images/shop-cap.jpg" class="product-img" alt="Cap" onerror="this.src='https://placehold.co/400x500/222/FFF?text=Cap'">
                 <div class="product-info">
                     <span class="product-category">Headwear</span>
                     <h4 class="product-title">Match Day Cap</h4>
                     <span class="product-price">₹599</span>
-                    <button onclick="openModal('shop-modal')" class="buy-btn">Add to Bag</button>
-                </div>
-            </div>
-
-            <!-- Item 5 -->
-            <div class="product-card">
-                <img src="https://placehold.co/400x400/222/FFF?text=Tote+Bag" class="product-img" alt="Tote">
-                <div class="product-info">
-                    <span class="product-category">Accessories</span>
-                    <h4 class="product-title">TSF Canvas Tote</h4>
-                    <span class="product-price">₹499</span>
-                    <button onclick="openModal('shop-modal')" class="buy-btn">Add to Bag</button>
-                </div>
-            </div>
-
-            <!-- Item 6 -->
-            <div class="product-card">
-                <img src="https://placehold.co/400x400/222/FFF?text=Keychains" class="product-img" alt="Keychain">
-                <div class="product-info">
-                    <span class="product-category">Accessories</span>
-                    <h4 class="product-title">Event Keychains (Set of 3)</h4>
-                    <span class="product-price">₹299</span>
                     <button onclick="openModal('shop-modal')" class="buy-btn">Add to Bag</button>
                 </div>
             </div>
