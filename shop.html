@@ -13,6 +13,9 @@
       gtag('config', 'G-JD59FMBHZ8');
     </script>
 
+    <!-- Razorpay SDK (Required for payments) -->
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
     <title>The Locker Room | TSF Official Store</title>
     
     <!-- Meta Tags for Shop -->
@@ -312,6 +315,11 @@
     </div>
 
     <script>
+        // --- CONFIGURATION ---
+        // VITAL: PASTE YOUR RAZORPAY TEST KEY ID HERE
+        // It starts with "rzp_test_..."
+        const RAZORPAY_KEY_ID = "rzp_test_Rxt2V3sG2BYM9W"; 
+
         // Simple Cart State
         let cart = [];
 
@@ -390,7 +398,7 @@
                 if (order.id) {
                     // Open Razorpay
                     const options = {
-                        "key": "YOUR_RAZORPAY_KEY_ID", // Replace with Public Key
+                        "key": RAZORPAY_KEY_ID, // Use the variable from top of script
                         "amount": order.amount,
                         "currency": "INR",
                         "name": "The Sports Front",
@@ -411,7 +419,7 @@
                 }
             } catch (error) {
                 console.error("Checkout Error:", error);
-                alert("Checkout system is currently in maintenance mode.");
+                alert("Checkout system is currently in maintenance mode (Backend not connected).");
             } finally {
                 checkoutBtn.innerText = "Proceed to Pay";
                 checkoutBtn.disabled = false;
