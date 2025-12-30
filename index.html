@@ -29,39 +29,26 @@
     <!-- Robots -->
     <meta name="robots" content="index, follow">
 
-    <!-- Open Graph / Facebook / WhatsApp -->
+    <!-- Open Graph / Social -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://thesportsfront.com/">
     <meta property="og:title" content="Legends Are Returning | The Sports Front">
     <meta property="og:description" content="The Northern Storm is coming. Two English Giants collide. India 2026. Get Priority Access.">
-    <!-- CRITICAL FIX: Social platforms require ABSOLUTE URLs (https://...) for images. Relative paths will not show previews. -->
     <meta property="og:image" content="https://thesportsfront.com/Images/social-share.jpg"> 
-
-    <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://thesportsfront.com/">
-    <meta property="twitter:title" content="Legends Are Returning | The Sports Front">
-    <!-- UPDATED: Removed specific team names -->
-    <meta property="twitter:description" content="The Northern Storm is coming. Two English Giants collide. India 2026.">
     <meta property="twitter:image" content="https://thesportsfront.com/Images/social-share.jpg">
 
-    <!-- Favicon & App Icons (Professional Suite) -->
+    <!-- Favicon & App Icons -->
     <link rel="shortcut icon" href="Images/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" sizes="180x180" href="Images/apple-touch-icon.png">
-    
-    <!-- ADAPTIVE ICONS: Handles Light vs Dark Mode Browsers -->
-    <!-- If user is in Light Mode -> Show Black/Dark Icon -->
     <link rel="icon" type="image/png" sizes="32x32" href="Images/favicon-black.png" media="(prefers-color-scheme: light)">
-    <!-- If user is in Dark Mode -> Show White/Light Icon -->
     <link rel="icon" type="image/png" sizes="32x32" href="Images/favicon-32x32.png" media="(prefers-color-scheme: dark)">
-
-    <!-- Standard Fallbacks -->
     <link rel="icon" type="image/png" sizes="32x32" href="Images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="Images/favicon-16x16.png">
     <link rel="icon" type="image/png" sizes="192x192" href="Images/android-chrome-192x192.png">
     <link rel="icon" type="image/png" sizes="512x512" href="Images/android-chrome-512x512.png">
 
-    <!-- JSON-LD Schema for Google Events -->
+    <!-- JSON-LD Schema -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -87,7 +74,6 @@
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@400;600&family=Rock+Salt&display=swap" rel="stylesheet">
-    <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
@@ -164,8 +150,28 @@
         .cta-btn:hover { background: #fff; transform: translateY(-2px); box-shadow: 0 0 15px rgba(0, 208, 132, 0.4); }
         .cta-btn-outline { background: transparent; color: var(--brand-green); border: 2px solid var(--brand-green); padding: 0.7rem 1.8rem; border-radius: 4px; font-weight: 800; font-family: 'Montserrat', sans-serif; cursor: pointer; transition: all 0.3s ease; text-decoration: none; text-transform: uppercase; letter-spacing: 1px; display: inline-block; text-align: center; }
         .cta-btn-outline:hover { background: var(--brand-green); color: var(--deep-black); box-shadow: 0 0 15px rgba(0, 208, 132, 0.4); }
-        .cta-btn-gold { background: var(--gold-premium); color: black; padding: 0.7rem 1.8rem; border: none; border-radius: 4px; font-weight: 800; font-family: 'Montserrat', sans-serif; cursor: pointer; transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 1px; display: inline-block; }
-        .cta-btn-gold:hover { background: white; box-shadow: 0 0 20px rgba(212, 175, 55, 0.6); transform: translateY(-2px); }
+        
+        /* NEW: SLEEK GOLD BUTTON */
+        .cta-btn-gold { 
+            background: linear-gradient(135deg, #D4AF37 0%, #F8F195 50%, #D4AF37 100%);
+            background-size: 200% auto;
+            color: #000; 
+            padding: 0.8rem 2.5rem; 
+            border: none; 
+            border-radius: 50px; /* Pill shape */
+            font-weight: 800; 
+            font-family: 'Montserrat', sans-serif; 
+            cursor: pointer; 
+            transition: all 0.3s ease; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+            display: inline-block; 
+        }
+        .cta-btn-gold:hover { 
+            background-position: right center;
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.6); 
+            transform: scale(1.05); 
+        }
 
         /* --- HERO --- */
         .hero { position: relative; height: 100vh; min-height: 600px; display: flex; align-items: center; justify-content: center; overflow: hidden; text-align: center; }
@@ -211,75 +217,199 @@
         .teaser-btn { display: block; width: 100%; padding: 1rem; background: transparent; border: 1px solid var(--brand-green); color: var(--brand-green); text-align: center; text-transform: uppercase; font-weight: 700; text-decoration: none; transition: all 0.3s; cursor: pointer;}
         .teaser-btn:hover { background: var(--brand-green); color: var(--deep-black); }
 
-        /* --- MEMBERSHIP SECTION (THE DIRECTORS' BOX) --- */
+        /* --- REDESIGNED MEMBERSHIP SECTION (THE DIRECTORS' BOX) --- */
         .membership-section { 
+            padding: 5rem 2rem;
             /* Dark background image of VIP seating/Stadium view */
-            background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url('Images/membership-bg.jpg'); 
+            background: linear-gradient(to bottom, #0a0a0a 0%, rgba(0,0,0,0.85) 50%, #0a0a0a 100%), url('Images/membership-bg.jpg'); 
             background-size: cover; 
-            background-attachment: fixed; /* Parallax effect */
             background-position: center;
             border-top: 1px solid #333; 
             position: relative;
         }
-        
-        .membership-card {
-            /* Glassmorphism Effect */
-            background: rgba(20, 20, 20, 0.7);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border: 1px solid rgba(212, 175, 55, 0.3); /* Subtle Gold Border */
-            border-radius: 20px;
-            padding: 3rem;
-            max-width: 800px;
+
+        .membership-container {
+            max-width: 1100px;
             margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 4rem; /* Gap between card and text */
+        }
+
+        /* The Black Pass Card Visual */
+        .black-pass-visual {
+            flex: 1;
+            min-width: 320px;
+            max-width: 450px;
+            aspect-ratio: 1.586; /* Credit Card Ratio */
+            background: linear-gradient(135deg, #1f1f1f 0%, #0a0a0a 100%);
+            border-radius: 20px;
+            border: 1px solid #333;
+            box-shadow: 
+                0 25px 50px rgba(0,0,0,0.5), /* Deep Shadow */
+                inset 0 0 0 1px rgba(255,255,255,0.05); /* Edge lighting */
+            padding: 2.5rem;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.3s ease;
         }
-        
-        /* Gold Glow effect behind the card */
-        .membership-card::before {
+
+        .black-pass-visual:hover {
+            transform: scale(1.02);
+        }
+
+        /* Gold Shimmer Overlay */
+        .black-pass-visual::after {
             content: '';
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(212, 175, 55, 0.05) 0%, transparent 60%);
+            top: 0; left: -150%;
+            width: 200%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.15), transparent);
+            transform: skewX(-20deg);
+            animation: cardShimmer 5s infinite linear;
             pointer-events: none;
         }
-
-        .membership-badge {
-            background: var(--gold-premium); color: black;
-            font-weight: 800; padding: 5px 15px; border-radius: 20px;
-            text-transform: uppercase; font-size: 0.8rem;
-            display: inline-block; margin-bottom: 1.5rem;
-            box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
-        }
         
-        .membership-title { 
-            font-size: 3.5rem; 
-            font-weight: 900;
-            color: white; 
-            margin-bottom: 0.5rem; 
-            letter-spacing: -2px; 
+        @keyframes cardShimmer {
+            0% { left: -150%; }
+            50% { left: 150%; }
+            100% { left: 150%; }
+        }
+
+        .card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem; position: relative; z-index: 2; }
+
+        .card-chip {
+            width: 50px; height: 35px;
+            background: linear-gradient(135deg, #e5c56c, #f9f295, #c7a03c);
+            border-radius: 6px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+        }
+
+        .card-logo {
+            opacity: 0.8; 
+            height: 30px;
+            filter: brightness(0) invert(1); /* Make logo white */
+        }
+
+        /* The Stylized Directors Box Text */
+        .card-center-text {
+            font-family: 'Rock Salt', cursive;
+            color: var(--gold-premium);
+            font-size: 1.4rem;
+            text-align: center;
+            transform: rotate(-5deg);
+            opacity: 0.9;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+            margin: 1rem 0;
+            z-index: 2;
+        }
+
+        .card-bottom { position: relative; z-index: 2; }
+
+        .card-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            color: white;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
             text-transform: uppercase;
-            /* Gold Gradient Text */
-            background: linear-gradient(to right, #fff, #D4AF37, #fff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-size: 200% auto;
-            animation: shine 5s linear infinite;
+            margin-bottom: 0.2rem;
         }
-        
-        @keyframes shine { to { background-position: 200% center; } }
 
-        .membership-price { font-size: 2.5rem; color: var(--gold-premium); font-family: 'Montserrat', sans-serif; font-weight: 800; margin-bottom: 2rem; }
-        .membership-price span { font-size: 1rem; color: #aaa; font-weight: 400; }
-        .benefit-list { list-style: none; margin-bottom: 2.5rem; text-align: left; display: inline-block; position: relative; z-index: 2; }
-        .benefit-item { margin-bottom: 1rem; font-size: 1.1rem; color: #eee; display: flex; align-items: center; gap: 10px; }
-        .benefit-item i { color: var(--gold-premium); text-shadow: 0 0 10px rgba(212, 175, 55, 0.5); }
+        .card-subtitle {
+            font-size: 0.7rem;
+            color: #888;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-details-row { display: flex; justify-content: space-between; align-items: flex-end; }
+        
+        .card-number {
+            font-family: 'Courier New', monospace;
+            color: #aaa;
+            font-size: 1rem;
+            letter-spacing: 2px;
+        }
+
+        .card-name {
+            color: white;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        /* The Content (Right Side) */
+        .membership-info {
+            flex: 1;
+            min-width: 320px;
+            text-align: left;
+        }
+
+        .membership-label {
+            color: var(--gold-premium);
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .membership-headline {
+            font-size: 3.5rem;
+            line-height: 1;
+            color: white;
+            margin-bottom: 1.5rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+
+        .membership-desc {
+            color: #ccc;
+            margin-bottom: 2.5rem;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            max-width: 500px;
+        }
+
+        .benefit-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .benefit-item {
+            font-size: 1rem; color: #eee;
+            display: flex; align-items: flex-start; gap: 12px;
+            line-height: 1.4;
+        }
+        .benefit-item i { color: var(--gold-premium); margin-top: 3px; }
+
+        .price-area {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+
+        .price-tag {
+            font-size: 2.5rem;
+            color: white;
+            font-weight: 800;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .price-tag span { font-size: 1rem; color: #666; font-weight: 400; }
+
 
         /* --- SHOP TEASER CAROUSEL (LOCKER ROOM STYLE) --- */
         .shop-teaser-section { 
@@ -586,7 +716,10 @@
             .share-btn { bottom: 100px; right: 20px; } 
             #cookie-banner { flex-direction: column; gap: 1rem; text-align: center; padding: 1.5rem; }
             .cookie-text { max-width: 100%; }
-            
+            .membership-container { flex-direction: column; gap: 2rem; text-align: center; }
+            .membership-info { text-align: center; }
+            .benefit-grid { text-align: left; }
+            .price-area { justify-content: center; }
             /* Mobile Carousel */
             .shop-carousel-wrap { padding: 0 1rem; }
         }
@@ -700,27 +833,50 @@
         </div>
     </section>
 
-    <!-- MEMBERSHIP SECTION -->
+    <!-- REVISED MEMBERSHIP SECTION (THE DIRECTORS' BOX) -->
     <section class="membership-section" id="membership">
-        <div class="section-header">
-            <p class="section-subtitle" style="color: var(--rm-gold);">VIP ACCESS</p>
-            <h2 class="section-title">THE DIRECTORS' BOX</h2>
-            <p style="color: #ccc;">The view is better from here. Secure your legacy.</p>
-        </div>
-        
-        <div class="membership-card">
-            <span class="membership-badge">Limited Slots Available</span>
-            <h3 class="membership-title">TSF BLACK PASS</h3>
-            <p class="membership-price">₹999<span>/lifetime</span></p>
-            
-            <ul class="benefit-list">
-                <li class="benefit-item"><i class="fas fa-check-circle"></i> 24hr Priority Access to Match Tickets</li>
-                <li class="benefit-item"><i class="fas fa-check-circle"></i> 10% Discount on Final Match Tickets</li>
-                <li class="benefit-item"><i class="fas fa-check-circle"></i> 15% Off Official Merchandise</li>
-                <li class="benefit-item"><i class="fas fa-check-circle"></i> Exclusive Digital Badges & Content</li>
-            </ul>
-            <br>
-            <button onclick="openModal('membership-modal')" class="cta-btn-gold">Join The Directors' Box</button>
+        <div class="membership-container">
+            <!-- Left Side: The Card Visual -->
+            <div class="black-pass-visual">
+                <div class="card-top">
+                    <div class="card-chip"></div>
+                    <img src="Images/logo-header.svg" alt="TSF" class="card-logo"> 
+                </div>
+                
+                <!-- Stylized Center Text -->
+                <div class="card-center-text">The Directors' Box</div>
+                
+                <div class="card-bottom">
+                    <div class="card-title">TSF PRIORITY ACCESS</div>
+                    <div class="card-subtitle">FOUNDER EDITION • 2026</div>
+                    
+                    <div class="card-details-row">
+                        <div class="card-name">MEMBER NAME</div>
+                        <div class="card-number">XXXX XXXX 2026</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Side: The Pitch -->
+            <div class="membership-info">
+                <span class="membership-label">VIP ACCESS ONLY</span>
+                <h2 class="membership-headline">THE DIRECTORS' BOX</h2>
+                <p class="membership-desc">
+                    Sport is measured in moments. Secure your place in history. <strong>TSF Priority Access</strong> guarantees you skip the queue for every major international showdown we host. From the pitch to the court, be the first to witness the legends.
+                </p>
+                
+                <div class="benefit-grid">
+                    <div class="benefit-item"><i class="fas fa-check-circle"></i> 24hr Priority Ticket Access</div>
+                    <div class="benefit-item"><i class="fas fa-check-circle"></i> 10% Lifetime Ticket Discount</div>
+                    <div class="benefit-item"><i class="fas fa-check-circle"></i> Exclusive Merchandise Drops</div>
+                    <div class="benefit-item"><i class="fas fa-check-circle"></i> Invite-Only Watch Parties</div>
+                </div>
+
+                <div class="price-area">
+                    <span class="price-tag">₹999<span>/lifetime</span></span>
+                    <button onclick="openModal('membership-modal')" class="cta-btn-gold">Secure Priority Access</button>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -760,7 +916,18 @@
                     </div>
                 </div>
 
-                <!-- Product 3: Official Match Ball -->
+                <!-- Product 3: Scarf -->
+                <div class="product-card">
+                    <span class="product-tag">Best Seller</span>
+                    <img src="Images/shop-scarf.jpg" class="product-img" alt="Scarf" onerror="this.src='https://placehold.co/300x350/222/FFF?text=Image+Missing'">
+                    <div class="product-info">
+                        <h4 class="product-title">Legends Face Off Scarf</h4>
+                        <span class="product-price">₹799</span>
+                        <button onclick="openModal('shop-modal')" class="buy-btn-minimal">Quick Add +</button>
+                    </div>
+                </div>
+
+                <!-- Product 4: Official Match Ball (Added back to trigger carousel) -->
                 <div class="product-card">
                     <span class="product-tag">Official Match Ball</span>
                     <img src="Images/shop-matchball.jpg" class="product-img" alt="Match Ball" onerror="this.src='https://placehold.co/300x350/222/FFF?text=Match+Ball'">
@@ -969,7 +1136,7 @@
             <a href="mailto:info@thesportsfront.com" class="social-link"><i class="fas fa-envelope"></i></a>
         </div>
         
-        <!-- UPDATED: Triggers Modals (Hybrid Approach: Href + Onclick) -->
+        <!-- UPDATED: Footer Links to new Pages -->
         <div class="footer-links" style="display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center;">
             <a href="policies.html#privacy" onclick="openModal('privacy-modal'); return false;">Privacy Policy</a>
             <a href="policies.html#terms" onclick="openModal('terms-modal'); return false;">Terms & Conditions</a>
@@ -1034,11 +1201,11 @@
     <div id="membership-modal" class="modal-overlay">
         <div class="modal-content">
             <div class="modal-header">
-                <h3 class="modal-title" style="color: var(--rm-gold);">JOIN THE INNER CIRCLE</h3>
+                <h3 class="modal-title" style="color: var(--rm-gold);">JOIN THE DIRECTORS' BOX</h3>
                 <button class="modal-close" onclick="closeModal('membership-modal')">&times;</button>
             </div>
             <div class="modal-body" style="text-align: center;">
-                <h4>TSF BLACK PASS</h4>
+                <h4>TSF PRIORITY ACCESS</h4>
                 <p>Enter your details to secure your lifetime membership.</p>
                 
                 <div class="form-group">
@@ -1186,6 +1353,7 @@
         // Share Function
         function shareWebsite() {
             if (navigator.share) {
+                // Tracking sharing event
                 if (typeof gtag === 'function') {
                     gtag('event', 'share_content', {
                         'method': 'Native Share',
@@ -1193,6 +1361,7 @@
                         'item_id': 'Home Page'
                     });
                 }
+                
                 navigator.share({
                     title: 'The Sports Front',
                     text: 'Iconic Football Nights Coming Soon!',
@@ -1201,6 +1370,7 @@
                 .catch((error) => console.log('Error sharing', error));
             } else {
                 navigator.clipboard.writeText(window.location.href);
+                // Tracking clipboard copy
                 if (typeof gtag === 'function') {
                     gtag('event', 'share_content', {
                         'method': 'Clipboard Copy',
@@ -1225,9 +1395,10 @@
             }
 
             document.getElementById(modalId).classList.add('active');
+            // Close sidebar if open on mobile
             document.getElementById('main-nav').classList.remove('active');
             
-            // GA4 Tracking
+            // --- GA4 EVENT TRACKING ---
             if (typeof gtag === 'function') {
                 if (modalId === 'waitlist-modal') {
                     gtag('event', 'begin_waitlist_signup', { 'event_category': 'conversion', 'event_label': 'Waitlist Modal' });
@@ -1287,7 +1458,7 @@
                 email: email,
                 contact: phone,
                 cardName: cardName,
-                product: "TSF Black Pass"
+                product: "TSF Priority Access"
             };
 
             try {
@@ -1296,7 +1467,7 @@
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ 
-                        items: [{ id: 'membership-black-pass', quantity: 1 }],
+                        items: [{ id: 'membership-black-pass', quantity: 1 }], // Keeping ID same for backend compatibility
                         customerDetails: customerDetails
                     })
                 });
@@ -1309,7 +1480,7 @@
                         "amount": order.amount,
                         "currency": "INR",
                         "name": "The Sports Front",
-                        "description": "TSF Black Pass Membership",
+                        "description": "TSF Priority Access Membership",
                         "order_id": order.id, 
                         "prefill": {
                             "name": name,
@@ -1318,7 +1489,7 @@
                         },
                         "notes": customerDetails,
                         "handler": function (response){
-                            alert("Welcome to the Inner Circle! Payment ID: " + response.razorpay_payment_id);
+                            alert("Welcome to the Directors' Box! Payment ID: " + response.razorpay_payment_id);
                             closeModal('membership-modal');
                             // Reset form
                             document.getElementById('mem-name').value = '';
