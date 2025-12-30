@@ -238,9 +238,12 @@
             padding: 5rem 2rem;
             /* Dark background image of VIP seating/Stadium view */
             background: linear-gradient(to bottom, #0a0a0a 0%, rgba(0,0,0,0.85) 50%, #0a0a0a 100%), url('Images/membership-bg.jpeg'); 
-            background-size: cover; 
-            /* Shifting significantly to the other direction to reveal face */
-            background-position: 85% center; 
+            
+            /* UPDATED: Zoom in slightly (120%) to allow movement, and force alignment to the Right (100%) */
+            background-size: 120% auto; 
+            background-position: 100% center !important; 
+            background-attachment: scroll !important; /* Ensures position is relative to the box, not the screen */
+            
             border-top: 1px solid #333; 
             position: relative;
         }
