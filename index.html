@@ -350,7 +350,14 @@
             border: 1px solid rgba(255,255,255,0.05);
         }
         .product-card:hover { transform: translateY(-5px); border-color: var(--brand-green); }
-        .product-img { width: 100%; height: 350px; object-fit: cover; background: #222; }
+        /* UPDATED: Changed to 'contain' so jerseys are not cut off, added padding */
+        .product-img { 
+            width: 100%; 
+            height: 350px; 
+            object-fit: contain; 
+            background: #222; 
+            padding: 20px; 
+        }
         .product-info { padding: 1.5rem; text-align: left; }
         .product-tag { 
             position: absolute; top: 10px; left: 10px; 
@@ -743,6 +750,17 @@
                     <div class="product-info">
                         <h4 class="product-title">Legends Face Off Scarf</h4>
                         <span class="product-price">₹799</span>
+                        <button onclick="openModal('shop-modal')" class="buy-btn-minimal">Quick Add +</button>
+                    </div>
+                </div>
+
+                <!-- Product 4: Official Match Ball (Added back to trigger carousel) -->
+                <div class="product-card">
+                    <span class="product-tag">Official Match Ball</span>
+                    <img src="Images/shop-matchball.jpg" class="product-img" alt="Match Ball" onerror="this.src='https://placehold.co/300x350/222/FFF?text=Match+Ball'">
+                    <div class="product-info">
+                        <h4 class="product-title">Official Match Ball</h4>
+                        <span class="product-price">₹3,999</span>
                         <button onclick="openModal('shop-modal')" class="buy-btn-minimal">Quick Add +</button>
                     </div>
                 </div>
