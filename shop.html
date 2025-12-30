@@ -114,7 +114,7 @@
         }
         .buy-btn:hover { background: white; color: black; }
 
-        /* --- MODAL (CART & CHECKOUT & POLICIES) --- */
+        /* --- MODAL (CART & CHECKOUT) --- */
         .modal-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0,0,0,0.9); z-index: 10000;
@@ -131,14 +131,10 @@
         }
         @keyframes modalSlideIn { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
 
-        .modal-header { padding: 1.5rem; border-bottom: 1px solid #333; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; background: var(--surface-light); z-index: 10; }
+        .modal-header { padding: 1.5rem; border-bottom: 1px solid #333; display: flex; justify-content: space-between; align-items: center; }
         .modal-title { font-size: 1.2rem; font-weight: 800; margin: 0; }
         .modal-close { background: none; border: none; color: #888; font-size: 1.5rem; cursor: pointer; }
         .modal-body { padding: 2rem; }
-        
-        .modal-body h4 { color: var(--brand-green); margin-top: 1.5rem; margin-bottom: 0.5rem; }
-        .modal-body ul { margin-left: 1.5rem; margin-bottom: 1rem; }
-        .modal-body p { margin-bottom: 1rem; color: #ccc; }
 
         /* Cart Styles */
         .cart-empty-msg { text-align: center; color: #888; padding: 2rem 0; }
@@ -289,12 +285,13 @@
             <p><a href="mailto:info@thesportsfront.com" style="color: #aaa; text-decoration: none;">info@thesportsfront.com</a></p>
         </div>
         
-        <!-- Updated Footer Links for Compliance -->
+        <!-- Updated Footer Links for Compliance (Linking to real pages) -->
         <div class="footer-links" style="display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center; margin-bottom: 2rem;">
-            <a onclick="openModal('privacy-modal')">Privacy Policy</a>
-            <a onclick="openModal('terms-modal')">Terms & Conditions</a>
-            <a onclick="openModal('refund-modal')">Refund & Cancellation</a>
-            <a onclick="openModal('shipping-modal')">Shipping Policy</a>
+            <a href="policies.html#privacy">Privacy Policy</a>
+            <a href="policies.html#terms">Terms & Conditions</a>
+            <a href="policies.html#refund">Refund & Cancellation</a>
+            <a href="policies.html#shipping">Shipping Policy</a>
+            <a href="contact.html">Contact Us</a>
         </div>
 
         <p>&copy; 2025 The Sports Front. All rights reserved.</p>
@@ -310,77 +307,6 @@
             <div class="modal-body" id="cart-body">
                 <!-- Cart items will be injected here via JS -->
                 <div class="cart-empty-msg">Your locker is empty.</div>
-            </div>
-        </div>
-    </div>
-
-    <!-- NEW: REFUND POLICY MODAL -->
-    <div id="refund-modal" class="modal-overlay">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title">REFUND & CANCELLATION POLICY</h3>
-                <button class="modal-close" onclick="closeModal('refund-modal')">&times;</button>
-            </div>
-            <div class="modal-body">
-                <p><strong>Voca Sports Private Limited</strong><br>
-                <strong>Effective Date:</strong> December 2025</p>
-                <h4>1. Merchandise Returns</h4>
-                <p>We accept returns for physical merchandise (Jerseys, Scarves, Hoodies) only under the following conditions: product is damaged/defective or wrong size delivered.</p>
-                <p>Raise a return request within <strong>7 days</strong> via support@thesportsfront.com.</p>
-                <h4>2. Cancellations</h4>
-                <p>Merchandise orders can be cancelled within 24 hours if not shipped. Memberships are non-refundable.</p>
-                <h4>3. Refund Process</h4>
-                <p>Processed within 5-7 business days to original payment method.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- NEW: SHIPPING POLICY MODAL -->
-    <div id="shipping-modal" class="modal-overlay">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title">SHIPPING & DELIVERY POLICY</h3>
-                <button class="modal-close" onclick="closeModal('shipping-modal')">&times;</button>
-            </div>
-            <div class="modal-body">
-                <p><strong>Voca Sports Private Limited</strong><br>
-                <strong>Effective Date:</strong> December 2025</p>
-                <h4>1. Processing Time</h4>
-                <p>Orders processed within <strong>24-48 hours</strong>.</p>
-                <h4>2. Shipping Timelines</h4>
-                <ul>
-                    <li>Metro Cities: 3-5 Business Days</li>
-                    <li>Rest of India: 5-7 Business Days</li>
-                </ul>
-                <h4>3. Partners</h4>
-                <p>We use Delhivery, Bluedart, and Xpressbees.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- PRIVACY & TERMS MODALS (Simplified for shop page, link to full text if needed) -->
-    <div id="privacy-modal" class="modal-overlay">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title">PRIVACY POLICY</h3>
-                <button class="modal-close" onclick="closeModal('privacy-modal')">&times;</button>
-            </div>
-            <div class="modal-body">
-                <p>Please refer to the main website for the full Privacy Policy.</p>
-                <p><strong>Summary:</strong> We collect data to process orders. We do not sell data.</p>
-            </div>
-        </div>
-    </div>
-    
-    <div id="terms-modal" class="modal-overlay">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title">TERMS & CONDITIONS</h3>
-                <button class="modal-close" onclick="closeModal('terms-modal')">&times;</button>
-            </div>
-            <div class="modal-body">
-                <p>Please refer to the main website for the full Terms & Conditions.</p>
-                <p><strong>Summary:</strong> By using this shop, you agree to our terms of service.</p>
             </div>
         </div>
     </div>
