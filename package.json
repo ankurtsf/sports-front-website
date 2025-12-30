@@ -1,6 +1,7 @@
 {
   "name": "the-sports-front",
   "version": "1.0.0",
+  "type": "module",
   "dependencies": {
     "razorpay": "^2.9.2"
   }

@@ -1,7 +1,7 @@
-const Razorpay = require('razorpay');
+import Razorpay from 'razorpay';
 
 // Initialize Razorpay with your credentials
-// VITAL: Store these in your Vercel Environment Variables, NOT here in plain text for production.
+// VITAL: Store these in your Vercel Environment Variables.
 const razorpay = new Razorpay({
   key_id: process.env.RAZORPAY_KEY_ID, 
   key_secret: process.env.RAZORPAY_KEY_SECRET,
@@ -11,9 +11,7 @@ export default async function handler(req, res) {
   if (req.method === 'POST') {
     const { items } = req.body;
 
-    // 1. Calculate Total Price on Server (Security measure: don't trust client-side prices)
-    // In a real app, fetch these prices from a database based on item IDs.
-    // For this MVP, we define the catalog here.
+    // 1. Calculate Total Price on Server
     const productCatalog = {
       'jersey-rm': 2499,
       'jersey-fcb': 2499,
@@ -24,15 +22,19 @@ export default async function handler(req, res) {
     };
 
     let totalAmount = 0;
-    items.forEach(item => {
-      if (productCatalog[item.id]) {
-        totalAmount += productCatalog[item.id] * item.quantity;
-      }
-    });
+    
+    // Safety check for items
+    if (items && Array.isArray(items)) {
+        items.forEach(item => {
+          if (productCatalog[item.id]) {
+            totalAmount += productCatalog[item.id] * item.quantity;
+          }
+        });
+    }
 
     // 2. Create Order in Razorpay
     const options = {
-      amount: totalAmount * 100, // Razorpay takes amount in paisa (e.g., 10000 = ₹100)
+      amount: totalAmount * 100, // Razorpay takes amount in paisa
       currency: 'INR',
       receipt: 'order_rcptid_' + Date.now(),
     };
@@ -41,7 +43,7 @@ export default async function handler(req, res) {
       const order = await razorpay.orders.create(options);
       res.status(200).json(order);
     } catch (error) {
-      console.error(error);
+      console.error("Razorpay Error:", error);
       res.status(500).json({ error: 'Error creating order' });
     }
   } else {
