@@ -10,22 +10,26 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
+
       gtag('config', 'G-JD59FMBHZ8');
     </script>
     
-    <!-- Razorpay SDK -->
+    <!-- Razorpay SDK (Required for Membership Payments) -->
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
     <!-- --- SEO & SOCIAL PACK --- -->
     <title>The Sports Front | Iconic Football Nights</title>
+    <!-- UPDATED: Removed specific team names to protect confidentiality -->
     <meta name="description" content="Official pre-announcement. The Sports Front is bringing two English Heavyweights to India (2026). Join the priority list now for The Northern Storm.">
     <meta name="keywords" content="Football, Legends Match, English Premier League Legends, India Sports, Event Management, VOCA Sports, Football Merch, Membership">
     <meta name="author" content="The Sports Front">
     
+    <!-- Canonical URL -->
     <link rel="canonical" href="https://thesportsfront.com/">
+    <!-- Robots -->
     <meta name="robots" content="index, follow">
 
-    <!-- Open Graph -->
+    <!-- Open Graph / Social -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://thesportsfront.com/">
     <meta property="og:title" content="Legends Are Returning | The Sports Front">
@@ -34,7 +38,7 @@
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:image" content="https://thesportsfront.com/Images/social-share.jpg">
 
-    <!-- Favicons -->
+    <!-- Favicon & App Icons -->
     <link rel="shortcut icon" href="Images/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" sizes="180x180" href="Images/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="Images/favicon-black.png" media="(prefers-color-scheme: light)">
@@ -44,7 +48,7 @@
     <link rel="icon" type="image/png" sizes="192x192" href="Images/android-chrome-192x192.png">
     <link rel="icon" type="image/png" sizes="512x512" href="Images/android-chrome-512x512.png">
 
-    <!-- JSON-LD -->
+    <!-- JSON-LD Schema -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -163,6 +167,7 @@
         .cta-btn-outline { background: transparent; color: var(--brand-green); border: 2px solid var(--brand-green); padding: 0.7rem 1.8rem; border-radius: 4px; font-weight: 800; font-family: 'Montserrat', sans-serif; cursor: pointer; transition: all 0.3s ease; text-decoration: none; text-transform: uppercase; letter-spacing: 1px; display: inline-block; text-align: center; }
         .cta-btn-outline:hover { background: var(--brand-green); color: var(--deep-black); box-shadow: 0 0 15px rgba(0, 208, 132, 0.4); }
         
+        /* NEW: SLEEK GOLD BUTTON */
         .cta-btn-gold { 
             background: linear-gradient(135deg, #D4AF37 0%, #F8F195 50%, #D4AF37 100%);
             background-size: 200% auto;
@@ -576,6 +581,12 @@
         .cart-total { display: flex; justify-content: space-between; margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid #555; font-size: 1.2rem; font-weight: 800; }
         .checkout-btn { width: 100%; background: var(--brand-green); color: black; border: none; padding: 1rem; margin-top: 1.5rem; font-weight: 800; font-family: 'Montserrat', sans-serif; cursor: pointer; text-transform: uppercase; }
         .checkout-btn:hover { background: white; }
+        
+        /* Quantity Controls (Added for Index) */
+        .qty-controls { display: flex; align-items: center; gap: 10px; margin-top: 5px; }
+        .qty-btn { background: #333; border: none; color: white; width: 25px; height: 25px; border-radius: 4px; cursor: pointer; font-weight: 700; }
+        .qty-btn:hover { background: var(--brand-green); color: black; }
+        .qty-val { font-size: 0.9rem; font-weight: 600; min-width: 20px; text-align: center; }
 
         @media (max-width: 768px) {
             .header-container { padding: 1rem; }
@@ -730,6 +741,7 @@
                 <div class="black-pass-visual">
                     <!-- Background Decoration -->
                     <div class="card-deco-x">X</div>
+                    <!-- Removed div class="card-deco-dot" -->
                     
                     <div class="card-top">
                         <div class="card-chip"></div>
@@ -799,7 +811,6 @@
                     <div class="product-info">
                         <h4 class="product-title">Legends Face off jersey (RM Leyendas edition)</h4>
                         <span class="product-price">₹2,499</span>
-                        <!-- CHANGED: addToCart instead of modal -->
                         <button onclick="addToCart('jersey-rm', 'Legends Face Off Jersey (RM)', 2499)" class="buy-btn-minimal">Quick Add +</button>
                     </div>
                 </div>
@@ -1255,90 +1266,18 @@
 
     <script>
         // --- CONFIGURATION ---
+        // VITAL: PASTE YOUR RAZORPAY TEST KEY ID HERE
         const RAZORPAY_KEY_ID = "rzp_test_Rxt2V3sG2BYM9W"; 
 
-        // Share Function
-        function shareWebsite() {
-            if (navigator.share) {
-                if (typeof gtag === 'function') {
-                    gtag('event', 'share_content', {
-                        'method': 'Native Share',
-                        'content_type': 'Website',
-                        'item_id': 'Home Page'
-                    });
-                }
-                navigator.share({
-                    title: 'The Sports Front',
-                    text: 'Iconic Football Nights Coming Soon!',
-                    url: window.location.href,
-                })
-                .catch((error) => console.log('Error sharing', error));
-            } else {
-                navigator.clipboard.writeText(window.location.href);
-                if (typeof gtag === 'function') {
-                    gtag('event', 'share_content', {
-                        'method': 'Clipboard Copy',
-                        'content_type': 'Website',
-                        'item_id': 'Home Page'
-                    });
-                }
-                alert("Link copied to clipboard!");
-            }
-        }
+        // Initialize Cart from LocalStorage
+        let cart = JSON.parse(localStorage.getItem('tsf_cart')) || [];
 
-        // Menu & Chatbot Toggles
-        function toggleMenu() { document.getElementById('main-nav').classList.toggle('active'); }
-        function toggleChat() { document.getElementById('chatbot').classList.toggle('active'); }
-
-        // --- MODAL LOGIC ---
-        function openModal(modalId) {
-            // NOTE: Shop Modal is handled internally now for checkout
-            document.getElementById(modalId).classList.add('active');
-            document.getElementById('main-nav').classList.remove('active');
-            
-            // GA4 Tracking
-            if (typeof gtag === 'function') {
-                if (modalId === 'waitlist-modal') {
-                    gtag('event', 'begin_waitlist_signup', { 'event_category': 'conversion', 'event_label': 'Waitlist Modal' });
-                } else if (modalId === 'membership-modal') {
-                    gtag('event', 'view_membership', { 'event_category': 'conversion', 'event_label': 'Membership Modal' });
-                } else if (['privacy-modal', 'terms-modal', 'refund-modal', 'shipping-modal', 'contact-modal'].includes(modalId)) {
-                    gtag('event', 'view_policy', { 'event_category': 'legal', 'event_label': modalId });
-                }
-            }
-        }
-
-        function closeModal(modalId) {
-            document.getElementById(modalId).classList.remove('active');
-        }
-
-        window.onclick = function(event) {
-            if (event.target.classList.contains('modal-overlay')) {
-                event.target.classList.remove('active');
-            }
-        }
-
-        // --- COOKIE LOGIC ---
-        function checkCookie() {
-            if (!localStorage.getItem('cookiesAccepted')) {
-                setTimeout(() => { document.getElementById('cookie-banner').classList.add('show'); }, 2000);
-            }
-        }
-        function acceptCookies() {
-            localStorage.setItem('cookiesAccepted', 'true');
-            document.getElementById('cookie-banner').classList.remove('show');
-        }
-        
-        // --- PRELOADER & INIT CART ---
-        window.addEventListener('load', function() {
+        // Load cart on page load
+        window.onload = function() {
+            updateCartUI();
             document.body.classList.add('loaded');
             checkCookie();
-            updateCartUI(); // Load saved cart state
-        });
-
-        // --- CART LOGIC (LOCALSTORAGE) ---
-        // Initialize cart from local storage or empty array
-        let cart = JSON.parse(localStorage.getItem('tsf_cart')) || [];
+        };
 
         function addToCart(id, title, price) {
             const existingItem = cart.find(item => item.id === id);
@@ -1347,16 +1286,34 @@
             } else {
                 cart.push({ id, title, price, quantity: 1 });
             }
+            
             saveCart();
             updateCartUI();
             
-            // Visual feedback: Bump animation on cart icon
+            // Visual feedback on cart icon
             const cartLink = document.querySelector('.cart-link');
-            cartLink.classList.remove('bump');
-            void cartLink.offsetWidth; // trigger reflow
-            cartLink.classList.add('bump');
+            if(cartLink) {
+                cartLink.classList.remove('bump');
+                void cartLink.offsetWidth; // trigger reflow
+                cartLink.classList.add('bump');
+            }
         }
-        
+
+        function changeQuantity(id, delta) {
+            const item = cart.find(item => item.id === id);
+            if (!item) return;
+
+            item.quantity += delta;
+            
+            if (item.quantity <= 0) {
+                // Remove item
+                cart = cart.filter(i => i.id !== id);
+            }
+            
+            saveCart();
+            updateCartUI();
+        }
+
         function saveCart() {
             localStorage.setItem('tsf_cart', JSON.stringify(cart));
         }
@@ -1369,14 +1326,18 @@
             const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
             
             // Update Badge
-            cartCountElement.innerText = totalItems;
-            if (totalItems > 0) {
-                cartCountElement.classList.add('active');
-            } else {
-                cartCountElement.classList.remove('active');
+            if (cartCountElement) {
+                cartCountElement.innerText = totalItems;
+                if (totalItems > 0) {
+                    cartCountElement.classList.add('active');
+                } else {
+                    cartCountElement.classList.remove('active');
+                }
             }
 
             // Render Cart Modal Logic
+            if (!cartBody) return; // Guard clause
+
             if (cart.length === 0) {
                 cartBody.innerHTML = '<div class="cart-empty-msg">Your locker is empty.</div>';
                 return;
@@ -1391,7 +1352,12 @@
                 html += `
                 <div class="cart-item">
                     <div class="cart-item-details">
-                        <h5>${item.title} (x${item.quantity})</h5>
+                        <h5>${item.title}</h5>
+                        <div class="qty-controls">
+                            <button class="qty-btn" onclick="changeQuantity('${item.id}', -1)">-</button>
+                            <span class="qty-val">${item.quantity}</span>
+                            <button class="qty-btn" onclick="changeQuantity('${item.id}', 1)">+</button>
+                        </div>
                     </div>
                     <div class="cart-item-price">₹${itemTotal.toLocaleString()}</div>
                 </div>`;
@@ -1453,164 +1419,23 @@
             }
         }
 
-        // --- MEMBERSHIP PAYMENT LOGIC ---
-        async function buyMembership() {
-            const name = document.getElementById('mem-name').value;
-            const email = document.getElementById('mem-email').value;
-            const phone = document.getElementById('mem-phone').value;
-            const cardName = document.getElementById('mem-card-name').value;
-
-            if (!name || !email || !phone) {
-                alert("Please fill in all details.");
-                return;
-            }
-
-            const payBtn = document.querySelector('.buy-now-btn');
-            payBtn.innerText = "Processing...";
-            payBtn.disabled = true;
-
-            const customerDetails = {
-                name: name,
-                email: email,
-                contact: phone,
-                cardName: cardName,
-                product: "TSF Priority Access"
-            };
-
-            try {
-                // Call Backend
-                const response = await fetch('/api/create-order', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ 
-                        items: [{ id: 'membership-black-pass', quantity: 1 }], 
-                        customerDetails: customerDetails
-                    })
-                });
-
-                const order = await response.json();
-
-                if (order.id) {
-                    const options = {
-                        "key": RAZORPAY_KEY_ID,
-                        "amount": order.amount,
-                        "currency": "INR",
-                        "name": "The Sports Front",
-                        "description": "TSF Priority Access Membership",
-                        "order_id": order.id, 
-                        "prefill": {
-                            "name": name,
-                            "email": email,
-                            "contact": phone
-                        },
-                        "notes": customerDetails,
-                        "handler": function (response){
-                            alert("Welcome to the Directors' Box! Payment ID: " + response.razorpay_payment_id);
-                            closeModal('membership-modal');
-                            // Reset form
-                            document.getElementById('mem-name').value = '';
-                            document.getElementById('mem-email').value = '';
-                            document.getElementById('mem-phone').value = '';
-                            document.getElementById('mem-card-name').value = '';
-                        },
-                        "theme": { "color": "#D4AF37" } // Gold theme for membership
-                    };
-                    const rzp1 = new Razorpay(options);
-                    rzp1.open();
-                } else {
-                    alert("Error initiating payment. Please try again.");
-                }
-            } catch (error) {
-                console.error("Payment Error:", error);
-                alert("Payment system is currently offline.");
-            } finally {
-                payBtn.innerText = "Pay ₹999";
-                payBtn.disabled = false;
-            }
+        function openCart() {
+            document.getElementById('shop-modal').classList.add('active');
         }
 
-        // --- CHATBOT LOGIC ---
-        async function sendMessage() {
-            const inputField = document.getElementById('user-input');
-            const message = inputField.value.trim();
-            if (!message) return;
+        function openModal(modalId) {
+            document.getElementById(modalId).classList.add('active');
+        }
 
-            addMessage(message, 'user');
-            if (typeof gtag === 'function') {
-                gtag('event', 'use_chatbot', { 'event_category': 'engagement', 'event_label': 'Message Sent' });
-            }
-            inputField.value = '';
-            const loadingMsg = addMessage('Thinking...', 'bot');
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+        }
 
-            try {
-                const response = await fetch('/api/chat', { 
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ messages: [{ content: message }] })
-                });
-                const data = await response.json();
-                loadingMsg.remove();
-                if (data.reply) {
-                    const formattedReply = data.reply.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>');
-                    addMessage(formattedReply, 'bot', true); 
-                } else {
-                    addMessage("I'm having a little trouble connecting to the stadium. Please try again.", 'bot');
-                }
-            } catch (error) {
-                loadingMsg.remove();
-                console.error("Chat Error:", error);
-                addMessage("Connection error. Please try again later.", 'bot');
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal-overlay')) {
+                event.target.classList.remove('active');
             }
         }
-
-        function addMessage(text, sender, isHtml = false) {
-            const messagesContainer = document.getElementById('chat-messages');
-            const msgDiv = document.createElement('div');
-            msgDiv.classList.add('message', sender);
-            if (isHtml) msgDiv.innerHTML = text; else msgDiv.innerText = text;
-            messagesContainer.appendChild(msgDiv);
-            messagesContainer.scrollTop = messagesContainer.scrollHeight;
-            return msgDiv;
-        }
-        function handleKeyPress(e) { if (e.key === 'Enter') sendMessage(); }
-
-        // --- CAROUSEL & STATS ---
-        function scrollCarousel(direction) {
-            const container = document.getElementById('shopCarousel');
-            const scrollAmount = 370; // Adjusted for wider cards
-            if (direction === 'left') container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-            else container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-        }
-
-        const stats = document.querySelectorAll('.stat-number');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const target = +entry.target.getAttribute('data-target');
-                    const duration = 2000; 
-                    const increment = target / (duration / 16); 
-                    let current = 0;
-                    const updateCount = () => {
-                        current += increment;
-                        if (current < target) {
-                            if(target > 1000000) entry.target.innerText = (current / 1000000).toFixed(1) + 'M+';
-                            else if (target > 1000) entry.target.innerText = Math.ceil(current / 1000) + 'K+';
-                            else entry.target.innerText = Math.ceil(current);
-                            requestAnimationFrame(updateCount);
-                        } else {
-                            if(target === 30231 || target === 25109) entry.target.innerText = "30,000+";
-                            else if(target === 22000000) entry.target.innerText = "22M+";
-                            else if(target === 620) entry.target.innerText = "620";
-                            else if(target === 950000) entry.target.innerText = "950K+";
-                            else entry.target.innerText = target;
-                        }
-                    };
-                    updateCount();
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.5 });
-        stats.forEach(stat => observer.observe(stat));
     </script>
 </body>
 </html>
