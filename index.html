@@ -133,7 +133,6 @@
             color: white; 
             font-size: 1.2rem; 
             margin-left: 5px;
-            cursor: pointer;
             transition: transform 0.2s;
         }
         .cart-link:hover { color: var(--brand-green); }
@@ -174,7 +173,7 @@
             color: #000; 
             padding: 0.8rem 2.5rem; 
             border: none; 
-            border-radius: 50px; 
+            border-radius: 50px; /* Pill shape */
             font-weight: 800; 
             font-family: 'Montserrat', sans-serif; 
             cursor: pointer; 
@@ -234,10 +233,11 @@
         .teaser-btn { display: block; width: 100%; padding: 1rem; background: transparent; border: 1px solid var(--brand-green); color: var(--brand-green); text-align: center; text-transform: uppercase; font-weight: 700; text-decoration: none; transition: all 0.3s; cursor: pointer;}
         .teaser-btn:hover { background: var(--brand-green); color: var(--deep-black); }
 
-        /* --- MEMBERSHIP SECTION --- */
+        /* --- REDESIGNED MEMBERSHIP SECTION (THE DIRECTORS' BOX) --- */
         .membership-section { 
             padding: 5rem 2rem;
-            background: linear-gradient(to bottom, #0a0a0a 0%, rgba(0,0,0,0.85) 50%, #0a0a0a 100%), url('Images/membership-bg.jpg'); 
+            /* Dark background image of VIP seating/Stadium view */
+            background: linear-gradient(to bottom, #0a0a0a 0%, rgba(0,0,0,0.85) 50%, #0a0a0a 100%), url('Images/membership-bg.jpeg'); 
             background-size: cover; 
             background-position: center;
             border-top: 1px solid #333; 
@@ -266,15 +266,18 @@
         /* The Black Pass Card Visual */
         .black-pass-visual {
             width: 100%;
-            aspect-ratio: 1.586; 
+            aspect-ratio: 1.586; /* Credit Card Ratio */
+            /* UPDATED BACKGROUND: Centered Green/Red spots */
             background: 
-                radial-gradient(circle at 20% 50%, rgba(0, 208, 132, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 80% 50%, rgba(255, 51, 51, 0.12) 0%, transparent 50%),
+                radial-gradient(circle at 20% 50%, rgba(0, 208, 132, 0.15) 0%, transparent 50%), /* Green Glow Left */
+                radial-gradient(circle at 80% 50%, rgba(255, 51, 51, 0.12) 0%, transparent 50%), /* Red Glow Right */
                 linear-gradient(135deg, #1f1f1f 0%, #0a0a0a 100%);
             border-radius: 20px;
             border: 1px solid #333;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.5), inset 0 0 0 1px rgba(255,255,255,0.05);
-            padding: 2rem;
+            box-shadow: 
+                0 25px 50px rgba(0,0,0,0.5), 
+                inset 0 0 0 1px rgba(255,255,255,0.05);
+            padding: 2rem; /* Reduced padding to fit content */
             position: relative;
             overflow: hidden;
             display: flex;
@@ -283,8 +286,11 @@
             transition: transform 0.3s ease;
         }
 
-        .black-pass-visual:hover { transform: scale(1.02); }
+        .black-pass-visual:hover {
+            transform: scale(1.02);
+        }
 
+        /* Gold Shimmer Overlay */
         .black-pass-visual::after {
             content: '';
             position: absolute;
@@ -302,12 +308,19 @@
             100% { left: 150%; }
         }
         
+        /* BACKGROUND DECORATION */
         .card-deco-x {
-            position: absolute; top: 50%; left: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
             transform: translate(-50%, -50%) rotate(-15deg);
-            font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 15rem;
-            line-height: 0; color: rgba(255, 255, 255, 0.03);
-            pointer-events: none; z-index: 1;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 15rem;
+            line-height: 0;
+            color: rgba(255, 255, 255, 0.03);
+            pointer-events: none;
+            z-index: 1;
         }
         
         .card-top { display: flex; justify-content: space-between; align-items: flex-start; position: relative; z-index: 5; }
@@ -320,74 +333,231 @@
         }
 
         .card-logo {
-            opacity: 0.8; height: 30px; filter: brightness(0) invert(1); 
+            opacity: 0.8; 
+            height: 30px;
+            filter: brightness(0) invert(1); 
         }
 
+        /* Stylized Center Text */
         .card-center-text {
-            position: absolute; top: 40%; left: 50%;
+            position: absolute;
+            top: 40%; 
+            left: 50%;
             transform: translate(-50%, -50%) rotate(-5deg);
-            font-family: 'Rock Salt', cursive; color: var(--gold-premium);
-            font-size: 1.4rem; text-align: center; opacity: 0.9;
+            font-family: 'Rock Salt', cursive;
+            color: var(--gold-premium);
+            font-size: 1.4rem;
+            text-align: center;
+            opacity: 0.9;
             text-shadow: 0 2px 10px rgba(0,0,0,0.8);
-            z-index: 4; width: 100%; pointer-events: none;
+            z-index: 4;
+            width: 100%;
+            pointer-events: none;
         }
 
         .card-bottom { position: relative; z-index: 5; margin-top: auto; }
 
         .card-title {
-            font-family: 'Montserrat', sans-serif; font-weight: 700; color: white;
-            font-size: 1.1rem; letter-spacing: 2px; text-transform: uppercase;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            color: white;
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
             margin-bottom: 0.2rem;
         }
 
         .card-subtitle {
-            font-size: 0.6rem; color: #888; letter-spacing: 1px;
-            text-transform: uppercase; margin-bottom: 1rem;
+            font-size: 0.6rem;
+            color: #888;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
         }
 
         .card-details-row { display: flex; justify-content: space-between; align-items: flex-end; }
-        .card-number { font-family: 'Courier New', monospace; color: #aaa; font-size: 0.9rem; letter-spacing: 2px; }
-        .card-name { color: white; font-size: 0.8rem; letter-spacing: 1px; text-transform: uppercase; font-weight: 600; }
+        
+        .card-number {
+            font-family: 'Courier New', monospace;
+            color: #aaa;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+        }
 
-        .membership-info { flex: 1; min-width: 320px; text-align: left; }
-        .membership-label { color: var(--gold-premium); font-weight: 700; letter-spacing: 3px; text-transform: uppercase; font-size: 0.9rem; margin-bottom: 1rem; display: block; }
-        .membership-headline { font-size: 3.5rem; line-height: 1; color: white; margin-bottom: 1.5rem; font-family: 'Montserrat', sans-serif; font-weight: 900; text-transform: uppercase; }
-        .membership-desc { color: #ccc; margin-bottom: 2.5rem; font-size: 1.1rem; line-height: 1.6; max-width: 500px; }
-        .benefit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1rem; }
-        .benefit-item { font-size: 1rem; color: #eee; display: flex; align-items: flex-start; gap: 12px; line-height: 1.4; }
+        .card-name {
+            color: white;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        /* The Content (Right Side) */
+        .membership-info {
+            flex: 1;
+            min-width: 320px;
+            text-align: left;
+        }
+
+        .membership-label {
+            color: var(--gold-premium);
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .membership-headline {
+            font-size: 3.5rem;
+            line-height: 1;
+            color: white;
+            margin-bottom: 1.5rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+
+        .membership-desc {
+            color: #ccc;
+            margin-bottom: 2.5rem;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            max-width: 500px;
+        }
+
+        .benefit-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .benefit-item {
+            font-size: 1rem; color: #eee;
+            display: flex; align-items: flex-start; gap: 12px;
+            line-height: 1.4;
+        }
         .benefit-item i { color: var(--gold-premium); margin-top: 3px; }
 
-        .price-area { display: flex; flex-direction: column; align-items: center; gap: 1rem; }
-        .price-tag { font-size: 2rem; color: white; font-weight: 800; font-family: 'Montserrat', sans-serif; }
-        .price-tag span { font-size: 0.9rem; color: #666; font-weight: 400; }
+        .price-area {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
 
-        /* --- SHOP TEASER CAROUSEL --- */
+        .price-tag {
+            font-size: 2rem;
+            color: white;
+            font-weight: 800;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .price-tag span { font-size: 0.9rem; color: #666; font-weight: 400; }
+        
+        .cta-btn-gold {
+            width: 100%;
+            text-align: center;
+        }
+
+        /* --- SHOP TEASER CAROUSEL (LOCKER ROOM STYLE) --- */
         .shop-teaser-section { 
             background-color: #080808; 
+            /* Subtle Grid Pattern for "Locker Room" feel */
             background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
             linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
             background-size: 40px 40px;
-            padding-bottom: 6rem; overflow: hidden; 
-            border-top: 1px solid #333; border-bottom: 1px solid #333;
+            padding-bottom: 6rem; 
+            overflow: hidden; 
+            border-top: 1px solid #333;
+            border-bottom: 1px solid #333;
         }
         
+        /* New Locker Room Header Styles */
         .locker-header { position: relative; display: inline-block; margin-bottom: 3rem; }
-        .locker-title-box { border: 3px solid white; padding: 1rem 3rem; display: inline-block; background: rgba(0,0,0,0.6); backdrop-filter: blur(5px); box-shadow: 0 0 30px rgba(0, 208, 132, 0.1); }
-        .locker-title { font-size: 3.5rem; font-weight: 900; color: white; margin: 0; line-height: 1; letter-spacing: -1px; text-transform: uppercase; }
-        .locker-marker-text { font-family: 'Rock Salt', cursive; color: var(--brand-green); font-size: 1.2rem; position: absolute; bottom: -25px; right: -10px; transform: rotate(-3deg); text-shadow: 0 2px 10px rgba(0,0,0,0.8); }
+        
+        .locker-title-box {
+            border: 3px solid white;
+            padding: 1rem 3rem;
+            display: inline-block;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(5px);
+            box-shadow: 0 0 30px rgba(0, 208, 132, 0.1);
+        }
+        
+        .locker-title {
+            font-size: 3.5rem; /* Massive Font */
+            font-weight: 900;
+            color: white;
+            margin: 0;
+            line-height: 1;
+            letter-spacing: -1px;
+            text-transform: uppercase;
+        }
+        
+        .locker-marker-text {
+            font-family: 'Rock Salt', cursive; /* Handwritten Style */
+            color: var(--brand-green);
+            font-size: 1.2rem;
+            position: absolute;
+            bottom: -25px;
+            right: -10px;
+            transform: rotate(-3deg);
+            text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+        }
 
         .shop-carousel-wrap { position: relative; max-width: 1400px; margin: 0 auto; }
-        .shop-carousel { display: flex; flex-wrap: nowrap; overflow-x: auto; scroll-behavior: smooth; gap: 2rem; padding: 1rem 0 3rem 0; scrollbar-width: none; -ms-overflow-style: none; scroll-snap-type: x mandatory; }
+        
+        .shop-carousel {
+            display: flex;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            gap: 2rem;
+            padding: 1rem 0 3rem 0;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            scroll-snap-type: x mandatory;
+        }
         .shop-carousel::-webkit-scrollbar { display: none; }
         
-        .product-card { flex: 0 0 auto; width: 350px; min-width: 350px; background: var(--surface-light); border-radius: 4px; overflow: hidden; position: relative; transition: transform 0.3s ease; scroll-snap-align: start; border: 1px solid rgba(255,255,255,0.05); }
+        .product-card {
+            flex: 0 0 auto;
+            width: 350px;
+            min-width: 350px;
+            background: var(--surface-light);
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+            transition: transform 0.3s ease;
+            scroll-snap-align: start;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
         .product-card:hover { transform: translateY(-5px); border-color: var(--brand-green); }
-        .product-img { width: 100%; height: 400px; object-fit: contain; background: #222; padding: 0; }
+        /* UPDATED: Changed to 'contain' so jerseys are not cut off, added padding */
+        .product-img { 
+            width: 100%; 
+            height: 400px; /* Taller image area */
+            object-fit: contain; 
+            background: #222; 
+            padding: 0; /* Remove padding to maximize size */
+        }
         .product-info { padding: 1.5rem; text-align: left; }
-        .product-tag { position: absolute; top: 10px; left: 10px; background: black; color: white; font-size: 0.7rem; padding: 4px 8px; text-transform: uppercase; font-weight: 700; border: 1px solid var(--brand-green); }
+        .product-tag { 
+            position: absolute; top: 10px; left: 10px; 
+            background: black; color: white; 
+            font-size: 0.7rem; padding: 4px 8px; 
+            text-transform: uppercase; font-weight: 700;
+            border: 1px solid var(--brand-green);
+        }
         .product-title { font-size: 1rem; color: #ccc; margin-bottom: 0.3rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
         .product-price { font-size: 1.1rem; color: white; font-weight: 800; display: block; margin-bottom: 1rem; }
-        .buy-btn-minimal { background: transparent; border-bottom: 1px solid var(--brand-green); border-top: none; border-left: none; border-right: none; color: var(--brand-green); padding-bottom: 5px; font-weight: 700; cursor: pointer; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; transition: all 0.3s; }
+        .buy-btn-minimal {
+            background: transparent; border-bottom: 1px solid var(--brand-green); border-top: none; border-left: none; border-right: none;
+            color: var(--brand-green); padding-bottom: 5px; font-weight: 700; cursor: pointer; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px;
+            transition: all 0.3s;
+        }
         .buy-btn-minimal:hover { color: white; border-color: white; }
 
         .shop-link-container { text-align: center; margin-top: 3rem; }
@@ -741,7 +911,6 @@
                 <div class="black-pass-visual">
                     <!-- Background Decoration -->
                     <div class="card-deco-x">X</div>
-                    <!-- Removed div class="card-deco-dot" -->
                     
                     <div class="card-top">
                         <div class="card-chip"></div>
@@ -1272,13 +1441,25 @@
         // Initialize Cart from LocalStorage
         let cart = JSON.parse(localStorage.getItem('tsf_cart')) || [];
 
-        // Load cart on page load
-        window.onload = function() {
-            updateCartUI();
-            document.body.classList.add('loaded');
-            checkCookie();
-        };
+        // --- COOKIE LOGIC ---
+        function checkCookie() {
+            if (!localStorage.getItem('cookiesAccepted')) {
+                setTimeout(() => { document.getElementById('cookie-banner').classList.add('show'); }, 2000);
+            }
+        }
+        function acceptCookies() {
+            localStorage.setItem('cookiesAccepted', 'true');
+            document.getElementById('cookie-banner').classList.remove('show');
+        }
 
+        // --- PRELOADER & INIT ---
+        window.addEventListener('load', function() {
+            document.body.classList.add('loaded');
+            updateCartUI();
+            checkCookie();
+        });
+
+        // --- CART LOGIC ---
         function addToCart(id, title, price) {
             const existingItem = cart.find(item => item.id === id);
             if (existingItem) {
@@ -1336,7 +1517,7 @@
             }
 
             // Render Cart Modal Logic
-            if (!cartBody) return; // Guard clause
+            if (!cartBody) return; 
 
             if (cart.length === 0) {
                 cartBody.innerHTML = '<div class="cart-empty-msg">Your locker is empty.</div>';
@@ -1423,16 +1604,194 @@
             }
         }
 
-        function openCart() {
-            document.getElementById('shop-modal').classList.add('active');
+        // --- MEMBERSHIP PAYMENT LOGIC ---
+        async function buyMembership() {
+            const name = document.getElementById('mem-name').value;
+            const email = document.getElementById('mem-email').value;
+            const phone = document.getElementById('mem-phone').value;
+            const cardName = document.getElementById('mem-card-name').value;
+
+            if (!name || !email || !phone) {
+                alert("Please fill in all details.");
+                return;
+            }
+
+            const payBtn = document.querySelector('.buy-now-btn');
+            payBtn.innerText = "Processing...";
+            payBtn.disabled = true;
+
+            const customerDetails = {
+                name: name,
+                email: email,
+                contact: phone,
+                cardName: cardName,
+                product: "TSF Priority Access"
+            };
+
+            try {
+                // Call Backend
+                const response = await fetch('/api/create-order', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ 
+                        items: [{ id: 'membership-black-pass', quantity: 1 }], 
+                        customerDetails: customerDetails
+                    })
+                });
+
+                const order = await response.json();
+
+                if (order.id) {
+                    const options = {
+                        "key": RAZORPAY_KEY_ID,
+                        "amount": order.amount,
+                        "currency": "INR",
+                        "name": "The Sports Front",
+                        "description": "TSF Priority Access Membership",
+                        "order_id": order.id, 
+                        "prefill": {
+                            "name": name,
+                            "email": email,
+                            "contact": phone
+                        },
+                        "notes": customerDetails,
+                        "handler": function (response){
+                            alert("Welcome to the Directors' Box! Payment ID: " + response.razorpay_payment_id);
+                            closeModal('membership-modal');
+                            // Reset form
+                            document.getElementById('mem-name').value = '';
+                            document.getElementById('mem-email').value = '';
+                            document.getElementById('mem-phone').value = '';
+                            document.getElementById('mem-card-name').value = '';
+                        },
+                        "theme": { "color": "#D4AF37" } // Gold theme for membership
+                    };
+                    const rzp1 = new Razorpay(options);
+                    rzp1.open();
+                } else {
+                    alert("Error initiating payment. Please try again.");
+                }
+            } catch (error) {
+                console.error("Payment Error:", error);
+                alert("Payment system is currently offline.");
+            } finally {
+                payBtn.innerText = "Pay ₹999";
+                payBtn.disabled = false;
+            }
         }
 
+        // --- CHATBOT LOGIC ---
+        async function sendMessage() {
+            const inputField = document.getElementById('user-input');
+            const message = inputField.value.trim();
+            if (!message) return;
+
+            addMessage(message, 'user');
+            if (typeof gtag === 'function') {
+                gtag('event', 'use_chatbot', { 'event_category': 'engagement', 'event_label': 'Message Sent' });
+            }
+            inputField.value = '';
+            const loadingMsg = addMessage('Thinking...', 'bot');
+
+            try {
+                const response = await fetch('/api/chat', { 
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ messages: [{ content: message }] })
+                });
+                const data = await response.json();
+                loadingMsg.remove();
+                if (data.reply) {
+                    const formattedReply = data.reply.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>');
+                    addMessage(formattedReply, 'bot', true); 
+                } else {
+                    addMessage("I'm having a little trouble connecting to the stadium. Please try again.", 'bot');
+                }
+            } catch (error) {
+                loadingMsg.remove();
+                console.error("Chat Error:", error);
+                addMessage("Connection error. Please try again later.", 'bot');
+            }
+        }
+
+        function addMessage(text, sender, isHtml = false) {
+            const messagesContainer = document.getElementById('chat-messages');
+            const msgDiv = document.createElement('div');
+            msgDiv.classList.add('message', sender);
+            if (isHtml) msgDiv.innerHTML = text; else msgDiv.innerText = text;
+            messagesContainer.appendChild(msgDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            return msgDiv;
+        }
+        function handleKeyPress(e) { if (e.key === 'Enter') sendMessage(); }
+
+        // --- CAROUSEL & STATS ---
+        function scrollCarousel(direction) {
+            const container = document.getElementById('shopCarousel');
+            const scrollAmount = 370; // Adjusted for wider cards
+            if (direction === 'left') container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+            else container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        }
+
+        const stats = document.querySelectorAll('.stat-number');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const target = +entry.target.getAttribute('data-target');
+                    const duration = 2000; 
+                    const increment = target / (duration / 16); 
+                    let current = 0;
+                    const updateCount = () => {
+                        current += increment;
+                        if (current < target) {
+                            if(target > 1000000) entry.target.innerText = (current / 1000000).toFixed(1) + 'M+';
+                            else if (target > 1000) entry.target.innerText = Math.ceil(current / 1000) + 'K+';
+                            else entry.target.innerText = Math.ceil(current);
+                            requestAnimationFrame(updateCount);
+                        } else {
+                            if(target === 30231 || target === 25109) entry.target.innerText = "30,000+";
+                            else if(target === 22000000) entry.target.innerText = "22M+";
+                            else if(target === 620) entry.target.innerText = "620";
+                            else if(target === 950000) entry.target.innerText = "950K+";
+                            else entry.target.innerText = target;
+                        }
+                    };
+                    updateCount();
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+        stats.forEach(stat => observer.observe(stat));
+
+        // --- MODAL LOGIC ---
         function openModal(modalId) {
+            // Redirect shop modal to shop page
+            if (modalId === 'shop-modal') {
+                window.location.href = 'shop.html';
+                return;
+            }
+
             document.getElementById(modalId).classList.add('active');
+            document.getElementById('main-nav').classList.remove('active');
+            
+            // GA4 Tracking
+            if (typeof gtag === 'function') {
+                if (modalId === 'waitlist-modal') {
+                    gtag('event', 'begin_waitlist_signup', { 'event_category': 'conversion', 'event_label': 'Waitlist Modal' });
+                } else if (modalId === 'membership-modal') {
+                    gtag('event', 'view_membership', { 'event_category': 'conversion', 'event_label': 'Membership Modal' });
+                } else if (['privacy-modal', 'terms-modal', 'refund-modal', 'shipping-modal', 'contact-modal'].includes(modalId)) {
+                    gtag('event', 'view_policy', { 'event_category': 'legal', 'event_label': modalId });
+                }
+            }
         }
 
         function closeModal(modalId) {
             document.getElementById(modalId).classList.remove('active');
+        }
+
+        function openCart() {
+            document.getElementById('shop-modal').classList.add('active');
         }
 
         window.onclick = function(event) {
