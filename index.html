@@ -16,33 +16,49 @@
 
     <!-- --- SEO & SOCIAL PACK --- -->
     <title>The Sports Front | Iconic Football Nights</title>
-    <meta name="description" content="Official pre-announcement. The Sports Front is bringing two English Heavyweights to India (2026). Join the priority list now.">
-    <meta name="keywords" content="Football, Legends Match, India Sports, Event Management, VOCA Sports">
+    <!-- UPDATED: Removed specific team names to protect confidentiality -->
+    <meta name="description" content="Official pre-announcement. The Sports Front is bringing two English Heavyweights to India (2026). Join the priority list now for The Northern Storm.">
+    <meta name="keywords" content="Football, Legends Match, English Premier League Legends, India Sports, Event Management, VOCA Sports, Football Merch, Membership">
     <meta name="author" content="The Sports Front">
     
+    <!-- Canonical URL -->
     <link rel="canonical" href="https://thesportsfront.com/">
+    <!-- Robots -->
     <meta name="robots" content="index, follow">
 
-    <!-- Open Graph / Social -->
+    <!-- Open Graph / Facebook / WhatsApp -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://thesportsfront.com/">
     <meta property="og:title" content="Legends Are Returning | The Sports Front">
-    <meta property="og:description" content="The Northern Storm is coming. India 2026. Get Priority Access.">
+    <meta property="og:description" content="The Northern Storm is coming. Two English Giants collide. India 2026. Get Priority Access.">
+    <!-- CRITICAL FIX: Social platforms require ABSOLUTE URLs (https://...) for images. Relative paths will not show previews. -->
     <meta property="og:image" content="https://thesportsfront.com/Images/social-share.jpg"> 
+
+    <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://thesportsfront.com/">
+    <meta property="twitter:title" content="Legends Are Returning | The Sports Front">
+    <!-- UPDATED: Removed specific team names -->
+    <meta property="twitter:description" content="The Northern Storm is coming. Two English Giants collide. India 2026.">
     <meta property="twitter:image" content="https://thesportsfront.com/Images/social-share.jpg">
 
-    <!-- Favicon & App Icons -->
+    <!-- Favicon & App Icons (Professional Suite) -->
     <link rel="shortcut icon" href="Images/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" sizes="180x180" href="Images/apple-touch-icon.png">
+    
+    <!-- ADAPTIVE ICONS: Handles Light vs Dark Mode Browsers -->
+    <!-- If user is in Light Mode -> Show Black/Dark Icon -->
     <link rel="icon" type="image/png" sizes="32x32" href="Images/favicon-black.png" media="(prefers-color-scheme: light)">
+    <!-- If user is in Dark Mode -> Show White/Light Icon -->
     <link rel="icon" type="image/png" sizes="32x32" href="Images/favicon-32x32.png" media="(prefers-color-scheme: dark)">
+
+    <!-- Standard Fallbacks -->
     <link rel="icon" type="image/png" sizes="32x32" href="Images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="Images/favicon-16x16.png">
     <link rel="icon" type="image/png" sizes="192x192" href="Images/android-chrome-192x192.png">
     <link rel="icon" type="image/png" sizes="512x512" href="Images/android-chrome-512x512.png">
 
-    <!-- JSON-LD Schema -->
+    <!-- JSON-LD Schema for Google Events -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -66,8 +82,9 @@
     }
     </script>
 
-    <!-- Fonts & Icons -->
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@400;600&family=Rock+Salt&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
@@ -194,7 +211,7 @@
         /* --- MEMBERSHIP SECTION (THE DIRECTORS' BOX) --- */
         .membership-section { 
             /* Dark background image of VIP seating/Stadium view */
-            background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url('https://images.unsplash.com/photo-1556056504-5c7696c4c28d?q=80&w=2076&auto=format&fit=crop'); 
+            background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url('Images/membership-bg.jpg'); 
             background-size: cover; 
             background-attachment: fixed; /* Parallax effect */
             background-position: center;
@@ -697,32 +714,39 @@
 
         <div class="shop-carousel-wrap">
             <div class="shop-carousel" id="shopCarousel">
-                <!-- Product 1 -->
+                <!-- Product 1: Real Madrid Leyendas Jersey -->
                 <div class="product-card">
-                    <span class="product-tag">Last Few Left</span>
-                    <img src="https://placehold.co/300x350/222/FFF?text=Mumbai+2025+Jersey" class="product-img" alt="Jersey">
+                    <span class="product-tag">Legend Edition</span>
+                    <img src="Images/shop-jersey-rm.jpg" class="product-img" alt="RM Leyendas Jersey" onerror="this.src='https://placehold.co/300x350/222/FFF?text=RM+Leyendas+Jersey'">
                     <div class="product-info">
-                        <h4 class="product-title">Commemorative Jersey</h4>
-                        <span class="product-price">₹1,999</span>
-                    </div>
-                </div>
-                <!-- Product 2 -->
-                <div class="product-card">
-                    <img src="https://placehold.co/300x350/222/FFF?text=TSF+Hoodie" class="product-img" alt="Hoodie">
-                    <div class="product-info">
-                        <h4 class="product-title">The Gaffer Hoodie (Black)</h4>
+                        <h4 class="product-title">Legends Face off jersey (RM Leyendas edition)</h4>
                         <span class="product-price">₹2,499</span>
+                        <button onclick="openModal('shop-modal')" class="buy-btn-minimal">Quick Add +</button>
                     </div>
                 </div>
-                <!-- Product 3 -->
+                
+                <!-- Product 2: Barca Legends Jersey -->
+                <div class="product-card">
+                    <span class="product-tag">Legend Edition</span>
+                    <img src="Images/shop-jersey-fcb.jpg" class="product-img" alt="Barca Legends Jersey" onerror="this.src='https://placehold.co/300x350/222/FFF?text=Barca+Legends+Jersey'">
+                    <div class="product-info">
+                        <h4 class="product-title">LFO Jersey (Barca Legends edition)</h4>
+                        <span class="product-price">₹2,499</span>
+                        <button onclick="openModal('shop-modal')" class="buy-btn-minimal">Quick Add +</button>
+                    </div>
+                </div>
+
+                <!-- Product 3: Scarf -->
                 <div class="product-card">
                     <span class="product-tag">Best Seller</span>
-                    <img src="https://placehold.co/300x350/222/FFF?text=Official+Scarf" class="product-img" alt="Scarf">
+                    <img src="Images/shop-scarf.jpg" class="product-img" alt="Scarf" onerror="this.src='https://placehold.co/300x350/222/FFF?text=Image+Missing'">
                     <div class="product-info">
                         <h4 class="product-title">Legends Face Off Scarf</h4>
                         <span class="product-price">₹799</span>
+                        <button onclick="openModal('shop-modal')" class="buy-btn-minimal">Quick Add +</button>
                     </div>
                 </div>
+
                 <!-- Teaser Card -->
                 <div class="product-card" style="display:flex; align-items:center; justify-content:center; background:#111; cursor: pointer;" onclick="window.location.href='shop.html'">
                     <div style="text-align:center; padding:2rem;">
@@ -793,6 +817,7 @@
         </div>
 
         <div style="text-align: center; margin-top: 3rem;">
+            <!-- Updated Link to the Impact Report Form -->
             <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=Uom_dQGmCk2mcB44NC-iOLn2JpHfHcVChB_DWkmZxjFUMTJOM0NHRUpLUUhQTE5FUUdUREJNMlVTWi4u" target="_blank" class="cta-btn-outline">Request Impact Report</a>
         </div>
     </section>
@@ -990,6 +1015,23 @@
                 <p>You are one step away from priority access.</p>
                 <p>Since we are currently updating our payment gateway for the 2026 Season, please register your interest below. Our team will send you a secure payment link within 24 hours.</p>
                 <!-- Reuse the form for now, or replace with payment link later -->
+                <iframe class="form-frame" src="https://forms.office.com/r/NtDiPXFhKt"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- NEW: SHOP MODAL -->
+    <div id="shop-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">OFFICIAL MERCH STORE</h3>
+                <button class="modal-close" onclick="closeModal('shop-modal')">&times;</button>
+            </div>
+            <div class="modal-body" style="text-align: center;">
+                <h4>LIMITED STOCK ALERT</h4>
+                <p>Due to high demand, we are processing orders manually.</p>
+                <p>Please fill out the form below with your desired item size and delivery address. We will contact you for payment and shipping.</p>
+                <!-- Reuse the form for now -->
                 <iframe class="form-frame" src="https://forms.office.com/r/NtDiPXFhKt"></iframe>
             </div>
         </div>
@@ -1353,8 +1395,12 @@
                         'event_category': 'conversion',
                         'event_label': 'Membership Modal Opened'
                     });
+                } else if (modalId === 'shop-modal') {
+                    gtag('event', 'view_product', {
+                        'event_category': 'ecommerce',
+                        'event_label': 'Product Modal Opened'
+                    });
                 }
-                // No shop-modal here anymore because shop is on a separate page
             }
         }
 
@@ -1493,6 +1539,17 @@
         }, { threshold: 0.5 });
 
         stats.forEach(stat => observer.observe(stat));
+
+        // --- CAROUSEL LOGIC (NEW) ---
+        function scrollCarousel(direction) {
+            const container = document.getElementById('shopCarousel');
+            const scrollAmount = 320; // Width of card + gap
+            if (direction === 'left') {
+                container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+            } else {
+                container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            }
+        }
     </script>
 </body>
 </html>
