@@ -10,26 +10,22 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'G-JD59FMBHZ8');
     </script>
     
-    <!-- Razorpay SDK (Required for Membership Payments) -->
+    <!-- Razorpay SDK -->
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
     <!-- --- SEO & SOCIAL PACK --- -->
     <title>The Sports Front | Iconic Football Nights</title>
-    <!-- UPDATED: Removed specific team names to protect confidentiality -->
     <meta name="description" content="Official pre-announcement. The Sports Front is bringing two English Heavyweights to India (2026). Join the priority list now for The Northern Storm.">
     <meta name="keywords" content="Football, Legends Match, English Premier League Legends, India Sports, Event Management, VOCA Sports, Football Merch, Membership">
     <meta name="author" content="The Sports Front">
     
-    <!-- Canonical URL -->
     <link rel="canonical" href="https://thesportsfront.com/">
-    <!-- Robots -->
     <meta name="robots" content="index, follow">
 
-    <!-- Open Graph / Social -->
+    <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://thesportsfront.com/">
     <meta property="og:title" content="Legends Are Returning | The Sports Front">
@@ -38,7 +34,7 @@
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:image" content="https://thesportsfront.com/Images/social-share.jpg">
 
-    <!-- Favicon & App Icons -->
+    <!-- Favicons -->
     <link rel="shortcut icon" href="Images/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" sizes="180x180" href="Images/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="Images/favicon-black.png" media="(prefers-color-scheme: light)">
@@ -48,7 +44,7 @@
     <link rel="icon" type="image/png" sizes="192x192" href="Images/android-chrome-192x192.png">
     <link rel="icon" type="image/png" sizes="512x512" href="Images/android-chrome-512x512.png">
 
-    <!-- JSON-LD Schema -->
+    <!-- JSON-LD -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -133,17 +129,33 @@
             color: white; 
             font-size: 1.2rem; 
             margin-left: 5px;
+            cursor: pointer;
             transition: transform 0.2s;
         }
-        .cart-link:hover { transform: scale(1.1); color: var(--brand-green); }
-        .cart-dot {
-            position: absolute;
-            top: -2px; right: -2px;
-            width: 8px; height: 8px;
-            background-color: var(--brand-red);
-            border-radius: 50%;
-            border: 1px solid var(--deep-black);
+        .cart-link:hover { color: var(--brand-green); }
+        
+        /* Cart Pop Animation */
+        @keyframes pop {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.4); }
+            100% { transform: scale(1); }
         }
+        .cart-link.bump { animation: pop 0.3s ease-out; color: var(--brand-green); }
+
+        .cart-count {
+            position: absolute;
+            top: -8px; right: -8px;
+            min-width: 18px; height: 18px;
+            padding: 0 4px;
+            background-color: var(--brand-red);
+            color: white;
+            font-size: 0.7rem; font-weight: 800;
+            border-radius: 9px; /* Rounded pill for double digits */
+            border: 1px solid var(--deep-black);
+            display: flex; align-items: center; justify-content: center;
+            opacity: 0; transition: opacity 0.3s;
+        }
+        .cart-count.active { opacity: 1; }
 
         /* --- BUTTONS --- */
         .cta-btn { background: var(--brand-green); color: var(--deep-black); padding: 0.7rem 1.8rem; border: none; border-radius: 4px; font-weight: 800; font-family: 'Montserrat', sans-serif; cursor: pointer; transition: all 0.3s ease; text-decoration: none; text-transform: uppercase; letter-spacing: 1px; display: inline-block; text-align: center; }
@@ -151,14 +163,13 @@
         .cta-btn-outline { background: transparent; color: var(--brand-green); border: 2px solid var(--brand-green); padding: 0.7rem 1.8rem; border-radius: 4px; font-weight: 800; font-family: 'Montserrat', sans-serif; cursor: pointer; transition: all 0.3s ease; text-decoration: none; text-transform: uppercase; letter-spacing: 1px; display: inline-block; text-align: center; }
         .cta-btn-outline:hover { background: var(--brand-green); color: var(--deep-black); box-shadow: 0 0 15px rgba(0, 208, 132, 0.4); }
         
-        /* NEW: SLEEK GOLD BUTTON */
         .cta-btn-gold { 
             background: linear-gradient(135deg, #D4AF37 0%, #F8F195 50%, #D4AF37 100%);
             background-size: 200% auto;
             color: #000; 
             padding: 0.8rem 2.5rem; 
             border: none; 
-            border-radius: 50px; /* Pill shape */
+            border-radius: 50px; 
             font-weight: 800; 
             font-family: 'Montserrat', sans-serif; 
             cursor: pointer; 
@@ -166,6 +177,7 @@
             text-transform: uppercase; 
             letter-spacing: 1px; 
             display: inline-block; 
+            width: 100%; text-align: center;
         }
         .cta-btn-gold:hover { 
             background-position: right center;
@@ -217,10 +229,9 @@
         .teaser-btn { display: block; width: 100%; padding: 1rem; background: transparent; border: 1px solid var(--brand-green); color: var(--brand-green); text-align: center; text-transform: uppercase; font-weight: 700; text-decoration: none; transition: all 0.3s; cursor: pointer;}
         .teaser-btn:hover { background: var(--brand-green); color: var(--deep-black); }
 
-        /* --- REDESIGNED MEMBERSHIP SECTION (THE DIRECTORS' BOX) --- */
+        /* --- MEMBERSHIP SECTION --- */
         .membership-section { 
             padding: 5rem 2rem;
-            /* Dark background image of VIP seating/Stadium view */
             background: linear-gradient(to bottom, #0a0a0a 0%, rgba(0,0,0,0.85) 50%, #0a0a0a 100%), url('Images/membership-bg.jpg'); 
             background-size: cover; 
             background-position: center;
@@ -250,18 +261,15 @@
         /* The Black Pass Card Visual */
         .black-pass-visual {
             width: 100%;
-            aspect-ratio: 1.586; /* Credit Card Ratio */
-            /* UPDATED BACKGROUND: Centered Green/Red spots */
+            aspect-ratio: 1.586; 
             background: 
-                radial-gradient(circle at 20% 50%, rgba(0, 208, 132, 0.15) 0%, transparent 50%), /* Green Glow Left */
-                radial-gradient(circle at 80% 50%, rgba(255, 51, 51, 0.12) 0%, transparent 50%), /* Red Glow Right */
+                radial-gradient(circle at 20% 50%, rgba(0, 208, 132, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(255, 51, 51, 0.12) 0%, transparent 50%),
                 linear-gradient(135deg, #1f1f1f 0%, #0a0a0a 100%);
             border-radius: 20px;
             border: 1px solid #333;
-            box-shadow: 
-                0 25px 50px rgba(0,0,0,0.5), 
-                inset 0 0 0 1px rgba(255,255,255,0.05);
-            padding: 2rem; /* Reduced padding to fit content */
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5), inset 0 0 0 1px rgba(255,255,255,0.05);
+            padding: 2rem;
             position: relative;
             overflow: hidden;
             display: flex;
@@ -270,12 +278,8 @@
             transition: transform 0.3s ease;
         }
 
-        .black-pass-visual:hover {
-            transform: scale(1.02);
-        }
+        .black-pass-visual:hover { transform: scale(1.02); }
 
-        /* Gold Shimmer Overlay (Boosted Visibility) */
-        /* Gold Shimmer Overlay */
         .black-pass-visual::after {
             content: '';
             position: absolute;
@@ -293,23 +297,14 @@
             100% { left: 150%; }
         }
         
-        /* BACKGROUND DECORATION */
         .card-deco-x {
-            position: absolute;
-            top: 50%;
-            left: 50%;
+            position: absolute; top: 50%; left: 50%;
             transform: translate(-50%, -50%) rotate(-15deg);
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 900;
-            font-size: 15rem;
-            line-height: 0;
-            color: rgba(255, 255, 255, 0.03);
-            pointer-events: none;
-            z-index: 1;
+            font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 15rem;
+            line-height: 0; color: rgba(255, 255, 255, 0.03);
+            pointer-events: none; z-index: 1;
         }
         
-        /* Removed .card-deco-dot style block completely */
-
         .card-top { display: flex; justify-content: space-between; align-items: flex-start; position: relative; z-index: 5; }
 
         .card-chip {
@@ -320,144 +315,301 @@
         }
 
         .card-logo {
-            opacity: 0.8; 
-            height: 30px;
-            filter: brightness(0) invert(1); 
+            opacity: 0.8; height: 30px; filter: brightness(0) invert(1); 
         }
 
-        /* Stylized Center Text (Moved Up to fix overlap) */
         .card-center-text {
-            position: absolute;
-            top: 40%; /* Changed from 50% to 40% to move it up */
-            left: 50%;
+            position: absolute; top: 40%; left: 50%;
             transform: translate(-50%, -50%) rotate(-5deg);
-            font-family: 'Rock Salt', cursive;
-            color: var(--gold-premium);
-            font-size: 1.4rem;
-            text-align: center;
-            opacity: 0.9;
+            font-family: 'Rock Salt', cursive; color: var(--gold-premium);
+            font-size: 1.4rem; text-align: center; opacity: 0.9;
             text-shadow: 0 2px 10px rgba(0,0,0,0.8);
-            z-index: 4;
-            width: 100%;
-            pointer-events: none;
+            z-index: 4; width: 100%; pointer-events: none;
         }
 
-        .card-bottom { position: relative; z-index: 5; margin-top: auto; } /* Ensure it pushes to bottom */
+        .card-bottom { position: relative; z-index: 5; margin-top: auto; }
 
         .card-title {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-            color: white;
-            font-size: 1.1rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
+            font-family: 'Montserrat', sans-serif; font-weight: 700; color: white;
+            font-size: 1.1rem; letter-spacing: 2px; text-transform: uppercase;
             margin-bottom: 0.2rem;
         }
 
         .card-subtitle {
-            font-size: 0.6rem;
-            color: #888;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            margin-bottom: 1rem;
+            font-size: 0.6rem; color: #888; letter-spacing: 1px;
+            text-transform: uppercase; margin-bottom: 1rem;
         }
 
         .card-details-row { display: flex; justify-content: space-between; align-items: flex-end; }
-        
-        .card-number {
-            font-family: 'Courier New', monospace;
-            color: #aaa;
-            font-size: 0.9rem;
-            letter-spacing: 2px;
-        }
+        .card-number { font-family: 'Courier New', monospace; color: #aaa; font-size: 0.9rem; letter-spacing: 2px; }
+        .card-name { color: white; font-size: 0.8rem; letter-spacing: 1px; text-transform: uppercase; font-weight: 600; }
 
-        .card-name {
-            color: white;
-            font-size: 0.8rem;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            font-weight: 600;
-        }
-
-        /* The Content (Right Side) */
-        .membership-info {
-            flex: 1;
-            min-width: 320px;
-            text-align: left;
-        }
-
-        .membership-label {
-            color: var(--gold-premium);
-            font-weight: 700;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-            display: block;
-        }
-
-        .membership-headline {
-            font-size: 3.5rem;
-            line-height: 1;
-            color: white;
-            margin-bottom: 1.5rem;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 900;
-            text-transform: uppercase;
-        }
-
-        .membership-desc {
-            color: #ccc;
-            margin-bottom: 2.5rem;
-            font-size: 1.1rem;
-            line-height: 1.6;
-            max-width: 500px;
-        }
-
-        .benefit-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-            margin-bottom: 1rem; /* Reduced bottom margin since buttons moved */
-        }
-
-        .benefit-item {
-            font-size: 1rem; color: #eee;
-            display: flex; align-items: flex-start; gap: 12px;
-            line-height: 1.4;
-        }
+        .membership-info { flex: 1; min-width: 320px; text-align: left; }
+        .membership-label { color: var(--gold-premium); font-weight: 700; letter-spacing: 3px; text-transform: uppercase; font-size: 0.9rem; margin-bottom: 1rem; display: block; }
+        .membership-headline { font-size: 3.5rem; line-height: 1; color: white; margin-bottom: 1.5rem; font-family: 'Montserrat', sans-serif; font-weight: 900; text-transform: uppercase; }
+        .membership-desc { color: #ccc; margin-bottom: 2.5rem; font-size: 1.1rem; line-height: 1.6; max-width: 500px; }
+        .benefit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1rem; }
+        .benefit-item { font-size: 1rem; color: #eee; display: flex; align-items: flex-start; gap: 12px; line-height: 1.4; }
         .benefit-item i { color: var(--gold-premium); margin-top: 3px; }
 
-        .price-area {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 1rem;
-            /* No margin top needed as gap in flex col handles it */
-        }
-
-        .price-tag {
-            font-size: 2rem;
-            color: white;
-            font-weight: 800;
-            font-family: 'Montserrat', sans-serif;
-        }
+        .price-area { display: flex; flex-direction: column; align-items: center; gap: 1rem; }
+        .price-tag { font-size: 2rem; color: white; font-weight: 800; font-family: 'Montserrat', sans-serif; }
         .price-tag span { font-size: 0.9rem; color: #666; font-weight: 400; }
+
+        /* --- SHOP TEASER CAROUSEL --- */
+        .shop-teaser-section { 
+            background-color: #080808; 
+            background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            padding-bottom: 6rem; overflow: hidden; 
+            border-top: 1px solid #333; border-bottom: 1px solid #333;
+        }
         
-        .cta-btn-gold {
-            width: 100%;
-            text-align: center;
+        .locker-header { position: relative; display: inline-block; margin-bottom: 3rem; }
+        .locker-title-box { border: 3px solid white; padding: 1rem 3rem; display: inline-block; background: rgba(0,0,0,0.6); backdrop-filter: blur(5px); box-shadow: 0 0 30px rgba(0, 208, 132, 0.1); }
+        .locker-title { font-size: 3.5rem; font-weight: 900; color: white; margin: 0; line-height: 1; letter-spacing: -1px; text-transform: uppercase; }
+        .locker-marker-text { font-family: 'Rock Salt', cursive; color: var(--brand-green); font-size: 1.2rem; position: absolute; bottom: -25px; right: -10px; transform: rotate(-3deg); text-shadow: 0 2px 10px rgba(0,0,0,0.8); }
+
+        .shop-carousel-wrap { position: relative; max-width: 1400px; margin: 0 auto; }
+        .shop-carousel { display: flex; flex-wrap: nowrap; overflow-x: auto; scroll-behavior: smooth; gap: 2rem; padding: 1rem 0 3rem 0; scrollbar-width: none; -ms-overflow-style: none; scroll-snap-type: x mandatory; }
+        .shop-carousel::-webkit-scrollbar { display: none; }
+        
+        .product-card { flex: 0 0 auto; width: 350px; min-width: 350px; background: var(--surface-light); border-radius: 4px; overflow: hidden; position: relative; transition: transform 0.3s ease; scroll-snap-align: start; border: 1px solid rgba(255,255,255,0.05); }
+        .product-card:hover { transform: translateY(-5px); border-color: var(--brand-green); }
+        .product-img { width: 100%; height: 400px; object-fit: contain; background: #222; padding: 0; }
+        .product-info { padding: 1.5rem; text-align: left; }
+        .product-tag { position: absolute; top: 10px; left: 10px; background: black; color: white; font-size: 0.7rem; padding: 4px 8px; text-transform: uppercase; font-weight: 700; border: 1px solid var(--brand-green); }
+        .product-title { font-size: 1rem; color: #ccc; margin-bottom: 0.3rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+        .product-price { font-size: 1.1rem; color: white; font-weight: 800; display: block; margin-bottom: 1rem; }
+        .buy-btn-minimal { background: transparent; border-bottom: 1px solid var(--brand-green); border-top: none; border-left: none; border-right: none; color: var(--brand-green); padding-bottom: 5px; font-weight: 700; cursor: pointer; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; transition: all 0.3s; }
+        .buy-btn-minimal:hover { color: white; border-color: white; }
+
+        .shop-link-container { text-align: center; margin-top: 3rem; }
+
+        /* Success & Other Sections */
+        .success-section { background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('Images/success-bg.jpeg'); background-size: cover; background-attachment: fixed; position: relative; }
+        .success-section.no-img { background: #111; }
+        .stats-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; max-width: 1200px; margin: 3rem auto; }
+        .stat-item { text-align: center; background: rgba(0,0,0,0.6); backdrop-filter: blur(5px); padding: 2rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; }
+        .stat-number { font-size: 2.5rem; font-weight: 900; color: var(--text-white); font-family: 'Montserrat', sans-serif; display: block; margin-bottom: 0.5rem; }
+        .stat-label { color: var(--brand-green); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
+        
+        .media-section { padding: 6rem 2rem; background: #000; text-align: center; }
+        .video-container { max-width: 1000px; margin: 2rem auto; border-radius: 16px; overflow: hidden; border: 1px solid #333; background: #111; width: 100%; }
+        .video-player { width: 100%; height: auto; display: block; }
+        .press-section { padding: 4rem 2rem; background: var(--surface-dark); text-align: center; }
+        .press-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; max-width: 1200px; margin: 2rem auto; }
+        .press-item { background: #fff; padding: 1rem; border-radius: 8px; height: 200px; display: flex; align-items: center; justify-content: center; overflow: hidden; transition: transform 0.3s; }
+        .press-item:hover { transform: translateY(-5px); }
+        .press-item img { width: 100%; height: 100%; object-fit: contain; }
+        
+        .capabilities-section { padding: 8rem 2rem; background: var(--deep-black); position: relative; }
+        .capabilities-section::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at 50% 50%, rgba(0, 208, 132, 0.05) 0%, transparent 50%); pointer-events: none; }
+        .cap-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; max-width: 1400px; margin: 4rem auto 0; }
+        .cap-card { position: relative; height: 500px; border-radius: 20px; overflow: hidden; cursor: pointer; box-shadow: 0 4px 20px rgba(0,0,0,0.3); transition: transform 0.4s ease, box-shadow 0.4s ease; }
+        .cap-card:hover { transform: translateY(-10px); box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
+        .cap-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; filter: brightness(0.9); }
+        .cap-card:hover .cap-img { transform: scale(1.1); filter: brightness(1); }
+        .cap-card::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 70%; background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.6) 50%, transparent 100%); transition: opacity 0.3s; }
+        .cap-text { position: absolute; bottom: 0; left: 0; width: 100%; padding: 2.5rem; z-index: 2; transform: translateY(20px); transition: transform 0.4s ease; }
+        .cap-card:hover .cap-text { transform: translateY(0); }
+        .cap-text h4 { color: var(--text-white); font-size: 1.8rem; font-weight: 900; text-transform: uppercase; margin-bottom: 0.5rem; letter-spacing: 1px; line-height: 1.1; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
+        .cap-text h4::after { content: ''; display: block; width: 50px; height: 4px; background: var(--brand-green); margin-top: 15px; transition: width 0.3s ease; }
+        .cap-card:hover .cap-text h4::after { width: 100px; }
+        .cap-text p { color: #ddd; font-size: 1rem; line-height: 1.6; margin-top: 1rem; opacity: 0.9; max-width: 90%; }
+        
+        .team-section { padding: 6rem 2rem; background: linear-gradient(to bottom, #000000, #111111); text-align: center; }
+        .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 4rem; max-width: 1100px; margin: 3rem auto; justify-content: center; }
+        .team-member { position: relative; border-radius: 16px; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1); padding: 0; overflow: hidden; transition: all 0.4s ease; height: 400px; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; }
+        .team-member:hover { transform: translateY(-10px); border-color: var(--brand-green); box-shadow: 0 10px 40px rgba(0, 208, 132, 0.2); }
+        .team-img-container { position: absolute; top: 0; left: 0; width: 100%; height: 80%; display: flex; align-items: flex-end; justify-content: center; z-index: 1; }
+        .team-glow { position: absolute; width: 200px; height: 200px; background: radial-gradient(circle, rgba(0, 208, 132, 0.3) 0%, transparent 70%); bottom: 20px; left: 50%; transform: translateX(-50%); z-index: 0; opacity: 0.5; transition: opacity 0.3s; }
+        .team-member:hover .team-glow { opacity: 1; }
+        .team-member-img { position: relative; width: 100%; height: 100%; object-fit: cover; object-position: center top; z-index: 1; filter: grayscale(100%); transition: all 0.4s ease; }
+        .team-member:hover .team-member-img { filter: grayscale(0%); transform: scale(1.05); }
+        .team-info { position: relative; z-index: 2; width: 100%; padding: 1.5rem; background: linear-gradient(to top, #000000 10%, transparent); text-align: center; }
+        .member-name { font-weight: 800; color: white; font-size: 1.5rem; margin-bottom: 0.3rem; text-transform: uppercase; letter-spacing: 1px; }
+        .member-role { color: var(--brand-green); font-size: 0.9rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; }
+        
+        .partners-section { padding: 4rem 2rem; background: radial-gradient(circle at center, #ffffff 0%, #f4f4f4 100%); color: var(--black); }
+        .partners-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem; max-width: 1200px; margin: 2rem auto; align-items: center; }
+        .partner-logo-img { max-width: 140px; max-height: 80px; opacity: 1; transition: 0.3s; object-fit: contain; margin: 10px; }
+        .partner-logo-img:hover { transform: scale(1.05); }
+        
+        .contact-section { padding: 6rem 2rem; background: radial-gradient(circle at center, #1a1a1a 0%, #000 100%); text-align: center; }
+        .footer-center { text-align: center; max-width: 600px; margin: 0 auto; }
+        footer { background: black; padding: 4rem 2rem 2rem 2rem; text-align: center; border-top: 1px solid #222; color: #666; font-size: 0.8rem; }
+        .footer-links { margin-bottom: 2rem; display: flex; justify-content: center; gap: 2rem; }
+        .footer-links a { color: #888; text-decoration: none; transition: color 0.3s; cursor: pointer; }
+        .footer-links a:hover { color: var(--brand-green); }
+        .footer-contact { margin-bottom: 2rem; color: #aaa; }
+        
+        /* --- SOCIAL ICONS --- */
+        .social-icons { display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 1.5rem; }
+        .social-link { color: #888; font-size: 1.5rem; transition: color 0.3s, transform 0.3s; text-decoration: none; }
+        .social-link:hover { color: var(--brand-green); transform: translateY(-3px); }
+
+        /* --- CHATBOT UI FIXES --- */
+        .chatbot-btn { 
+            position: fixed; bottom: 20px; right: 20px; width: 60px; height: 60px; 
+            background: var(--brand-green); color: var(--deep-black); 
+            border-radius: 50%; border: none; box-shadow: 0 4px 15px rgba(0, 208, 132, 0.4); 
+            font-size: 1.5rem; cursor: pointer; z-index: 2000; transition: transform 0.3s ease; 
+            display: flex; align-items: center; justify-content: center; 
+        }
+        .chatbot-btn:hover { transform: scale(1.1); }
+        
+        .chatbot-label {
+            position: fixed; bottom: 30px; right: 90px;
+            background: rgba(0, 0, 0, 0.85); color: var(--brand-green);
+            padding: 8px 16px; border-radius: 30px;
+            font-family: 'Rock Salt', cursive; font-size: 0.8rem; letter-spacing: 1px;
+            z-index: 1999; pointer-events: none; opacity: 0;
+            border: 1px solid rgba(0, 208, 132, 0.3); white-space: nowrap;
+            animation: fadeInOut 6s infinite;
+        }
+        @keyframes fadeInOut {
+            0%, 100% { opacity: 0; transform: translateX(10px); }
+            10%, 90% { opacity: 1; transform: translateX(0); }
+            100% { opacity: 0; transform: translateX(10px); }
         }
 
-        /* ... Shop Styles ... */
+        .share-btn {
+            position: fixed; bottom: 95px; right: 25px; width: 50px; height: 50px;
+            background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(5px);
+            color: white; border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 50%;
+            font-size: 1.2rem; cursor: pointer; z-index: 1998; transition: all 0.3s ease;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .share-btn:hover { background: var(--brand-green); color: var(--deep-black); transform: scale(1.1); }
+
+        .chatbot-container { 
+            display: none; position: fixed; bottom: 90px; right: 20px; 
+            width: 350px; height: 500px; 
+            background: #1a1a1a; border-radius: 12px; 
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5); 
+            z-index: 2000; overflow: hidden; border: 1px solid #333; 
+            flex-direction: column; 
+        }
+        .chatbot-container.active { display: flex; }
+        
+        .chat-header { background: var(--deep-black); padding: 15px; border-bottom: 1px solid #333; display: flex; justify-content: space-between; align-items: center; flex-shrink: 0; height: 60px; }
+        .chat-header h4 { font-size: 1.1rem; margin: 0; font-family: 'Rock Salt', cursive; font-weight: 700; color: var(--brand-green); }
+        .close-chat { cursor: pointer; color: #888; font-size: 1.2rem; }
+        
+        .chat-messages { flex: 1; padding: 15px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; }
+        .message { max-width: 80%; padding: 10px 15px; border-radius: 12px; font-size: 0.9rem; line-height: 1.4; }
+        .message.bot { background: #333; color: white; align-self: flex-start; border-bottom-left-radius: 2px; font-family: 'Montserrat', sans-serif; text-transform: none; font-weight: 500; }
+        .message.user { background: var(--brand-green); color: black; align-self: flex-end; border-bottom-right-radius: 2px; font-weight: 600; font-family: 'Montserrat', sans-serif; }
+        
+        .chat-input-area { padding: 15px; background: var(--deep-black); border-top: 1px solid #333; display: flex; gap: 10px; flex-shrink: 0; min-height: 70px; }
+        .chat-input { flex: 1; padding: 10px; border-radius: 6px; border: 1px solid #444; background: #222; color: white; outline: none; }
+        .send-btn { background: var(--brand-green); color: black; border: none; padding: 0 15px; border-radius: 6px; cursor: pointer; font-weight: bold; }
+
+        /* --- NEW: COOKIE BANNER --- */
+        #cookie-banner {
+            position: fixed; bottom: 0; left: 0; width: 100%;
+            background: #111; border-top: 1px solid var(--brand-green);
+            padding: 1rem 2rem; z-index: 9999;
+            display: flex; justify-content: space-between; align-items: center;
+            transform: translateY(100%); transition: transform 0.5s ease-in-out;
+            box-shadow: 0 -5px 20px rgba(0,0,0,0.5);
+        }
+        #cookie-banner.show { transform: translateY(0); }
+        .cookie-text { font-size: 0.85rem; color: #ccc; max-width: 80%; }
+        .cookie-btn { background: var(--brand-green); color: black; border: none; padding: 0.5rem 1.5rem; border-radius: 4px; font-weight: 700; cursor: pointer; }
+
+        /* --- NEW: MODAL STYLES --- */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.9); z-index: 10000;
+            display: none; justify-content: center; align-items: center;
+            opacity: 0; transition: opacity 0.3s ease;
+        }
+        .modal-overlay.active { display: flex; opacity: 1; }
+        
+        .modal-content {
+            background: var(--surface-light); width: 90%; max-width: 700px;
+            max-height: 90vh; overflow-y: auto; border-radius: 12px;
+            border: 1px solid #333; position: relative;
+            box-shadow: 0 10px 40px rgba(0, 208, 132, 0.15);
+            animation: modalSlideIn 0.3s ease;
+        }
+        @keyframes modalSlideIn { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+        .modal-header { padding: 1.5rem; border-bottom: 1px solid #333; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; background: var(--surface-light); z-index: 10; }
+        .modal-title { font-size: 1.2rem; font-weight: 800; color: white; margin: 0; }
+        .modal-close { background: none; border: none; color: #888; font-size: 1.5rem; cursor: pointer; transition: color 0.3s; }
+        .modal-close:hover { color: var(--brand-green); }
+        
+        .modal-body { padding: 2rem; color: #ddd; font-size: 0.95rem; line-height: 1.7; }
+        .modal-body h4 { color: var(--brand-green); margin-top: 1.5rem; margin-bottom: 0.5rem; }
+        .modal-body h5 { color: white; margin-top: 1rem; margin-bottom: 0.3rem; font-size: 1rem; font-weight: 700; }
+        .modal-body ul { margin-left: 1.5rem; margin-bottom: 1rem; }
+        .modal-body li { margin-bottom: 0.3rem; }
+        .modal-body p { margin-bottom: 1rem; }
+        
+        /* Iframe styling for the form */
+        .form-frame { width: 100%; height: 500px; border: none; border-radius: 8px; }
+
+        /* Custom Input Styles for Membership Form */
+        .form-group { margin-bottom: 1rem; text-align: left; }
+        .form-group label { display: block; margin-bottom: 0.5rem; color: #aaa; font-size: 0.9rem; font-weight: 600; }
+        .form-input {
+            width: 100%; padding: 12px; background: #222; border: 1px solid #444; border-radius: 6px;
+            color: white; font-size: 1rem; outline: none; transition: border-color 0.3s;
+        }
+        .form-input:focus { border-color: var(--brand-green); }
+        .buy-now-btn {
+            width: 100%; padding: 12px; background: var(--gold-premium); color: black; border: none; border-radius: 6px;
+            font-weight: 800; font-size: 1.1rem; text-transform: uppercase; cursor: pointer; transition: background 0.3s; margin-top: 1rem;
+        }
+        .buy-now-btn:hover { background: white; }
+
+        /* Cart Styles in Index */
+        .cart-empty-msg { text-align: center; color: #888; padding: 2rem 0; }
+        .cart-item { display: flex; justify-content: space-between; align-items: center; padding: 1rem 0; border-bottom: 1px solid #333; }
+        .cart-item-details h5 { margin: 0; color: white; font-size: 1rem; }
+        .cart-item-details p { margin: 0; color: #888; font-size: 0.9rem; }
+        .cart-item-price { color: var(--brand-green); font-weight: 700; }
+        .cart-total { display: flex; justify-content: space-between; margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid #555; font-size: 1.2rem; font-weight: 800; }
+        .checkout-btn { width: 100%; background: var(--brand-green); color: black; border: none; padding: 1rem; margin-top: 1.5rem; font-weight: 800; font-family: 'Montserrat', sans-serif; cursor: pointer; text-transform: uppercase; }
+        .checkout-btn:hover { background: white; }
 
         @media (max-width: 768px) {
-            /* ... existing media queries ... */
+            .header-container { padding: 1rem; }
+            .logo-img { height: 60px; }
+            nav { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: rgba(10, 10, 10, 0.98); flex-direction: column; padding: 2rem; text-align: center; border-bottom: 1px solid #333; }
+            nav.active { display: flex; }
+            .nav-links { flex-direction: column; gap: 1.5rem; margin-bottom: 1.5rem; }
+            .mobile-menu-btn { display: block; position: absolute; right: 1rem; top: 50%; transform: translateY(-50%); }
+            .hero { height: auto; min-height: 90vh; padding-bottom: 3rem; }
+            .hero h1 { font-size: 2.5rem; line-height: 1.2; }
+            .hero h2 { font-size: 1.1rem; }
+            .hero-content { padding: 1rem; margin-top: 80px; }
+            .status-box { padding: 1.2rem; min-width: 280px; width: 100%; }
+            .status-text { font-size: 1rem; }
+            .teaser-section, .success-section, .media-section, .capabilities-section, .team-section, .contact-section, .partners-section, .membership-section, .shop-teaser-section { padding: 3rem 1rem; }
+            .teaser-grid, .stats-container, .cap-grid, .team-grid, .press-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .stats-container { grid-template-columns: repeat(2, 1fr); }
+            .partners-grid { gap: 1.5rem; }
+            .partner-logo-img { max-width: 120px; margin: 5px; }
+            .section-title { font-size: 2rem; }
+            .cap-card { height: 400px; }
+            .video-container { margin: 1rem auto; }
+            .chatbot-container { width: 90%; right: 5%; bottom: 80px; }
+            .chatbot-label { display: none; }
+            .share-btn { bottom: 100px; right: 20px; } 
+            #cookie-banner { flex-direction: column; gap: 1rem; text-align: center; padding: 1.5rem; }
+            .cookie-text { max-width: 100%; }
             .membership-container { flex-direction: column; gap: 2rem; text-align: center; }
             .membership-left-col { width: 100%; max-width: 100%; }
             .membership-info { text-align: center; }
             .benefit-grid { text-align: left; }
-            .black-pass-visual { max-width: 100%; }
+            .price-area { justify-content: center; }
+            /* Mobile Carousel */
+            .shop-carousel-wrap { padding: 0 1rem; }
         }
     </style>
 </head>
@@ -483,14 +635,16 @@
                 <div class="nav-links">
                     <a href="#events" onclick="toggleMenu()">Upcoming</a>
                     <a href="#membership" onclick="toggleMenu()" style="color: var(--rm-gold);">Membership</a>
+                    <!-- CHANGED: Link to shop.html -->
                     <a href="shop.html" class="nav-shop">Shop</a>
                     <a href="#about" onclick="toggleMenu()">About</a>
                     <a href="#partners" onclick="toggleMenu()">Partners</a>
                     
-                    <a href="shop.html" class="cart-link" aria-label="Cart">
+                    <!-- REFINED: Cart Icon with Click Action -->
+                    <div class="cart-link" onclick="openModal('shop-modal')">
                         <i class="fas fa-shopping-bag"></i>
-                        <span class="cart-dot"></span>
-                    </a>
+                        <span class="cart-count" id="cartCount">0</span>
+                    </div>
                 </div>
                 
                 <button onclick="openModal('waitlist-modal')" class="cta-btn">Join Waitlist</button>
@@ -576,7 +730,6 @@
                 <div class="black-pass-visual">
                     <!-- Background Decoration -->
                     <div class="card-deco-x">X</div>
-                    <!-- Removed div class="card-deco-dot" -->
                     
                     <div class="card-top">
                         <div class="card-chip"></div>
@@ -646,7 +799,8 @@
                     <div class="product-info">
                         <h4 class="product-title">Legends Face off jersey (RM Leyendas edition)</h4>
                         <span class="product-price">₹2,499</span>
-                        <button onclick="openModal('shop-modal')" class="buy-btn-minimal">Quick Add +</button>
+                        <!-- CHANGED: addToCart instead of modal -->
+                        <button onclick="addToCart('jersey-rm', 'Legends Face Off Jersey (RM)', 2499)" class="buy-btn-minimal">Quick Add +</button>
                     </div>
                 </div>
                 
@@ -657,7 +811,7 @@
                     <div class="product-info">
                         <h4 class="product-title">LFO Jersey (Barca Legends edition)</h4>
                         <span class="product-price">₹2,499</span>
-                        <button onclick="openModal('shop-modal')" class="buy-btn-minimal">Quick Add +</button>
+                        <button onclick="addToCart('jersey-fcb', 'LFO Jersey (Barca)', 2499)" class="buy-btn-minimal">Quick Add +</button>
                     </div>
                 </div>
 
@@ -668,7 +822,7 @@
                     <div class="product-info">
                         <h4 class="product-title">Legends Face Off Scarf</h4>
                         <span class="product-price">₹799</span>
-                        <button onclick="openModal('shop-modal')" class="buy-btn-minimal">Quick Add +</button>
+                        <button onclick="addToCart('scarf', 'Legends Scarf', 799)" class="buy-btn-minimal">Quick Add +</button>
                     </div>
                 </div>
 
@@ -679,7 +833,7 @@
                     <div class="product-info">
                         <h4 class="product-title">Official Match Ball</h4>
                         <span class="product-price">₹3,999</span>
-                        <button onclick="openModal('shop-modal')" class="buy-btn-minimal">Quick Add +</button>
+                        <button onclick="addToCart('match-ball', 'Official Match Ball', 3999)" class="buy-btn-minimal">Quick Add +</button>
                     </div>
                 </div>
 
@@ -975,9 +1129,18 @@
         </div>
     </div>
 
-    <!-- NEW: SHOP MODAL (Redirects to shop.html) -->
-    <!-- This modal is kept empty but functionality overridden in JS to redirect -->
-    <div id="shop-modal" class="modal-overlay" style="display:none;"></div>
+    <!-- NEW: SHOP MODAL (Now functional Cart Modal for Index) -->
+    <div id="shop-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">YOUR BAG</h3>
+                <button class="modal-close" onclick="closeModal('shop-modal')">&times;</button>
+            </div>
+            <div class="modal-body" id="cart-body">
+                <div class="cart-empty-msg">Your locker is empty.</div>
+            </div>
+        </div>
+    </div>
 
     <!-- LEGAL MODALS RESTORED -->
     
@@ -1092,13 +1255,11 @@
 
     <script>
         // --- CONFIGURATION ---
-        // VITAL: PASTE YOUR RAZORPAY TEST KEY ID HERE
         const RAZORPAY_KEY_ID = "rzp_test_Rxt2V3sG2BYM9W"; 
 
         // Share Function
         function shareWebsite() {
             if (navigator.share) {
-                // Tracking sharing event
                 if (typeof gtag === 'function') {
                     gtag('event', 'share_content', {
                         'method': 'Native Share',
@@ -1106,7 +1267,6 @@
                         'item_id': 'Home Page'
                     });
                 }
-                
                 navigator.share({
                     title: 'The Sports Front',
                     text: 'Iconic Football Nights Coming Soon!',
@@ -1115,7 +1275,6 @@
                 .catch((error) => console.log('Error sharing', error));
             } else {
                 navigator.clipboard.writeText(window.location.href);
-                // Tracking clipboard copy
                 if (typeof gtag === 'function') {
                     gtag('event', 'share_content', {
                         'method': 'Clipboard Copy',
@@ -1127,55 +1286,24 @@
             }
         }
 
-        // Mobile Menu Toggle
-        function toggleMenu() {
-            document.getElementById('main-nav').classList.toggle('active');
-        }
-
-        // Toggle Chatbot
-        function toggleChat() {
-            document.getElementById('chatbot').classList.toggle('active');
-        }
+        // Menu & Chatbot Toggles
+        function toggleMenu() { document.getElementById('main-nav').classList.toggle('active'); }
+        function toggleChat() { document.getElementById('chatbot').classList.toggle('active'); }
 
         // --- MODAL LOGIC ---
         function openModal(modalId) {
-            // Redirect shop modal to shop page
-            if (modalId === 'shop-modal') {
-                window.location.href = 'shop.html';
-                return;
-            }
-
+            // NOTE: Shop Modal is handled internally now for checkout
             document.getElementById(modalId).classList.add('active');
-            // Close sidebar if open on mobile
             document.getElementById('main-nav').classList.remove('active');
             
-            // --- GA4 EVENT TRACKING ---
+            // GA4 Tracking
             if (typeof gtag === 'function') {
                 if (modalId === 'waitlist-modal') {
-                    gtag('event', 'begin_waitlist_signup', {
-                        'event_category': 'conversion',
-                        'event_label': 'Waitlist Modal Opened'
-                    });
-                } else if (modalId === 'privacy-modal' || modalId === 'terms-modal') {
-                    gtag('event', 'view_legal', {
-                        'event_category': 'engagement',
-                        'event_label': modalId
-                    });
+                    gtag('event', 'begin_waitlist_signup', { 'event_category': 'conversion', 'event_label': 'Waitlist Modal' });
                 } else if (modalId === 'membership-modal') {
-                    gtag('event', 'view_membership', {
-                        'event_category': 'conversion',
-                        'event_label': 'Membership Modal Opened'
-                    });
-                } else if (modalId === 'shop-modal') {
-                    gtag('event', 'view_product', {
-                        'event_category': 'ecommerce',
-                        'event_label': 'Product Modal Opened'
-                    });
-                } else if (modalId === 'refund-modal' || modalId === 'shipping-modal') {
-                    gtag('event', 'view_policy', {
-                        'event_category': 'legal',
-                        'event_label': modalId
-                    });
+                    gtag('event', 'view_membership', { 'event_category': 'conversion', 'event_label': 'Membership Modal' });
+                } else if (['privacy-modal', 'terms-modal', 'refund-modal', 'shipping-modal', 'contact-modal'].includes(modalId)) {
+                    gtag('event', 'view_policy', { 'event_category': 'legal', 'event_label': modalId });
                 }
             }
         }
@@ -1184,35 +1312,146 @@
             document.getElementById(modalId).classList.remove('active');
         }
 
-        // Close modal when clicking outside
         window.onclick = function(event) {
             if (event.target.classList.contains('modal-overlay')) {
                 event.target.classList.remove('active');
             }
         }
 
-        // --- NEW: COOKIE LOGIC ---
+        // --- COOKIE LOGIC ---
         function checkCookie() {
             if (!localStorage.getItem('cookiesAccepted')) {
-                setTimeout(() => {
-                    document.getElementById('cookie-banner').classList.add('show');
-                }, 2000); // Show after 2 seconds
+                setTimeout(() => { document.getElementById('cookie-banner').classList.add('show'); }, 2000);
             }
         }
-        
         function acceptCookies() {
             localStorage.setItem('cookiesAccepted', 'true');
             document.getElementById('cookie-banner').classList.remove('show');
         }
         
-        // --- PRELOADER LOGIC ---
+        // --- PRELOADER & INIT CART ---
         window.addEventListener('load', function() {
             document.body.classList.add('loaded');
-            // If checkCookie needs to run on load, can call it here too, 
-            // but window.onload overrides if assigned twice. 
-            // Better to consolidate:
             checkCookie();
+            updateCartUI(); // Load saved cart state
         });
+
+        // --- CART LOGIC (LOCALSTORAGE) ---
+        // Initialize cart from local storage or empty array
+        let cart = JSON.parse(localStorage.getItem('tsf_cart')) || [];
+
+        function addToCart(id, title, price) {
+            const existingItem = cart.find(item => item.id === id);
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ id, title, price, quantity: 1 });
+            }
+            saveCart();
+            updateCartUI();
+            
+            // Visual feedback: Bump animation on cart icon
+            const cartLink = document.querySelector('.cart-link');
+            cartLink.classList.remove('bump');
+            void cartLink.offsetWidth; // trigger reflow
+            cartLink.classList.add('bump');
+        }
+        
+        function saveCart() {
+            localStorage.setItem('tsf_cart', JSON.stringify(cart));
+        }
+
+        function updateCartUI() {
+            const cartCountElement = document.getElementById('cartCount');
+            const cartBody = document.getElementById('cart-body');
+            
+            // Calculate total items for badge
+            const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+            
+            // Update Badge
+            cartCountElement.innerText = totalItems;
+            if (totalItems > 0) {
+                cartCountElement.classList.add('active');
+            } else {
+                cartCountElement.classList.remove('active');
+            }
+
+            // Render Cart Modal Logic
+            if (cart.length === 0) {
+                cartBody.innerHTML = '<div class="cart-empty-msg">Your locker is empty.</div>';
+                return;
+            }
+
+            let html = '';
+            let total = 0;
+
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+                html += `
+                <div class="cart-item">
+                    <div class="cart-item-details">
+                        <h5>${item.title} (x${item.quantity})</h5>
+                    </div>
+                    <div class="cart-item-price">₹${itemTotal.toLocaleString()}</div>
+                </div>`;
+            });
+
+            html += `
+            <div class="cart-total">
+                <span>Total</span>
+                <span>₹${total.toLocaleString()}</span>
+            </div>
+            <button class="checkout-btn" onclick="initiateCheckout()">Proceed to Pay</button>
+            `;
+
+            cartBody.innerHTML = html;
+        }
+
+        async function initiateCheckout() {
+            const checkoutBtn = document.querySelector('.checkout-btn');
+            checkoutBtn.innerText = "Processing...";
+            checkoutBtn.disabled = true;
+
+            try {
+                const response = await fetch('/api/create-order', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ items: cart })
+                });
+
+                const order = await response.json();
+
+                if (order.id) {
+                    const options = {
+                        "key": RAZORPAY_KEY_ID,
+                        "amount": order.amount,
+                        "currency": "INR",
+                        "name": "The Sports Front",
+                        "description": "Merchandise Purchase",
+                        "order_id": order.id, 
+                        "handler": function (response){
+                            alert("Payment Successful! Payment ID: " + response.razorpay_payment_id);
+                            cart = []; 
+                            saveCart();
+                            updateCartUI();
+                            closeModal('shop-modal');
+                        },
+                        "theme": { "color": "#00D084" }
+                    };
+                    const rzp1 = new Razorpay(options);
+                    rzp1.open();
+                } else {
+                    alert("Error creating order. Please try again.");
+                }
+            } catch (error) {
+                console.error("Checkout Error:", error);
+                alert("Checkout system is currently in maintenance mode (Backend not connected).");
+            } finally {
+                checkoutBtn.innerText = "Proceed to Pay";
+                checkoutBtn.disabled = false;
+            }
+        }
 
         // --- MEMBERSHIP PAYMENT LOGIC ---
         async function buyMembership() {
@@ -1244,7 +1483,7 @@
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ 
-                        items: [{ id: 'membership-black-pass', quantity: 1 }], // Keeping ID same for backend compatibility
+                        items: [{ id: 'membership-black-pass', quantity: 1 }], 
                         customerDetails: customerDetails
                     })
                 });
@@ -1297,31 +1536,20 @@
             if (!message) return;
 
             addMessage(message, 'user');
-            
-            // --- GA4 EVENT TRACKING ---
             if (typeof gtag === 'function') {
-                gtag('event', 'use_chatbot', {
-                    'event_category': 'engagement',
-                    'event_label': 'Message Sent'
-                });
+                gtag('event', 'use_chatbot', { 'event_category': 'engagement', 'event_label': 'Message Sent' });
             }
-
             inputField.value = '';
-
             const loadingMsg = addMessage('Thinking...', 'bot');
 
-            // IMPORTANT: Calls the Vercel Serverless Function at /api/chat
             try {
                 const response = await fetch('/api/chat', { 
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ messages: [{ content: message }] })
                 });
-
                 const data = await response.json();
-                
                 loadingMsg.remove();
-
                 if (data.reply) {
                     const formattedReply = data.reply.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>');
                     addMessage(formattedReply, 'bot', true); 
@@ -1339,23 +1567,21 @@
             const messagesContainer = document.getElementById('chat-messages');
             const msgDiv = document.createElement('div');
             msgDiv.classList.add('message', sender);
-            
-            if (isHtml) {
-                msgDiv.innerHTML = text;
-            } else {
-                msgDiv.innerText = text;
-            }
-            
+            if (isHtml) msgDiv.innerHTML = text; else msgDiv.innerText = text;
             messagesContainer.appendChild(msgDiv);
             messagesContainer.scrollTop = messagesContainer.scrollHeight;
             return msgDiv;
         }
+        function handleKeyPress(e) { if (e.key === 'Enter') sendMessage(); }
 
-        function handleKeyPress(e) {
-            if (e.key === 'Enter') sendMessage();
+        // --- CAROUSEL & STATS ---
+        function scrollCarousel(direction) {
+            const container = document.getElementById('shopCarousel');
+            const scrollAmount = 370; // Adjusted for wider cards
+            if (direction === 'left') container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+            else container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
         }
 
-        // Animated Statistics
         const stats = document.querySelectorAll('.stat-number');
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -1363,18 +1589,13 @@
                     const target = +entry.target.getAttribute('data-target');
                     const duration = 2000; 
                     const increment = target / (duration / 16); 
-                    
                     let current = 0;
                     const updateCount = () => {
                         current += increment;
                         if (current < target) {
-                            if(target > 1000000) {
-                                entry.target.innerText = (current / 1000000).toFixed(1) + 'M+';
-                            } else if (target > 1000) {
-                                entry.target.innerText = Math.ceil(current / 1000) + 'K+';
-                            } else {
-                                entry.target.innerText = Math.ceil(current);
-                            }
+                            if(target > 1000000) entry.target.innerText = (current / 1000000).toFixed(1) + 'M+';
+                            else if (target > 1000) entry.target.innerText = Math.ceil(current / 1000) + 'K+';
+                            else entry.target.innerText = Math.ceil(current);
                             requestAnimationFrame(updateCount);
                         } else {
                             if(target === 30231 || target === 25109) entry.target.innerText = "30,000+";
@@ -1389,19 +1610,7 @@
                 }
             });
         }, { threshold: 0.5 });
-
         stats.forEach(stat => observer.observe(stat));
-
-        // --- CAROUSEL LOGIC (NEW) ---
-        function scrollCarousel(direction) {
-            const container = document.getElementById('shopCarousel');
-            const scrollAmount = 370; // Adjusted for wider cards
-            if (direction === 'left') {
-                container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-            } else {
-                container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-            }
-        }
     </script>
 </body>
 </html>
