@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Google Analytics (Same ID for tracking across pages) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JD59FMBHZ8"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-JD59FMBHZ8');
+    </script>
+
+    <title>The Locker Room | TSF Official Store</title>
+    
+    <!-- Meta Tags for Shop -->
+    <meta name="description" content="The official merchandise store for The Sports Front. Limited edition jerseys, hoodies, and accessories from the Legends Face Off series.">
+    
+    <!-- Favicons -->
+    <link rel="shortcut icon" href="Images/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="Images/apple-touch-icon.png">
+    
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@400;600&family=Rock+Salt&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- COPYING CORE VARIABLES --- */
+        :root { 
+            --brand-green: #00D084; 
+            --brand-red: #FF3333; 
+            --deep-black: #0a0a0a; 
+            --surface-dark: #141414; 
+            --surface-light: #1f1f1f; 
+            --text-white: #FFFFFF; 
+            --text-gray: #B0B0B0; 
+            --gold-premium: #D4AF37; 
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Open Sans', sans-serif; background-color: var(--deep-black); color: var(--text-white); }
+        h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; text-transform: uppercase; }
+
+        /* --- HEADER (Consistent with Home) --- */
+        header { position: fixed; top: 0; left: 0; right: 0; background: rgba(10, 10, 10, 0.98); border-bottom: 1px solid rgba(255,255,255,0.1); z-index: 1000; }
+        .header-container { max-width: 1400px; margin: 0 auto; padding: 0.8rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+        .logo-img { height: 80px; width: auto; object-fit: contain; }
+        
+        nav { display: flex; align-items: center; gap: 2rem; }
+        .nav-links { display: flex; list-style: none; gap: 2rem; align-items: center; }
+        .nav-links a { text-decoration: none; color: var(--text-white); font-weight: 600; font-size: 0.9rem; transition: color 0.3s ease; }
+        .nav-links a:hover { color: var(--brand-green); }
+        .nav-home-link { border-bottom: 2px solid transparent; }
+        .nav-shop-active { color: var(--brand-green) !important; border-bottom: 2px solid var(--brand-green); }
+
+        /* Cart Icon */
+        .cart-link { position: relative; color: white; font-size: 1.2rem; margin-left: 5px; transition: transform 0.2s; }
+        .cart-link:hover { transform: scale(1.1); color: var(--brand-green); }
+        .cart-dot { position: absolute; top: -2px; right: -2px; width: 8px; height: 8px; background-color: var(--brand-red); border-radius: 50%; border: 1px solid var(--deep-black); }
+
+        /* --- SHOP HERO --- */
+        .shop-hero {
+            padding-top: 140px; padding-bottom: 4rem; text-align: center;
+            background: linear-gradient(180deg, rgba(20,20,20,1) 0%, rgba(10,10,10,1) 100%);
+        }
+        .shop-hero h1 { font-size: 3.5rem; font-weight: 900; margin-bottom: 0.5rem; }
+        .shop-hero p { color: #888; font-size: 1.1rem; letter-spacing: 1px; }
+
+        /* --- FILTERS --- */
+        .filter-bar { display: flex; justify-content: center; gap: 1rem; margin-bottom: 3rem; flex-wrap: wrap; }
+        .filter-btn {
+            background: transparent; border: 1px solid #333; color: #888;
+            padding: 0.5rem 1.5rem; border-radius: 30px; cursor: pointer;
+            font-weight: 600; transition: all 0.3s;
+        }
+        .filter-btn:hover, .filter-btn.active { background: var(--brand-green); color: black; border-color: var(--brand-green); }
+
+        /* --- PRODUCT GRID --- */
+        .shop-container { max-width: 1200px; margin: 0 auto; padding: 0 2rem 6rem; }
+        .shop-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 3rem; }
+        
+        .product-card {
+            background: var(--surface-light); border-radius: 8px; overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.05); transition: transform 0.3s;
+            position: relative;
+        }
+        .product-card:hover { transform: translateY(-10px); border-color: var(--brand-green); }
+        .product-img { width: 100%; height: 320px; object-fit: cover; background: #222; }
+        
+        .product-tag { 
+            position: absolute; top: 10px; left: 10px; 
+            background: black; color: white; 
+            font-size: 0.7rem; padding: 4px 8px; 
+            text-transform: uppercase; font-weight: 700;
+            border: 1px solid var(--brand-green);
+        }
+
+        .product-info { padding: 1.5rem; text-align: center; }
+        .product-title { font-size: 1.1rem; color: white; margin-bottom: 0.5rem; font-weight: 700; }
+        .product-category { color: #666; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 0.5rem; }
+        .product-price { font-size: 1.2rem; color: var(--brand-green); font-weight: 800; display: block; margin-bottom: 1rem; }
+        
+        .buy-btn {
+            background: transparent; border: 1px solid white; color: white;
+            padding: 0.7rem 1rem; width: 100%; text-transform: uppercase;
+            font-weight: 700; cursor: pointer; transition: all 0.3s;
+        }
+        .buy-btn:hover { background: white; color: black; }
+
+        /* --- MODAL (Same as Index) --- */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.9); z-index: 10000;
+            display: none; justify-content: center; align-items: center;
+            opacity: 0; transition: opacity 0.3s ease;
+        }
+        .modal-overlay.active { display: flex; opacity: 1; }
+        .modal-content {
+            background: var(--surface-light); width: 90%; max-width: 600px;
+            max-height: 90vh; overflow-y: auto; border-radius: 12px;
+            border: 1px solid #333; position: relative;
+            box-shadow: 0 10px 40px rgba(0, 208, 132, 0.15);
+        }
+        .modal-header { padding: 1.5rem; border-bottom: 1px solid #333; display: flex; justify-content: space-between; align-items: center; }
+        .modal-title { font-size: 1.2rem; font-weight: 800; margin: 0; }
+        .modal-close { background: none; border: none; color: #888; font-size: 1.5rem; cursor: pointer; }
+        .modal-body { padding: 2rem; text-align: center; }
+        .form-frame { width: 100%; height: 500px; border: none; border-radius: 8px; }
+
+        /* --- FOOTER --- */
+        footer { background: black; padding: 4rem 2rem; text-align: center; border-top: 1px solid #222; color: #666; font-size: 0.8rem; margin-top: auto; }
+        
+        @media (max-width: 768px) {
+            .header-container { padding: 1rem; }
+            .logo-img { height: 60px; }
+            .shop-hero h1 { font-size: 2.5rem; }
+            nav { display: none; } /* Simplified for this example, would need mobile menu JS */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo-container">
+                <a href="index.html">
+                    <img src="Images/logo-header.svg" alt="The Sports Front" class="logo-img">
+                </a>
+            </div>
+            
+            <nav>
+                <div class="nav-links">
+                    <a href="index.html" class="nav-home-link">Home</a>
+                    <a href="index.html#events">Upcoming</a>
+                    <a href="index.html#membership" style="color: var(--rm-gold);">Membership</a>
+                    <a href="#" class="nav-shop-active">Shop</a>
+                    <a href="#" class="cart-link">
+                        <i class="fas fa-shopping-bag"></i>
+                        <span class="cart-dot"></span>
+                    </a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Shop Hero -->
+    <section class="shop-hero">
+        <h1>THE LOCKER ROOM</h1>
+        <p>OFFICIAL MERCHANDISE • LIMITED DROPS • EXCLUSIVE GEAR</p>
+    </section>
+
+    <!-- Shop Content -->
+    <div class="shop-container">
+        
+        <!-- Filters -->
+        <div class="filter-bar">
+            <button class="filter-btn active">All</button>
+            <button class="filter-btn">Jerseys</button>
+            <button class="filter-btn">Hoodies</button>
+            <button class="filter-btn">Accessories</button>
+        </div>
+
+        <!-- Product Grid -->
+        <div class="shop-grid">
+            
+            <!-- Item 1 -->
+            <div class="product-card">
+                <span class="product-tag">Last Few Left</span>
+                <img src="https://placehold.co/400x400/222/FFF?text=Mumbai+2025+Jersey" class="product-img" alt="Jersey">
+                <div class="product-info">
+                    <span class="product-category">Jerseys</span>
+                    <h4 class="product-title">Commemorative Jersey</h4>
+                    <span class="product-price">₹1,999</span>
+                    <button onclick="openModal('shop-modal')" class="buy-btn">Add to Bag</button>
+                </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="product-card">
+                <img src="https://placehold.co/400x400/222/FFF?text=TSF+Hoodie" class="product-img" alt="Hoodie">
+                <div class="product-info">
+                    <span class="product-category">Apparel</span>
+                    <h4 class="product-title">The Gaffer Hoodie (Black)</h4>
+                    <span class="product-price">₹2,499</span>
+                    <button onclick="openModal('shop-modal')" class="buy-btn">Pre-Order</button>
+                </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="product-card">
+                <span class="product-tag">Best Seller</span>
+                <img src="https://placehold.co/400x400/222/FFF?text=Official+Scarf" class="product-img" alt="Scarf">
+                <div class="product-info">
+                    <span class="product-category">Accessories</span>
+                    <h4 class="product-title">Legends Face Off Scarf</h4>
+                    <span class="product-price">₹799</span>
+                    <button onclick="openModal('shop-modal')" class="buy-btn">Add to Bag</button>
+                </div>
+            </div>
+
+            <!-- Item 4 -->
+            <div class="product-card">
+                <img src="https://placehold.co/400x400/222/FFF?text=Match+Day+Cap" class="product-img" alt="Cap">
+                <div class="product-info">
+                    <span class="product-category">Headwear</span>
+                    <h4 class="product-title">Match Day Cap</h4>
+                    <span class="product-price">₹599</span>
+                    <button onclick="openModal('shop-modal')" class="buy-btn">Add to Bag</button>
+                </div>
+            </div>
+
+            <!-- Item 5 -->
+            <div class="product-card">
+                <img src="https://placehold.co/400x400/222/FFF?text=Tote+Bag" class="product-img" alt="Tote">
+                <div class="product-info">
+                    <span class="product-category">Accessories</span>
+                    <h4 class="product-title">TSF Canvas Tote</h4>
+                    <span class="product-price">₹499</span>
+                    <button onclick="openModal('shop-modal')" class="buy-btn">Add to Bag</button>
+                </div>
+            </div>
+
+            <!-- Item 6 -->
+            <div class="product-card">
+                <img src="https://placehold.co/400x400/222/FFF?text=Keychains" class="product-img" alt="Keychain">
+                <div class="product-info">
+                    <span class="product-category">Accessories</span>
+                    <h4 class="product-title">Event Keychains (Set of 3)</h4>
+                    <span class="product-price">₹299</span>
+                    <button onclick="openModal('shop-modal')" class="buy-btn">Add to Bag</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 The Sports Front. All rights reserved.</p>
+    </footer>
+
+    <!-- SHOP MODAL -->
+    <div id="shop-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">OFFICIAL MERCH STORE</h3>
+                <button class="modal-close" onclick="closeModal('shop-modal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <h4>LIMITED STOCK ALERT</h4>
+                <p>Please fill out the form below to secure your items. We will contact you for payment.</p>
+                <!-- Reuse the form for now -->
+                <iframe class="form-frame" src="https://forms.office.com/r/NtDiPXFhKt"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openModal(modalId) {
+            document.getElementById(modalId).classList.add('active');
+            
+            // GA4 Event for Shop Page
+            if (typeof gtag === 'function') {
+                gtag('event', 'add_to_cart_attempt', {
+                    'event_category': 'ecommerce',
+                    'event_label': 'Shop Modal Opened'
+                });
+            }
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+        }
+
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal-overlay')) {
+                event.target.classList.remove('active');
+            }
+        }
+    </script>
+</body>
+</html>
