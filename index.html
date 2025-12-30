@@ -339,8 +339,8 @@
         .shop-carousel::-webkit-scrollbar { display: none; }
         
         .product-card {
-            min-width: 300px;
-            max-width: 300px;
+            min-width: 350px; /* Wider card */
+            max-width: 350px;
             background: var(--surface-light);
             border-radius: 4px;
             overflow: hidden;
@@ -353,10 +353,10 @@
         /* UPDATED: Changed to 'contain' so jerseys are not cut off, added padding */
         .product-img { 
             width: 100%; 
-            height: 350px; 
+            height: 400px; /* Taller image area */
             object-fit: contain; 
             background: #222; 
-            padding: 20px; 
+            padding: 0; /* Remove padding to maximize size */
         }
         .product-info { padding: 1.5rem; text-align: left; }
         .product-tag { 
