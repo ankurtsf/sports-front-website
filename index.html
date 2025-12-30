@@ -13,14 +13,20 @@
 
       gtag('config', 'G-JD59FMBHZ8');
     </script>
+    
+    <!-- Razorpay SDK (Required for Membership Payments) -->
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
     <!-- --- SEO & SOCIAL PACK --- -->
     <title>The Sports Front | Iconic Football Nights</title>
+    <!-- UPDATED: Removed specific team names to protect confidentiality -->
     <meta name="description" content="Official pre-announcement. The Sports Front is bringing two English Heavyweights to India (2026). Join the priority list now for The Northern Storm.">
     <meta name="keywords" content="Football, Legends Match, English Premier League Legends, India Sports, Event Management, VOCA Sports, Football Merch, Membership">
     <meta name="author" content="The Sports Front">
     
+    <!-- Canonical URL -->
     <link rel="canonical" href="https://thesportsfront.com/">
+    <!-- Robots -->
     <meta name="robots" content="index, follow">
 
     <!-- Open Graph / Facebook / WhatsApp -->
@@ -28,21 +34,25 @@
     <meta property="og:url" content="https://thesportsfront.com/">
     <meta property="og:title" content="Legends Are Returning | The Sports Front">
     <meta property="og:description" content="The Northern Storm is coming. Two English Giants collide. India 2026. Get Priority Access.">
+    <!-- CRITICAL FIX: Social platforms require ABSOLUTE URLs (https://...) for images. Relative paths will not show previews. -->
     <meta property="og:image" content="https://thesportsfront.com/Images/social-share.jpg"> 
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://thesportsfront.com/">
     <meta property="twitter:title" content="Legends Are Returning | The Sports Front">
+    <!-- UPDATED: Removed specific team names -->
     <meta property="twitter:description" content="The Northern Storm is coming. Two English Giants collide. India 2026.">
     <meta property="twitter:image" content="https://thesportsfront.com/Images/social-share.jpg">
 
-    <!-- Favicon & App Icons -->
+    <!-- Favicon & App Icons (Professional Suite) -->
     <link rel="shortcut icon" href="Images/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" sizes="180x180" href="Images/apple-touch-icon.png">
     
-    <!-- ADAPTIVE ICONS -->
+    <!-- ADAPTIVE ICONS: Handles Light vs Dark Mode Browsers -->
+    <!-- If user is in Light Mode -> Show Black/Dark Icon -->
     <link rel="icon" type="image/png" sizes="32x32" href="Images/favicon-black.png" media="(prefers-color-scheme: light)">
+    <!-- If user is in Dark Mode -> Show White/Light Icon -->
     <link rel="icon" type="image/png" sizes="32x32" href="Images/favicon-32x32.png" media="(prefers-color-scheme: dark)">
 
     <!-- Standard Fallbacks -->
@@ -51,7 +61,7 @@
     <link rel="icon" type="image/png" sizes="192x192" href="Images/android-chrome-192x192.png">
     <link rel="icon" type="image/png" sizes="512x512" href="Images/android-chrome-512x512.png">
 
-    <!-- JSON-LD Schema -->
+    <!-- JSON-LD Schema for Google Events -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -536,6 +546,20 @@
         /* Iframe styling for the form */
         .form-frame { width: 100%; height: 500px; border: none; border-radius: 8px; }
 
+        /* Custom Input Styles for Membership Form */
+        .form-group { margin-bottom: 1rem; text-align: left; }
+        .form-group label { display: block; margin-bottom: 0.5rem; color: #aaa; font-size: 0.9rem; font-weight: 600; }
+        .form-input {
+            width: 100%; padding: 12px; background: #222; border: 1px solid #444; border-radius: 6px;
+            color: white; font-size: 1rem; outline: none; transition: border-color 0.3s;
+        }
+        .form-input:focus { border-color: var(--brand-green); }
+        .buy-now-btn {
+            width: 100%; padding: 12px; background: var(--gold-premium); color: black; border: none; border-radius: 6px;
+            font-weight: 800; font-size: 1.1rem; text-transform: uppercase; cursor: pointer; transition: background 0.3s; margin-top: 1rem;
+        }
+        .buy-now-btn:hover { background: white; }
+
         @media (max-width: 768px) {
             .header-container { padding: 1rem; }
             .logo-img { height: 60px; }
@@ -1017,7 +1041,7 @@
         </div>
     </div>
 
-    <!-- NEW: MEMBERSHIP MODAL -->
+    <!-- NEW: MEMBERSHIP MODAL WITH PAYMENT -->
     <div id="membership-modal" class="modal-overlay">
         <div class="modal-content">
             <div class="modal-header">
@@ -1026,26 +1050,42 @@
             </div>
             <div class="modal-body" style="text-align: center;">
                 <h4>TSF BLACK PASS</h4>
-                <p>You are one step away from priority access.</p>
-                <p>Since we are currently updating our payment gateway for the 2026 Season, please register your interest below. Our team will send you a secure payment link within 24 hours.</p>
-                <!-- Reuse the form for now, or replace with payment link later -->
-                <iframe class="form-frame" src="https://forms.office.com/r/NtDiPXFhKt"></iframe>
+                <p>Enter your details to secure your lifetime membership.</p>
+                
+                <div class="form-group">
+                    <label for="mem-name">Full Name</label>
+                    <input type="text" id="mem-name" class="form-input" placeholder="John Doe">
+                </div>
+                <div class="form-group">
+                    <label for="mem-email">Email Address</label>
+                    <input type="email" id="mem-email" class="form-input" placeholder="john@example.com">
+                </div>
+                <div class="form-group">
+                    <label for="mem-phone">Phone Number</label>
+                    <input type="tel" id="mem-phone" class="form-input" placeholder="+91 98765 43210">
+                </div>
+                <div class="form-group">
+                    <label for="mem-card-name">Preferred Name on Card</label>
+                    <input type="text" id="mem-card-name" class="form-input" placeholder="J. Doe">
+                </div>
+                
+                <button onclick="buyMembership()" class="buy-now-btn">Pay ₹999</button>
             </div>
         </div>
     </div>
 
-    <!-- NEW: SHOP MODAL (Only kept for the 'Quick Add' buttons, but they should really redirect to shop page) -->
-    <!-- Since we removed the shop logic from this page and moved it to shop.html, we don't need the cart modal here anymore. -->
-    <!-- However, the 'Quick Add' buttons in the carousel trigger openModal('shop-modal'). -->
-    <!-- We should change that behavior to redirect to shop.html instead. -->
-    
-    <!-- I will leave this empty/placeholder just in case, but updated the JS below to handle it. -->
+    <!-- NEW: SHOP MODAL (Redirects to shop.html) -->
+    <!-- This modal is kept empty but functionality overridden in JS to redirect -->
+    <div id="shop-modal" class="modal-overlay" style="display:none;"></div>
 
     <script>
+        // --- CONFIGURATION ---
+        // VITAL: PASTE YOUR RAZORPAY TEST KEY ID HERE
+        const RAZORPAY_KEY_ID = "rzp_test_Rxt2V3sG2BYM9W"; 
+
         // Share Function
         function shareWebsite() {
             if (navigator.share) {
-                // Tracking sharing event
                 if (typeof gtag === 'function') {
                     gtag('event', 'share_content', {
                         'method': 'Native Share',
@@ -1053,7 +1093,6 @@
                         'item_id': 'Home Page'
                     });
                 }
-                
                 navigator.share({
                     title: 'The Sports Front',
                     text: 'Iconic Football Nights Coming Soon!',
@@ -1062,7 +1101,6 @@
                 .catch((error) => console.log('Error sharing', error));
             } else {
                 navigator.clipboard.writeText(window.location.href);
-                // Tracking clipboard copy
                 if (typeof gtag === 'function') {
                     gtag('event', 'share_content', {
                         'method': 'Clipboard Copy',
@@ -1074,40 +1112,27 @@
             }
         }
 
-        // Mobile Menu Toggle
-        function toggleMenu() {
-            document.getElementById('main-nav').classList.toggle('active');
-        }
+        // Menu & Chatbot Toggles
+        function toggleMenu() { document.getElementById('main-nav').classList.toggle('active'); }
+        function toggleChat() { document.getElementById('chatbot').classList.toggle('active'); }
 
-        // Toggle Chatbot
-        function toggleChat() {
-            document.getElementById('chatbot').classList.toggle('active');
-        }
-
-        // --- NEW: MODAL LOGIC ---
+        // --- MODAL LOGIC ---
         function openModal(modalId) {
-            // Special handling for shop modal on homepage -> Redirect to Shop
+            // Redirect shop modal to shop page
             if (modalId === 'shop-modal') {
                 window.location.href = 'shop.html';
                 return;
             }
 
             document.getElementById(modalId).classList.add('active');
-            // Close sidebar if open on mobile
             document.getElementById('main-nav').classList.remove('active');
             
-            // --- GA4 EVENT TRACKING ---
+            // GA4 Tracking
             if (typeof gtag === 'function') {
                 if (modalId === 'waitlist-modal') {
-                    gtag('event', 'begin_waitlist_signup', {
-                        'event_category': 'conversion',
-                        'event_label': 'Waitlist Modal Opened'
-                    });
+                    gtag('event', 'begin_waitlist_signup', { 'event_category': 'conversion', 'event_label': 'Waitlist Modal' });
                 } else if (modalId === 'membership-modal') {
-                    gtag('event', 'view_membership', {
-                        'event_category': 'conversion',
-                        'event_label': 'Membership Modal Opened'
-                    });
+                    gtag('event', 'view_membership', { 'event_category': 'conversion', 'event_label': 'Membership Modal' });
                 }
             }
         }
@@ -1116,68 +1141,126 @@
             document.getElementById(modalId).classList.remove('active');
         }
 
-        // Close modal when clicking outside
         window.onclick = function(event) {
             if (event.target.classList.contains('modal-overlay')) {
                 event.target.classList.remove('active');
             }
         }
 
-        // --- NEW: COOKIE LOGIC ---
+        // --- COOKIE LOGIC ---
         function checkCookie() {
             if (!localStorage.getItem('cookiesAccepted')) {
-                setTimeout(() => {
-                    document.getElementById('cookie-banner').classList.add('show');
-                }, 2000); // Show after 2 seconds
+                setTimeout(() => { document.getElementById('cookie-banner').classList.add('show'); }, 2000);
             }
         }
-        
         function acceptCookies() {
             localStorage.setItem('cookiesAccepted', 'true');
             document.getElementById('cookie-banner').classList.remove('show');
         }
         
-        // --- PRELOADER LOGIC ---
+        // --- PRELOADER ---
         window.addEventListener('load', function() {
             document.body.classList.add('loaded');
-            // If checkCookie needs to run on load, can call it here too, 
-            // but window.onload overrides if assigned twice. 
-            // Better to consolidate:
             checkCookie();
         });
 
-        // --- CUSTOM CHATBOT LOGIC ---
+        // --- MEMBERSHIP PAYMENT LOGIC ---
+        async function buyMembership() {
+            const name = document.getElementById('mem-name').value;
+            const email = document.getElementById('mem-email').value;
+            const phone = document.getElementById('mem-phone').value;
+            const cardName = document.getElementById('mem-card-name').value;
+
+            if (!name || !email || !phone) {
+                alert("Please fill in all details.");
+                return;
+            }
+
+            const payBtn = document.querySelector('.buy-now-btn');
+            payBtn.innerText = "Processing...";
+            payBtn.disabled = true;
+
+            const customerDetails = {
+                name: name,
+                email: email,
+                contact: phone,
+                cardName: cardName,
+                product: "TSF Black Pass"
+            };
+
+            try {
+                // Call Backend
+                const response = await fetch('/api/create-order', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ 
+                        items: [{ id: 'membership-black-pass', quantity: 1 }],
+                        customerDetails: customerDetails
+                    })
+                });
+
+                const order = await response.json();
+
+                if (order.id) {
+                    const options = {
+                        "key": RAZORPAY_KEY_ID,
+                        "amount": order.amount,
+                        "currency": "INR",
+                        "name": "The Sports Front",
+                        "description": "TSF Black Pass Membership",
+                        "order_id": order.id, 
+                        "prefill": {
+                            "name": name,
+                            "email": email,
+                            "contact": phone
+                        },
+                        "notes": customerDetails,
+                        "handler": function (response){
+                            alert("Welcome to the Inner Circle! Payment ID: " + response.razorpay_payment_id);
+                            closeModal('membership-modal');
+                            // Reset form
+                            document.getElementById('mem-name').value = '';
+                            document.getElementById('mem-email').value = '';
+                            document.getElementById('mem-phone').value = '';
+                            document.getElementById('mem-card-name').value = '';
+                        },
+                        "theme": { "color": "#D4AF37" } // Gold theme for membership
+                    };
+                    const rzp1 = new Razorpay(options);
+                    rzp1.open();
+                } else {
+                    alert("Error initiating payment. Please try again.");
+                }
+            } catch (error) {
+                console.error("Payment Error:", error);
+                alert("Payment system is currently offline.");
+            } finally {
+                payBtn.innerText = "Pay ₹999";
+                payBtn.disabled = false;
+            }
+        }
+
+        // --- CHATBOT LOGIC ---
         async function sendMessage() {
             const inputField = document.getElementById('user-input');
             const message = inputField.value.trim();
             if (!message) return;
 
             addMessage(message, 'user');
-            
-            // --- GA4 EVENT TRACKING ---
             if (typeof gtag === 'function') {
-                gtag('event', 'use_chatbot', {
-                    'event_category': 'engagement',
-                    'event_label': 'Message Sent'
-                });
+                gtag('event', 'use_chatbot', { 'event_category': 'engagement', 'event_label': 'Message Sent' });
             }
-
             inputField.value = '';
-
             const loadingMsg = addMessage('Thinking...', 'bot');
 
-            // IMPORTANT: Calls the Vercel Serverless Function at /api/chat
             try {
                 const response = await fetch('/api/chat', { 
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ messages: [{ content: message }] })
                 });
-
                 const data = await response.json();
-                
                 loadingMsg.remove();
-
                 if (data.reply) {
                     const formattedReply = data.reply.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>');
                     addMessage(formattedReply, 'bot', true); 
@@ -1195,23 +1278,21 @@
             const messagesContainer = document.getElementById('chat-messages');
             const msgDiv = document.createElement('div');
             msgDiv.classList.add('message', sender);
-            
-            if (isHtml) {
-                msgDiv.innerHTML = text;
-            } else {
-                msgDiv.innerText = text;
-            }
-            
+            if (isHtml) msgDiv.innerHTML = text; else msgDiv.innerText = text;
             messagesContainer.appendChild(msgDiv);
             messagesContainer.scrollTop = messagesContainer.scrollHeight;
             return msgDiv;
         }
+        function handleKeyPress(e) { if (e.key === 'Enter') sendMessage(); }
 
-        function handleKeyPress(e) {
-            if (e.key === 'Enter') sendMessage();
+        // --- CAROUSEL & STATS ---
+        function scrollCarousel(direction) {
+            const container = document.getElementById('shopCarousel');
+            const scrollAmount = 370; // Adjusted for wider cards
+            if (direction === 'left') container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+            else container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
         }
 
-        // Animated Statistics
         const stats = document.querySelectorAll('.stat-number');
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -1219,18 +1300,13 @@
                     const target = +entry.target.getAttribute('data-target');
                     const duration = 2000; 
                     const increment = target / (duration / 16); 
-                    
                     let current = 0;
                     const updateCount = () => {
                         current += increment;
                         if (current < target) {
-                            if(target > 1000000) {
-                                entry.target.innerText = (current / 1000000).toFixed(1) + 'M+';
-                            } else if (target > 1000) {
-                                entry.target.innerText = Math.ceil(current / 1000) + 'K+';
-                            } else {
-                                entry.target.innerText = Math.ceil(current);
-                            }
+                            if(target > 1000000) entry.target.innerText = (current / 1000000).toFixed(1) + 'M+';
+                            else if (target > 1000) entry.target.innerText = Math.ceil(current / 1000) + 'K+';
+                            else entry.target.innerText = Math.ceil(current);
                             requestAnimationFrame(updateCount);
                         } else {
                             if(target === 30231 || target === 25109) entry.target.innerText = "30,000+";
@@ -1245,19 +1321,7 @@
                 }
             });
         }, { threshold: 0.5 });
-
         stats.forEach(stat => observer.observe(stat));
-
-        // --- CAROUSEL LOGIC (NEW) ---
-        function scrollCarousel(direction) {
-            const container = document.getElementById('shopCarousel');
-            const scrollAmount = 320; // Width of card + gap
-            if (direction === 'left') {
-                container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-            } else {
-                container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-            }
-        }
     </script>
 </body>
 </html>

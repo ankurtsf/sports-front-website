@@ -9,7 +9,7 @@ const razorpay = new Razorpay({
 
 export default async function handler(req, res) {
   if (req.method === 'POST') {
-    const { items } = req.body;
+    const { items, customerDetails } = req.body; // Added customerDetails to capture form inputs
 
     // 1. Calculate Total Price on Server
     const productCatalog = {
@@ -18,7 +18,8 @@ export default async function handler(req, res) {
       'match-ball': 3999,
       'scarf': 799,
       'hoodie': 2499,
-      'cap': 599
+      'cap': 599,
+      'membership-black-pass': 999 // Added Membership Product
     };
 
     let totalAmount = 0;
@@ -37,6 +38,7 @@ export default async function handler(req, res) {
       amount: totalAmount * 100, // Razorpay takes amount in paisa
       currency: 'INR',
       receipt: 'order_rcptid_' + Date.now(),
+      notes: customerDetails || {} // Attach customer info (Name on Card, Email, etc.) to the order
     };
 
     try {
