@@ -134,10 +134,16 @@
         }
         @keyframes modalSlideIn { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
 
-        .modal-header { padding: 1.5rem; border-bottom: 1px solid #333; display: flex; justify-content: space-between; align-items: center; }
-        .modal-title { font-size: 1.2rem; font-weight: 800; margin: 0; }
-        .modal-close { background: none; border: none; color: #888; font-size: 1.5rem; cursor: pointer; }
-        .modal-body { padding: 2rem; }
+        .modal-header { padding: 1.5rem; border-bottom: 1px solid #333; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; background: var(--surface-light); z-index: 10; }
+        .modal-title { font-size: 1.2rem; font-weight: 800; margin: 0; color: white; }
+        .modal-close { background: none; border: none; color: #888; font-size: 1.5rem; cursor: pointer; transition: color 0.3s; }
+        .modal-close:hover { color: var(--brand-green); }
+        .modal-body { padding: 2rem; color: #ccc; }
+        .modal-body h4 { color: var(--brand-green); margin-top: 1.5rem; margin-bottom: 0.5rem; }
+        .modal-body h3 { color: white; margin-top: 1rem; margin-bottom: 0.3rem; font-size: 1.1rem; }
+        .modal-body p { margin-bottom: 1rem; }
+        .modal-body ul { margin-left: 1.5rem; margin-bottom: 1rem; }
+        .modal-body a { color: var(--brand-green); text-decoration: none; }
 
         /* Cart Styles */
         .cart-empty-msg { text-align: center; color: #888; padding: 2rem 0; }
@@ -288,19 +294,20 @@
             <p><a href="mailto:info@thesportsfront.com" style="color: #aaa; text-decoration: none;">info@thesportsfront.com</a></p>
         </div>
         
-        <!-- Updated Footer Links for Compliance (Linking to real pages) -->
+        <!-- Updated Footer Links for Compliance -->
+        <!-- The Href satisfies Razorpay crawler. The onclick satisfies the User Experience -->
         <div class="footer-links" style="display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center; margin-bottom: 2rem;">
-            <a href="policies.html#privacy">Privacy Policy</a>
-            <a href="policies.html#terms">Terms & Conditions</a>
-            <a href="policies.html#refund">Refund & Cancellation</a>
-            <a href="policies.html#shipping">Shipping Policy</a>
-            <a href="contact.html">Contact Us</a>
+            <a href="policies.html#privacy" onclick="openModal('privacy-modal'); return false;">Privacy Policy</a>
+            <a href="policies.html#terms" onclick="openModal('terms-modal'); return false;">Terms & Conditions</a>
+            <a href="policies.html#refund" onclick="openModal('refund-modal'); return false;">Refund & Cancellation</a>
+            <a href="policies.html#shipping" onclick="openModal('shipping-modal'); return false;">Shipping Policy</a>
+            <a href="contact.html" onclick="openModal('contact-modal'); return false;">Contact Us</a>
         </div>
 
         <p>&copy; 2025 The Sports Front. All rights reserved.</p>
     </footer>
 
-    <!-- CART MODAL (Dynamic) -->
+    <!-- CART MODAL -->
     <div id="shop-modal" class="modal-overlay">
         <div class="modal-content">
             <div class="modal-header">
@@ -308,46 +315,150 @@
                 <button class="modal-close" onclick="closeModal('shop-modal')">&times;</button>
             </div>
             <div class="modal-body" id="cart-body">
-                <!-- Cart items will be injected here via JS -->
                 <div class="cart-empty-msg">Your locker is empty.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- LEGAL MODALS (Restored for UX) -->
+    
+    <!-- REFUND POLICY MODAL -->
+    <div id="refund-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">REFUND & CANCELLATION</h3>
+                <button class="modal-close" onclick="closeModal('refund-modal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p><strong>Voca Sports Private Limited</strong><br>Effective Date: December 2025</p>
+                <h4>1. Merchandise Returns</h4>
+                <p>We accept returns for physical merchandise only if the product is damaged, defective, or the wrong size was delivered.</p>
+                <p>Raise a return request within <strong>7 days</strong> via support@thesportsfront.com.</p>
+                <h4>2. Cancellations</h4>
+                <p>Merchandise orders can be cancelled within 24 hours if not shipped. Memberships are non-refundable.</p>
+                <h4>3. Refund Process</h4>
+                <p>Approved refunds are processed within 5-7 business days to the original payment source.</p>
+                <br>
+                <a href="policies.html#refund">View Full Legal Text</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- SHIPPING POLICY MODAL -->
+    <div id="shipping-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">SHIPPING POLICY</h3>
+                <button class="modal-close" onclick="closeModal('shipping-modal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p><strong>Voca Sports Private Limited</strong></p>
+                <h4>1. Processing Time</h4>
+                <p>Orders are processed within <strong>24-48 hours</strong> of payment confirmation.</p>
+                <h4>2. Delivery Timelines</h4>
+                <ul>
+                    <li>Metro Cities: 3-5 Business Days</li>
+                    <li>Rest of India: 5-7 Business Days</li>
+                </ul>
+                <h4>3. Logistics</h4>
+                <p>We use trusted partners like Delhivery and Bluedart.</p>
+                <br>
+                <a href="policies.html#shipping">View Full Legal Text</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- PRIVACY POLICY MODAL -->
+    <div id="privacy-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">PRIVACY POLICY</h3>
+                <button class="modal-close" onclick="closeModal('privacy-modal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p><strong>Voca Sports Private Limited</strong></p>
+                <h4>1. Information We Collect</h4>
+                <p>We collect details you provide (Name, Email, Phone) to process your orders and memberships.</p>
+                <h4>2. Data Usage</h4>
+                <p>Your data is used solely for order fulfillment and communication. We do not sell your data.</p>
+                <h4>3. Security</h4>
+                <p>We use industry-standard encryption to protect your information.</p>
+                <br>
+                <a href="policies.html#privacy">View Full Legal Text</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- TERMS MODAL -->
+    <div id="terms-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">TERMS & CONDITIONS</h3>
+                <button class="modal-close" onclick="closeModal('terms-modal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p><strong>Voca Sports Private Limited</strong></p>
+                <h4>1. Acceptance</h4>
+                <p>By using this site, you agree to these Terms and Conditions.</p>
+                <h4>2. Purchases</h4>
+                <p>All purchases are subject to availability and payment confirmation.</p>
+                <h4>3. Intellectual Property</h4>
+                <p>All content on this site is the property of Voca Sports.</p>
+                <br>
+                <a href="policies.html#terms">View Full Legal Text</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONTACT MODAL -->
+    <div id="contact-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">CONTACT US</h3>
+                <button class="modal-close" onclick="closeModal('contact-modal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <h3>Registered Address</h3>
+                <p>Voca Sports Private Limited<br>84, Dariyaganj, Central Delhi<br>New Delhi, 110002, India</p>
+
+                <h3>Customer Support</h3>
+                <p>Email: <a href="mailto:support@thesportsfront.com">support@thesportsfront.com</a><br>
+                Phone: +91 98991 52327</p>
+                
+                <h3>Partnerships</h3>
+                <p>Email: <a href="mailto:info@thesportsfront.com">info@thesportsfront.com</a></p>
             </div>
         </div>
     </div>
 
     <script>
         // --- CONFIGURATION ---
-        // VITAL: PASTE YOUR RAZORPAY TEST KEY ID HERE
-        // It starts with "rzp_test_..."
         const RAZORPAY_KEY_ID = "rzp_test_Rxt2V3sG2BYM9W"; 
 
         // Simple Cart State
         let cart = [];
 
         function addToCart(id, title, price) {
-            // Check if item exists
             const existingItem = cart.find(item => item.id === id);
             if (existingItem) {
                 existingItem.quantity += 1;
             } else {
                 cart.push({ id, title, price, quantity: 1 });
             }
-            
             updateCartUI();
-            openCart(); // Auto open cart on add
+            openCart(); 
         }
 
         function updateCartUI() {
             const cartDot = document.getElementById('cartDot');
             const cartBody = document.getElementById('cart-body');
             
-            // Update Badge
             if (cart.length > 0) {
                 cartDot.classList.add('active');
             } else {
                 cartDot.classList.remove('active');
             }
 
-            // Render Cart Logic
             if (cart.length === 0) {
                 cartBody.innerHTML = '<div class="cart-empty-msg">Your locker is empty.</div>';
                 return;
@@ -380,13 +491,11 @@
         }
 
         async function initiateCheckout() {
-            // This button calls the backend to create an order
             const checkoutBtn = document.querySelector('.checkout-btn');
             checkoutBtn.innerText = "Processing...";
             checkoutBtn.disabled = true;
 
             try {
-                // Call our Backend API
                 const response = await fetch('/api/create-order', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -396,9 +505,8 @@
                 const order = await response.json();
 
                 if (order.id) {
-                    // Open Razorpay
                     const options = {
-                        "key": RAZORPAY_KEY_ID, // Use the variable from top of script
+                        "key": RAZORPAY_KEY_ID,
                         "amount": order.amount,
                         "currency": "INR",
                         "name": "The Sports Front",
@@ -406,7 +514,7 @@
                         "order_id": order.id, 
                         "handler": function (response){
                             alert("Payment Successful! Payment ID: " + response.razorpay_payment_id);
-                            cart = []; // Clear cart
+                            cart = []; 
                             updateCartUI();
                             closeModal('shop-modal');
                         },

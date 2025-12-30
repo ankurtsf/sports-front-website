@@ -760,18 +760,7 @@
                     </div>
                 </div>
 
-                <!-- Product 3: Scarf -->
-                <div class="product-card">
-                    <span class="product-tag">Best Seller</span>
-                    <img src="Images/shop-scarf.jpg" class="product-img" alt="Scarf" onerror="this.src='https://placehold.co/300x350/222/FFF?text=Image+Missing'">
-                    <div class="product-info">
-                        <h4 class="product-title">Legends Face Off Scarf</h4>
-                        <span class="product-price">₹799</span>
-                        <button onclick="openModal('shop-modal')" class="buy-btn-minimal">Quick Add +</button>
-                    </div>
-                </div>
-
-                <!-- Product 4: Official Match Ball (Added back to trigger carousel) -->
+                <!-- Product 3: Official Match Ball -->
                 <div class="product-card">
                     <span class="product-tag">Official Match Ball</span>
                     <img src="Images/shop-matchball.jpg" class="product-img" alt="Match Ball" onerror="this.src='https://placehold.co/300x350/222/FFF?text=Match+Ball'">
@@ -980,13 +969,13 @@
             <a href="mailto:info@thesportsfront.com" class="social-link"><i class="fas fa-envelope"></i></a>
         </div>
         
-        <!-- UPDATED: Footer Links to new Pages -->
+        <!-- UPDATED: Triggers Modals (Hybrid Approach: Href + Onclick) -->
         <div class="footer-links" style="display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center;">
-            <a href="policies.html#privacy">Privacy Policy</a>
-            <a href="policies.html#terms">Terms & Conditions</a>
-            <a href="policies.html#refund">Refund & Cancellation</a>
-            <a href="policies.html#shipping">Shipping Policy</a>
-            <a href="contact.html">Contact Us</a>
+            <a href="policies.html#privacy" onclick="openModal('privacy-modal'); return false;">Privacy Policy</a>
+            <a href="policies.html#terms" onclick="openModal('terms-modal'); return false;">Terms & Conditions</a>
+            <a href="policies.html#refund" onclick="openModal('refund-modal'); return false;">Refund & Cancellation</a>
+            <a href="policies.html#shipping" onclick="openModal('shipping-modal'); return false;">Shipping Policy</a>
+            <a href="contact.html" onclick="openModal('contact-modal'); return false;">Contact Us</a>
         </div>
 
         <p>&copy; 2025 The Sports Front. All rights reserved. | Fueling The Future Of Sports, Boldly!</p>
@@ -1078,6 +1067,117 @@
     <!-- This modal is kept empty but functionality overridden in JS to redirect -->
     <div id="shop-modal" class="modal-overlay" style="display:none;"></div>
 
+    <!-- LEGAL MODALS RESTORED -->
+    
+    <!-- REFUND POLICY MODAL -->
+    <div id="refund-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">REFUND & CANCELLATION</h3>
+                <button class="modal-close" onclick="closeModal('refund-modal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p><strong>Voca Sports Private Limited</strong><br>Effective Date: December 2025</p>
+                <h4>1. Merchandise Returns</h4>
+                <p>We accept returns for physical merchandise only if the product is damaged, defective, or the wrong size was delivered.</p>
+                <p>Raise a return request within <strong>7 days</strong> via support@thesportsfront.com.</p>
+                <h4>2. Cancellations</h4>
+                <p>Merchandise orders can be cancelled within 24 hours if not shipped. Memberships are non-refundable.</p>
+                <h4>3. Refund Process</h4>
+                <p>Approved refunds are processed within 5-7 business days to the original payment source.</p>
+                <br>
+                <a href="policies.html#refund" style="color:var(--brand-green);">View Full Legal Text</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- SHIPPING POLICY MODAL -->
+    <div id="shipping-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">SHIPPING POLICY</h3>
+                <button class="modal-close" onclick="closeModal('shipping-modal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p><strong>Voca Sports Private Limited</strong></p>
+                <h4>1. Processing Time</h4>
+                <p>Orders are processed within <strong>24-48 hours</strong> of payment confirmation.</p>
+                <h4>2. Delivery Timelines</h4>
+                <ul>
+                    <li>Metro Cities: 3-5 Business Days</li>
+                    <li>Rest of India: 5-7 Business Days</li>
+                </ul>
+                <h4>3. Logistics</h4>
+                <p>We use trusted partners like Delhivery and Bluedart.</p>
+                <br>
+                <a href="policies.html#shipping" style="color:var(--brand-green);">View Full Legal Text</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- PRIVACY POLICY MODAL -->
+    <div id="privacy-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">PRIVACY POLICY</h3>
+                <button class="modal-close" onclick="closeModal('privacy-modal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p><strong>Voca Sports Private Limited</strong></p>
+                <h4>1. Information We Collect</h4>
+                <p>We collect details you provide (Name, Email, Phone) to process your orders and memberships.</p>
+                <h4>2. Data Usage</h4>
+                <p>Your data is used solely for order fulfillment and communication. We do not sell your data.</p>
+                <h4>3. Security</h4>
+                <p>We use industry-standard encryption to protect your information.</p>
+                <br>
+                <a href="policies.html#privacy" style="color:var(--brand-green);">View Full Legal Text</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- TERMS MODAL -->
+    <div id="terms-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">TERMS & CONDITIONS</h3>
+                <button class="modal-close" onclick="closeModal('terms-modal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p><strong>Voca Sports Private Limited</strong></p>
+                <h4>1. Acceptance</h4>
+                <p>By using this site, you agree to these Terms and Conditions.</p>
+                <h4>2. Purchases</h4>
+                <p>All purchases are subject to availability and payment confirmation.</p>
+                <h4>3. Intellectual Property</h4>
+                <p>All content on this site is the property of Voca Sports.</p>
+                <br>
+                <a href="policies.html#terms" style="color:var(--brand-green);">View Full Legal Text</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONTACT MODAL -->
+    <div id="contact-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">CONTACT US</h3>
+                <button class="modal-close" onclick="closeModal('contact-modal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <h3>Registered Address</h3>
+                <p>Voca Sports Private Limited<br>84, Dariyaganj, Central Delhi<br>New Delhi, 110002, India</p>
+
+                <h3>Customer Support</h3>
+                <p>Email: <a href="mailto:support@thesportsfront.com" style="color:var(--brand-green);">support@thesportsfront.com</a><br>
+                Phone: +91 98991 52327</p>
+                
+                <h3>Partnerships</h3>
+                <p>Email: <a href="mailto:info@thesportsfront.com" style="color:var(--brand-green);">info@thesportsfront.com</a></p>
+            </div>
+        </div>
+    </div>
+
     <script>
         // --- CONFIGURATION ---
         // VITAL: PASTE YOUR RAZORPAY TEST KEY ID HERE
@@ -1133,6 +1233,8 @@
                     gtag('event', 'begin_waitlist_signup', { 'event_category': 'conversion', 'event_label': 'Waitlist Modal' });
                 } else if (modalId === 'membership-modal') {
                     gtag('event', 'view_membership', { 'event_category': 'conversion', 'event_label': 'Membership Modal' });
+                } else if (['privacy-modal', 'terms-modal', 'refund-modal', 'shipping-modal', 'contact-modal'].includes(modalId)) {
+                    gtag('event', 'view_policy', { 'event_category': 'legal', 'event_label': modalId });
                 }
             }
         }
