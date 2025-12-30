@@ -862,7 +862,7 @@
                 <span class="membership-label">VIP ACCESS ONLY</span>
                 <h2 class="membership-headline">THE DIRECTORS' BOX</h2>
                 <p class="membership-desc">
-                    Sport is measured in moments. Secure your place in history. <strong>TSF Priority Access</strong> guarantees you skip the queue for every major international showdown we host. From the pitch to the court, be the first to witness the legends.
+                    Sport is measured in moments. The deafening roar of the crowd. The magic of a last-minute winner. The legends you idolize, live in action. These are the nights that become folklore. Don't let them pass you by. <strong>TSF Priority Access</strong> is your guarantee to skip the queue and secure your seat before the public even gets a chance. You simply cannot miss this.
                 </p>
                 
                 <div class="benefit-grid">
@@ -1382,9 +1382,15 @@
             }
         }
 
-        // Menu & Chatbot Toggles
-        function toggleMenu() { document.getElementById('main-nav').classList.toggle('active'); }
-        function toggleChat() { document.getElementById('chatbot').classList.toggle('active'); }
+        // Mobile Menu Toggle
+        function toggleMenu() {
+            document.getElementById('main-nav').classList.toggle('active');
+        }
+
+        // Toggle Chatbot
+        function toggleChat() {
+            document.getElementById('chatbot').classList.toggle('active');
+        }
 
         // --- MODAL LOGIC ---
         function openModal(modalId) {
@@ -1401,11 +1407,30 @@
             // --- GA4 EVENT TRACKING ---
             if (typeof gtag === 'function') {
                 if (modalId === 'waitlist-modal') {
-                    gtag('event', 'begin_waitlist_signup', { 'event_category': 'conversion', 'event_label': 'Waitlist Modal' });
+                    gtag('event', 'begin_waitlist_signup', {
+                        'event_category': 'conversion',
+                        'event_label': 'Waitlist Modal Opened'
+                    });
+                } else if (modalId === 'privacy-modal' || modalId === 'terms-modal') {
+                    gtag('event', 'view_legal', {
+                        'event_category': 'engagement',
+                        'event_label': modalId
+                    });
                 } else if (modalId === 'membership-modal') {
-                    gtag('event', 'view_membership', { 'event_category': 'conversion', 'event_label': 'Membership Modal' });
-                } else if (['privacy-modal', 'terms-modal', 'refund-modal', 'shipping-modal', 'contact-modal'].includes(modalId)) {
-                    gtag('event', 'view_policy', { 'event_category': 'legal', 'event_label': modalId });
+                    gtag('event', 'view_membership', {
+                        'event_category': 'conversion',
+                        'event_label': 'Membership Modal Opened'
+                    });
+                } else if (modalId === 'shop-modal') {
+                    gtag('event', 'view_product', {
+                        'event_category': 'ecommerce',
+                        'event_label': 'Product Modal Opened'
+                    });
+                } else if (modalId === 'refund-modal' || modalId === 'shipping-modal') {
+                    gtag('event', 'view_policy', {
+                        'event_category': 'legal',
+                        'event_label': modalId
+                    });
                 }
             }
         }
@@ -1414,26 +1439,33 @@
             document.getElementById(modalId).classList.remove('active');
         }
 
+        // Close modal when clicking outside
         window.onclick = function(event) {
             if (event.target.classList.contains('modal-overlay')) {
                 event.target.classList.remove('active');
             }
         }
 
-        // --- COOKIE LOGIC ---
+        // --- NEW: COOKIE LOGIC ---
         function checkCookie() {
             if (!localStorage.getItem('cookiesAccepted')) {
-                setTimeout(() => { document.getElementById('cookie-banner').classList.add('show'); }, 2000);
+                setTimeout(() => {
+                    document.getElementById('cookie-banner').classList.add('show');
+                }, 2000); // Show after 2 seconds
             }
         }
+        
         function acceptCookies() {
             localStorage.setItem('cookiesAccepted', 'true');
             document.getElementById('cookie-banner').classList.remove('show');
         }
         
-        // --- PRELOADER ---
+        // --- PRELOADER LOGIC ---
         window.addEventListener('load', function() {
             document.body.classList.add('loaded');
+            // If checkCookie needs to run on load, can call it here too, 
+            // but window.onload overrides if assigned twice. 
+            // Better to consolidate:
             checkCookie();
         });
 
@@ -1520,20 +1552,31 @@
             if (!message) return;
 
             addMessage(message, 'user');
+            
+            // --- GA4 EVENT TRACKING ---
             if (typeof gtag === 'function') {
-                gtag('event', 'use_chatbot', { 'event_category': 'engagement', 'event_label': 'Message Sent' });
+                gtag('event', 'use_chatbot', {
+                    'event_category': 'engagement',
+                    'event_label': 'Message Sent'
+                });
             }
+
             inputField.value = '';
+
             const loadingMsg = addMessage('Thinking...', 'bot');
 
+            // IMPORTANT: Calls the Vercel Serverless Function at /api/chat
             try {
                 const response = await fetch('/api/chat', { 
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ messages: [{ content: message }] })
                 });
+
                 const data = await response.json();
+                
                 loadingMsg.remove();
+
                 if (data.reply) {
                     const formattedReply = data.reply.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>');
                     addMessage(formattedReply, 'bot', true); 
@@ -1551,21 +1594,23 @@
             const messagesContainer = document.getElementById('chat-messages');
             const msgDiv = document.createElement('div');
             msgDiv.classList.add('message', sender);
-            if (isHtml) msgDiv.innerHTML = text; else msgDiv.innerText = text;
+            
+            if (isHtml) {
+                msgDiv.innerHTML = text;
+            } else {
+                msgDiv.innerText = text;
+            }
+            
             messagesContainer.appendChild(msgDiv);
             messagesContainer.scrollTop = messagesContainer.scrollHeight;
             return msgDiv;
         }
-        function handleKeyPress(e) { if (e.key === 'Enter') sendMessage(); }
 
-        // --- CAROUSEL & STATS ---
-        function scrollCarousel(direction) {
-            const container = document.getElementById('shopCarousel');
-            const scrollAmount = 370; // Adjusted for wider cards
-            if (direction === 'left') container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-            else container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        function handleKeyPress(e) {
+            if (e.key === 'Enter') sendMessage();
         }
 
+        // Animated Statistics
         const stats = document.querySelectorAll('.stat-number');
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -1573,13 +1618,18 @@
                     const target = +entry.target.getAttribute('data-target');
                     const duration = 2000; 
                     const increment = target / (duration / 16); 
+                    
                     let current = 0;
                     const updateCount = () => {
                         current += increment;
                         if (current < target) {
-                            if(target > 1000000) entry.target.innerText = (current / 1000000).toFixed(1) + 'M+';
-                            else if (target > 1000) entry.target.innerText = Math.ceil(current / 1000) + 'K+';
-                            else entry.target.innerText = Math.ceil(current);
+                            if(target > 1000000) {
+                                entry.target.innerText = (current / 1000000).toFixed(1) + 'M+';
+                            } else if (target > 1000) {
+                                entry.target.innerText = Math.ceil(current / 1000) + 'K+';
+                            } else {
+                                entry.target.innerText = Math.ceil(current);
+                            }
                             requestAnimationFrame(updateCount);
                         } else {
                             if(target === 30231 || target === 25109) entry.target.innerText = "30,000+";
@@ -1594,7 +1644,19 @@
                 }
             });
         }, { threshold: 0.5 });
+
         stats.forEach(stat => observer.observe(stat));
+
+        // --- CAROUSEL LOGIC (NEW) ---
+        function scrollCarousel(direction) {
+            const container = document.getElementById('shopCarousel');
+            const scrollAmount = 370; // Adjusted for wider cards
+            if (direction === 'left') {
+                container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+            } else {
+                container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            }
+        }
     </script>
 </body>
 </html>
