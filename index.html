@@ -1363,12 +1363,16 @@
                 </div>`;
             });
 
+            // UPDATED: Added "Visit Locker Room" button next to Pay button
             html += `
             <div class="cart-total">
                 <span>Total</span>
                 <span>₹${total.toLocaleString()}</span>
             </div>
-            <button class="checkout-btn" onclick="initiateCheckout()">Proceed to Pay</button>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 1.5rem;">
+                <button class="checkout-btn" onclick="window.location.href='shop.html'" style="background: transparent; border: 1px solid var(--brand-green); color: var(--brand-green); margin-top: 0;">Visit Locker Room</button>
+                <button class="checkout-btn" onclick="initiateCheckout()" style="margin-top: 0;">Proceed to Pay</button>
+            </div>
             `;
 
             cartBody.innerHTML = html;

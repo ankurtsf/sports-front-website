@@ -63,24 +63,8 @@
         /* Cart Icon */
         .cart-link { position: relative; color: white; font-size: 1.2rem; margin-left: 5px; transition: transform 0.2s; cursor: pointer; }
         .cart-link:hover { transform: scale(1.1); color: var(--brand-green); }
-        /* Pop Animation */
-        @keyframes pop {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.4); }
-            100% { transform: scale(1); }
-        }
-        .cart-link.bump { animation: pop 0.3s ease-out; color: var(--brand-green); }
-
-        .cart-count { 
-            position: absolute; top: -8px; right: -8px; 
-            min-width: 18px; height: 18px; padding: 0 4px;
-            background-color: var(--brand-red); color: white; 
-            font-size: 0.7rem; font-weight: 800; 
-            border-radius: 9px; border: 1px solid var(--deep-black); 
-            display: flex; align-items: center; justify-content: center;
-            opacity: 0; transition: opacity 0.3s;
-        }
-        .cart-count.active { opacity: 1; }
+        .cart-dot { position: absolute; top: -2px; right: -2px; width: 8px; height: 8px; background-color: var(--brand-red); border-radius: 50%; border: 1px solid var(--deep-black); display: none; }
+        .cart-dot.active { display: block; }
 
         /* --- SHOP HERO --- */
         .shop-hero {
@@ -101,7 +85,7 @@
         .filter-btn:hover, .filter-btn.active { background: var(--brand-green); color: black; border-color: var(--brand-green); }
 
         /* --- PRODUCT GRID --- */
-        .shop-container { max-width: 1200px; margin: 0 auto; padding: 0 2rem 6rem; }
+        .shop-container { max-width: 1200px; margin: 0 auto; padding: 0 2rem 4rem; }
         .shop-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 3rem; }
         
         .product-card {
@@ -132,6 +116,29 @@
             font-weight: 700; cursor: pointer; transition: all 0.3s;
         }
         .buy-btn:hover { background: white; color: black; }
+
+        /* NEW: Gold Button for Bottom CTA */
+        .cta-btn-gold { 
+            background: linear-gradient(135deg, #D4AF37 0%, #F8F195 50%, #D4AF37 100%);
+            background-size: 200% auto;
+            color: #000; 
+            padding: 1rem 3rem; 
+            border: none; 
+            border-radius: 50px; 
+            font-weight: 800; 
+            font-family: 'Montserrat', sans-serif; 
+            cursor: pointer; 
+            transition: all 0.3s ease; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+            display: inline-block; 
+            font-size: 1.1rem;
+        }
+        .cta-btn-gold:hover { 
+            background-position: right center;
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.6); 
+            transform: scale(1.05); 
+        }
 
         /* --- MODAL (CART & CHECKOUT) --- */
         .modal-overlay {
@@ -213,7 +220,7 @@
                     <!-- Clickable Cart -->
                     <div class="cart-link" onclick="openCart()">
                         <i class="fas fa-shopping-bag"></i>
-                        <span class="cart-count" id="cartCount">0</span>
+                        <span class="cart-dot" id="cartDot"></span>
                     </div>
                 </div>
             </nav>
@@ -311,6 +318,11 @@
             </div>
 
         </div>
+
+        <!-- NEW: Checkout CTA -->
+        <div style="text-align: center; margin-top: 4rem;">
+            <button onclick="openCart()" class="cta-btn-gold">Proceed to Checkout</button>
+        </div>
     </div>
 
     <footer>
@@ -349,9 +361,10 @@
     <script>
         // --- CONFIGURATION ---
         // VITAL: PASTE YOUR RAZORPAY TEST KEY ID HERE
+        // It starts with "rzp_test_..."
         const RAZORPAY_KEY_ID = "rzp_test_Rxt2V3sG2BYM9W"; 
 
-        // Initialize Cart from LocalStorage
+        // Simple Cart State
         let cart = JSON.parse(localStorage.getItem('tsf_cart')) || [];
 
         // Load cart on page load
@@ -398,20 +411,17 @@
         }
 
         function updateCartUI() {
-            const cartCountElement = document.getElementById('cartCount');
+            const cartDot = document.getElementById('cartDot');
             const cartBody = document.getElementById('cart-body');
             
             // Calculate total items for badge
             const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
             
             // Update Badge
-            if (cartCountElement) {
-                cartCountElement.innerText = totalItems;
-                if (totalItems > 0) {
-                    cartCountElement.classList.add('active');
-                } else {
-                    cartCountElement.classList.remove('active');
-                }
+            if (cart.length > 0) {
+                cartDot.classList.add('active');
+            } else {
+                cartDot.classList.remove('active');
             }
 
             // Render Cart Logic
@@ -452,11 +462,13 @@
         }
 
         async function initiateCheckout() {
+            // This button calls the backend to create an order
             const checkoutBtn = document.querySelector('.checkout-btn');
             checkoutBtn.innerText = "Processing...";
             checkoutBtn.disabled = true;
 
             try {
+                // Call our Backend API
                 const response = await fetch('/api/create-order', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -466,8 +478,9 @@
                 const order = await response.json();
 
                 if (order.id) {
+                    // Open Razorpay
                     const options = {
-                        "key": RAZORPAY_KEY_ID,
+                        "key": RAZORPAY_KEY_ID, // Use the variable from top of script
                         "amount": order.amount,
                         "currency": "INR",
                         "name": "The Sports Front",
