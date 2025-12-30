@@ -212,15 +212,14 @@
         @keyframes ticker { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
 
         /* --- SECTIONS COMMON --- */
-        .teaser-section, .success-section, .media-section, .capabilities-section, .team-section, .contact-section, .partners-section, .membership-section, .shop-teaser-section { padding: 6rem 2rem; }
+        .teaser-section, .success-section, .media-section, .capabilities-section, .team-section, .contact-section, .partners-section, .membership-section, .shop-teaser-section, .press-section { padding: 6rem 2rem; }
         .section-header { text-align: center; margin-bottom: 4rem; }
         .section-title { font-size: 2.5rem; font-weight: 900; color: var(--text-white); margin-bottom: 1rem; }
         .section-subtitle { color: var(--brand-green); font-weight: 600; letter-spacing: 2px; text-transform: uppercase; font-size: 0.9rem; }
 
         /* --- TEASER --- */
         .teaser-section { 
-            /* UPDATED: Restored the Unsplash Stadium/Pitch View Image */
-            background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url('https://images.unsplash.com/photo-1556056504-5c7696c4c28d?q=80&w=2076&auto=format&fit=crop'); 
+            background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url('Images/pitch-bg.jpg'); 
             background-size: cover;
             background-position: center;
             background-attachment: fixed; /* Parallax effect */
@@ -621,7 +620,8 @@
         .media-section { padding: 6rem 2rem; background: #000; text-align: center; }
         .video-container { max-width: 1000px; margin: 2rem auto; border-radius: 16px; overflow: hidden; border: 1px solid #333; background: #111; width: 100%; }
         .video-player { width: 100%; height: auto; display: block; }
-        .press-section { padding: 4rem 2rem; background: var(--surface-dark); text-align: center; }
+        
+        .press-section { padding: 6rem 2rem; background: var(--surface-dark); text-align: center; }
         .press-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; max-width: 1200px; margin: 2rem auto; }
         .press-item { background: #fff; padding: 1rem; border-radius: 8px; height: 200px; display: flex; align-items: center; justify-content: center; overflow: hidden; transition: transform 0.3s; }
         .press-item:hover { transform: translateY(-5px); }
@@ -1090,30 +1090,6 @@
         </div>
     </section>
 
-    <!-- Media Section -->
-    <section class="media-section">
-        <div class="section-header">
-            <p class="section-subtitle">THE EXPERIENCE</p>
-            <h2 class="section-title">OFFICIAL TEASER</h2>
-        </div>
-        <div class="video-container">
-            <video controls class="video-player" poster="Images/hero-bg.jpg">
-                <source src="Images/teaser-video.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-        </div>
-        <div style="margin-top: 4rem;">
-            <h3 class="section-title" style="font-size: 2rem;">PRESS COVERAGE</h3>
-            <p style="color: #888;">Dominating headlines across the nation</p>
-            <div class="press-grid">
-                <div class="press-item"><img src="Images/press-1.jpg" alt="Press Coverage 1" onerror="this.style.display='none'"></div>
-                <div class="press-item"><img src="Images/press-2.jpg" alt="Press Coverage 2" onerror="this.style.display='none'"></div>
-                <div class="press-item"><img src="Images/press-3.jpg" alt="Press Coverage 3" onerror="this.style.display='none'"></div>
-                <div class="press-item"><img src="Images/press-4.jpg" alt="Press Coverage 4" onerror="this.style.display='none'"></div>
-            </div>
-        </div>
-    </section>
-
     <!-- Success Section -->
     <section class="success-section" id="success">
         <div style="text-align: center; position: relative; z-index: 2;">
@@ -1146,6 +1122,35 @@
         <div style="text-align: center; margin-top: 3rem;">
             <!-- Updated Link to the Impact Report Form -->
             <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=Uom_dQGmCk2mcB44NC-iOLn2JpHfHcVChB_DWkmZxjFUMTJOM0NHRUpLUUhQTE5FUUdUREJNMlVTWi4u" target="_blank" class="cta-btn-outline">Request Impact Report</a>
+        </div>
+    </section>
+
+    <!-- REORDERED: Press Coverage Section -->
+    <section class="press-section">
+        <div class="section-header">
+            <p class="section-subtitle">MEDIA SPOTLIGHT</p>
+            <h2 class="section-title">PRESS COVERAGE</h2>
+            <p style="color: #888;">Dominating headlines across the nation</p>
+        </div>
+        <div class="press-grid">
+            <div class="press-item"><img src="Images/press-1.jpg" alt="Press Coverage 1" onerror="this.style.display='none'"></div>
+            <div class="press-item"><img src="Images/press-2.jpg" alt="Press Coverage 2" onerror="this.style.display='none'"></div>
+            <div class="press-item"><img src="Images/press-3.jpg" alt="Press Coverage 3" onerror="this.style.display='none'"></div>
+            <div class="press-item"><img src="Images/press-4.jpg" alt="Press Coverage 4" onerror="this.style.display='none'"></div>
+        </div>
+    </section>
+
+    <!-- REORDERED: Official Teaser (Video Only) -->
+    <section class="media-section">
+        <div class="section-header">
+            <p class="section-subtitle">THE EXPERIENCE</p>
+            <h2 class="section-title">OFFICIAL TEASER</h2>
+        </div>
+        <div class="video-container">
+            <video controls class="video-player" poster="Images/hero-bg.jpg">
+                <source src="Images/teaser-video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
         </div>
     </section>
 
