@@ -16,50 +16,33 @@
 
     <!-- --- SEO & SOCIAL PACK --- -->
     <title>The Sports Front | Iconic Football Nights</title>
-    <!-- UPDATED: Removed specific team names to protect confidentiality -->
-    <meta name="description" content="Official pre-announcement. The Sports Front is bringing two English Heavyweights to India (2026). Join the priority list now for The Northern Storm.">
-    <meta name="keywords" content="Football, Legends Match, English Premier League Legends, India Sports, Event Management, VOCA Sports">
+    <meta name="description" content="Official pre-announcement. The Sports Front is bringing two English Heavyweights to India (2026). Join the priority list now.">
+    <meta name="keywords" content="Football, Legends Match, India Sports, Event Management, VOCA Sports">
     <meta name="author" content="The Sports Front">
     
-    <!-- Canonical URL (SEO Best Practice) -->
     <link rel="canonical" href="https://thesportsfront.com/">
-    <!-- Robots (Ensure Indexing) -->
     <meta name="robots" content="index, follow">
 
-    <!-- Open Graph / Facebook / WhatsApp -->
+    <!-- Open Graph / Social -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://thesportsfront.com/">
     <meta property="og:title" content="Legends Are Returning | The Sports Front">
-    <!-- UPDATED: Removed specific team names -->
-    <meta property="og:description" content="The Northern Storm is coming. Two English Giants collide. India 2026. Get Priority Access.">
-    <!-- CRITICAL FIX: Social platforms require ABSOLUTE URLs (https://...) for images. Relative paths will not show previews. -->
+    <meta property="og:description" content="The Northern Storm is coming. India 2026. Get Priority Access.">
     <meta property="og:image" content="https://thesportsfront.com/Images/social-share.jpg"> 
-
-    <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://thesportsfront.com/">
-    <meta property="twitter:title" content="Legends Are Returning | The Sports Front">
-    <!-- UPDATED: Removed specific team names -->
-    <meta property="twitter:description" content="The Northern Storm is coming. Two English Giants collide. India 2026.">
     <meta property="twitter:image" content="https://thesportsfront.com/Images/social-share.jpg">
 
-    <!-- Favicon & App Icons (Professional Suite) -->
+    <!-- Favicon & App Icons -->
     <link rel="shortcut icon" href="Images/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" sizes="180x180" href="Images/apple-touch-icon.png">
-    
-    <!-- ADAPTIVE ICONS: Handles Light vs Dark Mode Browsers -->
-    <!-- If user is in Light Mode -> Show Black/Dark Icon -->
     <link rel="icon" type="image/png" sizes="32x32" href="Images/favicon-black.png" media="(prefers-color-scheme: light)">
-    <!-- If user is in Dark Mode -> Show White/Light Icon -->
     <link rel="icon" type="image/png" sizes="32x32" href="Images/favicon-32x32.png" media="(prefers-color-scheme: dark)">
-
-    <!-- Standard Fallbacks -->
     <link rel="icon" type="image/png" sizes="32x32" href="Images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="Images/favicon-16x16.png">
     <link rel="icon" type="image/png" sizes="192x192" href="Images/android-chrome-192x192.png">
     <link rel="icon" type="image/png" sizes="512x512" href="Images/android-chrome-512x512.png">
 
-    <!-- JSON-LD Schema for Google Events -->
+    <!-- JSON-LD Schema -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -83,9 +66,8 @@
     }
     </script>
 
-    <!-- Google Fonts -->
+    <!-- Fonts & Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@400;600&family=Rock+Salt&display=swap" rel="stylesheet">
-    <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
@@ -103,6 +85,7 @@
             --rm-gold: #FEBE10; 
             --fcb-blue: #004D98; 
             --fcb-red: #DB0030; 
+            --gold-premium: #D4AF37; 
         }
         
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -132,16 +115,37 @@
         .logo-img { height: 80px; width: auto; object-fit: contain; }
 
         nav { display: flex; align-items: center; gap: 2rem; }
-        .nav-links { display: flex; list-style: none; gap: 2rem; }
+        .nav-links { display: flex; list-style: none; gap: 2rem; align-items: center; }
         .nav-links a { text-decoration: none; color: var(--text-white); font-weight: 600; font-size: 0.9rem; letter-spacing: 0.5px; transition: color 0.3s ease; }
         .nav-links a:hover { color: var(--brand-green); }
+        .nav-shop { color: var(--brand-green) !important; position: relative; }
         .mobile-menu-btn { display: none; background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; }
         
+        /* Updated Cart Icon - Cleaner */
+        .cart-link { 
+            position: relative; 
+            color: white; 
+            font-size: 1.2rem; 
+            margin-left: 5px;
+            transition: transform 0.2s;
+        }
+        .cart-link:hover { transform: scale(1.1); color: var(--brand-green); }
+        .cart-dot {
+            position: absolute;
+            top: -2px; right: -2px;
+            width: 8px; height: 8px;
+            background-color: var(--brand-red);
+            border-radius: 50%;
+            border: 1px solid var(--deep-black);
+        }
+
         /* --- BUTTONS --- */
         .cta-btn { background: var(--brand-green); color: var(--deep-black); padding: 0.7rem 1.8rem; border: none; border-radius: 4px; font-weight: 800; font-family: 'Montserrat', sans-serif; cursor: pointer; transition: all 0.3s ease; text-decoration: none; text-transform: uppercase; letter-spacing: 1px; display: inline-block; text-align: center; }
         .cta-btn:hover { background: #fff; transform: translateY(-2px); box-shadow: 0 0 15px rgba(0, 208, 132, 0.4); }
         .cta-btn-outline { background: transparent; color: var(--brand-green); border: 2px solid var(--brand-green); padding: 0.7rem 1.8rem; border-radius: 4px; font-weight: 800; font-family: 'Montserrat', sans-serif; cursor: pointer; transition: all 0.3s ease; text-decoration: none; text-transform: uppercase; letter-spacing: 1px; display: inline-block; text-align: center; }
         .cta-btn-outline:hover { background: var(--brand-green); color: var(--deep-black); box-shadow: 0 0 15px rgba(0, 208, 132, 0.4); }
+        .cta-btn-gold { background: var(--gold-premium); color: black; padding: 0.7rem 1.8rem; border: none; border-radius: 4px; font-weight: 800; font-family: 'Montserrat', sans-serif; cursor: pointer; transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 1px; display: inline-block; }
+        .cta-btn-gold:hover { background: white; box-shadow: 0 0 20px rgba(212, 175, 55, 0.6); transform: translateY(-2px); }
 
         /* --- HERO --- */
         .hero { position: relative; height: 100vh; min-height: 600px; display: flex; align-items: center; justify-content: center; overflow: hidden; text-align: center; }
@@ -165,13 +169,14 @@
         .ticker-item { font-weight: 800; text-transform: uppercase; letter-spacing: 1px; padding: 0 2rem; white-space: nowrap; animation: ticker 20s linear infinite; }
         @keyframes ticker { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
 
-        /* --- SECTIONS --- */
-        .teaser-section, .success-section, .media-section, .capabilities-section, .team-section, .contact-section, .partners-section { padding: 6rem 2rem; }
-        .teaser-section { background: var(--surface-dark); }
+        /* --- SECTIONS COMMON --- */
+        .teaser-section, .success-section, .media-section, .capabilities-section, .team-section, .contact-section, .partners-section, .membership-section, .shop-teaser-section { padding: 6rem 2rem; }
         .section-header { text-align: center; margin-bottom: 4rem; }
         .section-title { font-size: 2.5rem; font-weight: 900; color: var(--text-white); margin-bottom: 1rem; }
         .section-subtitle { color: var(--brand-green); font-weight: 600; letter-spacing: 2px; text-transform: uppercase; font-size: 0.9rem; }
-        
+
+        /* --- TEASER --- */
+        .teaser-section { background: var(--surface-dark); }
         .teaser-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 3rem; max-width: 1200px; margin: 0 auto; }
         .teaser-card { background: var(--surface-light); border-radius: 16px; padding: 3rem 2rem; position: relative; overflow: hidden; transition: transform 0.3s ease; border: 1px solid rgba(255,255,255,0.05); }
         .teaser-card:hover { transform: translateY(-10px); }
@@ -186,6 +191,169 @@
         .teaser-btn { display: block; width: 100%; padding: 1rem; background: transparent; border: 1px solid var(--brand-green); color: var(--brand-green); text-align: center; text-transform: uppercase; font-weight: 700; text-decoration: none; transition: all 0.3s; cursor: pointer;}
         .teaser-btn:hover { background: var(--brand-green); color: var(--deep-black); }
 
+        /* --- MEMBERSHIP SECTION (THE DIRECTORS' BOX) --- */
+        .membership-section { 
+            /* Dark background image of VIP seating/Stadium view */
+            background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url('https://images.unsplash.com/photo-1556056504-5c7696c4c28d?q=80&w=2076&auto=format&fit=crop'); 
+            background-size: cover; 
+            background-attachment: fixed; /* Parallax effect */
+            background-position: center;
+            border-top: 1px solid #333; 
+            position: relative;
+        }
+        
+        .membership-card {
+            /* Glassmorphism Effect */
+            background: rgba(20, 20, 20, 0.7);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(212, 175, 55, 0.3); /* Subtle Gold Border */
+            border-radius: 20px;
+            padding: 3rem;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            text-align: center;
+        }
+        
+        /* Gold Glow effect behind the card */
+        .membership-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.05) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .membership-badge {
+            background: var(--gold-premium); color: black;
+            font-weight: 800; padding: 5px 15px; border-radius: 20px;
+            text-transform: uppercase; font-size: 0.8rem;
+            display: inline-block; margin-bottom: 1.5rem;
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+        }
+        
+        .membership-title { 
+            font-size: 3.5rem; 
+            font-weight: 900;
+            color: white; 
+            margin-bottom: 0.5rem; 
+            letter-spacing: -2px; 
+            text-transform: uppercase;
+            /* Gold Gradient Text */
+            background: linear-gradient(to right, #fff, #D4AF37, #fff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: shine 5s linear infinite;
+        }
+        
+        @keyframes shine { to { background-position: 200% center; } }
+
+        .membership-price { font-size: 2.5rem; color: var(--gold-premium); font-family: 'Montserrat', sans-serif; font-weight: 800; margin-bottom: 2rem; }
+        .membership-price span { font-size: 1rem; color: #aaa; font-weight: 400; }
+        .benefit-list { list-style: none; margin-bottom: 2.5rem; text-align: left; display: inline-block; position: relative; z-index: 2; }
+        .benefit-item { margin-bottom: 1rem; font-size: 1.1rem; color: #eee; display: flex; align-items: center; gap: 10px; }
+        .benefit-item i { color: var(--gold-premium); text-shadow: 0 0 10px rgba(212, 175, 55, 0.5); }
+
+        /* --- SHOP TEASER CAROUSEL (LOCKER ROOM STYLE) --- */
+        .shop-teaser-section { 
+            background-color: #080808; 
+            /* Subtle Grid Pattern for "Locker Room" feel */
+            background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            padding-bottom: 6rem; 
+            overflow: hidden; 
+            border-top: 1px solid #333;
+            border-bottom: 1px solid #333;
+        }
+        
+        /* New Locker Room Header Styles */
+        .locker-header { position: relative; display: inline-block; margin-bottom: 3rem; }
+        
+        .locker-title-box {
+            border: 3px solid white;
+            padding: 1rem 3rem;
+            display: inline-block;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(5px);
+            box-shadow: 0 0 30px rgba(0, 208, 132, 0.1);
+        }
+        
+        .locker-title {
+            font-size: 3.5rem; /* Massive Font */
+            font-weight: 900;
+            color: white;
+            margin: 0;
+            line-height: 1;
+            letter-spacing: -1px;
+            text-transform: uppercase;
+        }
+        
+        .locker-marker-text {
+            font-family: 'Rock Salt', cursive; /* Handwritten Style */
+            color: var(--brand-green);
+            font-size: 1.2rem;
+            position: absolute;
+            bottom: -25px;
+            right: -10px;
+            transform: rotate(-3deg);
+            text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+        }
+
+        .shop-carousel-wrap { position: relative; max-width: 1400px; margin: 0 auto; }
+        
+        .shop-carousel {
+            display: flex;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            gap: 2rem;
+            padding: 1rem 0 3rem 0;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            scroll-snap-type: x mandatory;
+        }
+        .shop-carousel::-webkit-scrollbar { display: none; }
+        
+        .product-card {
+            min-width: 300px;
+            max-width: 300px;
+            background: var(--surface-light);
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+            transition: transform 0.3s ease;
+            scroll-snap-align: start;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        .product-card:hover { transform: translateY(-5px); border-color: var(--brand-green); }
+        .product-img { width: 100%; height: 350px; object-fit: cover; background: #222; }
+        .product-info { padding: 1.5rem; text-align: left; }
+        .product-tag { 
+            position: absolute; top: 10px; left: 10px; 
+            background: black; color: white; 
+            font-size: 0.7rem; padding: 4px 8px; 
+            text-transform: uppercase; font-weight: 700;
+            border: 1px solid var(--brand-green);
+        }
+        .product-title { font-size: 1rem; color: #ccc; margin-bottom: 0.3rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+        .product-price { font-size: 1.1rem; color: white; font-weight: 800; display: block; margin-bottom: 1rem; }
+        .buy-btn-minimal {
+            background: transparent; border-bottom: 1px solid var(--brand-green); border-top: none; border-left: none; border-right: none;
+            color: var(--brand-green); padding-bottom: 5px; font-weight: 700; cursor: pointer; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px;
+            transition: all 0.3s;
+        }
+        .buy-btn-minimal:hover { color: white; border-color: white; }
+
+        .shop-link-container { text-align: center; margin-top: 3rem; }
+
+        /* Success & Other Sections */
         .success-section { background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('Images/success-bg.jpeg'); background-size: cover; background-attachment: fixed; position: relative; }
         .success-section.no-img { background: #111; }
         .stats-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; max-width: 1200px; margin: 3rem auto; }
@@ -364,7 +532,7 @@
             .hero-content { padding: 1rem; margin-top: 80px; }
             .status-box { padding: 1.2rem; min-width: 280px; width: 100%; }
             .status-text { font-size: 1rem; }
-            .teaser-section, .success-section, .media-section, .capabilities-section, .team-section, .contact-section, .partners-section { padding: 3rem 1rem; }
+            .teaser-section, .success-section, .media-section, .capabilities-section, .team-section, .contact-section, .partners-section, .membership-section, .shop-teaser-section { padding: 3rem 1rem; }
             .teaser-grid, .stats-container, .cap-grid, .team-grid, .press-grid { grid-template-columns: 1fr; gap: 2rem; }
             .stats-container { grid-template-columns: repeat(2, 1fr); }
             .partners-grid { gap: 1.5rem; }
@@ -377,6 +545,9 @@
             .share-btn { bottom: 100px; right: 20px; } 
             #cookie-banner { flex-direction: column; gap: 1rem; text-align: center; padding: 1.5rem; }
             .cookie-text { max-width: 100%; }
+            
+            /* Mobile Carousel */
+            .shop-carousel-wrap { padding: 0 1rem; }
         }
     </style>
 </head>
@@ -401,11 +572,19 @@
             <nav id="main-nav">
                 <div class="nav-links">
                     <a href="#events" onclick="toggleMenu()">Upcoming</a>
-                    <a href="#success" onclick="toggleMenu()">Success Stories</a>
+                    <a href="#membership" onclick="toggleMenu()" style="color: var(--rm-gold);">Membership</a>
+                    <!-- CHANGED: Link to shop.html -->
+                    <a href="shop.html" class="nav-shop">Shop</a>
                     <a href="#about" onclick="toggleMenu()">About</a>
                     <a href="#partners" onclick="toggleMenu()">Partners</a>
+                    
+                    <!-- REFINED: Cart Icon -->
+                    <a href="shop.html" class="cart-link" aria-label="Cart">
+                        <i class="fas fa-shopping-bag"></i>
+                        <span class="cart-dot"></span>
+                    </a>
                 </div>
-                <!-- CHANGED: Opens Modal instead of new tab -->
+                
                 <button onclick="openModal('waitlist-modal')" class="cta-btn">Join Waitlist</button>
             </nav>
         </div>
@@ -480,6 +659,86 @@
         </div>
     </section>
 
+    <!-- MEMBERSHIP SECTION -->
+    <section class="membership-section" id="membership">
+        <div class="section-header">
+            <p class="section-subtitle" style="color: var(--rm-gold);">VIP ACCESS</p>
+            <h2 class="section-title">THE DIRECTORS' BOX</h2>
+            <p style="color: #ccc;">The view is better from here. Secure your legacy.</p>
+        </div>
+        
+        <div class="membership-card">
+            <span class="membership-badge">Limited Slots Available</span>
+            <h3 class="membership-title">TSF BLACK PASS</h3>
+            <p class="membership-price">₹999<span>/lifetime</span></p>
+            
+            <ul class="benefit-list">
+                <li class="benefit-item"><i class="fas fa-check-circle"></i> 24hr Priority Access to Match Tickets</li>
+                <li class="benefit-item"><i class="fas fa-check-circle"></i> 10% Discount on Final Match Tickets</li>
+                <li class="benefit-item"><i class="fas fa-check-circle"></i> 15% Off Official Merchandise</li>
+                <li class="benefit-item"><i class="fas fa-check-circle"></i> Exclusive Digital Badges & Content</li>
+            </ul>
+            <br>
+            <button onclick="openModal('membership-modal')" class="cta-btn-gold">Join The Directors' Box</button>
+        </div>
+    </section>
+
+    <!-- REVISED: SHOP TEASER SECTION (Carousel) -->
+    <section class="shop-teaser-section">
+        <div class="section-header">
+            <!-- New Locker Room Branding -->
+            <div class="locker-header">
+                <div class="locker-title-box">
+                    <h2 class="locker-title">THE LOCKER ROOM</h2>
+                </div>
+                <span class="locker-marker-text">Latest Drops • Mumbai '25</span>
+            </div>
+        </div>
+
+        <div class="shop-carousel-wrap">
+            <div class="shop-carousel" id="shopCarousel">
+                <!-- Product 1 -->
+                <div class="product-card">
+                    <span class="product-tag">Last Few Left</span>
+                    <img src="https://placehold.co/300x350/222/FFF?text=Mumbai+2025+Jersey" class="product-img" alt="Jersey">
+                    <div class="product-info">
+                        <h4 class="product-title">Commemorative Jersey</h4>
+                        <span class="product-price">₹1,999</span>
+                    </div>
+                </div>
+                <!-- Product 2 -->
+                <div class="product-card">
+                    <img src="https://placehold.co/300x350/222/FFF?text=TSF+Hoodie" class="product-img" alt="Hoodie">
+                    <div class="product-info">
+                        <h4 class="product-title">The Gaffer Hoodie (Black)</h4>
+                        <span class="product-price">₹2,499</span>
+                    </div>
+                </div>
+                <!-- Product 3 -->
+                <div class="product-card">
+                    <span class="product-tag">Best Seller</span>
+                    <img src="https://placehold.co/300x350/222/FFF?text=Official+Scarf" class="product-img" alt="Scarf">
+                    <div class="product-info">
+                        <h4 class="product-title">Legends Face Off Scarf</h4>
+                        <span class="product-price">₹799</span>
+                    </div>
+                </div>
+                <!-- Teaser Card -->
+                <div class="product-card" style="display:flex; align-items:center; justify-content:center; background:#111; cursor: pointer;" onclick="window.location.href='shop.html'">
+                    <div style="text-align:center; padding:2rem;">
+                        <i class="fas fa-arrow-right" style="font-size:2rem; color:var(--brand-green); margin-bottom:1rem;"></i>
+                        <h4 style="color:white; margin-bottom:0.5rem;">VIEW ALL</h4>
+                        <p style="color:#666; font-size:0.8rem;">Enter Store</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="shop-link-container">
+            <a href="shop.html" class="cta-btn-outline">Enter Locker Room</a>
+        </div>
+    </section>
+
     <!-- Media Section -->
     <section class="media-section">
         <div class="section-header">
@@ -534,7 +793,6 @@
         </div>
 
         <div style="text-align: center; margin-top: 3rem;">
-            <!-- Updated Link to the Impact Report Form -->
             <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=Uom_dQGmCk2mcB44NC-iOLn2JpHfHcVChB_DWkmZxjFUMTJOM0NHRUpLUUhQTE5FUUdUREJNMlVTWi4u" target="_blank" class="cta-btn-outline">Request Impact Report</a>
         </div>
     </section>
@@ -717,6 +975,23 @@
             </div>
             <!-- Embedded Microsoft Form -->
             <iframe class="form-frame" src="https://forms.office.com/r/NtDiPXFhKt"></iframe>
+        </div>
+    </div>
+
+    <!-- NEW: MEMBERSHIP MODAL -->
+    <div id="membership-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" style="color: var(--rm-gold);">JOIN THE INNER CIRCLE</h3>
+                <button class="modal-close" onclick="closeModal('membership-modal')">&times;</button>
+            </div>
+            <div class="modal-body" style="text-align: center;">
+                <h4>TSF BLACK PASS</h4>
+                <p>You are one step away from priority access.</p>
+                <p>Since we are currently updating our payment gateway for the 2026 Season, please register your interest below. Our team will send you a secure payment link within 24 hours.</p>
+                <!-- Reuse the form for now, or replace with payment link later -->
+                <iframe class="form-frame" src="https://forms.office.com/r/NtDiPXFhKt"></iframe>
+            </div>
         </div>
     </div>
 
@@ -1073,7 +1348,13 @@
                         'event_category': 'engagement',
                         'event_label': modalId
                     });
+                } else if (modalId === 'membership-modal') {
+                    gtag('event', 'view_membership', {
+                        'event_category': 'conversion',
+                        'event_label': 'Membership Modal Opened'
+                    });
                 }
+                // No shop-modal here anymore because shop is on a separate page
             }
         }
 
