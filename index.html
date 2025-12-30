@@ -16,7 +16,6 @@
 
     <!-- --- SEO & SOCIAL PACK --- -->
     <title>The Sports Front | Iconic Football Nights</title>
-    <!-- UPDATED: Removed specific team names to protect confidentiality -->
     <meta name="description" content="Official pre-announcement. The Sports Front is bringing two English Heavyweights to India (2026). Join the priority list now for The Northern Storm.">
     <meta name="keywords" content="Football, Legends Match, English Premier League Legends, India Sports, Event Management, VOCA Sports, Football Merch, Membership">
     <meta name="author" content="The Sports Front">
@@ -31,25 +30,21 @@
     <meta property="og:url" content="https://thesportsfront.com/">
     <meta property="og:title" content="Legends Are Returning | The Sports Front">
     <meta property="og:description" content="The Northern Storm is coming. Two English Giants collide. India 2026. Get Priority Access.">
-    <!-- CRITICAL FIX: Social platforms require ABSOLUTE URLs (https://...) for images. Relative paths will not show previews. -->
     <meta property="og:image" content="https://thesportsfront.com/Images/social-share.jpg"> 
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://thesportsfront.com/">
     <meta property="twitter:title" content="Legends Are Returning | The Sports Front">
-    <!-- UPDATED: Removed specific team names -->
     <meta property="twitter:description" content="The Northern Storm is coming. Two English Giants collide. India 2026.">
     <meta property="twitter:image" content="https://thesportsfront.com/Images/social-share.jpg">
 
-    <!-- Favicon & App Icons (Professional Suite) -->
+    <!-- Favicon & App Icons -->
     <link rel="shortcut icon" href="Images/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" sizes="180x180" href="Images/apple-touch-icon.png">
     
-    <!-- ADAPTIVE ICONS: Handles Light vs Dark Mode Browsers -->
-    <!-- If user is in Light Mode -> Show Black/Dark Icon -->
+    <!-- ADAPTIVE ICONS -->
     <link rel="icon" type="image/png" sizes="32x32" href="Images/favicon-black.png" media="(prefers-color-scheme: light)">
-    <!-- If user is in Dark Mode -> Show White/Light Icon -->
     <link rel="icon" type="image/png" sizes="32x32" href="Images/favicon-32x32.png" media="(prefers-color-scheme: dark)">
 
     <!-- Standard Fallbacks -->
@@ -58,7 +53,7 @@
     <link rel="icon" type="image/png" sizes="192x192" href="Images/android-chrome-192x192.png">
     <link rel="icon" type="image/png" sizes="512x512" href="Images/android-chrome-512x512.png">
 
-    <!-- JSON-LD Schema for Google Events -->
+    <!-- JSON-LD Schema -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -964,9 +959,11 @@
         </div>
         
         <!-- UPDATED: Triggers Modals -->
-        <div class="footer-links">
+        <div class="footer-links" style="display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center;">
             <a onclick="openModal('privacy-modal')">Privacy Policy</a>
             <a onclick="openModal('terms-modal')">Terms & Conditions</a>
+            <a onclick="openModal('refund-modal')">Refund & Cancellation</a>
+            <a onclick="openModal('shipping-modal')">Shipping Policy</a>
         </div>
 
         <p>&copy; 2025 The Sports Front. All rights reserved. | Fueling The Future Of Sports, Boldly!</p>
@@ -1347,6 +1344,65 @@
         </div>
     </div>
 
+    <!-- NEW: REFUND POLICY MODAL (REQUIRED FOR RAZORPAY) -->
+    <div id="refund-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">REFUND & CANCELLATION POLICY</h3>
+                <button class="modal-close" onclick="closeModal('refund-modal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p><strong>Voca Sports Private Limited</strong><br>
+                <strong>Effective Date:</strong> December 2025</p>
+
+                <h4>1. Merchandise Returns</h4>
+                <p>We accept returns for physical merchandise (Jerseys, Scarves, Hoodies) only under the following conditions:</p>
+                <ul>
+                    <li>The product is damaged or defective upon delivery.</li>
+                    <li>The wrong size or product was delivered.</li>
+                </ul>
+                <p>You must raise a return request within <strong>7 days</strong> of delivery by emailing support@thesportsfront.com with photos of the issue.</p>
+
+                <h4>2. Cancellations</h4>
+                <p><strong>Merchandise:</strong> Orders can be cancelled within 24 hours of placement if they have not yet been shipped. Once shipped, orders cannot be cancelled.</p>
+                <p><strong>Memberships (Black Pass):</strong> The TSF Black Pass is a non-refundable digital membership. Once purchased, it cannot be cancelled or refunded.</p>
+
+                <h4>3. Refund Process</h4>
+                <p>Approved refunds will be processed within 5-7 business days to the original payment method. If you paid via UPI, the amount will be credited to the same VPA.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- NEW: SHIPPING POLICY MODAL (REQUIRED FOR RAZORPAY) -->
+    <div id="shipping-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">SHIPPING & DELIVERY POLICY</h3>
+                <button class="modal-close" onclick="closeModal('shipping-modal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p><strong>Voca Sports Private Limited</strong><br>
+                <strong>Effective Date:</strong> December 2025</p>
+
+                <h4>1. Processing Time</h4>
+                <p>All merchandise orders are processed within <strong>24-48 hours</strong> of payment confirmation. Orders placed on weekends or public holidays will be processed on the next business day.</p>
+
+                <h4>2. Shipping Timelines</h4>
+                <ul>
+                    <li><strong>Metro Cities (Delhi, Mumbai, Bangalore, etc.):</strong> 3-5 Business Days.</li>
+                    <li><strong>Rest of India:</strong> 5-7 Business Days.</li>
+                </ul>
+                <p>Please note that delivery times may vary due to unforeseen logistics delays or local restrictions.</p>
+
+                <h4>3. Shipping Partners</h4>
+                <p>We partner with reliable couriers (Delhivery, Bluedart, Xpressbees) to ensure your gear arrives safely. You will receive a tracking link via email/SMS once your order is dispatched.</p>
+
+                <h4>4. International Shipping</h4>
+                <p>Currently, we only ship within India. International shipping will be enabled for the 2026 Season.</p>
+            </div>
+        </div>
+    </div>
+
     <script>
         // Share Function
         function shareWebsite() {
@@ -1417,6 +1473,11 @@
                     gtag('event', 'view_product', {
                         'event_category': 'ecommerce',
                         'event_label': 'Product Modal Opened'
+                    });
+                } else if (modalId === 'refund-modal' || modalId === 'shipping-modal') {
+                    gtag('event', 'view_policy', {
+                        'event_category': 'legal',
+                        'event_label': modalId
                     });
                 }
             }

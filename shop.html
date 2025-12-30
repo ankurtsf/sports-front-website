@@ -58,9 +58,10 @@
         .nav-shop-active { color: var(--brand-green) !important; border-bottom: 2px solid var(--brand-green); }
 
         /* Cart Icon */
-        .cart-link { position: relative; color: white; font-size: 1.2rem; margin-left: 5px; transition: transform 0.2s; }
+        .cart-link { position: relative; color: white; font-size: 1.2rem; margin-left: 5px; transition: transform 0.2s; cursor: pointer; }
         .cart-link:hover { transform: scale(1.1); color: var(--brand-green); }
-        .cart-dot { position: absolute; top: -2px; right: -2px; width: 8px; height: 8px; background-color: var(--brand-red); border-radius: 50%; border: 1px solid var(--deep-black); }
+        .cart-dot { position: absolute; top: -2px; right: -2px; width: 8px; height: 8px; background-color: var(--brand-red); border-radius: 50%; border: 1px solid var(--deep-black); display: none; }
+        .cart-dot.active { display: block; }
 
         /* --- SHOP HERO --- */
         .shop-hero {
@@ -91,14 +92,7 @@
         }
         .product-card:hover { transform: translateY(-10px); border-color: var(--brand-green); }
         
-        /* Updated image style to match Index (No padding, Contain) */
-        .product-img { 
-            width: 100%; 
-            height: 380px; 
-            object-fit: contain; 
-            background: #222; 
-            padding: 0;
-        }
+        .product-img { width: 100%; height: 380px; object-fit: contain; background: #222; padding: 0; }
         
         .product-tag { 
             position: absolute; top: 10px; left: 10px; 
@@ -120,7 +114,7 @@
         }
         .buy-btn:hover { background: white; color: black; }
 
-        /* --- MODAL (Same as Index) --- */
+        /* --- MODAL (CART & CHECKOUT & POLICIES) --- */
         .modal-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0,0,0,0.9); z-index: 10000;
@@ -133,15 +127,32 @@
             max-height: 90vh; overflow-y: auto; border-radius: 12px;
             border: 1px solid #333; position: relative;
             box-shadow: 0 10px 40px rgba(0, 208, 132, 0.15);
+            animation: modalSlideIn 0.3s ease;
         }
-        .modal-header { padding: 1.5rem; border-bottom: 1px solid #333; display: flex; justify-content: space-between; align-items: center; }
+        @keyframes modalSlideIn { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+        .modal-header { padding: 1.5rem; border-bottom: 1px solid #333; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; background: var(--surface-light); z-index: 10; }
         .modal-title { font-size: 1.2rem; font-weight: 800; margin: 0; }
         .modal-close { background: none; border: none; color: #888; font-size: 1.5rem; cursor: pointer; }
-        .modal-body { padding: 2rem; text-align: center; }
-        .form-frame { width: 100%; height: 500px; border: none; border-radius: 8px; }
+        .modal-body { padding: 2rem; }
+        
+        .modal-body h4 { color: var(--brand-green); margin-top: 1.5rem; margin-bottom: 0.5rem; }
+        .modal-body ul { margin-left: 1.5rem; margin-bottom: 1rem; }
+        .modal-body p { margin-bottom: 1rem; color: #ccc; }
 
-        /* --- FOOTER --- */
+        /* Cart Styles */
+        .cart-empty-msg { text-align: center; color: #888; padding: 2rem 0; }
+        .cart-item { display: flex; justify-content: space-between; align-items: center; padding: 1rem 0; border-bottom: 1px solid #333; }
+        .cart-item-details h5 { margin: 0; color: white; font-size: 1rem; }
+        .cart-item-details p { margin: 0; color: #888; font-size: 0.9rem; }
+        .cart-item-price { color: var(--brand-green); font-weight: 700; }
+        .cart-total { display: flex; justify-content: space-between; margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid #555; font-size: 1.2rem; font-weight: 800; }
+        .checkout-btn { width: 100%; background: var(--brand-green); color: black; border: none; padding: 1rem; margin-top: 1.5rem; font-weight: 800; font-family: 'Montserrat', sans-serif; cursor: pointer; text-transform: uppercase; }
+        .checkout-btn:hover { background: white; }
+
         footer { background: black; padding: 4rem 2rem; text-align: center; border-top: 1px solid #222; color: #666; font-size: 0.8rem; margin-top: auto; }
+        .footer-links a { color: #888; text-decoration: none; transition: color 0.3s; cursor: pointer; }
+        .footer-links a:hover { color: var(--brand-green); }
         
         @media (max-width: 768px) {
             .header-container { padding: 1rem; }
@@ -168,10 +179,11 @@
                     <a href="index.html#events">Upcoming</a>
                     <a href="index.html#membership" style="color: var(--rm-gold);">Membership</a>
                     <a href="#" class="nav-shop-active">Shop</a>
-                    <a href="#" class="cart-link">
+                    <!-- Clickable Cart -->
+                    <div class="cart-link" onclick="openCart()">
                         <i class="fas fa-shopping-bag"></i>
-                        <span class="cart-dot"></span>
-                    </a>
+                        <span class="cart-dot" id="cartDot"></span>
+                    </div>
                 </div>
             </nav>
         </div>
@@ -205,7 +217,7 @@
                     <span class="product-category">Jerseys</span>
                     <h4 class="product-title">Legends Face Off Jersey (RM Edition)</h4>
                     <span class="product-price">₹2,499</span>
-                    <button onclick="openModal('shop-modal')" class="buy-btn">Add to Bag</button>
+                    <button onclick="addToCart('jersey-rm', 'Legends Face Off Jersey (RM)', 2499)" class="buy-btn">Add to Bag</button>
                 </div>
             </div>
 
@@ -217,7 +229,7 @@
                     <span class="product-category">Jerseys</span>
                     <h4 class="product-title">LFO Jersey (Barca Edition)</h4>
                     <span class="product-price">₹2,499</span>
-                    <button onclick="openModal('shop-modal')" class="buy-btn">Add to Bag</button>
+                    <button onclick="addToCart('jersey-fcb', 'LFO Jersey (Barca)', 2499)" class="buy-btn">Add to Bag</button>
                 </div>
             </div>
 
@@ -229,7 +241,7 @@
                     <span class="product-category">Equipment</span>
                     <h4 class="product-title">Official Match Ball</h4>
                     <span class="product-price">₹3,999</span>
-                    <button onclick="openModal('shop-modal')" class="buy-btn">Add to Bag</button>
+                    <button onclick="addToCart('match-ball', 'Official Match Ball', 3999)" class="buy-btn">Add to Bag</button>
                 </div>
             </div>
 
@@ -241,7 +253,7 @@
                     <span class="product-category">Accessories</span>
                     <h4 class="product-title">Legends Face Off Scarf</h4>
                     <span class="product-price">₹799</span>
-                    <button onclick="openModal('shop-modal')" class="buy-btn">Add to Bag</button>
+                    <button onclick="addToCart('scarf', 'Legends Scarf', 799)" class="buy-btn">Add to Bag</button>
                 </div>
             </div>
 
@@ -252,7 +264,7 @@
                     <span class="product-category">Apparel</span>
                     <h4 class="product-title">The Gaffer Hoodie (Black)</h4>
                     <span class="product-price">₹2,499</span>
-                    <button onclick="openModal('shop-modal')" class="buy-btn">Pre-Order</button>
+                    <button onclick="addToCart('hoodie', 'Gaffer Hoodie', 2499)" class="buy-btn">Pre-Order</button>
                 </div>
             </div>
 
@@ -263,7 +275,7 @@
                     <span class="product-category">Headwear</span>
                     <h4 class="product-title">Match Day Cap</h4>
                     <span class="product-price">₹599</span>
-                    <button onclick="openModal('shop-modal')" class="buy-btn">Add to Bag</button>
+                    <button onclick="addToCart('cap', 'Match Day Cap', 599)" class="buy-btn">Add to Bag</button>
                 </div>
             </div>
 
@@ -271,36 +283,221 @@
     </div>
 
     <footer>
+        <div style="margin-bottom: 2rem;">
+            <p><strong>The Sports Front</strong></p>
+            <p>Delhi, India</p>
+            <p><a href="mailto:info@thesportsfront.com" style="color: #aaa; text-decoration: none;">info@thesportsfront.com</a></p>
+        </div>
+        
+        <!-- Updated Footer Links for Compliance -->
+        <div class="footer-links" style="display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center; margin-bottom: 2rem;">
+            <a onclick="openModal('privacy-modal')">Privacy Policy</a>
+            <a onclick="openModal('terms-modal')">Terms & Conditions</a>
+            <a onclick="openModal('refund-modal')">Refund & Cancellation</a>
+            <a onclick="openModal('shipping-modal')">Shipping Policy</a>
+        </div>
+
         <p>&copy; 2025 The Sports Front. All rights reserved.</p>
     </footer>
 
-    <!-- SHOP MODAL -->
+    <!-- CART MODAL (Dynamic) -->
     <div id="shop-modal" class="modal-overlay">
         <div class="modal-content">
             <div class="modal-header">
-                <h3 class="modal-title">OFFICIAL MERCH STORE</h3>
+                <h3 class="modal-title">YOUR BAG</h3>
                 <button class="modal-close" onclick="closeModal('shop-modal')">&times;</button>
             </div>
+            <div class="modal-body" id="cart-body">
+                <!-- Cart items will be injected here via JS -->
+                <div class="cart-empty-msg">Your locker is empty.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- NEW: REFUND POLICY MODAL -->
+    <div id="refund-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">REFUND & CANCELLATION POLICY</h3>
+                <button class="modal-close" onclick="closeModal('refund-modal')">&times;</button>
+            </div>
             <div class="modal-body">
-                <h4>LIMITED STOCK ALERT</h4>
-                <p>Please fill out the form below to secure your items. We will contact you for payment.</p>
-                <!-- Reuse the form for now -->
-                <iframe class="form-frame" src="https://forms.office.com/r/NtDiPXFhKt"></iframe>
+                <p><strong>Voca Sports Private Limited</strong><br>
+                <strong>Effective Date:</strong> December 2025</p>
+                <h4>1. Merchandise Returns</h4>
+                <p>We accept returns for physical merchandise (Jerseys, Scarves, Hoodies) only under the following conditions: product is damaged/defective or wrong size delivered.</p>
+                <p>Raise a return request within <strong>7 days</strong> via support@thesportsfront.com.</p>
+                <h4>2. Cancellations</h4>
+                <p>Merchandise orders can be cancelled within 24 hours if not shipped. Memberships are non-refundable.</p>
+                <h4>3. Refund Process</h4>
+                <p>Processed within 5-7 business days to original payment method.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- NEW: SHIPPING POLICY MODAL -->
+    <div id="shipping-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">SHIPPING & DELIVERY POLICY</h3>
+                <button class="modal-close" onclick="closeModal('shipping-modal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p><strong>Voca Sports Private Limited</strong><br>
+                <strong>Effective Date:</strong> December 2025</p>
+                <h4>1. Processing Time</h4>
+                <p>Orders processed within <strong>24-48 hours</strong>.</p>
+                <h4>2. Shipping Timelines</h4>
+                <ul>
+                    <li>Metro Cities: 3-5 Business Days</li>
+                    <li>Rest of India: 5-7 Business Days</li>
+                </ul>
+                <h4>3. Partners</h4>
+                <p>We use Delhivery, Bluedart, and Xpressbees.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- PRIVACY & TERMS MODALS (Simplified for shop page, link to full text if needed) -->
+    <div id="privacy-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">PRIVACY POLICY</h3>
+                <button class="modal-close" onclick="closeModal('privacy-modal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Please refer to the main website for the full Privacy Policy.</p>
+                <p><strong>Summary:</strong> We collect data to process orders. We do not sell data.</p>
+            </div>
+        </div>
+    </div>
+    
+    <div id="terms-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">TERMS & CONDITIONS</h3>
+                <button class="modal-close" onclick="closeModal('terms-modal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Please refer to the main website for the full Terms & Conditions.</p>
+                <p><strong>Summary:</strong> By using this shop, you agree to our terms of service.</p>
             </div>
         </div>
     </div>
 
     <script>
+        // Simple Cart State
+        let cart = [];
+
+        function addToCart(id, title, price) {
+            // Check if item exists
+            const existingItem = cart.find(item => item.id === id);
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ id, title, price, quantity: 1 });
+            }
+            
+            updateCartUI();
+            openCart(); // Auto open cart on add
+        }
+
+        function updateCartUI() {
+            const cartDot = document.getElementById('cartDot');
+            const cartBody = document.getElementById('cart-body');
+            
+            // Update Badge
+            if (cart.length > 0) {
+                cartDot.classList.add('active');
+            } else {
+                cartDot.classList.remove('active');
+            }
+
+            // Render Cart Logic
+            if (cart.length === 0) {
+                cartBody.innerHTML = '<div class="cart-empty-msg">Your locker is empty.</div>';
+                return;
+            }
+
+            let html = '';
+            let total = 0;
+
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+                html += `
+                <div class="cart-item">
+                    <div class="cart-item-details">
+                        <h5>${item.title} (x${item.quantity})</h5>
+                    </div>
+                    <div class="cart-item-price">₹${itemTotal.toLocaleString()}</div>
+                </div>`;
+            });
+
+            html += `
+            <div class="cart-total">
+                <span>Total</span>
+                <span>₹${total.toLocaleString()}</span>
+            </div>
+            <button class="checkout-btn" onclick="initiateCheckout()">Proceed to Pay</button>
+            `;
+
+            cartBody.innerHTML = html;
+        }
+
+        async function initiateCheckout() {
+            // This button calls the backend to create an order
+            const checkoutBtn = document.querySelector('.checkout-btn');
+            checkoutBtn.innerText = "Processing...";
+            checkoutBtn.disabled = true;
+
+            try {
+                // Call our Backend API
+                const response = await fetch('/api/create-order', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ items: cart })
+                });
+
+                const order = await response.json();
+
+                if (order.id) {
+                    // Open Razorpay
+                    const options = {
+                        "key": "YOUR_RAZORPAY_KEY_ID", // Replace with Public Key
+                        "amount": order.amount,
+                        "currency": "INR",
+                        "name": "The Sports Front",
+                        "description": "Merchandise Purchase",
+                        "order_id": order.id, 
+                        "handler": function (response){
+                            alert("Payment Successful! Payment ID: " + response.razorpay_payment_id);
+                            cart = []; // Clear cart
+                            updateCartUI();
+                            closeModal('shop-modal');
+                        },
+                        "theme": { "color": "#00D084" }
+                    };
+                    const rzp1 = new Razorpay(options);
+                    rzp1.open();
+                } else {
+                    alert("Error creating order. Please try again.");
+                }
+            } catch (error) {
+                console.error("Checkout Error:", error);
+                alert("Checkout system is currently in maintenance mode.");
+            } finally {
+                checkoutBtn.innerText = "Proceed to Pay";
+                checkoutBtn.disabled = false;
+            }
+        }
+
+        function openCart() {
+            document.getElementById('shop-modal').classList.add('active');
+        }
+
         function openModal(modalId) {
             document.getElementById(modalId).classList.add('active');
-            
-            // GA4 Event for Shop Page
-            if (typeof gtag === 'function') {
-                gtag('event', 'add_to_cart_attempt', {
-                    'event_category': 'ecommerce',
-                    'event_label': 'Shop Modal Opened'
-                });
-            }
         }
 
         function closeModal(modalId) {
