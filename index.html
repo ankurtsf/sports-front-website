@@ -711,7 +711,7 @@
 
         .cap-img { 
             width: 100%; height: 100%; object-fit: cover; 
-            filter: grayscale(100%) contrast(1.2); 
+            filter: brightness(0.8) contrast(1.1); /* Colored but slightly dimmed for drama */
             transition: 0.5s ease; 
         }
         
@@ -725,7 +725,7 @@
             opacity: 0.6;
         }
 
-        .cap-card:hover .cap-img { filter: grayscale(0%) contrast(1); transform: scale(1.05); }
+        .cap-card:hover .cap-img { filter: brightness(1.1) contrast(1); transform: scale(1.05); } /* Brighten up */
 
         /* Text Area - Looks like a File/Report */
         .cap-text { 
@@ -736,9 +736,12 @@
         }
         
         .cap-number {
-            font-family: 'Courier New', monospace; /* Tech/Code look */
-            color: var(--brand-green); font-size: 0.8rem; letter-spacing: 2px;
-            margin-bottom: 1rem; display: block; border-bottom: 1px solid #333; padding-bottom: 0.5rem; width: 100%;
+            font-family: 'Rock Salt', cursive; /* Handwritten Sports feel */
+            color: var(--brand-green); 
+            font-size: 2rem; 
+            margin-bottom: 0.5rem; 
+            display: block; 
+            /* Removing the tech border to match "earlier" style request */
         }
 
         .cap-text h4 { 
@@ -1286,7 +1289,7 @@
                     <img src="Images/cap-production.jpg" class="cap-img" alt="Matchday">
                 </div>
                 <div class="cap-text">
-                    <span class="cap-number">STRATEGY_01 // OPS</span>
+                    <span class="cap-number">01</span>
                     <h4>MATCHDAY OPERATIONS</h4>
                     <p>Executing large-scale events with military precision. Logistics, security, and player management at an international standard.</p>
                 </div>
@@ -1299,7 +1302,7 @@
                     <img src="Images/cap-fans.jpg" class="cap-img" alt="Fans">
                 </div>
                 <div class="cap-text">
-                    <span class="cap-number">STRATEGY_02 // ATMOSPHERE</span>
+                    <span class="cap-number">02</span>
                     <h4>THE 12TH MAN</h4>
                     <p>Designing electric atmospheres. We bridge the gap between icons and fans, turning spectators into a tribe.</p>
                 </div>
@@ -1312,7 +1315,7 @@
                     <img src="Images/cap-ip.jpeg" class="cap-img" alt="IP">
                 </div>
                 <div class="cap-text">
-                    <span class="cap-number">STRATEGY_03 // GROWTH</span>
+                    <span class="cap-number">03</span>
                     <h4>LEAGUE ECOSYSTEMS</h4>
                     <p>Building the future of sport. Creating sustainable IPs and recurring properties that grow value year after year.</p>
                 </div>
