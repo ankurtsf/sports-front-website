@@ -236,20 +236,93 @@
         .cart-item-details h5 { margin: 0; color: white; font-size: 1rem; }
         .cart-item-details p { margin: 0; color: #888; font-size: 0.9rem; }
         .cart-item-price { color: var(--brand-green); font-weight: 700; }
+        
+        /* Quantity Controls */
+        .qty-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 5px;
+        }
+        .qty-btn {
+            background: #333; border: none; color: white;
+            width: 25px; height: 25px; border-radius: 4px;
+            cursor: pointer; font-weight: 700;
+        }
+        .qty-btn:hover { background: var(--brand-green); color: black; }
+        .qty-val { font-size: 0.9rem; font-weight: 600; min-width: 20px; text-align: center; }
+
         .cart-total { display: flex; justify-content: space-between; margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid #555; font-size: 1.2rem; font-weight: 800; }
         .checkout-btn { width: 100%; background: var(--brand-green); color: black; border: none; padding: 1rem; margin-top: 1.5rem; font-weight: 800; font-family: 'Montserrat', sans-serif; cursor: pointer; text-transform: uppercase; }
         .checkout-btn:hover { background: white; }
-        
-        /* Quantity Controls */
-        .qty-controls { display: flex; align-items: center; gap: 10px; margin-top: 5px; }
-        .qty-btn { background: #333; border: none; color: white; width: 25px; height: 25px; border-radius: 4px; cursor: pointer; font-weight: 700; }
-        .qty-btn:hover { background: var(--brand-green); color: black; }
-        .qty-val { font-size: 0.9rem; font-weight: 600; min-width: 20px; text-align: center; }
 
         footer { background: black; padding: 4rem 2rem; text-align: center; border-top: 1px solid #222; color: #666; font-size: 0.8rem; margin-top: auto; }
         .footer-links a { color: #888; text-decoration: none; transition: color 0.3s; cursor: pointer; }
         .footer-links a:hover { color: var(--brand-green); }
+        .footer-contact { margin-bottom: 2rem; color: #aaa; }
         
+        /* --- SOCIAL ICONS --- */
+        .social-icons { display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 1.5rem; }
+        .social-link { color: #888; font-size: 1.5rem; transition: color 0.3s, transform 0.3s; text-decoration: none; }
+        .social-link:hover { color: var(--brand-green); transform: translateY(-3px); }
+
+        /* --- CHATBOT UI FIXES --- */
+        .chatbot-btn { 
+            position: fixed; bottom: 20px; right: 20px; width: 60px; height: 60px; 
+            background: var(--brand-green); color: var(--deep-black); 
+            border-radius: 50%; border: none; box-shadow: 0 4px 15px rgba(0, 208, 132, 0.4); 
+            font-size: 1.5rem; cursor: pointer; z-index: 2000; transition: transform 0.3s ease; 
+            display: flex; align-items: center; justify-content: center; 
+        }
+        .chatbot-btn:hover { transform: scale(1.1); }
+        
+        .chatbot-label {
+            position: fixed; bottom: 30px; right: 90px;
+            background: rgba(0, 0, 0, 0.85); color: var(--brand-green);
+            padding: 8px 16px; border-radius: 30px;
+            font-family: 'Rock Salt', cursive; font-size: 0.8rem; letter-spacing: 1px;
+            z-index: 1999; pointer-events: none; opacity: 0;
+            border: 1px solid rgba(0, 208, 132, 0.3); white-space: nowrap;
+            animation: fadeInOut 6s infinite;
+        }
+        @keyframes fadeInOut {
+            0%, 100% { opacity: 0; transform: translateX(10px); }
+            10%, 90% { opacity: 1; transform: translateX(0); }
+            100% { opacity: 0; transform: translateX(10px); }
+        }
+
+        .share-btn {
+            position: fixed; bottom: 95px; right: 25px; width: 50px; height: 50px;
+            background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(5px);
+            color: white; border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 50%;
+            font-size: 1.2rem; cursor: pointer; z-index: 1998; transition: all 0.3s ease;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .share-btn:hover { background: var(--brand-green); color: var(--deep-black); transform: scale(1.1); }
+
+        .chatbot-container { 
+            display: none; position: fixed; bottom: 90px; right: 20px; 
+            width: 350px; height: 500px; 
+            background: #1a1a1a; border-radius: 12px; 
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5); 
+            z-index: 2000; overflow: hidden; border: 1px solid #333; 
+            flex-direction: column; 
+        }
+        .chatbot-container.active { display: flex; }
+        
+        .chat-header { background: var(--deep-black); padding: 15px; border-bottom: 1px solid #333; display: flex; justify-content: space-between; align-items: center; flex-shrink: 0; height: 60px; }
+        .chat-header h4 { font-size: 1.1rem; margin: 0; font-family: 'Rock Salt', cursive; font-weight: 700; color: var(--brand-green); }
+        .close-chat { cursor: pointer; color: #888; font-size: 1.2rem; }
+        
+        .chat-messages { flex: 1; padding: 15px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; }
+        .message { max-width: 80%; padding: 10px 15px; border-radius: 12px; font-size: 0.9rem; line-height: 1.4; }
+        .message.bot { background: #333; color: white; align-self: flex-start; border-bottom-left-radius: 2px; font-family: 'Montserrat', sans-serif; text-transform: none; font-weight: 500; }
+        .message.user { background: var(--brand-green); color: black; align-self: flex-end; border-bottom-right-radius: 2px; font-weight: 600; font-family: 'Montserrat', sans-serif; }
+        
+        .chat-input-area { padding: 15px; background: var(--deep-black); border-top: 1px solid #333; display: flex; gap: 10px; flex-shrink: 0; min-height: 70px; }
+        .chat-input { flex: 1; padding: 10px; border-radius: 6px; border: 1px solid #444; background: #222; color: white; outline: none; }
+        .send-btn { background: var(--brand-green); color: black; border: none; padding: 0 15px; border-radius: 6px; cursor: pointer; font-weight: bold; }
+
         @media (max-width: 768px) {
             .header-container { padding: 1rem; }
             .logo-img { height: 60px; }
@@ -399,15 +472,44 @@
         
         <!-- Updated Footer Links for Compliance (Linking to real pages) -->
         <div class="footer-links" style="display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center; margin-bottom: 2rem;">
-            <a href="policies.html#privacy" onclick="openModal('privacy-modal'); return false;">Privacy Policy</a>
-            <a href="policies.html#terms" onclick="openModal('terms-modal'); return false;">Terms & Conditions</a>
-            <a href="policies.html#refund" onclick="openModal('refund-modal'); return false;">Refund & Cancellation</a>
-            <a href="policies.html#shipping" onclick="openModal('shipping-modal'); return false;">Shipping Policy</a>
-            <a href="contact.html" onclick="openModal('contact-modal'); return false;">Contact Us</a>
+            <a href="policies.html#privacy">Privacy Policy</a>
+            <a href="policies.html#terms">Terms & Conditions</a>
+            <a href="policies.html#refund">Refund & Cancellation</a>
+            <a href="policies.html#shipping">Shipping Policy</a>
+            <a href="contact.html">Contact Us</a>
         </div>
 
         <p>&copy; 2025 The Sports Front. All rights reserved.</p>
     </footer>
+
+    <!-- Chatbot Button -->
+    <div class="chatbot-label">Ask The Gaffer</div>
+    
+    <!-- Floating Share Button -->
+    <button onclick="shareWebsite()" class="share-btn">
+        <i class="fas fa-share-alt"></i>
+    </button>
+    
+    <button class="chatbot-btn" onclick="toggleChat()">
+        <i class="fas fa-user-tie"></i>
+    </button>
+
+    <!-- Chatbot Container -->
+    <div class="chatbot-container" id="chatbot">
+        <div class="chat-header">
+            <h4>Ask The Gaffer</h4>
+            <span class="close-chat" onclick="toggleChat()">&times;</span>
+        </div>
+        <div class="chat-messages" id="chat-messages">
+            <div class="message bot">
+                Hi! I'm The Gaffer. Ask me about our past events, 2026 roadmap, or how to become a partner!
+            </div>
+        </div>
+        <div class="chat-input-area">
+            <input type="text" id="user-input" class="chat-input" placeholder="Ask something..." onkeypress="handleKeyPress(event)">
+            <button class="send-btn" onclick="sendMessage()">Send</button>
+        </div>
+    </div>
 
     <!-- CART MODAL (Dynamic) -->
     <div id="shop-modal" class="modal-overlay">
@@ -423,130 +525,59 @@
         </div>
     </div>
 
-    <!-- LEGAL MODALS RESTORED -->
-    
-    <!-- REFUND POLICY MODAL -->
-    <div id="refund-modal" class="modal-overlay">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title">REFUND & CANCELLATION</h3>
-                <button class="modal-close" onclick="closeModal('refund-modal')">&times;</button>
-            </div>
-            <div class="modal-body">
-                <p><strong>Voca Sports Private Limited</strong><br>Effective Date: December 2025</p>
-                <h4>1. Merchandise Returns</h4>
-                <p>We accept returns for physical merchandise only if the product is damaged, defective, or the wrong size was delivered.</p>
-                <p>Raise a return request within <strong>7 days</strong> via support@thesportsfront.com.</p>
-                <h4>2. Cancellations</h4>
-                <p>Merchandise orders can be cancelled within 24 hours if not shipped. Memberships are non-refundable.</p>
-                <h4>3. Refund Process</h4>
-                <p>Approved refunds are processed within 5-7 business days to the original payment source.</p>
-                <br>
-                <a href="policies.html#refund" style="color:var(--brand-green);">View Full Legal Text</a>
-            </div>
-        </div>
-    </div>
-
-    <!-- SHIPPING POLICY MODAL -->
-    <div id="shipping-modal" class="modal-overlay">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title">SHIPPING POLICY</h3>
-                <button class="modal-close" onclick="closeModal('shipping-modal')">&times;</button>
-            </div>
-            <div class="modal-body">
-                <p><strong>Voca Sports Private Limited</strong></p>
-                <h4>1. Processing Time</h4>
-                <p>Orders are processed within <strong>24-48 hours</strong> of payment confirmation.</p>
-                <h4>2. Delivery Timelines</h4>
-                <ul>
-                    <li>Metro Cities: 3-5 Business Days</li>
-                    <li>Rest of India: 5-7 Business Days</li>
-                </ul>
-                <h4>3. Logistics</h4>
-                <p>We use trusted partners like Delhivery and Bluedart.</p>
-                <br>
-                <a href="policies.html#shipping" style="color:var(--brand-green);">View Full Legal Text</a>
-            </div>
-        </div>
-    </div>
-
-    <!-- PRIVACY POLICY MODAL -->
-    <div id="privacy-modal" class="modal-overlay">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title">PRIVACY POLICY</h3>
-                <button class="modal-close" onclick="closeModal('privacy-modal')">&times;</button>
-            </div>
-            <div class="modal-body">
-                <p><strong>Voca Sports Private Limited</strong></p>
-                <h4>1. Information We Collect</h4>
-                <p>We collect details you provide (Name, Email, Phone) to process your orders and memberships.</p>
-                <h4>2. Data Usage</h4>
-                <p>Your data is used solely for order fulfillment and communication. We do not sell your data.</p>
-                <h4>3. Security</h4>
-                <p>We use industry-standard encryption to protect your information.</p>
-                <br>
-                <a href="policies.html#privacy" style="color:var(--brand-green);">View Full Legal Text</a>
-            </div>
-        </div>
-    </div>
-
-    <!-- TERMS MODAL -->
-    <div id="terms-modal" class="modal-overlay">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title">TERMS & CONDITIONS</h3>
-                <button class="modal-close" onclick="closeModal('terms-modal')">&times;</button>
-            </div>
-            <div class="modal-body">
-                <p><strong>Voca Sports Private Limited</strong></p>
-                <h4>1. Acceptance</h4>
-                <p>By using this site, you agree to these Terms and Conditions.</p>
-                <h4>2. Purchases</h4>
-                <p>All purchases are subject to availability and payment confirmation.</p>
-                <h4>3. Intellectual Property</h4>
-                <p>All content on this site is the property of Voca Sports.</p>
-                <br>
-                <a href="policies.html#terms" style="color:var(--brand-green);">View Full Legal Text</a>
-            </div>
-        </div>
-    </div>
-
-    <!-- CONTACT MODAL -->
-    <div id="contact-modal" class="modal-overlay">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title">CONTACT US</h3>
-                <button class="modal-close" onclick="closeModal('contact-modal')">&times;</button>
-            </div>
-            <div class="modal-body">
-                <h3>Registered Address</h3>
-                <p>Voca Sports Private Limited<br>84, Dariyaganj, Central Delhi<br>New Delhi, 110002, India</p>
-
-                <h3>Customer Support</h3>
-                <p>Email: <a href="mailto:support@thesportsfront.com" style="color:var(--brand-green);">support@thesportsfront.com</a><br>
-                Phone: +91 98991 52327</p>
-                
-                <h3>Partnerships</h3>
-                <p>Email: <a href="mailto:info@thesportsfront.com" style="color:var(--brand-green);">info@thesportsfront.com</a></p>
-            </div>
-        </div>
-    </div>
-
     <script>
         // --- CONFIGURATION ---
         // VITAL: PASTE YOUR RAZORPAY TEST KEY ID HERE
         const RAZORPAY_KEY_ID = "rzp_test_Rxt2V3sG2BYM9W"; 
 
-        // Initialize Cart from LocalStorage
-        let cart = JSON.parse(localStorage.getItem('tsf_cart')) || [];
+        // Simple Cart State
+        let cart = [];
 
         // Load cart on page load
         window.onload = function() {
-            updateCartUI();
+            const savedCart = localStorage.getItem('tsf_cart');
+            if (savedCart) {
+                cart = JSON.parse(savedCart);
+                updateCartUI();
+            }
         };
 
+        // --- FUNCTIONS RESTORED ---
+        
+        // Share Function
+        function shareWebsite() {
+            if (navigator.share) {
+                if (typeof gtag === 'function') {
+                    gtag('event', 'share_content', {
+                        'method': 'Native Share',
+                        'content_type': 'Website',
+                        'item_id': 'Shop Page'
+                    });
+                }
+                navigator.share({
+                    title: 'The Sports Front | Locker Room',
+                    text: 'Check out the official merch from The Sports Front!',
+                    url: window.location.href,
+                })
+                .catch((error) => console.log('Error sharing', error));
+            } else {
+                navigator.clipboard.writeText(window.location.href);
+                if (typeof gtag === 'function') {
+                    gtag('event', 'share_content', {
+                        'method': 'Clipboard Copy',
+                        'content_type': 'Website',
+                        'item_id': 'Shop Page'
+                    });
+                }
+                alert("Link copied to clipboard!");
+            }
+        }
+
+        // Toggles
+        function toggleMenu() { document.getElementById('main-nav').classList.toggle('active'); }
+        function toggleChat() { document.getElementById('chatbot').classList.toggle('active'); }
+
+        // Cart Logic
         function addToCart(id, title, price) {
             // Check if item exists
             const existingItem = cart.find(item => item.id === id);
@@ -566,6 +597,7 @@
                 void cartLink.offsetWidth; // trigger reflow
                 cartLink.classList.add('bump');
             }
+            openCart(); // Auto open
         }
 
         function changeQuantity(id, delta) {
@@ -693,25 +725,7 @@
         }
 
         function openModal(modalId) {
-            // Redirect shop modal to shop page
-            if (modalId === 'shop-modal') {
-                window.location.href = 'shop.html';
-                return;
-            }
-
             document.getElementById(modalId).classList.add('active');
-            document.getElementById('main-nav').classList.remove('active');
-            
-            // GA4 Tracking
-            if (typeof gtag === 'function') {
-                if (modalId === 'waitlist-modal') {
-                    gtag('event', 'begin_waitlist_signup', { 'event_category': 'conversion', 'event_label': 'Waitlist Modal' });
-                } else if (modalId === 'membership-modal') {
-                    gtag('event', 'view_membership', { 'event_category': 'conversion', 'event_label': 'Membership Modal' });
-                } else if (['privacy-modal', 'terms-modal', 'refund-modal', 'shipping-modal', 'contact-modal'].includes(modalId)) {
-                    gtag('event', 'view_policy', { 'event_category': 'legal', 'event_label': modalId });
-                }
-            }
         }
 
         function closeModal(modalId) {
@@ -723,6 +737,51 @@
                 event.target.classList.remove('active');
             }
         }
+
+        // --- CHATBOT LOGIC ---
+        async function sendMessage() {
+            const inputField = document.getElementById('user-input');
+            const message = inputField.value.trim();
+            if (!message) return;
+
+            addMessage(message, 'user');
+            if (typeof gtag === 'function') {
+                gtag('event', 'use_chatbot', { 'event_category': 'engagement', 'event_label': 'Message Sent' });
+            }
+            inputField.value = '';
+            const loadingMsg = addMessage('Thinking...', 'bot');
+
+            try {
+                const response = await fetch('/api/chat', { 
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ messages: [{ content: message }] })
+                });
+                const data = await response.json();
+                loadingMsg.remove();
+                if (data.reply) {
+                    const formattedReply = data.reply.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>');
+                    addMessage(formattedReply, 'bot', true); 
+                } else {
+                    addMessage("I'm having a little trouble connecting to the stadium. Please try again.", 'bot');
+                }
+            } catch (error) {
+                loadingMsg.remove();
+                console.error("Chat Error:", error);
+                addMessage("Connection error. Please try again later.", 'bot');
+            }
+        }
+
+        function addMessage(text, sender, isHtml = false) {
+            const messagesContainer = document.getElementById('chat-messages');
+            const msgDiv = document.createElement('div');
+            msgDiv.classList.add('message', sender);
+            if (isHtml) msgDiv.innerHTML = text; else msgDiv.innerText = text;
+            messagesContainer.appendChild(msgDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            return msgDiv;
+        }
+        function handleKeyPress(e) { if (e.key === 'Enter') sendMessage(); }
     </script>
 </body>
 </html>
