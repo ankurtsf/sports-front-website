@@ -763,12 +763,12 @@
         /* --- TEAM SECTION (RE-DESIGNED: PLAYER CARDS) --- */
         .team-section { 
             padding: 8rem 2rem; 
-            /* UPDATED: Points to local image 'lineup-bg.jpeg' */
-            /* Kept a semi-transparent dark overlay so the cards stay readable */
-            background: linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0,0,0,0.4), rgba(0,0,0,0.9)), url('Images/lineup-bg.jpeg');
+            /* UPDATED: Much darker overlay to fix brightness issue. 
+               Solid black at edges (#0a0a0a) to blend with site, 85% opacity in middle. */
+            background: linear-gradient(to bottom, #0a0a0a 10%, rgba(0,0,0,0.85) 50%, #0a0a0a 90%), url('Images/lineup-bg.jpeg');
             background-size: cover;
             background-position: center;
-            /* Scroll attachment ensures it appears on all devices (Fixed can be buggy on mobile) */
+            /* Scroll attachment ensures it appears on all devices */
             background-attachment: scroll; 
             text-align: center; 
             border-top: 1px solid #333;
