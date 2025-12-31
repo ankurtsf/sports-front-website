@@ -760,18 +760,107 @@
             margin: 0; 
         }
         
-        .team-section { padding: 6rem 2rem; background: linear-gradient(to bottom, #000000, #111111); text-align: center; }
-        .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 4rem; max-width: 1100px; margin: 3rem auto; justify-content: center; }
-        .team-member { position: relative; border-radius: 16px; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1); padding: 0; overflow: hidden; transition: all 0.4s ease; height: 400px; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; }
-        .team-member:hover { transform: translateY(-10px); border-color: var(--brand-green); box-shadow: 0 10px 40px rgba(0, 208, 132, 0.2); }
-        .team-img-container { position: absolute; top: 0; left: 0; width: 100%; height: 80%; display: flex; align-items: flex-end; justify-content: center; z-index: 1; }
-        .team-glow { position: absolute; width: 200px; height: 200px; background: radial-gradient(circle, rgba(0, 208, 132, 0.3) 0%, transparent 70%); bottom: 20px; left: 50%; transform: translateX(-50%); z-index: 0; opacity: 0.5; transition: opacity 0.3s; }
-        .team-member:hover .team-glow { opacity: 1; }
-        .team-member-img { position: relative; width: 100%; height: 100%; object-fit: cover; object-position: center top; z-index: 1; filter: grayscale(100%); transition: all 0.4s ease; }
-        .team-member:hover .team-member-img { filter: grayscale(0%); transform: scale(1.05); }
-        .team-info { position: relative; z-index: 2; width: 100%; padding: 1.5rem; background: linear-gradient(to top, #000000 10%, transparent); text-align: center; }
-        .member-name { font-weight: 800; color: white; font-size: 1.5rem; margin-bottom: 0.3rem; text-transform: uppercase; letter-spacing: 1px; }
-        .member-role { color: var(--brand-green); font-size: 0.9rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; }
+        /* --- TEAM SECTION (RE-DESIGNED: PLAYER CARDS) --- */
+        .team-section { 
+            padding: 8rem 2rem; 
+            /* UPDATED: Stadium Dugout Background */
+            background: linear-gradient(to bottom, #000000 0%, rgba(0,0,0,0.7) 50%, #000000 100%), url('https://images.unsplash.com/photo-1522778119026-d647f0565c6d?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            text-align: center; 
+            border-top: 1px solid #333;
+        }
+
+        .team-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 3rem; 
+            max-width: 1200px; 
+            margin: 4rem auto 0; 
+            justify-content: center; 
+        }
+
+        .team-card {
+            background: linear-gradient(145deg, #1a1a1a, #0a0a0a);
+            border: 1px solid #333;
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 40px rgba(0, 208, 132, 0.15);
+            border-color: var(--brand-green);
+        }
+
+        /* Player Card Top Details */
+        .player-header {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            background: rgba(0,0,0,0.5);
+        }
+        
+        .player-number {
+            font-family: 'Rock Salt', cursive;
+            color: var(--brand-green);
+            font-size: 1.5rem;
+        }
+
+        .player-kit-logo { height: 20px; opacity: 0.7; filter: brightness(0) invert(1); }
+
+        .team-img-container {
+            height: 380px;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .team-member-img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            object-position: top;
+            /* Grayscale to Color on hover effect is classic football card style */
+            filter: grayscale(100%) contrast(1.1);
+            transition: all 0.4s ease;
+        }
+        
+        .team-card:hover .team-member-img { filter: grayscale(0%) contrast(1); transform: scale(1.05); }
+
+        .team-info {
+            padding: 1.5rem;
+            text-align: left;
+            background: #080808;
+            position: relative;
+            border-top: 1px solid #333;
+        }
+        
+        /* Decorative green line */
+        .team-info::before {
+            content: ''; position: absolute; top: 0; left: 1.5rem; width: 40px; height: 3px; background: var(--brand-green);
+        }
+
+        .member-name {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: white;
+            margin-top: 1rem;
+            margin-bottom: 0.2rem;
+            text-transform: uppercase;
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: 1px;
+        }
+
+        .member-role {
+            font-size: 0.8rem;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 700;
+        }
         
         .partners-section { padding: 4rem 2rem; background: radial-gradient(circle at center, #ffffff 0%, #f4f4f4 100%); color: var(--black); }
         .partners-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem; max-width: 1200px; margin: 2rem auto; align-items: center; }
@@ -1329,38 +1418,52 @@
     <!-- Team Section -->
     <section class="team-section">
         <div class="section-header">
-            <p class="section-subtitle" style="color: var(--brand-green);">LEADERSHIP</p>
-            <h2 class="section-title" style="color: #fff;">THE SQUAD</h2>
+            <p class="section-subtitle" style="color: var(--brand-green);">MANAGEMENT</p>
+            <h2 class="section-title" style="color: #fff;">STARTING LINEUP</h2>
         </div>
         <div class="team-grid">
-            <div class="team-member">
+            <!-- Member 1: John (Revenue) -->
+            <div class="team-card">
+                <div class="player-header">
+                    <span class="player-number">01</span>
+                    <img src="Images/logo-header.svg" alt="TSF" class="player-kit-logo">
+                </div>
                 <div class="team-img-container">
-                    <div class="team-glow"></div>
                     <img src="Images/team-john.jpeg" alt="John" class="team-member-img">
                 </div>
                 <div class="team-info">
-                    <div class="member-name">John</div>
-                    <div class="member-role">Core Team</div>
+                    <h3 class="member-name">JOHN</h3>
+                    <p class="member-role">THE STRIKER // Revenue</p>
                 </div>
             </div>
-            <div class="team-member">
-                <div class="team-img-container">
-                    <div class="team-glow"></div>
-                    <img src="Images/team-anirudh.png" alt="Anirudh" class="team-member-img">
+
+            <!-- Member 2: Ankur (Strategy) - Moved to #2 position -->
+            <div class="team-card">
+                <div class="player-header">
+                    <span class="player-number">02</span>
+                    <img src="Images/logo-header.svg" alt="TSF" class="player-kit-logo">
                 </div>
-                <div class="team-info">
-                    <div class="member-name">Anirudh</div>
-                    <div class="member-role">Core Team</div>
-                </div>
-            </div>
-            <div class="team-member">
                 <div class="team-img-container">
-                    <div class="team-glow"></div>
                     <img src="Images/team-ankur.png" alt="Ankur" class="team-member-img">
                 </div>
                 <div class="team-info">
-                    <div class="member-name">Ankur</div>
-                    <div class="member-role">Core Team</div>
+                    <h3 class="member-name">ANKUR</h3>
+                    <p class="member-role">THE MAESTRO // Strategy</p>
+                </div>
+            </div>
+
+            <!-- Member 3: Anirudh (Finance) - Moved to #3 position -->
+            <div class="team-card">
+                <div class="player-header">
+                    <span class="player-number">03</span>
+                    <img src="Images/logo-header.svg" alt="TSF" class="player-kit-logo">
+                </div>
+                <div class="team-img-container">
+                    <img src="Images/team-anirudh.png" alt="Anirudh" class="team-member-img">
+                </div>
+                <div class="team-info">
+                    <h3 class="member-name">ANIRUDH</h3>
+                    <p class="member-role">THE DEFENDER // Finance</p>
                 </div>
             </div>
         </div>
