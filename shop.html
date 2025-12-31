@@ -84,14 +84,57 @@
         }
         .cart-count.active { opacity: 1; }
 
-        /* --- SHOP HERO --- */
+        /* --- SHOP HERO (VIDEO BACKGROUND) --- */
         .shop-hero {
-            padding-top: 140px; padding-bottom: 4rem; text-align: center;
-            background: linear-gradient(180deg, rgba(20,20,20,1) 0%, rgba(10,10,10,1) 100%);
+            position: relative;
+            padding-top: 180px; padding-bottom: 6rem; text-align: center;
+            overflow: hidden;
             border-bottom: 1px solid #333;
+            background-color: #080808; /* Fallback */
         }
-        .shop-hero h1 { font-size: 3.5rem; font-weight: 900; margin-bottom: 0.5rem; }
-        .shop-hero p { color: #888; font-size: 1.1rem; letter-spacing: 1px; }
+
+        /* Video Background Container */
+        .video-bg-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .video-bg {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Dark Mesh Overlay */
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.75);
+            background-image: radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px);
+            background-size: 20px 20px;
+            z-index: 1;
+        }
+
+        .shop-hero h1 { 
+            font-size: 3.5rem; 
+            font-weight: 900; 
+            margin-bottom: 0.5rem; 
+            position: relative; z-index: 2;
+        }
+        .shop-hero p { 
+            color: #ccc; 
+            font-size: 1.1rem; 
+            letter-spacing: 1px; 
+            position: relative; z-index: 2;
+        }
 
         /* --- FILTERS --- */
         .filter-bar { display: flex; justify-content: center; gap: 1rem; margin-bottom: 3rem; flex-wrap: wrap; margin-top: 3rem; }
@@ -113,7 +156,14 @@
         }
         .product-card:hover { transform: translateY(-10px); border-color: var(--brand-green); }
         
-        .product-img { width: 100%; height: 380px; object-fit: contain; background: #222; padding: 0; }
+        /* Updated image style to match Index (No padding, Contain) */
+        .product-img { 
+            width: 100%; 
+            height: 380px; 
+            object-fit: contain; 
+            background: #222; 
+            padding: 0;
+        }
         
         .product-tag { 
             position: absolute; top: 10px; left: 10px; 
@@ -186,25 +236,15 @@
         .cart-item-details h5 { margin: 0; color: white; font-size: 1rem; }
         .cart-item-details p { margin: 0; color: #888; font-size: 0.9rem; }
         .cart-item-price { color: var(--brand-green); font-weight: 700; }
-        
-        /* Quantity Controls */
-        .qty-controls {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-top: 5px;
-        }
-        .qty-btn {
-            background: #333; border: none; color: white;
-            width: 25px; height: 25px; border-radius: 4px;
-            cursor: pointer; font-weight: 700;
-        }
-        .qty-btn:hover { background: var(--brand-green); color: black; }
-        .qty-val { font-size: 0.9rem; font-weight: 600; min-width: 20px; text-align: center; }
-
         .cart-total { display: flex; justify-content: space-between; margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid #555; font-size: 1.2rem; font-weight: 800; }
         .checkout-btn { width: 100%; background: var(--brand-green); color: black; border: none; padding: 1rem; margin-top: 1.5rem; font-weight: 800; font-family: 'Montserrat', sans-serif; cursor: pointer; text-transform: uppercase; }
         .checkout-btn:hover { background: white; }
+        
+        /* Quantity Controls */
+        .qty-controls { display: flex; align-items: center; gap: 10px; margin-top: 5px; }
+        .qty-btn { background: #333; border: none; color: white; width: 25px; height: 25px; border-radius: 4px; cursor: pointer; font-weight: 700; }
+        .qty-btn:hover { background: var(--brand-green); color: black; }
+        .qty-val { font-size: 0.9rem; font-weight: 600; min-width: 20px; text-align: center; }
 
         footer { background: black; padding: 4rem 2rem; text-align: center; border-top: 1px solid #222; color: #666; font-size: 0.8rem; margin-top: auto; }
         .footer-links a { color: #888; text-decoration: none; transition: color 0.3s; cursor: pointer; }
@@ -245,8 +285,15 @@
         </div>
     </header>
 
-    <!-- Shop Hero -->
+    <!-- Shop Hero with Video Background -->
     <section class="shop-hero">
+        <div class="video-bg-container">
+            <!-- Poster image loads while video buffers (using a dark tunnel image from Unsplash as fallback) -->
+            <video autoplay muted loop playsinline class="video-bg" poster="https://images.unsplash.com/photo-1519750292352-c9fc173d2a6a?q=80&w=2066&auto=format&fit=crop">
+                <source src="Images/tunnel-bg.mp4" type="video/mp4">
+            </video>
+            <div class="video-overlay"></div>
+        </div>
         <h1>THE LOCKER ROOM</h1>
         <p>OFFICIAL MERCHANDISE • LIMITED DROPS • EXCLUSIVE GEAR</p>
     </section>
@@ -352,11 +399,11 @@
         
         <!-- Updated Footer Links for Compliance (Linking to real pages) -->
         <div class="footer-links" style="display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center; margin-bottom: 2rem;">
-            <a href="policies.html#privacy">Privacy Policy</a>
-            <a href="policies.html#terms">Terms & Conditions</a>
-            <a href="policies.html#refund">Refund & Cancellation</a>
-            <a href="policies.html#shipping">Shipping Policy</a>
-            <a href="contact.html">Contact Us</a>
+            <a href="policies.html#privacy" onclick="openModal('privacy-modal'); return false;">Privacy Policy</a>
+            <a href="policies.html#terms" onclick="openModal('terms-modal'); return false;">Terms & Conditions</a>
+            <a href="policies.html#refund" onclick="openModal('refund-modal'); return false;">Refund & Cancellation</a>
+            <a href="policies.html#shipping" onclick="openModal('shipping-modal'); return false;">Shipping Policy</a>
+            <a href="contact.html" onclick="openModal('contact-modal'); return false;">Contact Us</a>
         </div>
 
         <p>&copy; 2025 The Sports Front. All rights reserved.</p>
@@ -372,6 +419,117 @@
             <div class="modal-body" id="cart-body">
                 <!-- Cart items will be injected here via JS -->
                 <div class="cart-empty-msg">Your locker is empty.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- LEGAL MODALS RESTORED -->
+    
+    <!-- REFUND POLICY MODAL -->
+    <div id="refund-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">REFUND & CANCELLATION</h3>
+                <button class="modal-close" onclick="closeModal('refund-modal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p><strong>Voca Sports Private Limited</strong><br>Effective Date: December 2025</p>
+                <h4>1. Merchandise Returns</h4>
+                <p>We accept returns for physical merchandise only if the product is damaged, defective, or the wrong size was delivered.</p>
+                <p>Raise a return request within <strong>7 days</strong> via support@thesportsfront.com.</p>
+                <h4>2. Cancellations</h4>
+                <p>Merchandise orders can be cancelled within 24 hours if not shipped. Memberships are non-refundable.</p>
+                <h4>3. Refund Process</h4>
+                <p>Approved refunds are processed within 5-7 business days to the original payment source.</p>
+                <br>
+                <a href="policies.html#refund" style="color:var(--brand-green);">View Full Legal Text</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- SHIPPING POLICY MODAL -->
+    <div id="shipping-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">SHIPPING POLICY</h3>
+                <button class="modal-close" onclick="closeModal('shipping-modal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p><strong>Voca Sports Private Limited</strong></p>
+                <h4>1. Processing Time</h4>
+                <p>Orders are processed within <strong>24-48 hours</strong> of payment confirmation.</p>
+                <h4>2. Delivery Timelines</h4>
+                <ul>
+                    <li>Metro Cities: 3-5 Business Days</li>
+                    <li>Rest of India: 5-7 Business Days</li>
+                </ul>
+                <h4>3. Logistics</h4>
+                <p>We use trusted partners like Delhivery and Bluedart.</p>
+                <br>
+                <a href="policies.html#shipping" style="color:var(--brand-green);">View Full Legal Text</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- PRIVACY POLICY MODAL -->
+    <div id="privacy-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">PRIVACY POLICY</h3>
+                <button class="modal-close" onclick="closeModal('privacy-modal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p><strong>Voca Sports Private Limited</strong></p>
+                <h4>1. Information We Collect</h4>
+                <p>We collect details you provide (Name, Email, Phone) to process your orders and memberships.</p>
+                <h4>2. Data Usage</h4>
+                <p>Your data is used solely for order fulfillment and communication. We do not sell your data.</p>
+                <h4>3. Security</h4>
+                <p>We use industry-standard encryption to protect your information.</p>
+                <br>
+                <a href="policies.html#privacy" style="color:var(--brand-green);">View Full Legal Text</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- TERMS MODAL -->
+    <div id="terms-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">TERMS & CONDITIONS</h3>
+                <button class="modal-close" onclick="closeModal('terms-modal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p><strong>Voca Sports Private Limited</strong></p>
+                <h4>1. Acceptance</h4>
+                <p>By using this site, you agree to these Terms and Conditions.</p>
+                <h4>2. Purchases</h4>
+                <p>All purchases are subject to availability and payment confirmation.</p>
+                <h4>3. Intellectual Property</h4>
+                <p>All content on this site is the property of Voca Sports.</p>
+                <br>
+                <a href="policies.html#terms" style="color:var(--brand-green);">View Full Legal Text</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONTACT MODAL -->
+    <div id="contact-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">CONTACT US</h3>
+                <button class="modal-close" onclick="closeModal('contact-modal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <h3>Registered Address</h3>
+                <p>Voca Sports Private Limited<br>84, Dariyaganj, Central Delhi<br>New Delhi, 110002, India</p>
+
+                <h3>Customer Support</h3>
+                <p>Email: <a href="mailto:support@thesportsfront.com" style="color:var(--brand-green);">support@thesportsfront.com</a><br>
+                Phone: +91 98991 52327</p>
+                
+                <h3>Partnerships</h3>
+                <p>Email: <a href="mailto:info@thesportsfront.com" style="color:var(--brand-green);">info@thesportsfront.com</a></p>
             </div>
         </div>
     </div>
@@ -535,7 +693,25 @@
         }
 
         function openModal(modalId) {
+            // Redirect shop modal to shop page
+            if (modalId === 'shop-modal') {
+                window.location.href = 'shop.html';
+                return;
+            }
+
             document.getElementById(modalId).classList.add('active');
+            document.getElementById('main-nav').classList.remove('active');
+            
+            // GA4 Tracking
+            if (typeof gtag === 'function') {
+                if (modalId === 'waitlist-modal') {
+                    gtag('event', 'begin_waitlist_signup', { 'event_category': 'conversion', 'event_label': 'Waitlist Modal' });
+                } else if (modalId === 'membership-modal') {
+                    gtag('event', 'view_membership', { 'event_category': 'conversion', 'event_label': 'Membership Modal' });
+                } else if (['privacy-modal', 'terms-modal', 'refund-modal', 'shipping-modal', 'contact-modal'].includes(modalId)) {
+                    gtag('event', 'view_policy', { 'event_category': 'legal', 'event_label': modalId });
+                }
+            }
         }
 
         function closeModal(modalId) {
