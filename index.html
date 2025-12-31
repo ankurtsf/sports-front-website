@@ -19,7 +19,6 @@
 
     <!-- --- SEO & SOCIAL PACK --- -->
     <title>The Sports Front | Iconic Football Nights</title>
-    <!-- UPDATED: Removed specific team names to protect confidentiality -->
     <meta name="description" content="Official pre-announcement. The Sports Front is bringing two English Heavyweights to India (2026). Join the priority list now for The Northern Storm.">
     <meta name="keywords" content="Football, Legends Match, English Premier League Legends, India Sports, Event Management, VOCA Sports, Football Merch, Membership">
     <meta name="author" content="The Sports Front">
@@ -1769,6 +1768,7 @@
 
         // --- CART LOGIC ---
         function addToCart(id, title, price) {
+            // Check if item exists
             const existingItem = cart.find(item => item.id === id);
             if (existingItem) {
                 existingItem.quantity += 1;
@@ -1868,11 +1868,13 @@
         }
 
         async function initiateCheckout() {
+            // This button calls the backend to create an order
             const checkoutBtn = document.querySelector('.checkout-btn');
             checkoutBtn.innerText = "Processing...";
             checkoutBtn.disabled = true;
 
             try {
+                // Call our Backend API
                 const response = await fetch('/api/create-order', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -1882,12 +1884,14 @@
                 const order = await response.json();
 
                 if (order.id) {
+                    // Open Razorpay
                     const options = {
-                        "key": RAZORPAY_KEY_ID,
+                        "key": RAZORPAY_KEY_ID, // Use the variable from top of script
                         "amount": order.amount,
                         "currency": "INR",
                         "name": "The Sports Front",
                         "description": "Merchandise Purchase",
+                        "image": window.location.origin + "/Images/android-chrome-192x192.png", // Use app icon for checkout
                         "order_id": order.id, 
                         "handler": function (response){
                             alert("Payment Successful! Payment ID: " + response.razorpay_payment_id);
@@ -1909,6 +1913,42 @@
             } finally {
                 checkoutBtn.innerText = "Proceed to Pay";
                 checkoutBtn.disabled = false;
+            }
+        }
+
+        function openCart() {
+            document.getElementById('shop-modal').classList.add('active');
+        }
+
+        function openModal(modalId) {
+            // Redirect shop modal to shop page
+            if (modalId === 'shop-modal') {
+                window.location.href = 'shop.html';
+                return;
+            }
+
+            document.getElementById(modalId).classList.add('active');
+            document.getElementById('main-nav').classList.remove('active');
+            
+            // GA4 Tracking
+            if (typeof gtag === 'function') {
+                if (modalId === 'waitlist-modal') {
+                    gtag('event', 'begin_waitlist_signup', { 'event_category': 'conversion', 'event_label': 'Waitlist Modal' });
+                } else if (modalId === 'membership-modal') {
+                    gtag('event', 'view_membership', { 'event_category': 'conversion', 'event_label': 'Membership Modal' });
+                } else if (['privacy-modal', 'terms-modal', 'refund-modal', 'shipping-modal', 'contact-modal'].includes(modalId)) {
+                    gtag('event', 'view_policy', { 'event_category': 'legal', 'event_label': modalId });
+                }
+            }
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+        }
+
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal-overlay')) {
+                event.target.classList.remove('active');
             }
         }
 
@@ -2037,8 +2077,11 @@
         function scrollCarousel(direction) {
             const container = document.getElementById('shopCarousel');
             const scrollAmount = 370; // Adjusted for wider cards
-            if (direction === 'left') container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-            else container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            if (direction === 'left') {
+                container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+            } else {
+                container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            }
         }
 
         const stats = document.querySelectorAll('.stat-number');
@@ -2069,44 +2112,44 @@
                 }
             });
         }, { threshold: 0.5 });
+
         stats.forEach(stat => observer.observe(stat));
 
-        // --- MODAL LOGIC ---
-        function openModal(modalId) {
-            // Redirect shop modal to shop page
-            if (modalId === 'shop-modal') {
-                window.location.href = 'shop.html';
-                return;
-            }
-
-            document.getElementById(modalId).classList.add('active');
-            document.getElementById('main-nav').classList.remove('active');
-            
-            // GA4 Tracking
-            if (typeof gtag === 'function') {
-                if (modalId === 'waitlist-modal') {
-                    gtag('event', 'begin_waitlist_signup', { 'event_category': 'conversion', 'event_label': 'Waitlist Modal' });
-                } else if (modalId === 'membership-modal') {
-                    gtag('event', 'view_membership', { 'event_category': 'conversion', 'event_label': 'Membership Modal' });
-                } else if (['privacy-modal', 'terms-modal', 'refund-modal', 'shipping-modal', 'contact-modal'].includes(modalId)) {
-                    gtag('event', 'view_policy', { 'event_category': 'legal', 'event_label': modalId });
+        // --- FUNCTIONS RESTORED ---
+        
+        // Share Function
+        function shareWebsite() {
+            if (navigator.share) {
+                if (typeof gtag === 'function') {
+                    gtag('event', 'share_content', {
+                        'method': 'Native Share',
+                        'content_type': 'Website',
+                        'item_id': 'Home Page'
+                    });
                 }
+                navigator.share({
+                    title: 'The Sports Front',
+                    text: 'Iconic Football Nights Coming Soon!',
+                    url: window.location.href,
+                })
+                .catch((error) => console.log('Error sharing', error));
+            } else {
+                navigator.clipboard.writeText(window.location.href);
+                if (typeof gtag === 'function') {
+                    gtag('event', 'share_content', {
+                        'method': 'Clipboard Copy',
+                        'content_type': 'Website',
+                        'item_id': 'Home Page'
+                    });
+                }
+                alert("Link copied to clipboard!");
             }
         }
 
-        function closeModal(modalId) {
-            document.getElementById(modalId).classList.remove('active');
-        }
+        // Toggles
+        function toggleMenu() { document.getElementById('main-nav').classList.toggle('active'); }
+        function toggleChat() { document.getElementById('chatbot').classList.toggle('active'); }
 
-        function openCart() {
-            document.getElementById('shop-modal').classList.add('active');
-        }
-
-        window.onclick = function(event) {
-            if (event.target.classList.contains('modal-overlay')) {
-                event.target.classList.remove('active');
-            }
-        }
     </script>
 </body>
 </html>
