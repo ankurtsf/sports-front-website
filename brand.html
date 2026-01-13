@@ -19,7 +19,7 @@
     <style>
         /* --- GLOBAL STYLES --- */
         html { scroll-behavior: smooth; }
-        body { 
+        body { A
             background-color: #0A0A0A; 
             color: white; 
             font-family: 'Open Sans', sans-serif;
@@ -43,6 +43,13 @@
             background-size: 40px 40px;
             background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
                               linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        }
+
+        /* Active Menu State */
+        .nav-item.active {
+            background-color: #00D084;
+            color: black;
+            border-left: 4px solid white;
         }
 
         /* --- PRINT STYLES (PDF Generation) --- */
@@ -200,7 +207,8 @@
             <div class="w-full max-w-7xl">
                 <!-- LOGO DARK (SVG) -->
                 <div class="mb-10 w-64 h-64 md:w-96 md:h-96 mx-auto flex items-center justify-center">
-                    <img src="logo-header.svg" alt="TSF Logo" class="logo-img w-full h-full object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                    <!-- UPDATED PATH: Images/logo-header.svg -->
+                    <img src="Images/logo-header.svg" alt="TSF Logo" class="logo-img w-full h-full object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
                     <!-- Fallback -->
                     <div class="hidden border-2 border-dashed border-white/20 rounded bg-white/5 p-10 flex-col items-center justify-center">
                         <span class="text-white font-bold">LOGO-HEADER.SVG</span>
@@ -288,7 +296,8 @@
                         <span class="bg-white/10 text-white text-[10px] px-2 py-1 rounded">DARK MODE</span>
                     </div>
                     <div class="h-64 w-full flex items-center justify-center">
-                        <img src="logo-header.svg" class="logo-img h-full object-contain" alt="Dark Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+                        <!-- UPDATED PATH: Images/logo-header.svg -->
+                        <img src="Images/logo-header.svg" class="logo-img h-full object-contain" alt="Dark Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
                         <div class="hidden text-gray-500 font-mono text-xs">LOGO-HEADER.SVG</div>
                     </div>
                 </div>
@@ -300,7 +309,8 @@
                         <span class="bg-black/10 text-black text-[10px] px-2 py-1 rounded">LIGHT MODE</span>
                     </div>
                     <div class="h-64 w-full flex items-center justify-center">
-                        <img src="logo-light.svg" class="logo-img h-full object-contain" alt="Light Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+                         <!-- UPDATED PATH: Images/logo-light.svg -->
+                        <img src="Images/logo-light.svg" class="logo-img h-full object-contain" alt="Light Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
                         <div class="hidden text-gray-500 font-mono text-xs">LOGO-LIGHT.SVG</div>
                     </div>
                 </div>
@@ -506,7 +516,8 @@
         <!-- FOOTER -->
         <footer class="py-24 text-center border-t border-white/10 flex flex-col justify-center items-center min-h-screen">
             <div class="mb-10 w-64 h-32 flex justify-center items-center">
-                 <img src="logo-header.svg" class="logo-img h-full object-contain" onerror="this.style.display='none'">
+                 <!-- UPDATED PATH: Images/logo-header.svg -->
+                 <img src="Images/logo-header.svg" class="logo-img h-full object-contain" onerror="this.style.display='none'">
             </div>
             
             <h2 class="font-montserrat font-black text-5xl md:text-7xl mb-8 uppercase tracking-tighter">
@@ -531,6 +542,12 @@
             </div>
 
             <p class="text-gray-600 text-xs font-mono">© 2025 THE SPORTS FRONT. ALL RIGHTS RESERVED.</p>
+            
+            <div class="download-btn flex justify-center gap-4 mt-8">
+                 <button onclick="window.print()" class="flex items-center gap-2 text-[#00D084] hover:text-white transition-colors text-lg font-bold">
+                    <i data-lucide="download"></i> Download Brand Kit PDF
+                 </button>
+            </div>
         </footer>
 
     </main>
@@ -547,13 +564,15 @@
                 const el = document.getElementById(id);
                 if (el && scrollPos >= el.offsetTop && scrollPos < el.offsetTop + el.offsetHeight) {
                     document.querySelectorAll('.nav-item').forEach(nav => {
-                        nav.classList.remove('active');
+                        nav.classList.remove('bg-[#00D084]', 'text-black', 'border-white');
                         nav.classList.add('text-gray-400');
                     });
+                    
+                    // Highlight active
                     const activeNav = document.querySelector(`a[href="#${id}"]`);
                     if(activeNav) {
                         activeNav.classList.remove('text-gray-400');
-                        activeNav.classList.add('active');
+                        activeNav.classList.add('bg-[#00D084]', 'text-black', 'border-white');
                     }
                 }
             });
